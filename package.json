@@ -1,0 +1,11 @@
+{
+  "name": "a1-technovation-website",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "optimize-images": "node tools/optimize-images.mjs"
+  },
+  "devDependencies": {
+    "sharp": "^0.34.5"
+  }
+}

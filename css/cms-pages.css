@@ -1,0 +1,269 @@
+.cms-builder-panel,
+.cms-media-panel {
+  background: #fff;
+  border-radius: 28px;
+  padding: 36px;
+  box-shadow: 0 18px 38px rgba(15, 23, 42, 0.08);
+}
+
+.cms-empty-state {
+  padding: 32px 24px;
+  border: 1px dashed #d0dded;
+  border-radius: 24px;
+  background: #fbfdff;
+  text-align: center;
+}
+
+.cms-media-panel img,
+.cms-media-panel video {
+  width: 100%;
+  border-radius: 24px;
+  margin-top: 20px;
+}
+
+.cms-rich-text p,
+.cms-rich-text li {
+  color: var(--c-600);
+  line-height: 1.9;
+}
+
+.cms-rich-text ul,
+.cms-rich-text ol {
+  padding-left: 22px;
+}
+
+.cms-btn-row {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.cms-grid-two,
+.cms-grid-three {
+  display: grid;
+  gap: 20px;
+}
+
+.cms-grid-two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.cms-grid-three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.cms-gallery-grid,
+.cms-logo-grid,
+.cms-download-grid {
+  display: grid;
+  gap: 20px;
+}
+
+.cms-gallery-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.cms-logo-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.cms-download-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.cms-gallery-card,
+.cms-logo-card,
+.cms-download-card,
+.cms-split-panel {
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 18px 38px rgba(15, 23, 42, 0.08);
+}
+
+.cms-gallery-card {
+  overflow: hidden;
+}
+
+.cms-gallery-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.cms-gallery-card figcaption {
+  padding: 18px 20px 20px;
+  color: var(--c-500);
+}
+
+.cms-logo-card {
+  min-height: 132px;
+  display: grid;
+  place-items: center;
+  padding: 26px;
+}
+
+.cms-logo-card img {
+  max-height: 72px;
+  width: 100%;
+  object-fit: contain;
+  filter: grayscale(1);
+  opacity: 0.85;
+}
+
+.cms-logo-card a:hover img {
+  filter: grayscale(0);
+  opacity: 1;
+}
+
+.cms-download-card {
+  padding: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.cms-download-card h4 {
+  margin-bottom: 10px;
+}
+
+.cms-section-intro,
+.cms-embed-caption {
+  color: var(--c-500);
+}
+
+.cms-section-intro {
+  margin: -12px 0 24px;
+}
+
+.cms-split-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+  overflow: hidden;
+}
+
+.cms-split-no-media {
+  grid-template-columns: 1fr;
+}
+
+.cms-split-reverse {
+  direction: rtl;
+}
+
+.cms-split-reverse .cms-split-copy,
+.cms-split-reverse .cms-split-media {
+  direction: ltr;
+}
+
+.cms-split-copy {
+  padding: 42px;
+  display: grid;
+  align-content: center;
+  gap: 18px;
+}
+
+.cms-split-copy .label {
+  margin-bottom: 0;
+}
+
+.cms-split-media {
+  min-height: 100%;
+}
+
+.cms-split-media img {
+  width: 100%;
+  height: 100%;
+  min-height: 360px;
+  object-fit: cover;
+}
+
+.cms-embed-frame {
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid var(--c-200);
+}
+
+.cms-embed-frame iframe,
+.cms-embed-frame video,
+.cms-embed-frame .map-embed {
+  width: 100%;
+  display: block;
+}
+
+.cms-embed-frame iframe {
+  min-height: 420px;
+  border: 0;
+}
+
+.cms-embed-caption {
+  margin-top: 16px;
+}
+
+.faq-item,
+.testimonial-card,
+.stat-card,
+.cms-simple-pricing {
+  background: #fff;
+  border-radius: 24px;
+  padding: 28px;
+  box-shadow: 0 18px 38px rgba(15, 23, 42, 0.08);
+}
+
+.faq-item h4,
+.testimonial-card strong,
+.stat-card strong,
+.cms-simple-pricing h4 {
+  margin-bottom: 12px;
+}
+
+.stat-card strong {
+  display: block;
+  font-size: 2rem;
+}
+
+.testimonial-card span {
+  display: block;
+  margin-top: 10px;
+  color: var(--c-500);
+}
+
+.cms-simple-pricing .price {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.cms-page-hero {
+  background-size: cover;
+  background-position: center;
+}
+
+@media (max-width: 900px) {
+  .cms-grid-two,
+  .cms-grid-three,
+  .cms-gallery-grid,
+  .cms-logo-grid,
+  .cms-download-grid,
+  .cms-split-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .cms-builder-panel,
+  .cms-media-panel {
+    padding: 24px;
+  }
+
+  .cms-download-card {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .cms-split-copy {
+    padding: 28px 24px;
+  }
+
+  .cms-split-media img {
+    min-height: 280px;
+  }
+}

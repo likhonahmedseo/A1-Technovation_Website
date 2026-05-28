@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="A1 Technovation logo">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f62fe"/>
+      <stop offset="55%" stop-color="#1d4ed8"/>
+      <stop offset="100%" stop-color="#ff6b6b"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="34" fill="url(#g)"/>
+  <path d="M40 84 58 42h12l18 42H76l-3-8H55l-3 8H40Zm20-18h8l-4-11-4 11Z" fill="#fff"/>
+  <path d="M92 44h-8v-9h18v49H92V44Z" fill="#fff"/>
+</svg>

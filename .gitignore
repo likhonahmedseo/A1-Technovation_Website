@@ -1,0 +1,16 @@
+tmp/
+output/
+.claude/
+config/contact-form.php
+config/cms.php
+node_modules/
+.tmp-*.ps1
+.ftpquota
+.vscode/sftp.json
+error_log
+admin/error_log
+php/error_log
+cache/
+**/__pycache__/
+*.pyc
+

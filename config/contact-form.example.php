@@ -1,0 +1,78 @@
+<?php
+declare(strict_types=1);
+
+return [
+    'app' => [
+        'base_url' => 'https://a1technovation.com',
+        'contact_page' => '/pages/contact',
+        'timezone' => 'Asia/Dhaka',
+    ],
+    'database' => [
+        'enabled' => (getenv('CONTACT_DB_ENABLED') ?: 'true') !== 'false',
+        'host' => getenv('CONTACT_DB_HOST') ?: (getenv('CMS_DB_HOST') ?: '127.0.0.1'),
+        'port' => (int) (getenv('CONTACT_DB_PORT') ?: (getenv('CMS_DB_PORT') ?: 3306)),
+        'name' => getenv('CONTACT_DB_NAME') ?: (getenv('CMS_DB_NAME') ?: ''),
+        'username' => getenv('CONTACT_DB_USERNAME') ?: (getenv('CMS_DB_USERNAME') ?: ''),
+        'password' => getenv('CONTACT_DB_PASSWORD') ?: (getenv('CMS_DB_PASSWORD') ?: ''),
+    ],
+    'smtp' => [
+        'host' => getenv('CONTACT_SMTP_HOST') ?: '',
+        'port' => (int) (getenv('CONTACT_SMTP_PORT') ?: 587),
+        'username' => getenv('CONTACT_SMTP_USERNAME') ?: '',
+        'password' => getenv('CONTACT_SMTP_PASSWORD') ?: '',
+        'encryption' => getenv('CONTACT_SMTP_ENCRYPTION') ?: 'tls',
+        'auth' => (getenv('CONTACT_SMTP_AUTH') ?: 'true') !== 'false',
+        'timeout' => (int) (getenv('CONTACT_SMTP_TIMEOUT') ?: 20),
+        'helo_host' => getenv('CONTACT_SMTP_HELO_HOST') ?: 'a1technovation.com',
+    ],
+    'mail' => [
+        'from_email' => getenv('CONTACT_MAIL_FROM_EMAIL') ?: 'noreply@a1technovation.com',
+        'from_name' => getenv('CONTACT_MAIL_FROM_NAME') ?: 'A1 Technovation',
+        'notification_email' => getenv('CONTACT_NOTIFICATION_EMAIL') ?: 'info.a1technovation@gmail.com',
+        'notification_name' => getenv('CONTACT_NOTIFICATION_NAME') ?: 'A1 Technovation Sales',
+        'transport' => getenv('CONTACT_MAIL_TRANSPORT') ?: 'native',
+        'fallback_to_native_mail' => (getenv('CONTACT_FALLBACK_TO_NATIVE_MAIL') ?: 'true') !== 'false',
+        'send_auto_reply' => (getenv('CONTACT_SEND_AUTO_REPLY') ?: 'true') !== 'false',
+        'auto_reply_subject' => getenv('CONTACT_AUTO_REPLY_SUBJECT') ?: 'Thanks for contacting A1 Technovation',
+    ],
+    'captcha' => [
+        'enabled' => true,
+        'ttl_seconds' => 900,
+        'min_number' => 2,
+        'max_number' => 12,
+    ],
+    'anti_spam' => [
+        'enabled' => true,
+        'require_same_site' => true,
+        'minimum_submit_seconds' => 4,
+        'max_links_in_message' => 2,
+        'check_email_dns' => true,
+        'check_website_dns' => true,
+        'rate_limit_window_seconds' => 900,
+        'max_submissions_per_ip' => 3,
+        'max_submissions_per_email' => 2,
+        'blocked_email_domains' => [
+            '10minutemail.com',
+            'guerrillamail.com',
+            'mailinator.com',
+            'tempmail.com',
+            'temp-mail.org',
+            'yopmail.com',
+            'example.com',
+            'test.com',
+            'invalid.com',
+        ],
+        'blocked_website_domains' => [
+            'example.com',
+            'test.com',
+            'localhost',
+        ],
+        'blocked_message_terms' => [
+            'casino',
+            'crypto giveaway',
+            'viagra',
+            'loan offer',
+            'backlink package',
+        ],
+    ],
+];

@@ -1,0 +1,1917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZLZWHYFJBW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ZLZWHYFJBW');
+  </script>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Free tools and software by A1 Technovation, including SEO utilities, marketing tools, and 27 Python SEO scripts for audits, content, schema, reporting, and technical checks." />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="A1 Technovation" />
+  <meta property="og:title" content="Free Tools by A1 Technovation - SEO & Marketing Utilities" />
+  <meta property="og:description" content="Explore free tools and software built by A1 Technovation, including SEO utilities, marketing tools, and 27 Python SEO scripts." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://a1technovation.com/pages/tools" />
+  <meta property="og:image" content="https://a1technovation.com/assets/images/A1Technovation-Light-Background.png" />
+  <meta property="og:image:alt" content="Free Tools - A1 Technovation" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Free Tools by A1 Technovation - SEO & Marketing Utilities" />
+  <meta name="twitter:description" content="Explore free tools and software built by A1 Technovation, including SEO utilities, marketing tools, and 27 Python SEO scripts." />
+  <meta name="twitter:image" content="https://a1technovation.com/assets/images/A1Technovation-Light-Background.png" />
+  <title>Free Tools by A1 Technovation - SEO & Marketing Utilities</title>
+  <link rel="canonical" href="https://a1technovation.com/pages/tools" />
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+  <link rel="apple-touch-icon" href="/assets/images/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/responsive.css" />
+  <style>
+    /* Tools page */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 28px;
+      margin-top: 48px;
+    }
+    .tools-page-hero {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      min-height: 0;
+      padding: calc(var(--nav-h) + 72px) 0 72px;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(129, 140, 248, .24), transparent 34%),
+        linear-gradient(145deg, #060b18 0%, #0d1526 56%, #160826 100%);
+      text-align: center;
+    }
+    .tools-page-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background-image:
+        linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,.7), transparent 78%);
+    }
+    .tools-page-hero .hero-bg {
+      display: none;
+    }
+    .tools-page-hero .page-hero-inner {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 780px;
+      margin: 0 auto;
+      gap: 18px;
+    }
+    .tools-page-hero .breadcrumb {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: rgba(255,255,255,.62);
+    }
+    .tools-page-hero .breadcrumb a {
+      color: rgba(255,255,255,.62);
+    }
+    .tools-page-hero .breadcrumb a:hover {
+      color: #fff;
+    }
+    .tools-page-hero h1 {
+      color: #fff;
+      max-width: 820px;
+      margin: 0;
+    }
+    .tools-page-hero p {
+      max-width: 620px;
+      margin: 0;
+      color: rgba(255,255,255,.72);
+      font-size: 1.0625rem;
+    }
+    .tools-page-hero .tools-stats {
+      padding-top: 18px;
+    }
+    .tools-page-hero .tools-stat-item strong {
+      background: none;
+      -webkit-text-fill-color: #fff;
+      color: #fff;
+    }
+    .tools-page-hero .tools-stat-item span {
+      color: rgba(255,255,255,.68);
+    }
+    .tools-page-hero,
+    .tools-page-hero .page-hero-inner,
+    .tools-page-hero h1,
+    .tools-page-hero p,
+    .tools-page-hero .breadcrumb,
+    .tools-page-hero .label,
+    .tools-page-hero .hero-badges,
+    .tools-page-hero .tools-stats {
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: none !important;
+    }
+    .tools-page-hero .text-grad-hero {
+      background: linear-gradient(135deg,#818cf8 0%,#c084fc 50%,#f472b6 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .tools-page-content .reveal,
+    .tools-page-content .reveal-l,
+    .tools-page-content .reveal-r,
+    .tools-page-content .reveal-s {
+      opacity: 1;
+      transform: none;
+    }
+    .section-gray .featured-panel.reveal,
+    .cta-wrap .cta-inner.reveal {
+      opacity: 1;
+      visibility: visible;
+      transform: none;
+    }
+    .tool-card {
+      background: var(--c-50);
+      border: 1px solid var(--c-200);
+      border-radius: var(--r-2xl);
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: var(--tr);
+    }
+    .tool-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--sh-lg);
+      border-color: var(--c-primary);
+    }
+    .tool-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .tool-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: var(--r-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.375rem;
+      flex-shrink: 0;
+    }
+    .tool-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: flex-end;
+    }
+    .tool-tag {
+      font-size: .6875rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+      padding: 3px 10px;
+      border-radius: var(--r-full);
+      text-transform: uppercase;
+    }
+    .tool-tag-cat {
+      background: rgba(79,70,229,.1);
+      color: var(--c-primary);
+    }
+    .tool-tag-free {
+      background: rgba(16,185,129,.12);
+      color: #059669;
+    }
+    .tool-tag-new {
+      background: rgba(244,63,94,.12);
+      color: #e11d48;
+    }
+    .tool-tag-beta {
+      background: rgba(245,158,11,.12);
+      color: #d97706;
+    }
+    .tool-card h3 {
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--c-900);
+      margin: 0;
+      line-height: 1.35;
+    }
+    .tool-card p {
+      font-size: .9375rem;
+      color: var(--c-600);
+      line-height: 1.65;
+      margin: 0;
+      flex: 1;
+    }
+    .tool-features {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .tool-features li {
+      font-size: .875rem;
+      color: var(--c-600);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .tool-features li i {
+      color: var(--c-success);
+      font-size: .75rem;
+      flex-shrink: 0;
+    }
+    .tool-card-footer {
+      margin-top: 4px;
+      padding-top: 20px;
+      border-top: 1px solid var(--c-200);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .tool-card-footer .btn {
+      flex: 1;
+      justify-content: center;
+    }
+    .tool-card-python {
+      border-left: 4px solid var(--c-primary);
+    }
+    .tool-card-python .tool-card-footer {
+      align-items: stretch;
+      flex-direction: column;
+    }
+    .tool-command {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: var(--r-md);
+      background: #0f172a;
+      color: #dbeafe;
+      font: 700 .78rem/1.45 "JetBrains Mono", "Cascadia Code", Consolas, monospace;
+      overflow-wrap: anywhere;
+    }
+    .tool-command i {
+      color: #38bdf8;
+      flex-shrink: 0;
+    }
+    .tool-run-button {
+      width: 100%;
+      justify-content: center;
+      margin-top: 2px;
+    }
+    .tool-runner-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(15, 23, 42, .58);
+      backdrop-filter: blur(8px);
+    }
+    .tool-runner-backdrop.is-open {
+      display: flex;
+    }
+    .tool-runner-modal {
+      width: min(760px, 100%);
+      max-height: min(86vh, 820px);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border-radius: var(--r-2xl);
+      border: 1px solid var(--c-200);
+      background: #fff;
+      box-shadow: var(--sh-xl);
+    }
+    .tool-runner-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 22px 24px;
+      border-bottom: 1px solid var(--c-200);
+    }
+    .tool-runner-head h3 {
+      margin: 0;
+      color: var(--c-900);
+      font-size: 1.2rem;
+    }
+    .tool-runner-close {
+      width: 38px;
+      height: 38px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--c-200);
+      border-radius: var(--r-full);
+      background: #fff;
+      color: var(--c-700);
+      cursor: pointer;
+    }
+    .tool-runner-body {
+      overflow: auto;
+      padding: 24px;
+    }
+    .tool-runner-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .tool-runner-field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .tool-runner-field.is-wide {
+      grid-column: 1 / -1;
+    }
+    .tool-runner-field label {
+      color: var(--c-900);
+      font-size: .9rem;
+      font-weight: 800;
+    }
+    .tool-runner-field input,
+    .tool-runner-field textarea,
+    .tool-runner-field select {
+      width: 100%;
+      border: 1px solid var(--c-200);
+      border-radius: var(--r-lg);
+      padding: 12px 14px;
+      color: var(--c-900);
+      background: #fff;
+      font: inherit;
+    }
+    .tool-runner-field textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+    .tool-runner-actions {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .tool-runner-result {
+      display: none;
+      margin-top: 20px;
+      border-radius: var(--r-lg);
+      border: 1px solid var(--c-200);
+      background: #0f172a;
+      color: #dbeafe;
+      overflow: hidden;
+    }
+    .tool-runner-result.is-visible {
+      display: block;
+    }
+    .tool-runner-result-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(219, 234, 254, .16);
+      color: #fff;
+      font-weight: 800;
+    }
+    .tool-runner-output {
+      max-height: 360px;
+      overflow: auto;
+      margin: 0;
+      padding: 16px;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      font: 700 .82rem/1.55 "JetBrains Mono", "Cascadia Code", Consolas, monospace;
+    }
+    .tool-runner-generated {
+      display: none;
+      padding: 0 16px 16px;
+    }
+    .tool-runner-generated.is-visible {
+      display: block;
+    }
+    .tool-runner-generated textarea {
+      width: 100%;
+      min-height: 220px;
+      border: 1px solid rgba(219, 234, 254, .24);
+      border-radius: var(--r-md);
+      padding: 12px;
+      background: rgba(15, 23, 42, .7);
+      color: #e0f2fe;
+      font: 700 .78rem/1.5 "JetBrains Mono", "Cascadia Code", Consolas, monospace;
+      resize: vertical;
+    }
+    .python-suite-intro {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: center;
+      margin-top: 18px;
+      padding: 30px;
+      border: 1px solid rgba(79,70,229,.18);
+      border-radius: var(--r-2xl);
+      background:
+        linear-gradient(135deg, rgba(79,70,229,.08), transparent 45%),
+        var(--c-50);
+    }
+    .python-suite-intro h3 {
+      margin: 0 0 8px;
+      color: var(--c-900);
+      font-size: 1.35rem;
+    }
+    .python-suite-intro p {
+      margin: 0;
+      color: var(--c-600);
+      line-height: 1.7;
+    }
+    .python-suite-stats {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .python-suite-stats span {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 12px;
+      border-radius: var(--r-full);
+      background: #fff;
+      border: 1px solid var(--c-200);
+      color: var(--c-700);
+      font-size: .82rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    /* Filter tabs */
+    .tools-filter {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 32px;
+    }
+    .filter-btn {
+      padding: 8px 20px;
+      border-radius: var(--r-full);
+      font-size: .875rem;
+      font-weight: 600;
+      border: 1.5px solid var(--c-200);
+      background: transparent;
+      color: var(--c-600);
+      cursor: pointer;
+      transition: var(--tr-fast);
+      font-family: var(--f-body);
+    }
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--c-primary);
+      border-color: var(--c-primary);
+      color: #fff;
+    }
+
+    /* Stats strip */
+    .tools-stats {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      padding: 40px 0 0;
+    }
+    .tools-stat-item {
+      text-align: center;
+    }
+    .tools-stat-item strong {
+      display: block;
+      font-size: 2rem;
+      font-weight: 800;
+      background: var(--g-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.1;
+    }
+    .tools-stat-item span {
+      font-size: .875rem;
+      color: var(--c-500);
+      margin-top: 4px;
+      display: block;
+    }
+
+    /* Featured tool card - full width */
+    .tool-card-featured {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+      border: 1px solid rgba(129,140,248,.25);
+      border-radius: var(--r-2xl);
+      padding: 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .tool-card-featured::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 20% 50%, rgba(79,70,229,.18) 0%, transparent 60%),
+                  radial-gradient(ellipse at 80% 20%, rgba(168,85,247,.12) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .tool-card-featured .feat-left { position: relative; }
+    .feat-product-head {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .tool-card-featured .feat-right {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .tool-card-featured h3 {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: #fff;
+      margin: 0;
+      line-height: 1.25;
+    }
+    .tool-card-featured p {
+      font-size: .9375rem;
+      color: rgba(255,255,255,.65);
+      line-height: 1.7;
+      margin: 0;
+    }
+    .tool-card-featured .tool-features li { color: rgba(255,255,255,.7); }
+    .tool-card-featured .tool-features li i { color: #818cf8; }
+    .tool-card-featured .tool-card-footer {
+      border-top: 1px solid rgba(255,255,255,.1);
+      margin-top: 8px;
+      padding-top: 20px;
+    }
+    .feat-product-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(129,140,248,.15);
+      border: 1px solid rgba(129,140,248,.3);
+      border-radius: var(--r-full);
+      padding: 6px 14px;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      color: #a5b4fc;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .feat-product-badge i { font-size: .625rem; }
+    .feat-divider {
+      width: 1px;
+      background: rgba(255,255,255,.1);
+      align-self: stretch;
+    }
+    .feat-stat-row {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+    .feat-stat { text-align: center; }
+    .feat-stat strong {
+      display: block;
+      font-size: 1.375rem;
+      font-weight: 800;
+      color: #818cf8;
+    }
+    .feat-stat span {
+      font-size: .75rem;
+      color: rgba(255,255,255,.45);
+    }
+
+    @media (max-width: 768px) {
+      .python-suite-intro { grid-template-columns: 1fr; padding: 24px; }
+      .python-suite-stats { justify-content: flex-start; }
+      .tool-runner-grid { grid-template-columns: 1fr; }
+      .tool-runner-actions { align-items: stretch; flex-direction: column; }
+      .tool-runner-actions .btn { width: 100%; justify-content: center; }
+      .tool-card-featured {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        padding: 28px;
+      }
+      .feat-divider { display: none; }
+      .tool-card-featured .tool-card-footer {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .tool-card-featured .tool-card-footer .btn {
+        width: 100%;
+      }
+      .feat-stat-row {
+        gap: 18px;
+        justify-content: space-between;
+      }
+      .feat-stat {
+        flex: 1 1 calc(50% - 9px);
+        min-width: 140px;
+      }
+    }
+    @media (max-width: 640px) {
+      .tools-page-hero {
+        padding: calc(var(--nav-h) + 48px) 0 56px;
+      }
+      .tools-grid { grid-template-columns: 1fr; }
+      .tools-stats { gap: 24px; }
+      .tool-card-featured {
+        padding: 22px 18px;
+        border-radius: 28px;
+      }
+      .tool-card-featured h3 {
+        font-size: 1.5rem;
+      }
+      .feat-product-head {
+        align-items: flex-start !important;
+        gap: 12px;
+      }
+      .feat-product-badge {
+        font-size: .6875rem;
+        padding: 6px 12px;
+      }
+      .tool-card-featured .tool-features li {
+        align-items: flex-start;
+      }
+      .feat-stat-row {
+        gap: 14px;
+      }
+      .feat-stat {
+        flex: 1 1 100%;
+        min-width: 0;
+      }
+      .feat-stat strong {
+        font-size: 1.5rem;
+      }
+    }
+    @media (max-width: 480px) {
+      .tool-card-featured {
+        padding: 20px 16px;
+      }
+      .tool-card-featured p {
+        font-size: .9rem;
+      }
+      .tool-card-featured .tool-card-footer {
+        gap: 10px;
+      }
+      .tool-card-featured .tool-card-footer .btn {
+        min-height: 52px;
+      }
+    }
+  </style>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://a1technovation.com/pages/tools","url":"https://a1technovation.com/pages/tools","name":"Free Tools by A1 Technovation - SEO & Marketing Utilities","isPartOf":{"@id":"https://a1technovation.com/#website"},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://a1technovation.com"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://a1technovation.com/pages/tools"}]}}]}
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "@id": "https://a1technovation.com/pages/tools#software-tools",
+    "name": "A1 Technovation Software Tools",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "SoftwareApplication",
+          "@id": "https://a1technovation.com/pages/tools#a1-mail-dynamics",
+          "name": "A1 Mail Dynamics",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "Desktop",
+          "description": "Windows email outreach desktop app with AI-assisted campaign drafting, SMTP sending, and license activation. First 50 users can request a free license.",
+          "publisher": {"@id": "https://a1technovation.com/#organization"},
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock",
+            "url": "https://a1technovation.com/pages/a1-mail-dynamics"
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "SoftwareApplication",
+          "@id": "https://a1technovation.com/pages/tools#a1-crm",
+          "name": "A1 CRM",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "Desktop",
+          "description": "Offline-first agency CRM for client management, task tracking, billing, reporting, and AI-powered content planning.",
+          "publisher": {"@id": "https://a1technovation.com/#organization"},
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock",
+            "url": "https://drive.google.com/file/d/1bymzvVLGUZm4Ex7wXajwJCnUq8JsZRh5/view"
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@type": "SoftwareApplication",
+          "@id": "https://a1technovation.com/pages/tools#a1-serp-page-auditor",
+          "name": "A1 SERP & Page Auditor",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "Web",
+          "description": "Chrome extension for SEO professionals to audit pages, scrape SERPs, detect featured snippets, check Core Web Vitals, and get domain authority scores instantly.",
+          "publisher": {"@id": "https://a1technovation.com/#organization"},
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock",
+            "url": "https://drive.google.com/file/d/1TcoTqN0De2NL1g6mwcStaY4XK81v7LGf/view?usp=sharing"
+          }
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Sitewide Supplemental Schema -->
+  <script type="application/ld+json">
+{
+    "@context":  "https://schema.org",
+    "@graph":  [
+                   {
+                       "@type":  [
+                                     "Organization",
+                                     "ProfessionalService"
+                                 ],
+                       "@id":  "https://a1technovation.com/#organization",
+                       "name":  "A1 Technovation",
+                       "url":  "https://a1technovation.com",
+                       "logo":  {
+                                    "@type":  "ImageObject",
+                                    "url":  "https://a1technovation.com/assets/images/A1Technovation-Light-Background.png"
+                                },
+                       "image":  "https://a1technovation.com/assets/images/A1Technovation-Light-Background.png",
+                       "description":  "A1 Technovation is a full-service digital marketing agency providing SEO, AEO, GEO, local SEO, ecommerce SEO, web design, PPC, and social media marketing for clients worldwide.",
+                       "foundingDate":  "2018",
+                       "founder":  {
+                                       "@type":  "Person",
+                                       "@id":  "https://a1technovation.com/#likhon-ahmed",
+                                       "name":  "Likhon Ahmed",
+                                       "jobTitle":  "Founder and CEO",
+                                       "url":  "https://a1technovation.com/pages/about"
+                                   },
+                       "email":  "info.a1technovation@gmail.com",
+                       "telephone":  "+8801799976295",
+                       "address":  {
+                                       "@type":  "PostalAddress",
+                                       "streetAddress":  "35/A Srijoni Road, Ibrahimpur, Dhaka Cantonment",
+                                       "addressLocality":  "Dhaka",
+                                       "postalCode":  "1206",
+                                       "addressCountry":  "BD"
+                                   },
+                       "areaServed":  [
+                                          "Worldwide",
+                                          "United States",
+                                          "United Kingdom",
+                                          "United Arab Emirates",
+                                          "Saudi Arabia",
+                                          "Canada",
+                                          "Australia",
+                                          "Bangladesh"
+                                      ],
+                       "sameAs":  [
+                                      "https://www.facebook.com/a1technovation/",
+                                      "https://www.instagram.com/a1technovation/",
+                                      "https://www.linkedin.com/company/92598277/"
+                                  ],
+                       "contactPoint":  [
+                                            {
+                                                "@type":  "ContactPoint",
+                                                "telephone":  "+8801799976295",
+                                                "contactType":  "customer service",
+                                                "email":  "info.a1technovation@gmail.com",
+                                                "availableLanguage":  [
+                                                                          "English",
+                                                                          "Bengali"
+                                                                      ]
+                                            }
+                                        ],
+                       "priceRange":  "$"
+                   },
+                   {
+                       "@type":  "WebSite",
+                       "@id":  "https://a1technovation.com/#website",
+                       "url":  "https://a1technovation.com/",
+                       "name":  "A1 Technovation",
+                       "publisher":  {
+                                         "@id":  "https://a1technovation.com/#organization"
+                                     },
+                       "inLanguage":  "en-US"
+                   },
+                   {
+                       "@type":  "CollectionPage",
+                       "@id":  "https://a1technovation.com/pages/tools#webpage",
+                       "url":  "https://a1technovation.com/pages/tools",
+                       "name":  "Free Tools by A1 Technovation - SEO \u0026 Marketing Utilities",
+                       "headline":  "Tools We Built for You",
+                       "description":  "Free tools built by A1 Technovation - SEO utilities, marketing calculators, and automation helpers to grow your business faster.",
+                       "isPartOf":  {
+                                        "@id":  "https://a1technovation.com/#website"
+                                    },
+                       "about":  {
+                                     "@id":  "https://a1technovation.com/#organization"
+                                 },
+                       "publisher":  {
+                                         "@id":  "https://a1technovation.com/#organization"
+                                     },
+                       "primaryImageOfPage":  {
+                                                  "@type":  "ImageObject",
+                                                  "url":  "https://a1technovation.com/assets/images/A1Technovation-Light-Background.png"
+                                              },
+                       "inLanguage":  "en-US"
+                   },
+                   {
+                       "@type":  "BreadcrumbList",
+                       "@id":  "https://a1technovation.com/pages/tools#breadcrumb",
+                       "itemListElement":  [
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  1,
+                                                   "name":  "Home",
+                                                   "item":  "https://a1technovation.com/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  2,
+                                                   "name":  "Free Tools by A1 Technovation - SEO \u0026 Marketing Utilities",
+                                                   "item":  "https://a1technovation.com/pages/tools"
+                                               }
+                                           ]
+                   }
+               ]
+}
+  </script>
+  <!-- /Sitewide Supplemental Schema -->
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="container"><div class="navbar-inner">
+    <a href="/" class="navbar-logo" aria-label="A1 Technovation home"><span class="logo-mark"><img src="/assets/images/A1Technovation-Dark-Background.png" alt="A1 Technovation" class="logo-brand logo-brand-dark" /><img src="/assets/images/A1Technovation-Light-Background.png" alt="A1 Technovation" class="logo-brand logo-brand-light" /></span></a>
+    <nav class="navbar-nav">
+      <a href="/" class="nav-link">Home</a><a href="/pages/about" class="nav-link">About</a>
+      <div class="nav-item megamenu-item"><a href="/pages/services" class="nav-link">Services <i class="fas fa-chevron-down" style="font-size:.7em;opacity:.7"></i></a>
+        <div class="megamenu">
+            <div class="megamenu-inner">
+              <div class="mm-col mm-col-main">
+                <p class="mm-col-head">Core Services</p>
+                <a href="/pages/services-seo" class="mm-service"><div class="mm-icon"><i class="fas fa-search"></i></div><div class="mm-body"><span class="mm-title">SEO Services</span><span class="mm-desc">Technical, content, and authority growth</span></div></a>
+                <a href="/aeo-optimization-services/" class="mm-service"><div class="mm-icon"><i class="fas fa-comment-dots"></i></div><div class="mm-body"><span class="mm-title">AEO Optimization</span><span class="mm-desc">Win snippets and answer boxes</span></div></a>
+                <a href="/geo-optimization-services/" class="mm-service"><div class="mm-icon"><i class="fas fa-diagram-project"></i></div><div class="mm-body"><span class="mm-title">GEO Optimization</span><span class="mm-desc">Get cited by AI engines</span></div></a>
+                <a href="/pages/services-local-seo" class="mm-service"><div class="mm-icon"><i class="fas fa-location-dot"></i></div><div class="mm-body"><span class="mm-title">Local SEO</span><span class="mm-desc">Maps, local pack, and city rankings</span></div></a>
+              </div>
+              <div class="mm-col mm-col-links">
+                <p class="mm-col-head">SEO Specialties</p>
+                <a href="/ecommerce-seo-services/" class="mm-link">Ecommerce SEO</a>
+                <a href="/pages/services-web-dev" class="mm-link">Web Design</a>
+                <a href="/pages/services-ppc-ads" class="mm-link">PPC Advertising</a>
+                <a href="/pages/services-social-media" class="mm-link">Social Media</a>
+                <a href="/seo-services-for-hvac-companies/" class="mm-link">HVAC SEO</a>
+                <a href="/seo-services-usa/" class="mm-link">SEO Services USA</a>
+                <a href="/pages/services-car-rental-seo" class="mm-link">Car Rental SEO</a>
+                <a href="/pages/services-limousine-business-seo" class="mm-link">Limousine Business SEO</a>
+                <a href="/pages/services-car-repair-seo" class="mm-link">Car Repair SEO</a>
+                <a href="/pages/services-car-dealership-seo" class="mm-link">Car Dealership SEO</a>
+                <a href="/pages/services-tree-service-seo" class="mm-link">Tree Service SEO</a>
+                <a href="/pages/services-lawyer-seo" class="mm-link">Lawyer SEO</a>
+                <a href="/pages/services-small-business-seo" class="mm-link">Small Business SEO</a>
+              </div>
+              <div class="mm-col mm-col-feature">
+                <div class="mm-feature-card">
+                  <div class="mm-feature-badge">Free Audit</div>
+                  <h4 class="mm-feature-title">Grow Your Business Online</h4>
+                  <p class="mm-feature-body">Get a free 30-minute strategy session with our experts - no strings attached.</p>
+                  <a href="https://wa.me/8801799976295" class="btn btn-primary btn-sm" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Free Consultation</a>
+                  <a href="/pages/services" class="mm-feature-link">View all services -></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <a href="/pages/portfolio" class="nav-link">Work</a><a href="/blog/" class="nav-link">Blog</a><a href="/pages/tools" class="nav-link active">Tools</a><a href="/pages/contact" class="nav-link">Contact</a>
+    </nav>
+    <div class="navbar-right">
+      <a href="/pages/contact" class="btn btn-primary btn-sm nav-cta">Get a Free Quote <i class="fas fa-arrow-right"></i></a>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div></div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/"                   class="mobile-menu-link">Home <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
+  <a href="/pages/about"             class="mobile-menu-link">About <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
+  <div class="mobile-menu-group">
+    <a href="/pages/services"        class="mobile-menu-link">Services <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
+    <div class="mobile-submenu">
+      <a href="/pages/services-seo" class="mobile-submenu-link">SEO Services</a>
+      <a href="/aeo-optimization-services/" class="mobile-submenu-link">AEO Optimization</a>
+      <a href="/geo-optimization-services/" class="mobile-submenu-link">GEO Optimization</a>
+      <a href="/pages/services-local-seo" class="mobile-submenu-link">Local SEO Services</a>
+      <a href="/ecommerce-seo-services/" class="mobile-submenu-link">Ecommerce SEO Services</a>
+      <a href="/seo-services-for-hvac-companies/" class="mobile-submenu-link">HVAC SEO Services</a>
+      <a href="/seo-services-usa/" class="mobile-submenu-link">SEO Services USA</a>
+      <div class="mobile-submenu-nested">
+        <a href="/pages/services-car-rental-seo" class="mobile-submenu-link mobile-submenu-sublink">Car Rental SEO Service</a>
+        <a href="/pages/services-limousine-business-seo" class="mobile-submenu-link mobile-submenu-sublink">Limousine Business SEO Service</a>
+        <a href="/pages/services-car-repair-seo" class="mobile-submenu-link mobile-submenu-sublink">Car Repair SEO Service</a>
+        <a href="/pages/services-car-dealership-seo" class="mobile-submenu-link mobile-submenu-sublink">Car Dealership SEO Service</a>
+        <a href="/pages/services-tree-service-seo" class="mobile-submenu-link mobile-submenu-sublink">Tree Service SEO</a>
+        <a href="/pages/services-lawyer-seo" class="mobile-submenu-link mobile-submenu-sublink">Lawyer SEO Service</a>
+        <a href="/pages/services-small-business-seo" class="mobile-submenu-link mobile-submenu-sublink">Small Business SEO Service</a>
+      </div>
+      <a href="/pages/services-web-dev" class="mobile-submenu-link">Web Design &amp; Development</a>
+      <a href="/pages/services-ppc-ads" class="mobile-submenu-link">PPC Advertising</a>
+      <a href="/pages/services-social-media" class="mobile-submenu-link">Social Media Marketing</a>
+    </div>
+  </div>
+  <a href="/pages/portfolio"         class="mobile-menu-link">Work <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
+  <a href="/blog/"              class="mobile-menu-link">Blog <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
+  <a href="/pages/tools"             class="mobile-menu-link">Tools <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
+  <a href="/pages/contact"           class="mobile-menu-link">Contact <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
+  <div class="mobile-menu-footer">
+    <a href="https://wa.me/8801799976295" class="btn btn-primary btn-lg" target="_blank" rel="noopener" style="justify-content:center">
+      <i class="fab fa-whatsapp"></i> Start a Free Consultation
+    </a>
+    <p class="mobile-menu-note">info.a1technovation@gmail.com</p>
+  </div>
+</div><!-- PAGE HERO -->
+<section class="tools-page-hero">
+  <div class="hero-bg"><div class="hero-grid"></div><div class="hero-glow-1"></div><div class="hero-glow-2"></div></div>
+  <div class="container"><div class="page-hero-inner">
+    <div class="breadcrumb"><a href="/">Home</a><i class="fas fa-chevron-right"></i><span>Tools</span></div>
+    <span class="label label-light label-dot">Built by A1 Technovation</span>
+    <h1>Tools We <span class="text-grad-hero">Built for You</span></h1>
+    <p>Practical tools crafted by our team to help you audit, automate, and grow - including 50 free licenses for A1 Mail Dynamics early users.</p>
+    <div class="hero-badges">
+      <span class="badge badge-green"><i class="fas fa-check-circle"></i> 27 Python SEO scripts</span>
+      <span class="badge badge-blue"><i class="fas fa-bolt"></i> No sign-up needed</span>
+      <span class="badge badge-purple"><i class="fas fa-wrench"></i> Built in-house</span>
+    </div>
+    <div class="tools-stats">
+      <div class="tools-stat-item"><strong>38+</strong><span>Tools available</span></div>
+      <div class="tools-stat-item"><strong>5K+</strong><span>Monthly users</span></div>
+      <div class="tools-stat-item"><strong>27</strong><span>Python SEO scripts</span></div>
+    </div>
+  </div></div>
+</section>
+
+<!-- TOOLS GRID -->
+<section class="section tools-page-content">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label label-primary label-dot">Our Toolkit</span>
+      <h2>All Tools, <span class="text-grad">One Place</span></h2>
+      <p>Everything from SEO audits to marketing calculators - handcrafted by our team and free for everyone to use.</p>
+    </div>
+
+    <div class="tools-filter">
+      <button class="filter-btn active" data-filter="all">All Tools</button>
+      <button class="filter-btn" data-filter="email">Email &amp; Outreach</button>
+      <button class="filter-btn" data-filter="seo">SEO</button>
+      <button class="filter-btn" data-filter="agency">Agency Ops</button>
+      <button class="filter-btn" data-filter="content">Content</button>
+      <button class="filter-btn" data-filter="ppc">PPC &amp; Ads</button>
+      <button class="filter-btn" data-filter="web">Web</button>
+      <button class="filter-btn" data-filter="python">Python Scripts</button>
+      <button class="filter-btn" data-filter="ai">AI SEO</button>
+    </div>
+
+    <!-- TOOLS GRID - update each card with real tool info -->
+    <div class="tools-grid" id="toolsGrid">
+
+      <!-- A1 Mail Dynamics - Featured -->
+      <div class="tool-card tool-card-featured reveal" data-category="email">
+        <div class="feat-left">
+          <div class="feat-product-badge"><i class="fas fa-circle" style="color:#22c55e;font-size:.5rem"></i> 50 Free Licenses Available</div>
+          <div class="feat-product-head">
+            <div class="tool-icon" style="background:rgba(129,140,248,.15);color:#818cf8;width:56px;height:56px;font-size:1.5rem;flex-shrink:0;"><i class="fas fa-paper-plane"></i></div>
+            <div>
+              <h3>A1 Mail Dynamics</h3>
+              <p style="font-size:.8125rem;margin-top:4px;color:rgba(255,255,255,.45);">Windows app for AI-assisted email outreach</p>
+            </div>
+          </div>
+          <p>A1 Technovation is giving 50 users a free license of A1 Mail Dynamics. Install the Windows app, create your account, copy your Machine ID from the License Activation screen, and send it to A1 Technovation so your license key can be generated.</p>
+          <div class="tool-card-footer" style="margin-top:24px;">
+            <a href="/pages/a1-mail-dynamics" class="btn btn-primary">Get Free License <i class="fas fa-arrow-right"></i></a>
+            <a href="https://drive.google.com/file/d/1qaie58-AIRtl39QiLC8efyhFcnmIS4HL/view?usp=sharing" class="btn btn-ghost" style="color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.15);" target="_blank" rel="noopener"><i class="fas fa-download"></i> Download App</a>
+          </div>
+          <p style="margin-top:14px;font-size:.95rem;color:rgba(255,255,255,.72);">Required for setup: username, email address, name/company name, and password. Paid or lifetime licenses also require the Machine ID shown inside the app.</p>
+        </div>
+        <div class="feat-right">
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:8px;">
+            <span class="tool-tag" style="background:rgba(34,197,94,.15);color:#4ade80;">Desktop App</span>
+            <span class="tool-tag" style="background:rgba(251,191,36,.16);color:#fcd34d;">50 Free Licenses</span>
+            <span class="tool-tag tool-tag-new">New</span>
+            <span class="tool-tag" style="background:rgba(129,140,248,.15);color:#a5b4fc;">AI Powered</span>
+          </div>
+          <ul class="tool-features" style="gap:10px;">
+            <li><i class="fas fa-check-circle"></i> Windows desktop app download available now</li>
+            <li><i class="fas fa-check-circle"></i> 7-day trial works without Machine ID</li>
+            <li><i class="fas fa-check-circle"></i> 30-day, 1-year, and lifetime licenses are machine-bound</li>
+            <li><i class="fas fa-check-circle"></i> Copy Machine ID from the License Activation screen</li>
+            <li><i class="fas fa-check-circle"></i> Send your Machine ID and contact details to receive a license key</li>
+            <li><i class="fas fa-check-circle"></i> Activation walkthrough video included</li>
+          </ul>
+          <div class="feat-stat-row" style="margin-top:20px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);">
+            <div class="feat-stat"><strong>50</strong><span>Free licenses</span></div>
+            <div class="feat-stat"><strong>Win</strong><span>Windows app</span></div>
+            <div class="feat-stat"><strong>ID</strong><span>Machine-bound</span></div>
+            <div class="feat-stat"><strong>Video</strong><span>Activation guide</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- A1 CRM - Free Agency CRM -->
+      <div class="tool-card tool-card-featured reveal d1" data-category="agency">
+        <div class="feat-left">
+          <div class="feat-product-badge"><i class="fas fa-circle" style="color:#22c55e;font-size:.5rem"></i> Free for All</div>
+          <div class="feat-product-head">
+            <div class="tool-icon" style="background:rgba(20,184,166,.15);color:#2dd4bf;width:56px;height:56px;font-size:1.5rem;flex-shrink:0;"><i class="fas fa-users-gear"></i></div>
+            <div>
+              <h3>A1 CRM</h3>
+              <p style="font-size:.8125rem;margin-top:4px;color:rgba(255,255,255,.45);">Client management, tasks, billing, reporting, and AI-powered content planning</p>
+            </div>
+          </div>
+          <p>A1 CRM is an all-in-one desktop CRM for agencies to manage clients, tasks, pipeline, billing, reports, and AI-assisted marketing workflows in one local-first workspace.</p>
+          <div class="tool-card-footer" style="margin-top:24px;">
+            <a href="https://drive.google.com/file/d/1bymzvVLGUZm4Ex7wXajwJCnUq8JsZRh5/view" class="btn btn-primary" target="_blank" rel="noopener"><i class="fas fa-download"></i> Download A1 CRM</a>
+          </div>
+          <p style="margin-top:14px;font-size:.95rem;color:rgba(255,255,255,.72);">Free for everyone. Built for agencies that want local data control, smoother operations, and one place to manage daily work.</p>
+        </div>
+        <div class="feat-right">
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:8px;">
+            <span class="tool-tag" style="background:rgba(34,197,94,.15);color:#4ade80;">Free</span>
+            <span class="tool-tag" style="background:rgba(20,184,166,.15);color:#5eead4;">Desktop App</span>
+            <span class="tool-tag tool-tag-new">New</span>
+            <span class="tool-tag" style="background:rgba(129,140,248,.15);color:#a5b4fc;">AI Powered</span>
+          </div>
+          <ul class="tool-features" style="gap:10px;">
+            <li><i class="fas fa-check-circle"></i> Centralized client records with contacts, social accounts, notes, and website login records</li>
+            <li><i class="fas fa-check-circle"></i> Sales pipeline with deal stages and proposal-to-invoice workflow</li>
+            <li><i class="fas fa-check-circle"></i> Task, activity, and time tracking with screenshot capture</li>
+            <li><i class="fas fa-check-circle"></i> Invoices, proposals, expenses, and exportable client reports</li>
+            <li><i class="fas fa-check-circle"></i> AI writer for posts, captions, emails, and long-term content plans</li>
+            <li><i class="fas fa-check-circle"></i> Content calendar with A1 SEO Dynamics marketing workflow support</li>
+            <li><i class="fas fa-check-circle"></i> White-label settings for agency branding, invoices, and business details</li>
+          </ul>
+          <div class="feat-stat-row" style="margin-top:20px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);">
+            <div class="feat-stat"><strong>Local</strong><span>Offline-first data</span></div>
+            <div class="feat-stat"><strong>Free</strong><span>For everyone</span></div>
+            <div class="feat-stat"><strong>CRM</strong><span>Clients and tasks</span></div>
+            <div class="feat-stat"><strong>AI</strong><span>Content planning</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tool 1 -->
+      <div class="tool-card reveal d1" data-category="seo">
+        <div class="tool-card-top">
+          <div class="tool-icon" style="background:rgba(79,70,229,.1);color:#4f46e5"><i class="fas fa-magnifying-glass-chart"></i></div>
+          <div class="tool-badges">
+            <span class="tool-tag tool-tag-free">Free</span>
+            <span class="tool-tag tool-tag-cat">SEO</span>
+          </div>
+        </div>
+        <h3>SEO Site Auditor</h3>
+        <p>Instantly scan any website for critical SEO issues - broken links, missing meta tags, slow pages, and more - and get a prioritised fix list.</p>
+        <ul class="tool-features">
+          <li><i class="fas fa-check-circle"></i> On-page SEO analysis</li>
+          <li><i class="fas fa-check-circle"></i> Crawl error detection</li>
+          <li><i class="fas fa-check-circle"></i> Core Web Vitals check</li>
+        </ul>
+        <div class="tool-card-footer">
+          <a href="/pages/services-seo" class="btn btn-primary">Explore SEO Service <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Tool 2 -->
+      <div class="tool-card reveal d2" data-category="seo">
+        <div class="tool-card-top">
+          <div class="tool-icon" style="background:rgba(6,182,212,.1);color:#0891b2"><i class="fas fa-key"></i></div>
+          <div class="tool-badges">
+            <span class="tool-tag tool-tag-free">Free</span>
+            <span class="tool-tag tool-tag-cat">SEO</span>
+            <span class="tool-tag tool-tag-new">New</span>
+          </div>
+        </div>
+        <h3>Keyword Difficulty Checker</h3>
+        <p>Find out how hard it is to rank for any keyword before you invest time and budget. Get difficulty score, search volume estimate, and SERP snapshot.</p>
+        <ul class="tool-features">
+          <li><i class="fas fa-check-circle"></i> Difficulty score (0-100)</li>
+          <li><i class="fas fa-check-circle"></i> Estimated search volume</li>
+          <li><i class="fas fa-check-circle"></i> Top 10 SERP overview</li>
+        </ul>
+        <div class="tool-card-footer">
+          <a href="/pages/services-seo" class="btn btn-primary">Explore SEO Service <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Tool 3 -->
+      <div class="tool-card reveal d3" data-category="web">
+        <div class="tool-card-top">
+          <div class="tool-icon" style="background:rgba(16,185,129,.1);color:#059669"><i class="fas fa-gauge-high"></i></div>
+          <div class="tool-badges">
+            <span class="tool-tag tool-tag-free">Free</span>
+            <span class="tool-tag tool-tag-cat">Web</span>
+          </div>
+        </div>
+        <h3>Website Speed Tester</h3>
+        <p>Test your website's load time and performance from multiple locations worldwide. See exactly what is slowing your site down and how to fix it.</p>
+        <ul class="tool-features">
+          <li><i class="fas fa-check-circle"></i> Global speed testing</li>
+          <li><i class="fas fa-check-circle"></i> Waterfall breakdown</li>
+          <li><i class="fas fa-check-circle"></i> Performance improvement tips</li>
+        </ul>
+        <div class="tool-card-footer">
+          <a href="/pages/services-web-dev" class="btn btn-primary">Explore Web Service <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Tool 4 -->
+      <div class="tool-card reveal d1" data-category="content">
+        <div class="tool-card-top">
+          <div class="tool-icon" style="background:rgba(168,85,247,.1);color:#9333ea"><i class="fas fa-pen-nib"></i></div>
+          <div class="tool-badges">
+            <span class="tool-tag tool-tag-free">Free</span>
+            <span class="tool-tag tool-tag-cat">Content</span>
+          </div>
+        </div>
+        <h3>Meta Tag Generator</h3>
+        <p>Generate perfectly structured title tags, meta descriptions, and Open Graph tags for any page in seconds. Preview how your page looks in Google search results.</p>
+        <ul class="tool-features">
+          <li><i class="fas fa-check-circle"></i> Live Google SERP preview</li>
+          <li><i class="fas fa-check-circle"></i> OG &amp; Twitter card output</li>
+          <li><i class="fas fa-check-circle"></i> Character count validator</li>
+        </ul>
+        <div class="tool-card-footer">
+          <a href="/pages/services-seo" class="btn btn-primary">Explore SEO Service <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Tool 5 -->
+      <div class="tool-card reveal d2" data-category="ppc">
+        <div class="tool-card-top">
+          <div class="tool-icon" style="background:rgba(244,63,94,.1);color:#e11d48"><i class="fas fa-calculator"></i></div>
+          <div class="tool-badges">
+            <span class="tool-tag tool-tag-free">Free</span>
+            <span class="tool-tag tool-tag-cat">PPC &amp; Ads</span>
+          </div>
+        </div>
+        <h3>Google Ads ROI Calculator</h3>
+        <p>Input your budget, average CPC, and conversion rate to instantly forecast your expected clicks, leads, and return on ad spend before you launch a campaign.</p>
+        <ul class="tool-features">
+          <li><i class="fas fa-check-circle"></i> ROAS &amp; CPA projections</li>
+          <li><i class="fas fa-check-circle"></i> Budget optimiser</li>
+          <li><i class="fas fa-check-circle"></i> Downloadable report</li>
+        </ul>
+        <div class="tool-card-footer">
+          <a href="/pages/services-ppc-ads" class="btn btn-primary">Explore PPC Service <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Tool 6 -->
+      <div class="tool-card reveal d3" data-category="seo">
+        <div class="tool-card-top">
+          <div class="tool-icon" style="background:rgba(245,158,11,.1);color:#d97706"><i class="fas fa-link"></i></div>
+          <div class="tool-badges">
+            <span class="tool-tag tool-tag-free">Free</span>
+            <span class="tool-tag tool-tag-cat">SEO</span>
+            <span class="tool-tag tool-tag-beta">Beta</span>
+          </div>
+        </div>
+        <h3>Backlink Checker</h3>
+        <p>Analyse the backlink profile of any domain - see who links to them, anchor text distribution, domain authority estimates, and toxic link warnings.</p>
+        <ul class="tool-features">
+          <li><i class="fas fa-check-circle"></i> Referring domain overview</li>
+          <li><i class="fas fa-check-circle"></i> Anchor text breakdown</li>
+          <li><i class="fas fa-check-circle"></i> Toxic link flagging</li>
+        </ul>
+        <div class="tool-card-footer">
+          <a href="/pages/services-seo" class="btn btn-primary">Explore SEO Service <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Tool 7 -->
+      <div class="tool-card reveal d1" data-category="content">
+        <div class="tool-card-top">
+          <div class="tool-icon" style="background:rgba(59,130,246,.1);color:#2563eb"><i class="fas fa-file-lines"></i></div>
+          <div class="tool-badges">
+            <span class="tool-tag tool-tag-free">Free</span>
+            <span class="tool-tag tool-tag-cat">Content</span>
+          </div>
+        </div>
+        <h3>Blog Title Generator</h3>
+        <p>Enter a topic and get 10 click-worthy, SEO-optimised blog titles instantly. Powered by proven headline formulas used by top-ranking content worldwide.</p>
+        <ul class="tool-features">
+          <li><i class="fas fa-check-circle"></i> 10 title variations per query</li>
+          <li><i class="fas fa-check-circle"></i> SEO &amp; CTR score per title</li>
+          <li><i class="fas fa-check-circle"></i> One-click copy</li>
+        </ul>
+        <div class="tool-card-footer">
+          <a href="/blog/" class="btn btn-primary">Explore Blog Ideas <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Tool 8 -->
+      <div class="tool-card reveal d2" data-category="web">
+        <div class="tool-card-top">
+          <div class="tool-icon" style="background:rgba(16,185,129,.1);color:#059669"><i class="fas fa-mobile-screen"></i></div>
+          <div class="tool-badges">
+            <span class="tool-tag tool-tag-free">Free</span>
+            <span class="tool-tag tool-tag-cat">Web</span>
+            <span class="tool-tag tool-tag-new">New</span>
+          </div>
+        </div>
+        <h3>Mobile Friendliness Checker</h3>
+        <p>Check whether your website passes Google's mobile-friendly test, see a mobile preview, and get a precise list of issues hurting your mobile rankings.</p>
+        <ul class="tool-features">
+          <li><i class="fas fa-check-circle"></i> Google mobile-ready score</li>
+          <li><i class="fas fa-check-circle"></i> Live mobile preview</li>
+          <li><i class="fas fa-check-circle"></i> Fix-it checklist</li>
+        </ul>
+        <div class="tool-card-footer">
+          <a href="/pages/services-web-dev" class="btn btn-primary">Explore Web Service <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- A1 SERP & Page Auditor Chrome Extension -->
+      <div class="tool-card reveal d3" data-category="seo">
+        <div class="tool-card-top">
+          <div class="tool-icon" style="background:rgba(239,68,68,.1);color:#dc2626"><i class="fas fa-chrome"></i></div>
+          <div class="tool-badges">
+            <span class="tool-tag tool-tag-free">Free</span>
+            <span class="tool-tag tool-tag-cat">SEO</span>
+            <span class="tool-tag tool-tag-new">New</span>
+          </div>
+        </div>
+        <h3>A1 SERP &amp; Page Auditor</h3>
+        <p>Chrome extension for SEO professionals to audit pages, scrape SERPs, detect featured snippets, check Core Web Vitals, and get domain authority scores instantly.</p>
+        <ul class="tool-features">
+          <li><i class="fas fa-check-circle"></i> SERP scraper with rank tracking (up to 100 results)</li>
+          <li><i class="fas fa-check-circle"></i> Full page SEO audit with 14-point checklist</li>
+          <li><i class="fas fa-check-circle"></i> Robots.txt &amp; sitemap parser</li>
+          <li><i class="fas fa-check-circle"></i> A1 Authority Score (0–100) with domain insights</li>
+          <li><i class="fas fa-check-circle"></i> Export to CSV, Excel, or Google Sheets</li>
+        </ul>
+        <div class="tool-card-footer">
+          <a href="https://drive.google.com/file/d/1TcoTqN0De2NL1g6mwcStaY4XK81v7LGf/view?usp=sharing" class="btn btn-primary" target="_blank" rel="noopener"><i class="fas fa-download"></i> Download Extension <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="python-suite-intro reveal" data-category="python" data-categories="python seo ai content web">
+        <div>
+          <span class="label label-primary label-dot">Python SEO Script Suite</span>
+          <h3>27 automation scripts for audits, content, schema, AI SEO, and reporting</h3>
+          <p>These tools live in the website repository under the <code>/tools</code> folder. They are ready for internal workflows now, and can be connected to public web forms later when server-side Python execution is enabled.</p>
+        </div>
+        <div class="python-suite-stats">
+          <span><i class="fab fa-python"></i> Python CLI</span>
+          <span><i class="fas fa-chart-line"></i> SEO workflows</span>
+          <span><i class="fas fa-file-export"></i> CSV/XLSX outputs</span>
+        </div>
+      </div>
+
+      <div class="tool-card tool-card-python reveal d1" data-category="python" data-categories="python ai content">
+        <div class="tool-card-top"><div class="tool-icon" style="background:rgba(79,70,229,.1);color:#4f46e5"><i class="fas fa-robot"></i></div><div class="tool-badges"><span class="tool-tag tool-tag-free">Python</span><span class="tool-tag tool-tag-cat">AI</span></div></div>
+        <h3>AI Content Detector</h3><p>Scores text for statistical signals often associated with AI-generated copy, including burstiness, repetition, and vocabulary richness.</p>
+        <ul class="tool-features"><li><i class="fas fa-check-circle"></i> Analyze URL, file, or raw text</li><li><i class="fas fa-check-circle"></i> CSV/XLSX export supported</li></ul>
+        <div class="tool-card-footer"><span class="tool-command"><i class="fas fa-terminal"></i> python ai_content_detector.py --url URL</span></div>
+      </div>
+
+      <div class="tool-card tool-card-python reveal d2" data-category="python" data-categories="python ai seo">
+        <div class="tool-card-top"><div class="tool-icon" style="background:rgba(6,182,212,.1);color:#0891b2"><i class="fas fa-wand-magic-sparkles"></i></div><div class="tool-badges"><span class="tool-tag tool-tag-free">Python</span><span class="tool-tag tool-tag-cat">AI SEO</span></div></div>
+        <h3>AI Overview Optimizer</h3><p>Scores page structure for Google AI Overview readiness, clear answer patterns, definitions, and structured cues.</p>
+        <ul class="tool-features"><li><i class="fas fa-check-circle"></i> URL or HTML file analysis</li><li><i class="fas fa-check-circle"></i> Grade, strengths, and tips</li></ul>
+        <div class="tool-card-footer"><span class="tool-command"><i class="fas fa-terminal"></i> python ai_overview_optimizer.py --url URL</span></div>
+      </div>
+
+      <div class="tool-card tool-card-python reveal d3" data-category="python" data-categories="python content seo">
+        <div class="tool-card-top"><div class="tool-icon" style="background:rgba(168,85,247,.1);color:#9333ea"><i class="fas fa-clipboard-list"></i></div><div class="tool-badges"><span class="tool-tag tool-tag-free">Python</span><span class="tool-tag tool-tag-cat">Content</span></div></div>
+        <h3>Content Brief Generator</h3><p>Builds data-driven briefs from competitor URLs with suggested word count, headings, terms, entities, and structure.</p>
+        <ul class="tool-features"><li><i class="fas fa-check-circle"></i> Competitor URL analysis</li><li><i class="fas fa-check-circle"></i> Keyword-focused recommendations</li></ul>
+        <div class="tool-card-footer"><span class="tool-command"><i class="fas fa-terminal"></i> python content_brief_generator.py --urls URLS --keyword KEYWORD</span></div>
+      </div>
+
+      <div class="tool-card tool-card-python reveal d1" data-category="python" data-categories="python content">
+        <div class="tool-card-top"><div class="tool-icon" style="background:rgba(16,185,129,.1);color:#059669"><i class="fas fa-calendar-days"></i></div><div class="tool-badges"><span class="tool-tag tool-tag-free">Python</span><span class="tool-tag tool-tag-cat">Content</span></div></div>
+        <h3>Content Calendar Generator</h3><p>Turns keyword or topic lists into publishing calendars with content types, priorities, and cluster assignments.</p>
+        <ul class="tool-features"><li><i class="fas fa-check-circle"></i> CSV or direct topic input</li><li><i class="fas fa-check-circle"></i> Weekly planning controls</li></ul>
+        <div class="tool-card-footer"><span class="tool-command"><i class="fas fa-terminal"></i> python content_calendar_generator.py --topics TOPICS</span></div>
+      </div>
+
+      <div class="tool-card tool-card-python reveal d2" data-category="python" data-categories="python content seo">
+        <div class="tool-card-top"><div class="tool-icon" style="background:rgba(59,130,246,.1);color:#2563eb"><i class="fas fa-file-pen"></i></div><div class="tool-badges"><span class="tool-tag tool-tag-free">Python</span><span class="tool-tag tool-tag-cat">SEO</span></div></div>
+        <h3>Content Optimizer</h3><p>Analyzes content quality with keyword coverage, readability signals, structure checks, and SEO scoring.</p>
+        <ul class="tool-features"><li><i class="fas fa-check-circle"></i> URL, file, or text input</li><li><i class="fas fa-check-circle"></i> Target keyword scoring</li></ul>
+        <div class="tool-card-footer"><span class="tool-command"><i class="fas fa-terminal"></i> python content_optimizer.py --url URL --target-keyword KEYWORD</span></div>
+      </div>
+
+      <div class="tool-card tool-card-python reveal d3" data-category="python" data-categories="python content seo">
+        <div class="tool-card-top"><div class="tool-icon" style="background:rgba(245,158,11,.1);color:#d97706"><i class="fas fa-copy"></i></div><div class="tool-badges"><span class="tool-tag tool-tag-free">Python</span><span class="tool-tag tool-tag-cat">Duplicate</span></div></div>
+        <h3>Content Similarity Checker</h3><p>Detects duplicate or near-duplicate pages using MinHash, cosine similarity, or both.</p>
+        <ul class="tool-features"><li><i class="fas fa-check-circle"></i> Multiple URLs or files</li><li><i class="fas fa-check-circle"></i> Adjustable similarity threshold</li></ul>
+        <div class="tool-card-footer"><span class="tool-command"><i class="fas fa-terminal"></i> python content_similarity_checker.py --urls URLS</span></div>
+      </div>
+
+      <div class="tool-card tool-card-python reveal d1" data-category="python" data-categories="python content">
+        <div class="tool-card-top"><div class="tool-icon" style="background:rgba(20,184,166,.1);color:#0f766e"><i class="fas fa-fingerprint"></i></div><div class="tool-badges"><span class="tool-tag tool-tag-free">Python</span><span class="tool-tag tool-tag-cat">Originality</span></div></div>
+        <h3>Content Uniqueness Scorer</h3><p>Compares source and rewritten content using overlap, structure, and optional semantic similarity signals.</p>
+        <ul class="tool-features"><li><i class="fas fa-check-circle"></i> Source vs rewrite comparison</li><li><i class="fas fa-check-circle"></i> URL or file support</li></ul>
+        <div class="tool-card-footer"><span class="tool-command"><i class="fas fa-terminal"></i> python content_uniqueness_scorer.py --source-url URL --rewrite-url URL</span></div>
+      </div>
+
+      <div class="tool-card tool-card-python reveal d2" data-category="python" data-categories="python web seo">
+        <div class="tool-card-top"><div class="tool-icon" style="background:rgba(16,185,129,.1);color:#059669"><i class="fas fa-gauge-high"></i></div><div class="tool-badges"><span class="tool-tag tool-tag-free">Python</span><span class="tool-tag tool-tag-cat">Web</span></div></div>
+        <h3>Core Web Vitals Estimator</h3><p>Estimates LCP, CLS risk, render-blocking resources, and JavaScript interaction risk from HTML analysis.</p>
+        <ul class="tool-features"><li><i class="fas fa-check-circle"></i> Single or multiple URLs</li><li><i class="fas fa-check-circle"></i> CSV/XLSX report output</li></ul>
+        <div class="tool-card-footer"><span class="tool-command"><i class="fas fa-terminal"></i> python core_web_vitals_estimator.py --url URL</span></div>
+      </div>
+
+      <div class="tool-card tool-card-python reveal d3" data-category="python" data-categories="python local seo">
+        <div class="tool-card-top"><div class="tool-icon" style="background:rgba(244,63,94,.1);color:#e11d48"><i class="fas fa-location-dot"></i></div><div class="tool-badges"><span class="tool-tag tool-tag-free">Python</span><span class="tool-tag tool-tag-cat">Local SEO</span></div></div>
+        <h3>Local Citation Checker</h3><p>Checks NAP consistency across web pages for local SEO citation cleanup and trust signals.</p>
+        <ul class="tool-features"><li><i class="fas fa-check-circle"></i> Multi-URL citation checks</li><li><i class="fas fa-check-circle"></i> Exportable reports</li></ul>
+        <div class="tool-card-footer"><span class="tool-command"><i class="fas fa-terminal"></i> python local_citation_checker.py --urls URLS</span></div>
+      </div>
+
+      <div class="tool-card tool-card-python reveal d1" data-category="python" data-categories="python content seo">
+        <div class="tool-card-top"><div class="tool-icon" style="background:rgba(79,70,229,.1);color:#4f46e5"><i class="fas fa-align-left"></i></div><div class="tool-badges"><span class="tool-tag tool-tag-free">Python</span><span class="tool-tag tool-tag-cat">Content</span></div></div>
+        <h3>Paragraph Optimizer</h3><p>Scores each paragraph for relevance, readability, keyword contribution, and sentence variation.</p>
+        <ul class="tool-features"><li><i class="fas fa-check-circle"></i> Page or file analysis</li><li><i class="fas fa-check-circle"></i> Paragraph-level recommendations</li></ul>
+        <div class="tool-card-footer"><span class="tool-command"><i class="fas fa-terminal"></i> python paragraph_optimizer.py --url URL --keyword KEYWORD</span></div>
+      </div>
+
+      <div class="tool-card tool-card-python reveal d2" data-category="python" data-categories="python seo">
+        <div class="tool-card-top"><div class="tool-icon" style="background:rgba(6,182,212,.1);color:#0891b2"><i class="fas fa-chart-simple"></i></div><div class="tool-badges"><span class="tool-tag tool-tag-free">Python</span><span class="tool-tag tool-tag-cat">GSC</span></div></div>
+        <h3>Search Console Analyzer</h3><p>Analyzes Search Console exports to surface quick wins, striking-distance terms, and CTR opportunities.</p>
+        <ul class="tool-features"><li><i class="fas fa-check-circle"></i> CSV/XLSX import</li><li><i class="fas fa-check-circle"></i> Impression threshold controls</li></ul>
+        <div class="tool-card-footer"><span class="tool-command"><i class="fas fa-terminal"></i> python search_console_analyzer.py --input queries.csv</span></div>
+      </div>
+
+      <div class="tool-card tool-card-python reveal d3" data-category="python" data-categories="python seo">
+        <div class="tool-card-top"><div class="tool-icon" style="background:rgba(16,185,129,.1);color:#059669"><i class="fas fa-table-columns"></i></div><div class="tool-badges"><span class="tool-tag tool-tag-free">Python</span><span class="tool-tag tool-tag-cat">Dashboard</span></div></div>
+        <h3>SEO Health Dashboard Generator</h3><p>Generates a consolidated SEO health dashboard from audit inputs and reporting data.</p>
+        <ul class="tool-features"><li><i class="fas fa-check-circle"></i> Dashboard-ready output</li><li><i class="fas fa-check-circle"></i> Useful for recurring audits</li></ul>
+        <div class="tool-card-footer"><span class="tool-command"><i class="fas fa-terminal"></i> python seo_health_dashboard_gen.py</span></div>
+      </div>
+
+      <div class="tool-card tool-card-python reveal d1" data-category="python" data-categories="python seo">
+        <div class="tool-card-top"><div class="tool-icon" style="background:rgba(59,130,246,.1);color:#2563eb"><i class="fas fa-chart-line"></i></div><div class="tool-badges"><span class="tool-tag tool-tag-free">Python</span><span class="tool-tag tool-tag-cat">Reporting</span></div></div>
+        <h3>SEO Report Generator</h3><p>Creates SEO reports from collected audit data, useful for client updates and internal QA.</p>
+        <ul class="tool-features"><li><i class="fas fa-check-circle"></i> Report generation workflow</li><li><i class="fas fa-check-circle"></i> Built for repeatable SEO checks</li></ul>
+        <div class="tool-card-footer"><span class="tool-command"><i class="fas fa-terminal"></i> python seo_report_generator.py</span></div>
+      </div>
+
+      <div class="tool-card tool-card-python reveal d2" data-category="python" data-categories="python social seo">
+        <div class="tool-card-top"><div class="tool-icon" style="background:rgba(244,63,94,.1);color:#e11d48"><i class="fas fa-share-nodes"></i></div><div class="tool-badges"><span class="tool-tag tool-tag-free">Python</span><span class="tool-tag tool-tag-cat">Social</span></div></div>
+        <h3>Social Preview Validator</h3><p>Validates social metadata previews across pages so shared links look polished on major platforms.</p>
+        <ul class="tool-features"><li><i class="fas fa-check-circle"></i> URL and multi-URL checks</li><li><i class="fas fa-check-circle"></i> XLSX output support</li></ul>
+        <div class="tool-card-footer"><span class="tool-command"><i class="fas fa-terminal"></i> python social_preview_validator.py --url URL</span></div>
+      </div>
+
+      <div class="tool-card tool-card-python reveal d3" data-category="python" data-categories="python schema seo">
+        <div class="tool-card-top"><div class="tool-icon" style="background:rgba(168,85,247,.1);color:#9333ea"><i class="fas fa-code"></i></div><div class="tool-badges"><span class="tool-tag tool-tag-free">Python</span><span class="tool-tag tool-tag-cat">Schema</span></div></div>
+        <h3>Structured Data Generator</h3><p>Generates structured data markup from page URL or provided business/product details.</p>
+        <ul class="tool-features"><li><i class="fas fa-check-circle"></i> Schema type support</li><li><i class="fas fa-check-circle"></i> Page extraction option</li></ul>
+        <div class="tool-card-footer"><span class="tool-command"><i class="fas fa-terminal"></i> python structured_data_generator.py --type TYPE --url URL</span></div>
+      </div>
+
+      <div class="tool-card tool-card-python reveal d1" data-category="python" data-categories="python schema seo">
+        <div class="tool-card-top"><div class="tool-icon" style="background:rgba(245,158,11,.1);color:#d97706"><i class="fas fa-code-compare"></i></div><div class="tool-badges"><span class="tool-tag tool-tag-free">Python</span><span class="tool-tag tool-tag-cat">Schema</span></div></div>
+        <h3>Structured Data Validator</h3><p>Validates schema markup against Google-oriented structured data requirements.</p>
+        <ul class="tool-features"><li><i class="fas fa-check-circle"></i> URL-based validation</li><li><i class="fas fa-check-circle"></i> Export support</li></ul>
+        <div class="tool-card-footer"><span class="tool-command"><i class="fas fa-terminal"></i> python structured_data_validator.py --url URL</span></div>
+      </div>
+
+      <div class="tool-card tool-card-python reveal d2" data-category="python" data-categories="python web seo">
+        <div class="tool-card-top"><div class="tool-icon" style="background:rgba(20,184,166,.1);color:#0f766e"><i class="fas fa-percent"></i></div><div class="tool-badges"><span class="tool-tag tool-tag-free">Python</span><span class="tool-tag tool-tag-cat">Technical</span></div></div>
+        <h3>Text-to-HTML Ratio Analyzer</h3><p>Checks page text-to-HTML ratio to spot bloated markup, thin pages, and content balance issues.</p>
+        <ul class="tool-features"><li><i class="fas fa-check-circle"></i> URL or file checks</li><li><i class="fas fa-check-circle"></i> Multi-page support</li></ul>
+        <div class="tool-card-footer"><span class="tool-command"><i class="fas fa-terminal"></i> python text_html_ratio.py --url URL</span></div>
+      </div>
+
+      <div class="tool-card tool-card-python reveal d3" data-category="python" data-categories="python content ai">
+        <div class="tool-card-top"><div class="tool-icon" style="background:rgba(79,70,229,.1);color:#4f46e5"><i class="fas fa-compress"></i></div><div class="tool-badges"><span class="tool-tag tool-tag-free">Python</span><span class="tool-tag tool-tag-cat">AI</span></div></div>
+        <h3>SEO Text Summarizer</h3><p>Creates SEO-aware summaries while preserving target keyword focus and useful page meaning.</p>
+        <ul class="tool-features"><li><i class="fas fa-check-circle"></i> URL, file, or text input</li><li><i class="fas fa-check-circle"></i> Keyword preservation option</li></ul>
+        <div class="tool-card-footer"><span class="tool-command"><i class="fas fa-terminal"></i> python text_summarizer_seo.py --url URL --keyword KEYWORD</span></div>
+      </div>
+
+      <div class="tool-card tool-card-python reveal d1" data-category="python" data-categories="python content seo">
+        <div class="tool-card-top"><div class="tool-icon" style="background:rgba(6,182,212,.1);color:#0891b2"><i class="fas fa-magnifying-glass-chart"></i></div><div class="tool-badges"><span class="tool-tag tool-tag-free">Python</span><span class="tool-tag tool-tag-cat">Keywords</span></div></div>
+        <h3>TF-IDF Extractor</h3><p>Extracts weighted terms from pages or files to understand topical emphasis and keyword coverage.</p>
+        <ul class="tool-features"><li><i class="fas fa-check-circle"></i> URL and file support</li><li><i class="fas fa-check-circle"></i> Top term controls</li></ul>
+        <div class="tool-card-footer"><span class="tool-command"><i class="fas fa-terminal"></i> python tfidf_extractor.py --url URL --top 20</span></div>
+      </div>
+
+      <div class="tool-card tool-card-python reveal d2" data-category="python" data-categories="python content seo">
+        <div class="tool-card-top"><div class="tool-icon" style="background:rgba(244,63,94,.1);color:#e11d48"><i class="fas fa-file-circle-exclamation"></i></div><div class="tool-badges"><span class="tool-tag tool-tag-free">Python</span><span class="tool-tag tool-tag-cat">Content</span></div></div>
+        <h3>Thin Content Detector</h3><p>Finds thin pages by checking word count and content depth across URLs or HTML files.</p>
+        <ul class="tool-features"><li><i class="fas fa-check-circle"></i> Multi-URL checks</li><li><i class="fas fa-check-circle"></i> Minimum word controls</li></ul>
+        <div class="tool-card-footer"><span class="tool-command"><i class="fas fa-terminal"></i> python thin_content_detector.py --urls URLS --min-words 300</span></div>
+      </div>
+
+      <div class="tool-card tool-card-python reveal d3" data-category="python" data-categories="python content seo">
+        <div class="tool-card-top"><div class="tool-icon" style="background:rgba(245,158,11,.1);color:#d97706"><i class="fas fa-heading"></i></div><div class="tool-badges"><span class="tool-tag tool-tag-free">Python</span><span class="tool-tag tool-tag-cat">Title Tags</span></div></div>
+        <h3>Title Tag Optimizer</h3><p>Scores page titles for CTR and keyword relevance, with support for URL, direct title, or CSV inputs.</p>
+        <ul class="tool-features"><li><i class="fas fa-check-circle"></i> Title scoring workflow</li><li><i class="fas fa-check-circle"></i> Keyword targeting option</li></ul>
+        <div class="tool-card-footer"><span class="tool-command"><i class="fas fa-terminal"></i> python title_tag_optimizer.py --url URL --keyword KEYWORD</span></div>
+      </div>
+
+      <div class="tool-card tool-card-python reveal d1" data-category="python" data-categories="python seo">
+        <div class="tool-card-top"><div class="tool-icon" style="background:rgba(16,185,129,.1);color:#059669"><i class="fas fa-award"></i></div><div class="tool-badges"><span class="tool-tag tool-tag-free">Python</span><span class="tool-tag tool-tag-cat">Authority</span></div></div>
+        <h3>Topic Authority Scorer</h3><p>Scores site authority around a topic by analyzing page groups and topical coverage signals.</p>
+        <ul class="tool-features"><li><i class="fas fa-check-circle"></i> URLs or files input</li><li><i class="fas fa-check-circle"></i> Topic-specific scoring</li></ul>
+        <div class="tool-card-footer"><span class="tool-command"><i class="fas fa-terminal"></i> python topic_authority_scorer.py --urls URLS --topic TOPIC</span></div>
+      </div>
+
+      <div class="tool-card tool-card-python reveal d2" data-category="python" data-categories="python content seo">
+        <div class="tool-card-top"><div class="tool-icon" style="background:rgba(59,130,246,.1);color:#2563eb"><i class="fas fa-circle-nodes"></i></div><div class="tool-badges"><span class="tool-tag tool-tag-free">Python</span><span class="tool-tag tool-tag-cat">Coverage</span></div></div>
+        <h3>Topic Coverage Completeness</h3><p>Compares your page against competitors to find missing topical coverage for a target keyword.</p>
+        <ul class="tool-features"><li><i class="fas fa-check-circle"></i> Your URL vs competitor URLs</li><li><i class="fas fa-check-circle"></i> Keyword-focused gap checks</li></ul>
+        <div class="tool-card-footer"><span class="tool-command"><i class="fas fa-terminal"></i> python topic_coverage_completeness.py --my-url URL --competitor-urls URLS</span></div>
+      </div>
+
+      <div class="tool-card tool-card-python reveal d3" data-category="python" data-categories="python seo">
+        <div class="tool-card-top"><div class="tool-icon" style="background:rgba(168,85,247,.1);color:#9333ea"><i class="fas fa-diagram-project"></i></div><div class="tool-badges"><span class="tool-tag tool-tag-free">Python</span><span class="tool-tag tool-tag-cat">Internal Links</span></div></div>
+        <h3>Topical Link Cluster</h3><p>Groups pages into topical silos and supports internal linking strategy for cluster-based SEO.</p>
+        <ul class="tool-features"><li><i class="fas fa-check-circle"></i> URL clustering</li><li><i class="fas fa-check-circle"></i> Cluster count control</li></ul>
+        <div class="tool-card-footer"><span class="tool-command"><i class="fas fa-terminal"></i> python topical_link_cluster.py --urls URLS --num-clusters 5</span></div>
+      </div>
+
+      <div class="tool-card tool-card-python reveal d1" data-category="python" data-categories="python technical seo">
+        <div class="tool-card-top"><div class="tool-icon" style="background:rgba(20,184,166,.1);color:#0f766e"><i class="fas fa-link"></i></div><div class="tool-badges"><span class="tool-tag tool-tag-free">Python</span><span class="tool-tag tool-tag-cat">URLs</span></div></div>
+        <h3>URL Slug Analyzer</h3><p>Analyzes URL slugs for keyword usage, readability, length, and SEO-friendly structure.</p>
+        <ul class="tool-features"><li><i class="fas fa-check-circle"></i> URL list or sitemap input</li><li><i class="fas fa-check-circle"></i> Keyword-in-slug checks</li></ul>
+        <div class="tool-card-footer"><span class="tool-command"><i class="fas fa-terminal"></i> python url_slug_analyzer.py --sitemap SITEMAP --keyword KEYWORD</span></div>
+      </div>
+
+      <div class="tool-card tool-card-python reveal d2" data-category="python" data-categories="python content seo">
+        <div class="tool-card-top"><div class="tool-icon" style="background:rgba(79,70,229,.1);color:#4f46e5"><i class="fas fa-list-ol"></i></div><div class="tool-badges"><span class="tool-tag tool-tag-free">Python</span><span class="tool-tag tool-tag-cat">Keywords</span></div></div>
+        <h3>Word Frequency Analyzer</h3><p>Analyzes word frequency and keyword density to reveal overuse, gaps, and content emphasis.</p>
+        <ul class="tool-features"><li><i class="fas fa-check-circle"></i> URL or file input</li><li><i class="fas fa-check-circle"></i> Keyword density checks</li></ul>
+        <div class="tool-card-footer"><span class="tool-command"><i class="fas fa-terminal"></i> python word_frequency_analyzer.py --url URL --keywords KW</span></div>
+      </div>
+
+      <div class="tool-card tool-card-python reveal d3" data-category="python" data-categories="python technical seo">
+        <div class="tool-card-top"><div class="tool-icon" style="background:rgba(6,182,212,.1);color:#0891b2"><i class="fas fa-sitemap"></i></div><div class="tool-badges"><span class="tool-tag tool-tag-free">Python</span><span class="tool-tag tool-tag-cat">Sitemap</span></div></div>
+        <h3>XML Sitemap Generator</h3><p>Generates priority-weighted XML sitemaps from URL lists and base URL settings.</p>
+        <ul class="tool-features"><li><i class="fas fa-check-circle"></i> URL file input</li><li><i class="fas fa-check-circle"></i> Base URL support</li></ul>
+        <div class="tool-card-footer"><span class="tool-command"><i class="fas fa-terminal"></i> python xml_sitemap_generator.py --urls urls.txt --base-url SITE</span></div>
+      </div>
+
+    </div>
+    <!-- End tools grid -->
+
+  </div>
+</section>
+
+<!-- REQUEST A TOOL -->
+<section class="section section-gray">
+  <div class="container">
+    <div class="featured-panel reveal">
+      <div class="featured-panel-media" style="display:flex;flex-direction:column;gap:16px;">
+        <div style="background:linear-gradient(135deg,#4f46e5 0%,#7c3aed 55%,#a855f7 100%);border-radius:var(--r-2xl);padding:48px 40px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;min-height:240px;text-align:center;">
+          <div style="width:72px;height:72px;background:rgba(255,255,255,.15);border-radius:var(--r-xl);display:flex;align-items:center;justify-content:center;font-size:2rem;color:#fff">
+            <i class="fas fa-screwdriver-wrench"></i>
+          </div>
+          <h3 style="color:#fff;font-size:1.5rem;margin:0">More tools <br/>coming soon</h3>
+          <p style="color:rgba(255,255,255,.75);margin:0;font-size:.9375rem">We ship a new tool every few weeks based on what our community needs most.</p>
+        </div>
+        <img src="/assets/images/young-successful-developer-sitting-at-workplace-wi-2026-01-06-00-43-26-utc.webp" alt="Developer at work - A1 Technovation tools" loading="lazy" style="width:100%;border-radius:var(--r-2xl);object-fit:cover;flex:1;min-height:200px;" />
+      </div>
+      <div class="featured-panel-copy">
+        <span class="label label-primary label-dot">Have an Idea?</span>
+        <h2>Tell Us What Tool <span class="text-grad">You Need Next</span></h2>
+        <p>Our team is constantly building new utilities based on real problems our clients and community face. If there's a tool you wish existed - tell us. We may build it next.</p>
+        <ul class="info-list">
+          <li>We prioritise tools that save real time and eliminate guesswork from marketing decisions</li>
+          <li>Every tool is tested internally with client campaigns before it goes public</li>
+          <li>Free tools stay open, while licensed software may include limited free offers and activation keys</li>
+        </ul>
+        <div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="/pages/contact" class="btn btn-primary">Request a Tool <i class="fas fa-arrow-right"></i></a>
+          <a href="/pages/about" class="btn btn-ghost">About Our Team</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-wrap"><div class="cta-glow"></div><div class="container"><div class="cta-inner reveal">
+  <span class="label label-light label-dot">Work With Us</span>
+  <h2>Need More Than a Tool? <span class="text-grad-hero">Let's Build a Strategy.</span></h2>
+  <p>Our tools give you insights - our team turns those insights into results. Book a free consultation and let's look at your numbers together.</p>
+  <div class="cta-buttons"><a href="/pages/contact" class="btn btn-primary btn-lg">Request for Free Trial <i class="fas fa-arrow-right"></i></a><a href="/pages/services" class="btn btn-ghost btn-lg">Explore Services</a></div>
+</div></div></section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <!-- Brand -->
+      <div class="footer-brand">
+        <a href="/" class="footer-logo" aria-label="A1 Technovation home">
+          <img src="../assets/images/A1Technovation-Dark-Background.png" alt="A1 Technovation" class="footer-logo-image" />
+        </a>
+        <p>A1 Technovation is a results-driven digital marketing agency delivering SEO, AEO, GEO, web design, PPC, local SEO, ecommerce SEO, and social media marketing for clients across 20+ countries.</p>
+        <div class="footer-socials">
+          <a href="https://www.facebook.com/a1technovation/" class="f-social" aria-label="Facebook" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/a1technovation/?hl=en" class="f-social" aria-label="Instagram" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/company/92598277/" class="f-social" aria-label="LinkedIn" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://wa.me/8801799976295" class="f-social" aria-label="WhatsApp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://t.me/likhonahmedseo" class="f-social" aria-label="Telegram" target="_blank" rel="noopener"><i class="fab fa-telegram"></i></a>
+        </div>
+      </div>
+
+      <!-- Services -->
+      <div class="footer-col">
+        <h6>Services</h6>
+        <div class="footer-links">
+          <a href="/pages/services-seo"          class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> SEO Services</a>
+          <a href="/aeo-optimization-services/"  class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> AEO Optimization</a>
+          <a href="/geo-optimization-services/"  class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> GEO Optimization</a>
+          <a href="/ecommerce-seo-services/"     class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Ecommerce SEO</a>
+          <a href="/pages/services-local-seo"    class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Local SEO</a>
+          <a href="/pages/services-web-dev"      class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Web Design</a>
+          <a href="/pages/services-ppc-ads"      class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> PPC Advertising</a>
+        </div>
+      </div>
+
+      <!-- Company -->
+      <div class="footer-col">
+        <h6>Company</h6>
+        <div class="footer-links">
+          <a href="/pages/about"     class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> About Us</a>
+          <a href="/pages/portfolio" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Our Work</a>
+          <a href="/blog/"      class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Blog & Insights</a>
+          <a href="/pages/contact"   class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Contact Us</a>
+          <a href="/pages/contact"   class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Free Consultation</a>
+        </div>
+      </div>
+
+      <!-- Contact -->
+      <div class="footer-col">
+        <h6>Get in Touch</h6>
+        <div class="f-contact-item">
+          <i class="fas fa-location-dot"></i>
+          <span>35/A Srijoni Road, Ibrahimpur<br>Dhaka Cantonment, Dhaka 1206, Bangladesh</span>
+        </div>
+        <div class="f-contact-item">
+          <i class="fas fa-phone"></i>
+          <a href="tel:+8801799976295">+880 1799-976295</a>
+        </div>
+        <div class="f-contact-item">
+          <i class="fas fa-envelope"></i>
+          <a href="mailto:info.a1technovation@gmail.com">info.a1technovation@gmail.com</a>
+        </div>
+        <div class="f-contact-item">
+          <i class="fas fa-clock"></i>
+          <span>Mon-Fri: 9 AM - 7 PM BST<br>Sat: 10 AM - 4 PM BST</span>
+        </div>
+      </div>
+    </div>
+  <div class="footer-newsletter"><div class="footer-newsletter-copy"><span class="footer-newsletter-kicker"><i class="fas fa-bolt"></i> A1 Growth Notes</span><h6>Get practical search and conversion ideas monthly.</h6><p>SEO, AI search, web performance, and conversion insights from the A1 Technovation team.</p></div><form class="newsletter-form" data-source="global-footer" action="/api/newsletter_subscribe" method="post"><div class="newsletter-field-wrap"><i class="fas fa-envelope"></i><input type="email" name="email" placeholder="Enter your email" autocomplete="email" required /></div><button type="submit" class="btn btn-primary" aria-label="Subscribe to newsletter"><i class="fas fa-paper-plane"></i><span>Subscribe</span></button><p class="newsletter-status" hidden aria-live="polite"></p><p class="newsletter-privacy"><i class="fas fa-lock"></i> No spam. Unsubscribe anytime.</p></form></div>
+  <div class="footer-bottom">
+      <p class="f-copy">&copy; 2025 A1 Technovation. All rights reserved.</p>
+      <div class="f-bottom-links">
+        <a href="/pages/privacy" class="f-bl">Privacy Policy</a>
+        <a href="/pages/terms" class="f-bl">Terms and Conditions</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<div class="tool-runner-backdrop" id="toolRunnerBackdrop" aria-hidden="true">
+  <div class="tool-runner-modal" role="dialog" aria-modal="true" aria-labelledby="toolRunnerTitle">
+    <div class="tool-runner-head">
+      <h3 id="toolRunnerTitle">Run tool</h3>
+      <button class="tool-runner-close" type="button" id="toolRunnerClose" aria-label="Close tool runner"><i class="fas fa-xmark"></i></button>
+    </div>
+    <div class="tool-runner-body">
+      <form id="toolRunnerForm">
+        <input type="hidden" name="tool" id="toolRunnerSlug" />
+        <div class="tool-runner-grid" id="toolRunnerFields"></div>
+        <div class="tool-runner-actions">
+          <button type="button" class="btn btn-secondary" id="toolRunnerCancel">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="toolRunnerSubmit"><i class="fas fa-play"></i> Run Tool</button>
+        </div>
+      </form>
+      <div class="tool-runner-result" id="toolRunnerResult">
+        <div class="tool-runner-result-head">
+          <span id="toolRunnerStatus">Result</span>
+        </div>
+        <pre class="tool-runner-output" id="toolRunnerOutput"></pre>
+        <div class="tool-runner-generated" id="toolRunnerGenerated">
+          <textarea id="toolRunnerGeneratedText" readonly></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<button class="scroll-top" id="scrollTop" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></button>
+<script src="/js/main.min.js?v=20260514"></script>
+<script>
+  const TOOL_RUNNERS = {
+    "AI Content Detector": { slug: "ai_content_detector", fields: [
+      { name: "url", label: "Page URL", type: "url", wide: true },
+      { name: "text", label: "Text to analyze", type: "textarea", wide: true }
+    ] },
+    "AI Overview Optimizer": { slug: "ai_overview_optimizer", fields: [
+      { name: "url", label: "Page URL", type: "url", required: true, wide: true },
+      { name: "keyword", label: "Target keyword", type: "text" }
+    ] },
+    "Content Brief Generator": { slug: "content_brief_generator", fields: [
+      { name: "urls", label: "Competitor URLs", type: "textarea", required: true, wide: true },
+      { name: "keyword", label: "Target keyword", type: "text", required: true }
+    ] },
+    "Content Calendar Generator": { slug: "content_calendar_generator", fields: [
+      { name: "topics", label: "Topics or keywords", type: "textarea", required: true, wide: true },
+      { name: "weeks", label: "Weeks", type: "number", value: "4", min: "1", max: "12" },
+      { name: "posts_per_week", label: "Posts per week", type: "number", value: "3", min: "1", max: "7" }
+    ] },
+    "Content Optimizer": { slug: "content_optimizer", fields: [
+      { name: "url", label: "Page URL", type: "url", wide: true },
+      { name: "text", label: "Text to analyze", type: "textarea", wide: true },
+      { name: "target_keyword", label: "Target keyword", type: "text", required: true }
+    ] },
+    "Content Similarity Checker": { slug: "content_similarity_checker", fields: [
+      { name: "urls", label: "URLs to compare", type: "textarea", required: true, wide: true },
+      { name: "threshold", label: "Similarity threshold", type: "number", value: "0.7", min: "0", max: "1", step: "0.05" }
+    ] },
+    "Content Uniqueness Scorer": { slug: "content_uniqueness_scorer", fields: [
+      { name: "source_url", label: "Original URL", type: "url", required: true },
+      { name: "rewrite_url", label: "Rewritten URL", type: "url", required: true }
+    ] },
+    "Core Web Vitals Estimator": { slug: "core_web_vitals_estimator", fields: [
+      { name: "urls", label: "URLs to analyze", type: "textarea", required: true, wide: true }
+    ] },
+    "Local Citation Checker": { slug: "local_citation_checker", fields: [
+      { name: "urls", label: "Citation URLs", type: "textarea", required: true, wide: true }
+    ] },
+    "Paragraph Optimizer": { slug: "paragraph_optimizer", fields: [
+      { name: "url", label: "Page URL", type: "url", required: true, wide: true },
+      { name: "keyword", label: "Target keyword", type: "text" }
+    ] },
+    "Search Console Analyzer": { slug: "search_console_analyzer", fields: [
+      { name: "input", label: "GSC CSV/XLSX export", type: "file", required: true, wide: true },
+      { name: "min_impressions", label: "Minimum impressions", type: "number", value: "50", min: "0" }
+    ] },
+    "SEO Health Dashboard Generator": { slug: "seo_health_dashboard_gen", fields: [
+      { name: "input", label: "Audit workbook", type: "file", required: true, wide: true }
+    ] },
+    "SEO Report Generator": { slug: "seo_report_generator", fields: [
+      { name: "input", label: "Audit workbook", type: "file", required: true, wide: true },
+      { name: "title", label: "Report title", type: "text", value: "SEO Audit Report" }
+    ] },
+    "Social Preview Validator": { slug: "social_preview_validator", fields: [
+      { name: "urls", label: "URLs to validate", type: "textarea", required: true, wide: true }
+    ] },
+    "Structured Data Generator": { slug: "structured_data_generator", fields: [
+      { name: "type", label: "Schema type", type: "select", required: true, options: ["article", "product", "local-business", "howto", "breadcrumbs"] },
+      { name: "url", label: "Page URL", type: "url" },
+      { name: "name", label: "Name/title", type: "text" },
+      { name: "description", label: "Description", type: "textarea", wide: true },
+      { name: "author", label: "Author", type: "text" }
+    ] },
+    "Structured Data Validator": { slug: "structured_data_validator", fields: [
+      { name: "url", label: "Page URL", type: "url", required: true, wide: true }
+    ] },
+    "Text-to-HTML Ratio Analyzer": { slug: "text_html_ratio", fields: [
+      { name: "urls", label: "URLs to analyze", type: "textarea", required: true, wide: true }
+    ] },
+    "SEO Text Summarizer": { slug: "text_summarizer_seo", fields: [
+      { name: "url", label: "Page URL", type: "url", wide: true },
+      { name: "text", label: "Text to summarize", type: "textarea", wide: true },
+      { name: "keyword", label: "Keyword to preserve", type: "text" },
+      { name: "type", label: "Summary type", type: "select", value: "snippet", options: ["snippet", "meta", "paragraph", "abstract"] }
+    ] },
+    "TF-IDF Extractor": { slug: "tfidf_extractor", fields: [
+      { name: "urls", label: "URLs to analyze", type: "textarea", required: true, wide: true },
+      { name: "top", label: "Top terms", type: "number", value: "30", min: "5", max: "100" }
+    ] },
+    "Thin Content Detector": { slug: "thin_content_detector", fields: [
+      { name: "urls", label: "URLs to check", type: "textarea", required: true, wide: true },
+      { name: "min_words", label: "Minimum words", type: "number", value: "300", min: "50", max: "5000" }
+    ] },
+    "Title Tag Optimizer": { slug: "title_tag_optimizer", fields: [
+      { name: "url", label: "Page URL", type: "url", wide: true },
+      { name: "titles", label: "Titles to score", type: "textarea", wide: true },
+      { name: "keyword", label: "Target keyword", type: "text" }
+    ] },
+    "Topic Authority Scorer": { slug: "topic_authority_scorer", fields: [
+      { name: "urls", label: "Site page URLs", type: "textarea", required: true, wide: true },
+      { name: "topic", label: "Topic", type: "text", required: true }
+    ] },
+    "Topic Coverage Completeness": { slug: "topic_coverage_completeness", fields: [
+      { name: "my_url", label: "Your URL", type: "url", required: true, wide: true },
+      { name: "competitor_urls", label: "Competitor URLs", type: "textarea", required: true, wide: true },
+      { name: "keyword", label: "Target keyword", type: "text" }
+    ] },
+    "Topical Link Cluster": { slug: "topical_link_cluster", fields: [
+      { name: "urls", label: "URLs to cluster", type: "textarea", required: true, wide: true },
+      { name: "num_clusters", label: "Number of clusters", type: "number", value: "3", min: "2", max: "12" }
+    ] },
+    "URL Slug Analyzer": { slug: "url_slug_analyzer", fields: [
+      { name: "urls", label: "URLs to audit", type: "textarea", required: true, wide: true },
+      { name: "keyword", label: "Target keyword", type: "text" }
+    ] },
+    "Word Frequency Analyzer": { slug: "word_frequency_analyzer", fields: [
+      { name: "url", label: "Page URL", type: "url", required: true, wide: true },
+      { name: "keywords", label: "Keywords", type: "textarea", wide: true },
+      { name: "top", label: "Top words", type: "number", value: "30", min: "5", max: "100" }
+    ] },
+    "XML Sitemap Generator": { slug: "xml_sitemap_generator", fields: [
+      { name: "urls_text", label: "URLs or paths", type: "textarea", required: true, wide: true },
+      { name: "base_url", label: "Base URL for relative paths", type: "url", wide: true }
+    ] }
+  };
+
+  const runnerBackdrop = document.getElementById('toolRunnerBackdrop');
+  const runnerTitle = document.getElementById('toolRunnerTitle');
+  const runnerSlug = document.getElementById('toolRunnerSlug');
+  const runnerFields = document.getElementById('toolRunnerFields');
+  const runnerForm = document.getElementById('toolRunnerForm');
+  const runnerSubmit = document.getElementById('toolRunnerSubmit');
+  const runnerResult = document.getElementById('toolRunnerResult');
+  const runnerStatus = document.getElementById('toolRunnerStatus');
+  const runnerOutput = document.getElementById('toolRunnerOutput');
+  const runnerGenerated = document.getElementById('toolRunnerGenerated');
+  const runnerGeneratedText = document.getElementById('toolRunnerGeneratedText');
+
+  const closeRunner = () => {
+    runnerBackdrop.classList.remove('is-open');
+    runnerBackdrop.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  };
+
+  const fieldControl = (field) => {
+    if (field.type === 'textarea') {
+      const el = document.createElement('textarea');
+      el.name = field.name;
+      el.placeholder = field.label;
+      return el;
+    }
+    if (field.type === 'select') {
+      const el = document.createElement('select');
+      el.name = field.name;
+      (field.options || []).forEach(option => {
+        const item = document.createElement('option');
+        item.value = option;
+        item.textContent = option.replace(/(^|[-_])\w/g, m => m.replace(/[-_]/, ' ').toUpperCase());
+        el.appendChild(item);
+      });
+      if (field.value) el.value = field.value;
+      return el;
+    }
+    const el = document.createElement('input');
+    el.type = field.type || 'text';
+    el.name = field.name;
+    if (field.value) el.value = field.value;
+    if (field.min) el.min = field.min;
+    if (field.max) el.max = field.max;
+    if (field.step) el.step = field.step;
+    return el;
+  };
+
+  const renderRunner = (title, config) => {
+    runnerTitle.textContent = title;
+    runnerSlug.value = config.slug;
+    runnerFields.innerHTML = '';
+    runnerResult.classList.remove('is-visible');
+    runnerOutput.textContent = '';
+    runnerGenerated.classList.remove('is-visible');
+    runnerGeneratedText.value = '';
+
+    config.fields.forEach(field => {
+      const wrap = document.createElement('div');
+      wrap.className = `tool-runner-field${field.wide ? ' is-wide' : ''}`;
+      const id = `runner-${config.slug}-${field.name}`;
+      const label = document.createElement('label');
+      label.htmlFor = id;
+      label.textContent = `${field.label}${field.required ? ' *' : ''}`;
+      const control = fieldControl(field);
+      control.id = id;
+      if (field.required) control.required = true;
+      wrap.append(label, control);
+      runnerFields.appendChild(wrap);
+    });
+
+    runnerBackdrop.classList.add('is-open');
+    runnerBackdrop.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    const firstInput = runnerFields.querySelector('input, textarea, select');
+    if (firstInput) firstInput.focus();
+  };
+
+  document.querySelectorAll('#toolsGrid .tool-card-python').forEach(card => {
+    const title = card.querySelector('h3')?.textContent.trim();
+    const config = TOOL_RUNNERS[title];
+    if (!config) return;
+    const footer = card.querySelector('.tool-card-footer');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'btn btn-primary tool-run-button';
+    button.innerHTML = '<i class="fas fa-play"></i> Run on Website';
+    button.addEventListener('click', () => renderRunner(title, config));
+    footer?.appendChild(button);
+  });
+
+  document.getElementById('toolRunnerClose').addEventListener('click', closeRunner);
+  document.getElementById('toolRunnerCancel').addEventListener('click', closeRunner);
+  runnerBackdrop.addEventListener('click', event => {
+    if (event.target === runnerBackdrop) closeRunner();
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && runnerBackdrop.classList.contains('is-open')) closeRunner();
+  });
+
+  runnerForm.addEventListener('submit', async event => {
+    event.preventDefault();
+    runnerSubmit.disabled = true;
+    runnerSubmit.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Running';
+    runnerResult.classList.add('is-visible');
+    runnerStatus.textContent = 'Running';
+    runnerOutput.textContent = 'Please wait...';
+    runnerGenerated.classList.remove('is-visible');
+    runnerGeneratedText.value = '';
+
+    try {
+      const response = await fetch('/tool-runner.php', {
+        method: 'POST',
+        body: new FormData(runnerForm)
+      });
+      const data = await response.json();
+      runnerStatus.textContent = data.ok ? 'Completed' : 'Needs attention';
+      runnerOutput.textContent = data.output || data.error || 'No output returned.';
+      if (data.generated && data.generated.content) {
+        runnerGenerated.classList.add('is-visible');
+        runnerGeneratedText.value = data.generated.content;
+      }
+    } catch (error) {
+      runnerStatus.textContent = 'Failed';
+      runnerOutput.textContent = 'Could not run this tool from the browser.';
+    } finally {
+      runnerSubmit.disabled = false;
+      runnerSubmit.innerHTML = '<i class="fas fa-play"></i> Run Tool';
+    }
+  });
+
+  /* Filter tabs */
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const toolItems  = document.querySelectorAll('#toolsGrid .tool-card, #toolsGrid .python-suite-intro');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      toolItems.forEach(item => {
+        const categories = `${item.dataset.category || ''} ${item.dataset.categories || ''}`.trim().split(/\s+/);
+        const show = filter === 'all' || categories.includes(filter);
+        item.style.display = show ? '' : 'none';
+      });
+    });
+  });
+</script>
+</body>
+</html>
+
+

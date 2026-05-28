@@ -1,0 +1,87 @@
+/* A1 Technovation language switcher v20260514 */
+(function () {
+  const languages = [
+    { code: 'en', label: 'EN', name: 'English' },
+    { code: 'ar', label: 'AR', name: 'Arabic' },
+    { code: 'zh', label: '中文', name: 'Chinese' },
+    { code: 'es', label: 'ES', name: 'Spanish' },
+    { code: 'de', label: 'DE', name: 'Deutsch' },
+    { code: 'sv', label: 'SV', name: 'Svenska' }
+  ];
+  const localizedCodes = new Set(['ar', 'zh', 'es', 'de', 'sv']);
+  const pathParts = window.location.pathname.split('/').filter(Boolean);
+  const currentLang = localizedCodes.has(pathParts[0]) ? pathParts[0] : 'en';
+  const englishPath = currentLang === 'en' ? window.location.pathname : '/' + pathParts.slice(1).join('/');
+  const cleanEnglishPath = englishPath === '' ? '/' : englishPath;
+
+  function hrefFor(code) {
+    if (code === 'en') return cleanEnglishPath || '/';
+    return '/' + code + (cleanEnglishPath === '/' ? '/' : cleanEnglishPath);
+  }
+
+  function addStyles() {
+    if (document.getElementById('a1-language-switcher-style')) return;
+    const style = document.createElement('style');
+    style.id = 'a1-language-switcher-style';
+    style.textContent = `
+      .language-switcher{position:relative;display:inline-flex;align-items:center;z-index:20}
+      .language-switcher-toggle{height:38px;min-width:58px;border:1px solid rgba(148,163,184,.35);border-radius:999px;background:rgba(255,255,255,.08);color:inherit;display:inline-flex;align-items:center;justify-content:center;gap:6px;font:600 12px/1 Inter,system-ui,sans-serif;cursor:pointer;padding:0 11px;white-space:nowrap}
+      .language-switcher-toggle i{font-size:12px;opacity:.78}
+      .language-switcher-menu{position:absolute;right:0;top:calc(100% + 8px);min-width:148px;padding:6px;border:1px solid rgba(148,163,184,.26);border-radius:10px;background:#fff;box-shadow:0 18px 45px rgba(15,23,42,.16);display:none}
+      .language-switcher.open .language-switcher-menu{display:block}
+      .language-switcher-menu a{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 10px;border-radius:7px;color:#172033;text-decoration:none;font:600 13px/1.2 Inter,system-ui,sans-serif}
+      .language-switcher-menu a:hover,.language-switcher-menu a.active{background:#eef4ff;color:#0b63f6}
+      .language-switcher-menu span{font-size:11px;color:#64748b;font-weight:700}
+      .mobile-menu .language-switcher{width:100%;margin:10px 0}
+      .mobile-menu .language-switcher-toggle{width:100%;justify-content:space-between;border-radius:8px}
+      .mobile-menu .language-switcher-menu{position:static;width:100%;margin-top:8px;box-shadow:none}
+      @media (max-width:1024px){.navbar-right>.language-switcher{display:none}}
+    `;
+    document.head.appendChild(style);
+  }
+
+  function buildSwitcher() {
+    const wrap = document.createElement('div');
+    wrap.className = 'language-switcher';
+    const current = languages.find(lang => lang.code === currentLang) || languages[0];
+    wrap.innerHTML = `
+      <button class="language-switcher-toggle" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Choose language">
+        <i class="fas fa-globe" aria-hidden="true"></i><strong>${current.label}</strong>
+      </button>
+      <div class="language-switcher-menu" role="menu">
+        ${languages.map(lang => `<a role="menuitem" href="${hrefFor(lang.code)}" hreflang="${lang.code}" lang="${lang.code}" class="${lang.code === currentLang ? 'active' : ''}">${lang.name}<span>${lang.label}</span></a>`).join('')}
+      </div>
+    `;
+    const toggle = wrap.querySelector('.language-switcher-toggle');
+    toggle.addEventListener('click', (event) => {
+      event.stopPropagation();
+      const isOpen = wrap.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(isOpen));
+    });
+    document.addEventListener('click', () => {
+      wrap.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+    return wrap;
+  }
+
+  function mount() {
+    addStyles();
+    const desktopHost = document.querySelector('.navbar-right');
+    if (desktopHost && !desktopHost.querySelector('.language-switcher')) {
+      const cta = desktopHost.querySelector('.nav-cta');
+      desktopHost.insertBefore(buildSwitcher(), cta || desktopHost.firstChild);
+    }
+
+    const mobileHost = document.querySelector('.mobile-menu-footer') || document.querySelector('.mobile-menu');
+    if (mobileHost && !mobileHost.querySelector('.language-switcher')) {
+      mobileHost.insertBefore(buildSwitcher(), mobileHost.firstChild);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', mount);
+  } else {
+    mount();
+  }
+})();

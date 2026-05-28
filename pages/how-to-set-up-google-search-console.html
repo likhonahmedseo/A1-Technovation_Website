@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Set Up Google Search Console: Step-by-Step (2026)</title>
+    <meta name="description" content="Set up Google Search Console in under 10 minutes. This step-by-step guide covers property setup, all 4 verification methods, sitemap submission, and what to do first after setup.">
+    <link rel="canonical" href="https://a1technovation.com/blog/how-to-set-up-google-search-console/">
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+    <link rel="apple-touch-icon" href="/assets/images/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin /><link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'" /><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" /></noscript>
+    <link rel="stylesheet" href="/css/style.min.css">
+    <link rel="stylesheet" href="/css/responsive.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0f172a',
+                            primary: '#2563eb',
+                            hover: '#1d4ed8',
+                            light: '#f8fafc',
+                            border: '#e2e8f0',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Article",
+          "headline": "How to Set Up Google Search Console: Step-by-Step (2026)",
+          "description": "Set up Google Search Console in under 10 minutes. This step-by-step guide covers property setup, all 4 verification methods, sitemap submission, and what to do first after setup.",
+          "author": {
+            "@type": "Person",
+            "name": "Likhon Ahmed",
+            "url": "https://a1technovation.com/pages/about",
+            "image": "https://a1technovation.com/assets/images/CEO%20of%20A1%20Technovation.webp",
+            "jobTitle": "Founder & CEO",
+            "worksFor": {
+              "@type": "Organization",
+              "name": "A1 Technovation",
+              "url": "https://a1technovation.com"
+            }
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "A1 Technovation",
+            "url": "https://a1technovation.com",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://a1technovation.com/assets/images/A1Technovation-Light-Background.png"
+            }
+          },
+          "datePublished": "2026-05-20",
+          "dateModified": "2026-05-20",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://a1technovation.com/blog/how-to-set-up-google-search-console/"
+          }
+        },
+        {
+          "@type": "HowTo",
+          "name": "How to Set Up Google Search Console",
+          "description": "Step-by-step instructions on setting up GSC, verifying your property, and submitting a sitemap.",
+          "step": [
+            {
+              "@type": "HowToStep",
+              "name": "Add a Property",
+              "text": "Go to Google Search Console, sign in, and click 'Add property'. Choose between a Domain property (recommended) or a URL-prefix property."
+            },
+            {
+              "@type": "HowToStep",
+              "name": "Verify Site Ownership",
+              "text": "Verify your property using a DNS TXT record, HTML tag, Google Analytics, Google Tag Manager, or HTML file upload."
+            },
+            {
+              "@type": "HowToStep",
+              "name": "Submit Your XML Sitemap",
+              "text": "Navigate to the Sitemaps report, enter your sitemap URL (like sitemap_index.xml), and click Submit to speed up indexation."
+            },
+            {
+              "@type": "HowToStep",
+              "name": "Connect GSC to Google Analytics 4",
+              "text": "Open GA4, go to Admin, find Search Console Links, and link your newly verified GSC property to see search queries inside GA4."
+            }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is Google Search Console and why do I need it?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Google Search Console is a free tool from Google that monitors your site's presence in Google Search. It shows indexed pages, search queries, crawl errors, Core Web Vitals, and sitemaps. Every website owner needs it."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How long does Google Search Console verification take?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Verification time depends on the method. HTML tags are instant. DNS TXT records take 15 minutes to 48 hours depending on your DNS provider."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is the difference between a Domain property and a URL-prefix property?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A Domain property covers all subdomains and protocol versions under one property (DNS verification only). A URL-prefix property covers only the exact URL entered. Domain properties give more complete data."
+              }
+            }
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://a1technovation.com"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Blog",
+              "item": "https://a1technovation.com/blog/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Setup Google Search Console",
+              "item": "https://a1technovation.com/blog/how-to-set-up-google-search-console/"
+            }
+          ]
+        },
+        {
+          "@type": "WebPage",
+          "speakable": {
+            "@type": "SpeakableSpecification",
+            "cssSelector": [".direct-answer"]
+          }
+        }
+      ]
+    }
+    </script>
+    <style>
+        .prose h2 {
+            font-size: 1.875rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin-top: 3.5rem;
+            margin-bottom: 1.25rem;
+            line-height: 1.3;
+            letter-spacing: -0.025em;
+        }
+        .prose h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .prose p {
+            font-size: 1.125rem;
+            color: #475569;
+            line-height: 1.8;
+            margin-bottom: 1.75rem;
+        }
+        .prose a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 1px dashed #2563eb;
+            transition: all 0.2s ease;
+        }
+        .prose a:hover {
+            color: #1d4ed8;
+            border-bottom-style: solid;
+        }
+        .prose ul, .prose ol {
+            padding-left: 1.5rem;
+            margin-bottom: 2rem;
+            color: #475569;
+            font-size: 1.125rem;
+            line-height: 1.8;
+        }
+        .prose ul { list-style-type: disc; }
+        .prose ol { list-style-type: decimal; }
+        .prose li { margin-bottom: 0.75rem; }
+        .prose li strong { color: #0f172a; }
+        .prose blockquote {
+            border-left: 4px solid #2563eb;
+            background-color: #f8fafc;
+            padding: 1.75rem;
+            border-radius: 0 0.75rem 0.75rem 0;
+            font-style: italic;
+            color: #334155;
+            margin: 2.5rem 0;
+        }
+        .prose table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2.5rem 0;
+            font-size: 1rem;
+            text-align: left;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+        }
+        .prose thead tr {
+            background-color: #0f172a;
+            color: #ffffff;
+        }
+        .prose th, .prose td {
+            padding: 1.15rem 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .prose tbody tr:nth-of-type(even) {
+            background-color: #f8fafc;
+        }
+        .prose tbody tr:last-of-type {
+            border-bottom: 2px solid #2563eb;
+        }
+        .visual-container {
+            width: 100%;
+            margin: 3rem 0;
+            border-radius: 1.25rem;
+            overflow: hidden;
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+        }
+        .direct-answer {
+            background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
+            border-left: 5px solid #2563eb;
+            border-radius: 0 1rem 1rem 0;
+            padding: 2rem;
+            margin: 3rem 0;
+            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.05);
+            border: 1px solid #e2e8f0;
+            border-left: 5px solid #2563eb;
+        }
+        .direct-answer p { margin-bottom: 0; font-size: 1.15rem; color: #1e293b; font-weight: 500; }
+        .article-navbar,.article-navbar.scrolled{background:rgba(255,255,255,.96);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(15,23,42,.08);box-shadow:0 4px 24px rgba(15,23,42,.06)}
+        .article-navbar .logo-brand-dark{opacity:0}.article-navbar .logo-brand-light{opacity:1}
+        .article-navbar .nav-link,.article-navbar .nav-item.current>.nav-link{color:#475569}
+        .article-navbar .nav-link:hover,.article-navbar .nav-link.active,.article-navbar .nav-item.current>.nav-link{color:#2563eb;background:rgba(37,99,235,.08)}
+        .article-navbar .mobile-toggle span{background:#0f172a}
+        .article-cta-card{background:linear-gradient(135deg,#0f172a 0%,#162248 100%);color:#fff}
+        .article-cta-card p,.article-cta-card .cta-copy{color:#cbd5e1}
+        .article-cta-button{display:inline-block;background:linear-gradient(135deg,#2563eb,#3b82f6);color:#fff!important;font-weight:700;padding:.95rem 2rem;border-radius:.75rem;box-shadow:0 18px 32px rgba(37,99,235,.28)}
+        .article-sidebar-newsletter {
+            background: linear-gradient(160deg, #0f172a 0%, #162248 100%);
+            color: #ffffff;
+        }
+        .article-sidebar-newsletter p,
+        .article-sidebar-newsletter h3,
+        .article-sidebar-newsletter .newsletter-status {
+            color: inherit;
+        }
+        .article-sidebar-newsletter .newsletter-copy {
+            color: #cbd5e1;
+        }
+        .article-sidebar-newsletter .newsletter-form {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.85rem;
+        }
+        .article-sidebar-newsletter .newsletter-form input[type="email"] {
+            width: 100%;
+            min-height: 52px;
+            border: 1px solid rgba(148, 163, 184, 0.3);
+            border-radius: 0.75rem;
+            background: rgba(15, 23, 42, 0.55);
+            color: #ffffff;
+            padding: 0.85rem 1rem;
+            box-shadow: none;
+        }
+        .article-sidebar-newsletter .newsletter-form input[type="email"]::placeholder {
+            color: #94a3b8;
+        }
+        .article-sidebar-newsletter .newsletter-form input[type="email"]:focus {
+            border-color: #60a5fa;
+            background: rgba(15, 23, 42, 0.8);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+        .article-sidebar-newsletter .newsletter-form button[type="submit"] {
+            width: 100%;
+            min-height: 52px;
+            border: 0;
+            border-radius: 0.75rem;
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            color: #ffffff;
+            font-weight: 700;
+            box-shadow: none;
+        }
+        .article-sidebar-newsletter .newsletter-form button[type="submit"]:hover {
+            background: linear-gradient(135deg, #1d4ed8, #2563eb);
+        }
+        .article-sidebar-newsletter .newsletter-note {
+            color: #94a3b8;
+        }
+        .scroll-top{position:fixed;right:24px;bottom:24px;width:52px;height:52px;border:0;border-radius:999px;background:linear-gradient(135deg,#2563eb,#7c3aed);color:#fff;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 18px 36px rgba(37,99,235,.24);cursor:pointer;opacity:0;visibility:hidden;transform:translateY(16px);transition:opacity .22s ease,transform .22s ease,visibility .22s ease;z-index:50}
+        .scroll-top.is-visible{opacity:1;visibility:visible;transform:translateY(0)}
+        .newsletter-status{display:block;margin-top:.75rem;font-size:.875rem;line-height:1.5}.newsletter-status.success{color:#86efac}.newsletter-status.error{color:#fca5a5}
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="bg-brand-light font-sans text-slate-800 antialiased selection:bg-blue-200 selection:text-slate-900">
+    <nav class="navbar article-navbar" id="navbar">
+        <div class="container"><div class="navbar-inner">
+            <a href="/" class="navbar-logo" aria-label="A1 Technovation home"><span class="logo-mark"><img src="/assets/images/A1Technovation-Dark-Background.png" alt="A1 Technovation" class="logo-brand logo-brand-dark" /><img src="/assets/images/A1Technovation-Light-Background.png" alt="A1 Technovation" class="logo-brand logo-brand-light" /></span></a>
+            <nav class="navbar-nav">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/pages/about" class="nav-link">About</a>
+                <div class="nav-item megamenu-item"><a href="/pages/services" class="nav-link">Services <i class="fas fa-chevron-down" style="font-size:.7em;opacity:.7"></i></a>
+                    <div class="megamenu">
+            <div class="megamenu-inner">
+              <div class="mm-col mm-col-main">
+                <p class="mm-col-head">Core Services</p>
+                <a href="/pages/services-seo" class="mm-service"><div class="mm-icon"><i class="fas fa-search"></i></div><div class="mm-body"><span class="mm-title">SEO Services</span><span class="mm-desc">Technical, content, and authority growth</span></div></a>
+                <a href="/aeo-optimization-services/" class="mm-service"><div class="mm-icon"><i class="fas fa-comment-dots"></i></div><div class="mm-body"><span class="mm-title">AEO Optimization</span><span class="mm-desc">Win snippets and answer boxes</span></div></a>
+                <a href="/geo-optimization-services/" class="mm-service"><div class="mm-icon"><i class="fas fa-diagram-project"></i></div><div class="mm-body"><span class="mm-title">GEO Optimization</span><span class="mm-desc">Get cited by AI engines</span></div></a>
+                <a href="/pages/services-local-seo" class="mm-service"><div class="mm-icon"><i class="fas fa-location-dot"></i></div><div class="mm-body"><span class="mm-title">Local SEO</span><span class="mm-desc">Maps, local pack, and city rankings</span></div></a>
+              </div>
+              <div class="mm-col mm-col-links">
+                <p class="mm-col-head">SEO Specialties</p>
+                <a href="/ecommerce-seo-services/" class="mm-link">Ecommerce SEO</a>
+                <a href="/pages/services-web-dev" class="mm-link">Web Design</a>
+                <a href="/pages/services-ppc-ads" class="mm-link">PPC Advertising</a>
+                <a href="/pages/services-social-media" class="mm-link">Social Media</a>
+                <a href="/seo-services-for-hvac-companies/" class="mm-link">HVAC SEO</a>
+                <a href="/seo-services-usa/" class="mm-link">SEO Services USA</a>
+                <a href="/pages/services-car-rental-seo" class="mm-link">Car Rental SEO</a>
+                <a href="/pages/services-limousine-business-seo" class="mm-link">Limousine Business SEO</a>
+                <a href="/pages/services-car-repair-seo" class="mm-link">Car Repair SEO</a>
+                <a href="/pages/services-car-dealership-seo" class="mm-link">Car Dealership SEO</a>
+                <a href="/pages/services-tree-service-seo" class="mm-link">Tree Service SEO</a>
+                <a href="/pages/services-lawyer-seo" class="mm-link">Lawyer SEO</a>
+                <a href="/pages/services-small-business-seo" class="mm-link">Small Business SEO</a>
+              </div>
+              <div class="mm-col mm-col-feature">
+                <div class="mm-feature-card">
+                  <div class="mm-feature-badge">Free Audit</div>
+                  <h4 class="mm-feature-title">Grow Your Business Online</h4>
+                  <p class="mm-feature-body">Get a free 30-minute strategy session with our experts - no strings attached.</p>
+                  <a href="https://wa.me/8801799976295" class="btn btn-primary btn-sm" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Free Consultation</a>
+                  <a href="/pages/services" class="mm-feature-link">View all services -></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <a href="/pages/portfolio" class="nav-link">Work</a>
+                <a href="/blog/" class="nav-link active">Blog</a>
+                <a href="/pages/tools" class="nav-link">Tools</a>
+                <a href="/pages/contact" class="nav-link">Contact</a>
+            </nav>
+            <div class="navbar-right">
+                <a href="https://wa.me/8801799976295" class="btn btn-primary btn-sm nav-cta" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Free Consultation</a>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false"><span></span><span></span><span></span></button>
+            </div>
+        </div></div>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+  <a href="/"                   class="mobile-menu-link">Home <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
+  <a href="/pages/about"             class="mobile-menu-link">About <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
+  <div class="mobile-menu-group">
+    <a href="/pages/services"        class="mobile-menu-link">Services <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
+    <div class="mobile-submenu">
+      <a href="/pages/services-seo" class="mobile-submenu-link">SEO Services</a>
+      <a href="/aeo-optimization-services/" class="mobile-submenu-link">AEO Optimization</a>
+      <a href="/geo-optimization-services/" class="mobile-submenu-link">GEO Optimization</a>
+      <a href="/pages/services-local-seo" class="mobile-submenu-link">Local SEO Services</a>
+      <a href="/ecommerce-seo-services/" class="mobile-submenu-link">Ecommerce SEO Services</a>
+      <a href="/seo-services-for-hvac-companies/" class="mobile-submenu-link">HVAC SEO Services</a>
+      <a href="/seo-services-usa/" class="mobile-submenu-link">SEO Services USA</a>
+      <div class="mobile-submenu-nested">
+        <a href="/pages/services-car-rental-seo" class="mobile-submenu-link mobile-submenu-sublink">Car Rental SEO Service</a>
+        <a href="/pages/services-limousine-business-seo" class="mobile-submenu-link mobile-submenu-sublink">Limousine Business SEO Service</a>
+        <a href="/pages/services-car-repair-seo" class="mobile-submenu-link mobile-submenu-sublink">Car Repair SEO Service</a>
+        <a href="/pages/services-car-dealership-seo" class="mobile-submenu-link mobile-submenu-sublink">Car Dealership SEO Service</a>
+        <a href="/pages/services-tree-service-seo" class="mobile-submenu-link mobile-submenu-sublink">Tree Service SEO</a>
+        <a href="/pages/services-lawyer-seo" class="mobile-submenu-link mobile-submenu-sublink">Lawyer SEO Service</a>
+        <a href="/pages/services-small-business-seo" class="mobile-submenu-link mobile-submenu-sublink">Small Business SEO Service</a>
+      </div>
+      <a href="/pages/services-web-dev" class="mobile-submenu-link">Web Design &amp; Development</a>
+      <a href="/pages/services-ppc-ads" class="mobile-submenu-link">PPC Advertising</a>
+      <a href="/pages/services-social-media" class="mobile-submenu-link">Social Media Marketing</a>
+    </div>
+  </div>
+  <a href="/pages/portfolio"         class="mobile-menu-link">Work <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
+  <a href="/blog/"              class="mobile-menu-link">Blog <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
+  <a href="/pages/tools"             class="mobile-menu-link">Tools <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
+  <a href="/pages/contact"           class="mobile-menu-link">Contact <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
+  <div class="mobile-menu-footer">
+    <a href="https://wa.me/8801799976295" class="btn btn-primary btn-lg" target="_blank" rel="noopener" style="justify-content:center">
+      <i class="fab fa-whatsapp"></i> Start a Free Consultation
+    </a>
+    <p class="mobile-menu-note">info.a1technovation@gmail.com</p>
+  </div>
+</div>
+
+    <main class="py-12 lg:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="flex text-sm text-slate-500 mb-10" aria-label="Breadcrumb">
+                <ol class="flex items-center space-x-2">
+                    <li><a href="https://a1technovation.com/" class="hover:text-brand-primary transition-colors">Home</a></li>
+                    <li><i class="ph ph-caret-right text-xs"></i></li>
+                    <li><a href="https://a1technovation.com/blog/" class="hover:text-brand-primary transition-colors">Blog</a></li>
+                    <li><i class="ph ph-caret-right text-xs"></i></li>
+                    <li class="text-slate-800 font-semibold" aria-current="page">Setup Google Search Console</li>
+                </ol>
+            </nav>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 xl:gap-16">
+                <div class="lg:col-span-8">
+                    <header class="mb-12">
+                        <div class="flex items-center gap-3 mb-6">
+                            <span class="bg-blue-100 text-brand-primary text-xs font-bold px-3.5 py-1.5 uppercase tracking-wider rounded-full">Technical SEO</span>
+                            <span class="text-slate-500 text-sm flex items-center gap-1.5"><i class="ph ph-clock"></i> 14 min read</span>
+                        </div>
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-brand-dark leading-tight mb-8 tracking-tight">
+                            How to Set Up Google Search Console: Step-by-Step (2026)
+                        </h1>
+                        <div class="flex items-center gap-4 py-6 border-y border-brand-border">
+                            <a href="/pages/about" class="w-14 h-14 rounded-full overflow-hidden flex-shrink-0 border border-brand-border no-underline border-0" aria-label="Likhon Ahmed profile">
+                                <img src="/assets/images/CEO%20of%20A1%20Technovation.webp" alt="Likhon Ahmed" class="w-full h-full object-cover">
+                            </a>
+                            <div>
+                                <div class="font-bold text-slate-900 text-lg leading-tight"><a href="/pages/about" class="text-slate-900 hover:text-brand-primary transition-colors no-underline border-0">Likhon Ahmed</a></div>
+                                <div class="text-sm text-slate-500 mt-1">Updated May 2026 &bull; 4,200 words</div>
+                            </div>
+                            <div class="ml-auto flex gap-2">
+                                <button class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-brand-primary hover:text-white transition-colors" title="Copy Link" data-copy-link>
+                                    <i class="ph ph-link text-xl"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </header>
+
+                    <div class="visual-container mb-12">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&h=600&q=80" 
+                             alt="Analytics and SEO data dashboard representing Google Search Console performance metrics" 
+                             class="w-full h-auto object-cover">
+                    </div>
+
+                    <article class="prose max-w-none">
+                        <p class="text-xl text-slate-600 leading-relaxed font-medium">Setting up Google Search Console is the single most important first step in any SEO campaign. Before keyword research, before link building, before content planning — this tool tells you exactly how Google sees your site, which pages it indexes, and which searches bring visitors to your door.</p>
+
+                        <div class="direct-answer relative">
+                            <div class="absolute -left-3.5 -top-3.5 bg-brand-primary text-white p-2.5 rounded-full shadow-lg">
+                                <i class="ph ph-sparkle text-xl"></i>
+                            </div>
+                            <p><strong>Direct Answer:</strong> Google Search Console (GSC) is a free tool from Google that lets website owners monitor their site's performance in Google Search, check indexing status, fix crawl errors, and submit sitemaps. Setup takes under 10 minutes for most sites. The data starts populating within 24 to 72 hours.</p>
+                        </div>
+
+                        <p>At <a href="https://a1technovation.com/">A1 Technovation</a>, GSC is the first thing we connect on every new client site — before any other audit tool. We've completed this process across 150+ sites, and the same setup mistakes appear every time. This guide gives you the correct setup steps and the first-week action plan that most tutorials skip entirely. If you need the bigger picture around why this matters, read our <a href="https://a1technovation.com/blog/what-is-seo/">SEO beginner guide</a>.</p>
+
+                        <h2 id="before-you-start">Before You Start: What You Need</h2>
+                        <p>You need two things before you open Google Search Console:</p>
+                        <ol>
+                            <li><strong>A Google account</strong> — a Gmail address or a Google Workspace email works. Use the email that you want to permanently own the GSC property. If you're setting up GSC for a client, use your agency email and add the client as a verified owner afterward.</li>
+                            <li><strong>Access to your site's backend</strong> — either through your CMS (WordPress, Shopify, Wix), your DNS provider (GoDaddy, Namecheap, Cloudflare), or your Google Analytics / Google Tag Manager account. You'll need one of these to complete verification.</li>
+                        </ol>
+                        <p>Go to <a href="https://search.google.com/search-console" target="_blank" rel="noopener">search.google.com/search-console</a> and sign in with your Google account to begin.</p>
+
+                        <h2 id="step-1">Step 1: Add a Property</h2>
+                        <p>After signing in, click <strong>Add property</strong> in the top-left dropdown. Google gives you two property types:</p>
+
+                        <div class="visual-container bg-slate-900 p-8 flex flex-col items-center">
+                            <h4 class="text-white font-bold mb-8 text-center">Property Types: Domain vs. URL-Prefix</h4>
+                            <svg viewBox="0 0 800 350" class="w-full h-auto" aria-label="Comparison between Domain Property and URL Prefix property in GSC" role="img">
+                                <rect x="40" y="40" width="340" height="260" rx="16" fill="#1e293b" stroke="#3b82f6" stroke-width="2"/>
+                                <circle cx="80" cy="80" r="20" fill="#3b82f6" opacity="0.2"/>
+                                <path d="M70 80 L90 80 M80 70 L80 90" stroke="#60a5fa" stroke-width="3" stroke-linecap="round"/>
+                                <text x="120" y="86" font-family="Inter" font-size="20" fill="white" font-weight="bold">Domain Property</text>
+                                <rect x="70" y="130" width="280" height="30" rx="4" fill="#334155"/>
+                                <text x="85" y="150" font-family="Inter" font-size="14" fill="#94a3b8">✅ http://yourdomain.com</text>
+                                <rect x="70" y="170" width="280" height="30" rx="4" fill="#334155"/>
+                                <text x="85" y="190" font-family="Inter" font-size="14" fill="#94a3b8">✅ https://yourdomain.com</text>
+                                <rect x="70" y="210" width="280" height="30" rx="4" fill="#334155"/>
+                                <text x="85" y="230" font-family="Inter" font-size="14" fill="#94a3b8">✅ https://www.yourdomain.com</text>
+                                <rect x="70" y="250" width="280" height="30" rx="4" fill="#334155"/>
+                                <text x="85" y="270" font-family="Inter" font-size="14" fill="#94a3b8">✅ https://blog.yourdomain.com</text>
+                                <rect x="420" y="40" width="340" height="260" rx="16" fill="#1e293b" stroke="#64748b" stroke-width="2"/>
+                                <circle cx="460" cy="80" r="20" fill="#64748b" opacity="0.2"/>
+                                <path d="M450 80 L470 80" stroke="#94a3b8" stroke-width="3" stroke-linecap="round"/>
+                                <text x="500" y="86" font-family="Inter" font-size="20" fill="white" font-weight="bold">URL-Prefix Property</text>
+                                <rect x="450" y="130" width="280" height="30" rx="4" fill="#334155"/>
+                                <text x="465" y="150" font-family="Inter" font-size="14" fill="#ef4444">❌ http://yourdomain.com</text>
+                                <rect x="450" y="170" width="280" height="30" rx="4" fill="#334155"/>
+                                <text x="465" y="190" font-family="Inter" font-size="14" fill="#ef4444">❌ https://yourdomain.com</text>
+                                <rect x="450" y="210" width="280" height="30" rx="4" fill="#10b981" opacity="0.2"/>
+                                <text x="465" y="230" font-family="Inter" font-size="14" fill="#34d399">✅ https://www.yourdomain.com</text>
+                                <rect x="450" y="250" width="280" height="30" rx="4" fill="#334155"/>
+                                <text x="465" y="270" font-family="Inter" font-size="14" fill="#ef4444">❌ https://blog.yourdomain.com</text>
+                                <rect x="130" y="10" width="160" height="30" rx="15" fill="#2563eb"/>
+                                <text x="210" y="30" font-family="Inter" font-size="12" fill="white" font-weight="bold" text-anchor="middle">A1 RECOMMENDED</text>
+                            </svg>
+                        </div>
+
+                        <h3>Domain Property vs. URL-Prefix Property</h3>
+                        <p>This is the most important decision in the setup process — and the one most guides explain poorly.</p>
+                        <p><strong>Domain property</strong> covers your entire domain, including all subdomains (blog.yourdomain.com, shop.yourdomain.com) and all protocol versions (HTTP and HTTPS). One property sees everything.</p>
+                        <ul>
+                            <li>A domain property can <em>only</em> be verified through DNS. If you don't have DNS access, you cannot use this property type.</li>
+                        </ul>
+                        <p><strong>URL-prefix property</strong> covers only the exact URL prefix you specify. <code>https://www.yourdomain.com/</code> and <code>http://yourdomain.com/</code> are treated as separate properties. Subdomain traffic does not appear in a URL-prefix property unless you add each subdomain separately.</p>
+                        <ul>
+                            <li>A URL-prefix property offers multiple verification methods, which makes it easier to set up if DNS access isn't available.</li>
+                        </ul>
+                        <p><strong>Our recommendation for most sites:</strong> use the Domain property. One property, complete data, no version gaps. Set it up with DNS verification and you're done for the lifetime of the domain.</p>
+                        <p>Use URL-prefix if: your DNS provider is difficult to access, you're setting up GSC for a specific subdirectory only (e.g., <code>https://yourdomain.com/blog/</code>), or you need to verify quickly using an existing Google Analytics tag.</p>
+
+                        <h2 id="step-2">Step 2: Verify Site Ownership</h2>
+                        <p>Verification proves to Google that you control the site you're adding. GSC provides four verification methods for URL-prefix properties and one method (DNS) for Domain properties.</p>
+
+                        <div class="visual-container bg-white p-8 mb-8 border border-slate-200">
+                            <h4 class="text-center font-bold text-slate-800 mb-6">Google Search Console Verification Methods</h4>
+                            <svg viewBox="0 0 800 400" class="w-full h-auto" aria-label="4 Verification methods for Google Search Console" role="img">
+                                <rect x="20" y="20" width="360" height="160" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
+                                <circle cx="70" cy="70" r="24" fill="#dbeafe"/>
+                                <text x="70" y="78" font-family="Inter" font-size="24" text-anchor="middle">🌐</text>
+                                <text x="110" y="65" font-family="Inter" font-size="18" fill="#0f172a" font-weight="bold">DNS TXT Record</text>
+                                <rect x="110" y="75" width="80" height="20" rx="10" fill="#2563eb"/>
+                                <text x="150" y="90" font-family="Inter" font-size="10" fill="white" font-weight="bold" text-anchor="middle">RECOMMENDED</text>
+                                <text x="50" y="130" font-family="Inter" font-size="13" fill="#475569">Most stable. Verifies Domain properties.</text>
+                                <text x="50" y="150" font-family="Inter" font-size="13" fill="#475569">Time: 15-60 mins (DNS propagation)</text>
+                                <rect x="420" y="20" width="360" height="160" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
+                                <circle cx="470" cy="70" r="24" fill="#fce7f3"/>
+                                <text x="470" y="78" font-family="Inter" font-size="24" text-anchor="middle">💻</text>
+                                <text x="510" y="65" font-family="Inter" font-size="18" fill="#0f172a" font-weight="bold">HTML Meta Tag</text>
+                                <rect x="510" y="75" width="60" height="20" rx="10" fill="#db2777"/>
+                                <text x="540" y="90" font-family="Inter" font-size="10" fill="white" font-weight="bold" text-anchor="middle">QUICKEST</text>
+                                <text x="450" y="130" font-family="Inter" font-size="13" fill="#475569">Add to &lt;head&gt; of your homepage.</text>
+                                <text x="450" y="150" font-family="Inter" font-size="13" fill="#475569">Time: Instant (URL Prefix only)</text>
+                                <rect x="20" y="210" width="360" height="160" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
+                                <circle cx="70" cy="260" r="24" fill="#fef3c7"/>
+                                <text x="70" y="268" font-family="Inter" font-size="24" text-anchor="middle">📊</text>
+                                <text x="110" y="255" font-family="Inter" font-size="18" fill="#0f172a" font-weight="bold">Google Analytics 4</text>
+                                <text x="50" y="320" font-family="Inter" font-size="13" fill="#475569">One-click setup if logged into same Google</text>
+                                <text x="50" y="340" font-family="Inter" font-size="13" fill="#475569">account. Requires Edit permissions in GA4.</text>
+                                <rect x="420" y="210" width="360" height="160" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
+                                <circle cx="470" cy="260" r="24" fill="#d1fae5"/>
+                                <text x="470" y="268" font-family="Inter" font-size="24" text-anchor="middle">🏷️</text>
+                                <text x="510" y="255" font-family="Inter" font-size="18" fill="#0f172a" font-weight="bold">Google Tag Manager</text>
+                                <text x="450" y="320" font-family="Inter" font-size="13" fill="#475569">Automatic if GTM is live on your site.</text>
+                                <text x="450" y="340" font-family="Inter" font-size="13" fill="#475569">Requires Publish permissions in GTM.</text>
+                            </svg>
+                        </div>
+
+                        <div class="space-y-6">
+                            <div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
+                                <h4 class="flex items-center gap-2 text-brand-dark !mt-0 !mb-2">
+                                    <i class="ph ph-hard-drives text-brand-primary text-2xl"></i> 
+                                    Method 1: DNS TXT Record (Recommended)
+                                </h4>
+                                <p class="text-sm text-slate-500 font-semibold mb-4">Best for: Domain properties. Also the most stable method for URL-prefix properties.</p>
+                                <ol class="text-sm space-y-2 mb-0">
+                                    <li>Copy the TXT record code GSC provides. It looks like: <code>google-site-verification=xxxx...</code></li>
+                                    <li>Log into your DNS provider (GoDaddy, Cloudflare, Namecheap, etc.)</li>
+                                    <li>Go to your DNS settings and add a new TXT record.</li>
+                                    <li>Set the host/name field to <code>@</code> (which represents your root domain).</li>
+                                    <li>Paste the verification code into the value/data field.</li>
+                                    <li>Set TTL to default (usually 3600), save, return to GSC, and click <strong>Verify</strong>.</li>
+                                </ol>
+                                <p class="text-xs text-slate-500 italic mt-3">Tip: Cloudflare users often see verification complete within 2-3 minutes. Others take 30-60 minutes.</p>
+                            </div>
+
+                            <div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
+                                <h4 class="flex items-center gap-2 text-brand-dark !mt-0 !mb-2">
+                                    <i class="ph ph-code text-brand-primary text-2xl"></i> 
+                                    Method 2: HTML Tag (Quickest for URL-Prefix)
+                                </h4>
+                                <p class="text-sm text-slate-500 font-semibold mb-4">Best for: Sites where you have direct access to the theme or template files.</p>
+                                <ol class="text-sm space-y-2 mb-0">
+                                    <li>GSC provides a meta tag: <code>&lt;meta name="google-site-verification" content="..." /&gt;</code></li>
+                                    <li>Open your site's <code>&lt;head&gt;</code> section. On WordPress, use Yoast SEO or add it to <code>header.php</code>.</li>
+                                    <li>Paste the tag before the closing <code>&lt;/head&gt;</code> tag.</li>
+                                    <li>Save, publish, return to GSC and click <strong>Verify</strong>.</li>
+                                </ol>
+                            </div>
+                            
+                            <div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
+                                <h4 class="text-brand-dark !mt-0 !mb-2">Method 5: HTML File Upload</h4>
+                                <p class="text-sm mb-0">Download the file GSC gives you. Upload it to the root directory via FTP/File Manager. Keep the file permanently on the server.</p>
+                            </div>
+                        </div>
+
+                        <div class="visual-container">
+                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&h=500&q=80" 
+                                 alt="Code on screen representing HTML tags and XML sitemaps" 
+                                 class="w-full h-auto object-cover">
+                        </div>
+
+                        <h2 id="step-3">Step 3: Submit Your XML Sitemap</h2>
+                        <p>After verification, the first action item is submitting your sitemap. This step alone can cut the time for your pages to appear in Google's index from weeks to days.</p>
+                        <p>An XML sitemap is a file that lists every URL on your website you want Google to know about. It tells Google's crawlers where to find your content and signals which pages are the most important.</p>
+                        <p><strong>Steps:</strong></p>
+                        <ol>
+                            <li>In your GSC left sidebar, click <strong>Sitemaps</strong> (under Indexing).</li>
+                            <li>In the "Add a new sitemap" field, enter your sitemap URL.</li>
+                            <li>Click <strong>Submit</strong>.</li>
+                        </ol>
+
+                        <h4>Finding your sitemap URL:</h4>
+                        <div class="overflow-x-auto">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Platform</th>
+                                        <th>Default Sitemap URL</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>WordPress (Yoast / Rank Math)</td>
+                                        <td><code>yourdomain.com/sitemap_index.xml</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Shopify</td>
+                                        <td><code>yourdomain.com/sitemap.xml</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Wix</td>
+                                        <td><code>yourdomain.com/sitemap.xml</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Squarespace</td>
+                                        <td><code>yourdomain.com/sitemap.xml</code></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <p>After submitting, GSC shows the sitemap status as "Success" or flags an error. A "Success" status means Google could fetch the file and discovered the URLs inside.</p>
+                        <ul>
+                            <li><strong>Couldn't fetch:</strong> URL is incorrect or blocked by robots.txt.</li>
+                            <li><strong>Contains errors:</strong> URLs inside are returning non-200 status codes or are noindexed. Clean the sitemap.</li>
+                        </ul>
+
+                        <h2 id="step-4">Step 4: Connect GSC to Google Analytics 4</h2>
+                        <p>Most setup guides stop at sitemap submission. This next step is one the top competitors skip — and it's one of the most valuable actions you can take right after setup. It also connects directly to the workflow we outline in our <a href="https://a1technovation.com/blog/seo-for-small-businesses/">small business SEO playbook</a>.</p>
+                        <p>Linking GSC to your GA4 account lets you see which organic search queries brought visitors to your site, directly inside Google Analytics. This bridges the gap between search performance data and on-site behavior data.</p>
+
+                        <div class="visual-container bg-white p-8">
+                            <svg viewBox="0 0 600 200" class="w-full h-auto" aria-label="Connecting Google Search Console to GA4 Diagram" role="img">
+                                <rect x="50" y="50" width="160" height="100" rx="16" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+                                <circle cx="130" cy="85" r="20" fill="#3b82f6" opacity="0.1"/>
+                                <path d="M120 90 L130 80 L140 90 M130 80 L130 100" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
+                                <text x="130" y="135" font-family="Inter" font-size="14" fill="#0f172a" font-weight="bold" text-anchor="middle">Search Console</text>
+                                <path d="M220 90 L380 90" stroke="#cbd5e1" stroke-width="4" stroke-dasharray="8,8"/>
+                                <path d="M360 80 L380 90 L360 100" fill="none" stroke="#cbd5e1" stroke-width="4" stroke-linecap="round"/>
+                                <text x="300" y="75" font-family="Inter" font-size="12" fill="#64748b" font-weight="bold" text-anchor="middle">Passes Query Data</text>
+                                <rect x="390" y="50" width="160" height="100" rx="16" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+                                <circle cx="470" cy="85" r="20" fill="#f59e0b" opacity="0.1"/>
+                                <path d="M460 95 L465 85 L475 95 L480 75" fill="none" stroke="#f59e0b" stroke-width="3" stroke-linecap="round"/>
+                                <text x="470" y="135" font-family="Inter" font-size="14" fill="#0f172a" font-weight="bold" text-anchor="middle">Analytics (GA4)</text>
+                            </svg>
+                        </div>
+
+                        <p><strong>Steps:</strong></p>
+                        <ol>
+                            <li>Open Google Analytics 4 and go to <strong>Admin</strong> (gear icon, bottom left).</li>
+                            <li>Under Property Settings, click <strong>Search Console Links</strong>.</li>
+                            <li>Click <strong>Link</strong> and choose your verified GSC property from the list.</li>
+                            <li>Select the GA4 data stream that matches your site.</li>
+                            <li>Click Next, then Submit.</li>
+                        </ol>
+                        <p>Data from GSC appears in GA4 under <em>Reports → Acquisition → Search Console</em>. This connection is read-only.</p>
+
+                        <div class="visual-container my-10">
+                            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&h=500&q=80" 
+                                 alt="Marketing team collaborating on laptop, representing Google Search Console user permissions" 
+                                 class="w-full h-auto object-cover">
+                        </div>
+
+                        <h2 id="step-5">Step 5: Add Users and Set Permissions</h2>
+                        <p>If you're managing a site for a client, or working with a team, add additional users now while the property is fresh. GSC offers four permission levels:</p>
+                        <div class="overflow-x-auto">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Role</th>
+                                        <th>What They Can Do</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Owner</strong></td>
+                                        <td>Full access — verify, delete property, manage users</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Full user</strong></td>
+                                        <td>View all data, submit sitemaps, request indexing</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Restricted user</strong></td>
+                                        <td>View performance and coverage data only</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Associate</strong></td>
+                                        <td>Connects other Google products (e.g., linking GA4)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <p>In GSC, click <strong>Settings</strong> > <strong>Users and permissions</strong> > <strong>Add user</strong>. Enter the email address and select the permission level. Our recommendation: give clients <em>Restricted user</em> access.</p>
+
+                        <h2 id="first-7-days">Your First 7 Days in Google Search Console</h2>
+                        <p>This is what every other GSC setup guide skips. Setup is step one. The first week of actions is where GSC actually starts working for your SEO.</p>
+                        <p>Most sites don't have 72 hours of data immediately after setup, so use the first 48 hours to configure, then return on Day 3 and Day 7 to start reading data.</p>
+
+                        <div class="visual-container bg-slate-900 p-8">
+                            <h4 class="text-white font-bold mb-8 text-center">The 7-Day GSC Action Plan</h4>
+                            <svg viewBox="0 0 800 200" class="w-full h-auto" aria-label="7 Day Action Plan Timeline for Google Search Console" role="img">
+                                <line x1="100" y1="100" x2="700" y2="100" stroke="#334155" stroke-width="6" stroke-linecap="round"/>
+                                <circle cx="150" cy="100" r="16" fill="#3b82f6"/>
+                                <text x="150" y="60" font-family="Inter" font-size="14" fill="white" font-weight="bold" text-anchor="middle">Day 1-2</text>
+                                <text x="150" y="140" font-family="Inter" font-size="12" fill="#94a3b8" text-anchor="middle">Configuration</text>
+                                <text x="150" y="160" font-family="Inter" font-size="10" fill="#64748b" text-anchor="middle">Submit Sitemaps</text>
+                                <circle cx="350" cy="100" r="16" fill="#3b82f6"/>
+                                <text x="350" y="60" font-family="Inter" font-size="14" fill="white" font-weight="bold" text-anchor="middle">Day 3</text>
+                                <text x="350" y="140" font-family="Inter" font-size="12" fill="#94a3b8" text-anchor="middle">Check Coverage</text>
+                                <text x="350" y="160" font-family="Inter" font-size="10" fill="#64748b" text-anchor="middle">Fix 404 & Blocks</text>
+                                <circle cx="550" cy="100" r="16" fill="#3b82f6"/>
+                                <text x="550" y="60" font-family="Inter" font-size="14" fill="white" font-weight="bold" text-anchor="middle">Day 5</text>
+                                <text x="550" y="140" font-family="Inter" font-size="12" fill="#94a3b8" text-anchor="middle">Performance</text>
+                                <text x="550" y="160" font-family="Inter" font-size="10" fill="#64748b" text-anchor="middle">Check Impressions</text>
+                                <circle cx="750" cy="100" r="16" fill="#10b981"/>
+                                <text x="750" y="60" font-family="Inter" font-size="14" fill="white" font-weight="bold" text-anchor="middle">Day 7</text>
+                                <text x="750" y="140" font-family="Inter" font-size="12" fill="#34d399" text-anchor="middle">Web Vitals</text>
+                                <text x="750" y="160" font-family="Inter" font-size="10" fill="#6ee7b7" text-anchor="middle">Check LCP/INP</text>
+                            </svg>
+                        </div>
+
+                        <h3>Day 1–2: Configuration</h3>
+                        <ul>
+                            <li>Submit your XML sitemap (Step 3 above)</li>
+                            <li>Link GSC to GA4 (Step 4 above)</li>
+                            <li>Add team members or clients (Step 5 above)</li>
+                            <li><strong>Pro Tip:</strong> Use the URL Inspection tool to request indexing for your five most important pages immediately.</li>
+                        </ul>
+
+                        <h3>Day 3: Check Coverage</h3>
+                        <p>Go to Indexing → Pages. This report shows Indexed, Not indexed, and Excluded pages. Read through the "Not indexed" reasons carefully. "Blocked by robots.txt" means an accidental block — fix that immediately.</p>
+
+                        <h3>Day 5: Check Performance Data</h3>
+                        <p>Go to Performance → Search results. Key metrics to review: Total clicks, Total impressions, Average CTR, Average position. Filter by Page to see URLs; Filter by Query to see terms. Those numbers become much easier to act on once you understand search intent, which we break down in <a href="https://a1technovation.com/blog/what-is-seo/">What Is SEO?</a>.</p>
+
+                        <h3>Day 7: Review Core Web Vitals</h3>
+                        <p>Go to Experience → Core Web Vitals. Create a fix list and prioritize the "Poor" pages that also have the highest impression counts in your Performance report. <em>(Need help fixing speed? View our <a href="https://a1technovation.com/blog/technical-seo-checklist/">Technical SEO Checklist</a>.)</em></p>
+
+                        <h2 id="mistakes">5 Common GSC Setup Mistakes (And How to Fix Them)</h2>
+
+                        <div class="visual-container bg-white p-8 border border-slate-200 my-8">
+                            <h4 class="text-center font-bold text-slate-800 mb-6">Avoid These Setup Pitfalls</h4>
+                            <svg viewBox="0 0 800 350" class="w-full h-auto" aria-label="5 Common Google Search Console Setup Mistakes" role="img">
+                                <g transform="translate(0, 0)">
+                                    <rect x="20" y="20" width="760" height="40" rx="8" fill="#fee2e2"/>
+                                    <circle cx="50" cy="40" r="10" fill="#ef4444"/>
+                                    <text x="45" y="44" font-family="Inter" font-size="12" fill="white" font-weight="bold">X</text>
+                                    <text x="80" y="45" font-family="Inter" font-size="14" fill="#991b1b" font-weight="bold">1. Using URL-Prefix instead of Domain Property</text>
+                                    <text x="500" y="45" font-family="Inter" font-size="12" fill="#166534">✔️ Fix: Add Domain via DNS</text>
+                                </g>
+                                <g transform="translate(0, 60)">
+                                    <rect x="20" y="20" width="760" height="40" rx="8" fill="#fee2e2"/>
+                                    <circle cx="50" cy="40" r="10" fill="#ef4444"/>
+                                    <text x="45" y="44" font-family="Inter" font-size="12" fill="white" font-weight="bold">X</text>
+                                    <text x="80" y="45" font-family="Inter" font-size="14" fill="#991b1b" font-weight="bold">2. Using a temporary/wrong Google Account</text>
+                                    <text x="500" y="45" font-family="Inter" font-size="12" fill="#166534">✔️ Fix: Match your GA4 account</text>
+                                </g>
+                                <g transform="translate(0, 120)">
+                                    <rect x="20" y="20" width="760" height="40" rx="8" fill="#fee2e2"/>
+                                    <circle cx="50" cy="40" r="10" fill="#ef4444"/>
+                                    <text x="45" y="44" font-family="Inter" font-size="12" fill="white" font-weight="bold">X</text>
+                                    <text x="80" y="45" font-family="Inter" font-size="14" fill="#991b1b" font-weight="bold">3. Removing verification tags after setup</text>
+                                    <text x="500" y="45" font-family="Inter" font-size="12" fill="#166534">✔️ Fix: Leave tags permanently</text>
+                                </g>
+                                <g transform="translate(0, 180)">
+                                    <rect x="20" y="20" width="760" height="40" rx="8" fill="#fee2e2"/>
+                                    <circle cx="50" cy="40" r="10" fill="#ef4444"/>
+                                    <text x="45" y="44" font-family="Inter" font-size="12" fill="white" font-weight="bold">X</text>
+                                    <text x="80" y="45" font-family="Inter" font-size="14" fill="#991b1b" font-weight="bold">4. Submitting a sitemap full of 404s/Redirects</text>
+                                    <text x="500" y="45" font-family="Inter" font-size="12" fill="#166534">✔️ Fix: Clean sitemap before submit</text>
+                                </g>
+                                <g transform="translate(0, 240)">
+                                    <rect x="20" y="20" width="760" height="40" rx="8" fill="#fee2e2"/>
+                                    <circle cx="50" cy="40" r="10" fill="#ef4444"/>
+                                    <text x="45" y="44" font-family="Inter" font-size="12" fill="white" font-weight="bold">X</text>
+                                    <text x="80" y="45" font-family="Inter" font-size="14" fill="#991b1b" font-weight="bold">5. Never using the "Request Indexing" tool</text>
+                                    <text x="500" y="45" font-family="Inter" font-size="12" fill="#166534">✔️ Fix: Push top pages instantly</text>
+                                </g>
+                            </svg>
+                        </div>
+
+                        <div class="space-y-4 mb-8">
+                            <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded-r shadow-sm">
+                                <h4 class="text-red-800 font-bold !mt-0 !mb-1 text-base">Mistake #1: URL-Prefix Instead of Domain Property</h4>
+                                <p class="text-sm text-red-900 mb-0"><strong>Fix:</strong> Add a Domain property using DNS verification. Set it up alongside your URL-prefix property if you've already verified one.</p>
+                            </div>
+                            <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded-r shadow-sm">
+                                <h4 class="text-red-800 font-bold !mt-0 !mb-1 text-base">Mistake #2: Using the Wrong Google Account</h4>
+                                <p class="text-sm text-red-900 mb-0"><strong>Fix:</strong> Always use the Google account that manages your GA4 property to prevent access gaps.</p>
+                            </div>
+                            <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded-r shadow-sm">
+                                <h4 class="text-red-800 font-bold !mt-0 !mb-1 text-base">Mistake #3: Removing the Verification Tag/File</h4>
+                                <p class="text-sm text-red-900 mb-0"><strong>Fix:</strong> Leave the verification tag or DNS record in place permanently. GSC checks periodically.</p>
+                            </div>
+                            <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded-r shadow-sm">
+                                <h4 class="text-red-800 font-bold !mt-0 !mb-1 text-base">Mistake #4: Broken URLs in Sitemaps</h4>
+                                <p class="text-sm text-red-900 mb-0"><strong>Fix:</strong> Audit your sitemap with Screaming Frog. Remove any URL that isn't a live, canonical, indexable page.</p>
+                            </div>
+                            <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded-r shadow-sm">
+                                <h4 class="text-red-800 font-bold !mt-0 !mb-1 text-base">Mistake #5: Not Requesting Indexing</h4>
+                                <p class="text-sm text-red-900 mb-0"><strong>Fix:</strong> After publishing a new page, open URL Inspection, enter the URL, and click Request Indexing.</p>
+                            </div>
+                        </div>
+
+                        <div class="visual-container my-10">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&h=500&q=80" 
+                                 alt="Laptop displaying analytics graphs to represent Google Search Console features" 
+                                 class="w-full h-auto object-cover">
+                        </div>
+
+                        <h2 id="features">GSC Features to Use From Day 1</h2>
+                        <h3>Performance Report</h3>
+                        <p>Shows every query that triggered an impression or click. Use it to find pages with high impressions but low CTR (needs better title tags) and queries ranking 11-20 (fastest ranking improvement opportunities).</p>
+
+                        <h3>URL Inspection Tool</h3>
+                        <p>Type any URL in the top search bar. This is the diagnostic tool for any page that isn't ranking. View the rendered HTML that Googlebot saw and check the last crawl date.</p>
+
+                        <h3>Advanced: Check Your AI Overview Visibility in GSC</h3>
+                        <p>Google now reports on AI Overview appearances in the Search Appearance section. Go to Performance → Search Results, click Search type, and select <strong>AI Overviews</strong> from the dropdown. To improve visibility there, continue with our guides on <a href="https://a1technovation.com/blog/what-is-aeo/">AEO</a> and <a href="https://a1technovation.com/blog/what-is-geo/">GEO</a>.</p>
+                        <p>If your site does not yet appear, use this as a benchmark to measure progress as you optimize for AI citations. <em>(Learn more in our <a href="https://a1technovation.com/seo-services-usa/aeo-geo/">AEO & GEO Services Guide</a>.)</em></p>
+
+
+                        <h2 id="faqs">Frequently Asked Questions About Google Search Console Setup</h2>
+                        <div class="space-y-8 my-10 border-t border-brand-border pt-10">
+                            <div>
+                                <h4 class="font-bold text-brand-dark text-lg">What is Google Search Console and why do I need it?</h4>
+                                <p class="mt-2 text-slate-600">Google Search Console is a free tool from Google that monitors your site's presence in Google Search. It shows which pages are indexed, which search queries bring traffic, crawl errors, Core Web Vitals scores, and sitemap status. Every website owner needs it.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-brand-dark text-lg">How long does verification take?</h4>
+                                <p class="mt-2 text-slate-600">HTML tag verification typically completes within minutes. DNS TXT record verification takes 15 minutes to 48 hours depending on your DNS provider.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-brand-dark text-lg">Can I add multiple websites?</h4>
+                                <p class="mt-2 text-slate-600">Yes. One Google account can hold unlimited GSC properties. Add each domain as a separate property.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-brand-dark text-lg">Does Google Search Console affect rankings?</h4>
+                                <p class="mt-2 text-slate-600">It is a monitoring tool, not a ranking signal. However, actions taken inside GSC (fixing crawl errors, submitting sitemaps) remove technical barriers that suppressed rankings.</p>
+                            </div>
+                        </div>
+
+                        <div class="not-prose bg-white border border-brand-border rounded-2xl p-6 mt-12 shadow-sm flex gap-5 items-start">
+                            <img src="/assets/images/CEO%20of%20A1%20Technovation.webp" alt="Likhon Ahmed, Founder and CEO of A1 Technovation" class="w-20 h-20 rounded-full object-cover flex-shrink-0 shadow-md border-2 border-brand-border">
+                            <div>
+                                <div class="text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Written by</div>
+                                <a href="/pages/about" class="text-xl font-bold text-slate-900 hover:text-brand-primary transition-colors no-underline">Likhon Ahmed</a>
+                                <div class="text-sm text-slate-500 mt-0.5 mb-2">Founder &amp; CEO, A1 Technovation</div>
+                                <p class="text-slate-600 text-sm leading-relaxed">Likhon leads SEO strategy at A1 Technovation and has helped 150+ businesses improve technical visibility, indexation health, and organic growth. He specializes in technical SEO, content strategy, and AI search optimization.</p>
+                                <a href="/pages/about" class="inline-flex items-center gap-1.5 text-sm text-brand-primary font-semibold mt-3 hover:underline">View full profile <i class="fas fa-arrow-right text-xs"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="article-cta-card p-10 rounded-2xl mt-16 relative overflow-hidden shadow-2xl border border-slate-800">
+                            <div class="absolute -right-20 -top-20 w-64 h-64 bg-blue-600 rounded-full blur-[80px] opacity-40"></div>
+                            <div class="absolute -left-20 -bottom-20 w-64 h-64 bg-indigo-600 rounded-full blur-[80px] opacity-30"></div>
+                            <div class="relative z-10 text-center">
+                                <h3 class="text-3xl font-bold mb-4 !mt-0 !text-white tracking-tight">Get More From Google Search Console</h3>
+                                <p class="cta-copy mb-8 max-w-2xl mx-auto text-lg">Setup is the first step. Using GSC's data to actually move rankings is the work that follows. If you want help reading your data and turning it into a ranking strategy, request a consultation with A1 Technovation.</p>
+                                <a href="/pages/contact" class="article-cta-button inline-flex items-center justify-center text-lg">
+                                    Request SEO Consultation &rarr;
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <aside class="lg:col-span-4 space-y-8 hidden lg:block">
+                    <div class="sticky top-12 space-y-8">
+                        <div class="bg-white rounded-2xl p-6 border border-brand-border shadow-sm">
+                            <h3 class="font-bold text-lg text-brand-dark mb-4 flex items-center gap-2">
+                                <i class="ph ph-list-dashes text-brand-primary"></i> In this article
+                            </h3>
+                            <nav class="space-y-3 text-sm font-medium">
+                                <a href="#before-you-start" class="block text-slate-600 hover:text-brand-primary transition-colors">Before You Start</a>
+                                <a href="#step-1" class="block text-slate-600 hover:text-brand-primary transition-colors">Step 1: Add Property</a>
+                                <a href="#step-2" class="block text-slate-600 hover:text-brand-primary transition-colors">Step 2: Verify Ownership</a>
+                                <a href="#step-3" class="block text-slate-600 hover:text-brand-primary transition-colors">Step 3: Submit Sitemap</a>
+                                <a href="#step-4" class="block text-slate-600 hover:text-brand-primary transition-colors">Step 4: Connect to GA4</a>
+                                <a href="#step-5" class="block text-slate-600 hover:text-brand-primary transition-colors">Step 5: Permissions</a>
+                                <a href="#first-7-days" class="block text-slate-600 hover:text-brand-primary transition-colors">The First 7 Days Plan</a>
+                                <a href="#mistakes" class="block text-slate-600 hover:text-brand-primary transition-colors">5 Common Mistakes</a>
+                                <a href="#features" class="block text-slate-600 hover:text-brand-primary transition-colors">Features to Use Day 1</a>
+                                <a href="#faqs" class="block text-slate-600 hover:text-brand-primary transition-colors">FAQs</a>
+                            </nav>
+                        </div>
+
+                        <div class="article-sidebar-newsletter rounded-2xl p-8 shadow-xl relative overflow-hidden border border-slate-800">
+                            <div class="absolute -right-10 -top-10 w-32 h-32 bg-blue-600 rounded-full blur-[50px] opacity-40"></div>
+                            <div class="relative z-10">
+                                <i class="ph ph-envelope-open text-3xl text-blue-500 mb-4 block"></i>
+                                <h3 class="font-bold text-xl mb-2 text-white">A1 Growth Notes</h3>
+                                <p class="newsletter-copy text-sm mb-6 leading-relaxed">
+                                    Get practical search and conversion ideas monthly directly to your inbox.
+                                </p>
+                                <form class="newsletter-form" data-source="how-to-set-up-google-search-console-sidebar" action="/api/newsletter_subscribe" method="post">
+                                    <input type="email" name="email" placeholder="Your work email" required>
+                                    <button type="submit">
+                                        Subscribe
+                                    </button>
+                                    <p class="newsletter-status" hidden aria-live="polite"></p>
+                                </form>
+                                <p class="newsletter-note text-xs mt-4 text-center">No spam. Unsubscribe anytime.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-100 rounded-2xl p-7 text-center shadow-sm">
+                            <h3 class="font-bold text-brand-dark text-lg mb-2">Need an SEO Audit?</h3>
+                            <p class="text-sm text-slate-600 mb-6">Get a clear picture of what it takes to fix technical issues and outrank your competition.</p>
+                            <a href="/pages/contact" class="inline-block bg-slate-900 hover:bg-blue-600 text-white font-bold px-6 py-3.5 rounded-lg w-full transition-all shadow-lg hover:shadow-blue-500/30">
+                                Get a Free Audit
+                            </a>
+                        </div>
+                        <div class="bg-white rounded-2xl p-6 border border-brand-border shadow-sm text-center">
+                            <img src="/assets/images/CEO%20of%20A1%20Technovation.webp" alt="Likhon Ahmed" class="w-20 h-20 rounded-full object-cover mx-auto mb-3 border-2 border-brand-border shadow">
+                            <a href="/pages/about" class="font-bold text-slate-900 hover:text-brand-primary transition-colors text-base no-underline">Likhon Ahmed</a>
+                            <div class="text-xs text-slate-500 mt-0.5">Founder &amp; CEO, A1 Technovation</div>
+                            <a href="/pages/about" class="inline-flex items-center gap-1 text-xs text-brand-primary font-semibold mt-3 hover:underline">View profile <i class="fas fa-arrow-right" style="font-size:.6rem"></i></a>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="/" class="footer-logo" aria-label="A1 Technovation home">
+          <img src="../assets/images/A1Technovation-Dark-Background.png" alt="A1 Technovation" class="footer-logo-image" />
+        </a>
+        <p>A1 Technovation is a results-driven digital marketing agency delivering SEO, AEO, GEO, web design, PPC, local SEO, ecommerce SEO, and social media marketing for clients across 20+ countries.</p>
+        <div class="footer-socials">
+          <a href="https://www.facebook.com/a1technovation/" class="f-social" aria-label="Facebook" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/a1technovation/?hl=en" class="f-social" aria-label="Instagram" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/company/92598277/" class="f-social" aria-label="LinkedIn" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://wa.me/8801799976295" class="f-social" aria-label="WhatsApp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://t.me/likhonahmedseo" class="f-social" aria-label="Telegram" target="_blank" rel="noopener"><i class="fab fa-telegram"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h6>Services</h6>
+        <div class="footer-links">
+          <a href="/pages/services-seo"          class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> SEO Services</a>
+          <a href="/aeo-optimization-services/"  class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> AEO Optimization</a>
+          <a href="/geo-optimization-services/"  class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> GEO Optimization</a>
+          <a href="/ecommerce-seo-services/"     class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Ecommerce SEO</a>
+          <a href="/pages/services-local-seo"    class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Local SEO</a>
+          <a href="/pages/services-web-dev"      class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Web Design</a>
+          <a href="/pages/services-ppc-ads"      class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> PPC Advertising</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h6>Company</h6>
+        <div class="footer-links">
+          <a href="/pages/about"     class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> About Us</a>
+          <a href="/pages/portfolio" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Our Work</a>
+          <a href="/blog/"      class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Blog & Insights</a>
+          <a href="/pages/contact"   class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Contact Us</a>
+          <a href="/pages/contact"   class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Free Consultation</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h6>Get in Touch</h6>
+        <div class="f-contact-item">
+          <i class="fas fa-location-dot"></i>
+          <span>35/A Srijoni Road, Ibrahimpur<br>Dhaka Cantonment, Dhaka 1206, Bangladesh</span>
+        </div>
+        <div class="f-contact-item">
+          <i class="fas fa-phone"></i>
+          <a href="tel:+8801799976295">+880 1799-976295</a>
+        </div>
+        <div class="f-contact-item">
+          <i class="fas fa-envelope"></i>
+          <a href="mailto:info.a1technovation@gmail.com">info.a1technovation@gmail.com</a>
+        </div>
+        <div class="f-contact-item">
+          <i class="fas fa-clock"></i>
+          <span>Mon-Fri: 9 AM - 7 PM BST<br>Sat: 10 AM - 4 PM BST</span>
+        </div>
+      </div>
+    </div>
+  <div class="footer-newsletter"><div class="footer-newsletter-copy"><span class="footer-newsletter-kicker"><i class="fas fa-bolt"></i> A1 Growth Notes</span><h6>Get practical search and conversion ideas monthly.</h6><p>SEO, AI search, web performance, and conversion insights from the A1 Technovation team.</p></div><form class="newsletter-form" data-source="global-footer" action="/api/newsletter_subscribe" method="post"><div class="newsletter-field-wrap"><i class="fas fa-envelope"></i><input type="email" name="email" placeholder="Enter your email" autocomplete="email" required /></div><button type="submit" class="btn btn-primary" aria-label="Subscribe to newsletter"><i class="fas fa-paper-plane"></i><span>Subscribe</span></button><p class="newsletter-status" hidden aria-live="polite"></p><p class="newsletter-privacy"><i class="fas fa-lock"></i> No spam. Unsubscribe anytime.</p></form></div>
+  <div class="footer-bottom">
+      <p class="f-copy">&copy; 2025 A1 Technovation. All rights reserved.</p>
+      <div class="f-bottom-links">
+        <a href="/pages/privacy" class="f-bl">Privacy Policy</a>
+        <a href="/pages/terms" class="f-bl">Terms and Conditions</a>
+      </div>
+    </div>
+  </div>
+</footer>
+    <button class="scroll-top" id="scrollTop" aria-label="Back to top"><i class="ph ph-arrow-up"></i></button>
+    <script src="/js/main.min.js"></script>
+    <script>
+        (function () {
+            var scrollButton = document.getElementById('scrollTop');
+            var toggleScrollButton = function () {
+                if (!scrollButton) return;
+                scrollButton.classList.toggle('is-visible', window.scrollY > 420);
+            };
+            if (scrollButton) {
+                window.addEventListener('scroll', toggleScrollButton, { passive: true });
+                toggleScrollButton();
+                scrollButton.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+            }
+            document.querySelectorAll('[data-copy-link]').forEach(function (button) {
+                button.addEventListener('click', async function () {
+                    try {
+                        if (navigator.clipboard && navigator.clipboard.writeText) await navigator.clipboard.writeText(window.location.href);
+                        button.setAttribute('data-copy-state', 'copied');
+                    } catch (error) { window.prompt('Copy this link:', window.location.href); }
+                });
+            });
+            document.querySelectorAll('.newsletter-form').forEach(function (form) {
+                form.addEventListener('submit', async function (event) {
+                    event.preventDefault();
+                    var emailInput = form.querySelector('input[type="email"]');
+                    var submitButton = form.querySelector('[type="submit"]');
+                    var status = form.querySelector('.newsletter-status');
+                    var email = emailInput ? emailInput.value.trim() : '';
+                    if (!email) return;
+                    var setStatus = function (type, message) {
+                        if (!status) return;
+                        status.hidden = false;
+                        status.className = 'newsletter-status ' + type;
+                        status.textContent = message;
+                    };
+                    var originalHtml = submitButton ? submitButton.innerHTML : '';
+                    if (submitButton) { submitButton.disabled = true; submitButton.innerHTML = 'Submitting...'; }
+                    try {
+                        var response = await fetch(form.getAttribute('action') || '/api/newsletter_subscribe', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ email: email, source: form.getAttribute('data-source') || window.location.pathname || 'blog' })
+                        });
+                        var result = await response.json().catch(function () { return {}; });
+                        setStatus(response.ok ? 'success' : 'error', result.message || (response.ok ? 'Subscribed successfully.' : 'Subscription failed. Please try again.'));
+                        if (response.ok) form.reset();
+                    } catch (error) {
+                        setStatus('error', 'Subscription is temporarily unavailable. Please try again later.');
+                    } finally {
+                        if (submitButton) { submitButton.disabled = false; submitButton.innerHTML = originalHtml; }
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
