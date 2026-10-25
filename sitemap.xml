@@ -49,10 +49,22 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://a1technovation.com/pages/ecommerce-seo-guide</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://a1technovation.com/pages/portfolio</loc>
     <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://a1technovation.com/pages/Car%20Dealership%20SEO%20Case%20Study.html</loc>
+    <lastmod>2026-09-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://a1technovation.com/pages/ppc-facebook-strategy</loc>
@@ -480,4 +492,29 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
+  <url>
+    <loc>https://a1technovation.com/blog/technical-seo-guide/</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://a1technovation.com/blog/how-to-do-seo-for-renovation-companies/</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://a1technovation.com/blog/how-to-do-seo-for-a-car-dealership/</loc>
+    <lastmod>2026-08-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://a1technovation.com/blog/anycast-vs-unicast-infrastructure/</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
+

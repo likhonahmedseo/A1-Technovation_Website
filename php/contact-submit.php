@@ -250,32 +250,101 @@ function build_contact_email_messages(array $config, array $lead): array
         throw new RuntimeException('Mail configuration is incomplete. Check config/contact-form.php.');
     }
 
+    $sourcePath = trim((string) parse_url($lead['page_url'] ?: '', PHP_URL_PATH));
+    $sourcePath = $sourcePath !== '' ? $sourcePath : '/';
+    $sourceSlug = basename($sourcePath, '.html');
+    $sourceSlug = $sourceSlug !== '' ? $sourceSlug : 'website';
+    $sourceLabel = ucwords(str_replace(['-', '_'], ' ', $sourceSlug));
+    $formTitle = $sourceLabel . ' Contact Form';
+    $submittedAt = gmdate('Y-m-d\TH:i:sP');
+    $detailRowStyle = 'padding:18px 20px;border:1px solid #d9e2ef;font-size:15px;line-height:1.7;vertical-align:top;';
+
+    $emailLink = '<a href="mailto:' . rawurlencode($lead['email']) . '" style="color:#2563eb;text-decoration:underline;">' . htmlspecialchars($lead['email']) . '</a>';
+    $websiteValue = $lead['website'] !== ''
+        ? '<a href="' . htmlspecialchars($lead['website']) . '" style="color:#2563eb;text-decoration:underline;">' . htmlspecialchars($lead['website']) . '</a>'
+        : 'Not provided';
+    $sourcePageValue = $lead['page_url'] !== ''
+        ? '<a href="' . htmlspecialchars($lead['page_url']) . '" style="color:#2563eb;text-decoration:underline;">' . htmlspecialchars($lead['page_url']) . '</a>'
+        : 'Unknown';
+    $countryValue = htmlspecialchars($lead['country_name'] ?: 'Unavailable') . ($lead['country_code'] !== '' ? ' (' . htmlspecialchars($lead['country_code']) . ')' : '');
+    $messageValue = nl2br(htmlspecialchars($lead['message']));
+
+    $rows = [
+        ['Name', htmlspecialchars($lead['name'])],
+        ['Email', $emailLink],
+        ['Phone', htmlspecialchars($lead['phone'] ?: 'Not provided')],
+        ['Company', htmlspecialchars($lead['company'] ?: 'Not provided')],
+        ['WhatsApp', 'Not provided'],
+        ['Website', $websiteValue],
+        ['Service Needed', htmlspecialchars($lead['service_label'])],
+        ['Monthly Budget', htmlspecialchars($lead['budget'] ?: 'Not specified')],
+        ['Message', '<div style="white-space:normal;line-height:1.8;">' . $messageValue . '</div>'],
+        ['Submitted', htmlspecialchars($submittedAt)],
+        ['IP Address', htmlspecialchars($lead['ip_address'] ?: 'Unavailable')],
+        ['Country', $countryValue],
+        ['Remote Address', htmlspecialchars($lead['remote_address'] ?: 'Unavailable')],
+        ['Forwarded For', htmlspecialchars($lead['forwarded_for'] ?: 'Unavailable')],
+        ['Source Page', $sourcePageValue],
+    ];
+
+    $rowsHtml = '';
+    foreach ($rows as [$label, $value]) {
+        $isMessageRow = $label === 'Message';
+        $rowsHtml .= '
+            <tr>
+                <td style="width:31%;' . $detailRowStyle . 'background:#f5f7fb;color:#1e2f4d;font-weight:700;">' . $label . '</td>
+                <td style="' . $detailRowStyle . 'background:#ffffff;color:#162033;' . ($isMessageRow ? 'min-height:220px;' : '') . '">' . $value . '</td>
+            </tr>';
+    }
+
     $notificationHtml = '
-        <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ' . htmlspecialchars($lead['name']) . '</p>
-        <p><strong>Email:</strong> ' . htmlspecialchars($lead['email']) . '</p>
-        <p><strong>Phone:</strong> ' . htmlspecialchars($lead['phone'] ?: 'Not provided') . '</p>
-        <p><strong>Company:</strong> ' . htmlspecialchars($lead['company'] ?: 'Not provided') . '</p>
-        <p><strong>Website:</strong> ' . htmlspecialchars($lead['website'] ?: 'Not provided') . '</p>
-        <p><strong>Service:</strong> ' . htmlspecialchars($lead['service_label']) . '</p>
-        <p><strong>Budget:</strong> ' . htmlspecialchars($lead['budget'] ?: 'Not specified') . '</p>
-        <p><strong>IP Address:</strong> ' . htmlspecialchars($lead['ip_address'] ?: 'Unavailable') . '</p>
-        <p><strong>Country:</strong> ' . htmlspecialchars($lead['country_name'] ?: 'Unavailable') . ($lead['country_code'] !== '' ? ' (' . htmlspecialchars($lead['country_code']) . ')' : '') . '</p>
-        <p><strong>Remote Address:</strong> ' . htmlspecialchars($lead['remote_address'] ?: 'Unavailable') . '</p>
-        <p><strong>Forwarded For:</strong> ' . htmlspecialchars($lead['forwarded_for'] ?: 'Unavailable') . '</p>
-        <p><strong>Source Page:</strong> ' . htmlspecialchars($lead['page_url'] ?: 'Unknown') . '</p>
-        <p><strong>Message:</strong></p>
-        <p>' . nl2br(htmlspecialchars($lead['message'])) . '</p>
-    ';
+        <!doctype html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>New Website Lead</title>
+        </head>
+        <body style="margin:0;padding:32px 16px;background:#eef2f7;font-family:Arial,Helvetica,sans-serif;color:#162033;">
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="max-width:920px;margin:0 auto;background:#ffffff;border:1px solid #d8e1ee;border-radius:18px;overflow:hidden;">
+                <tr>
+                    <td style="padding:0;">
+                        <div style="background:#121a2b;padding:28px 36px;">
+                            <div style="margin:0 0 10px;color:#9dc3ff;font-size:14px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;">New Website Lead</div>
+                            <div style="margin:0;color:#ffffff;font-size:28px;line-height:1.25;font-weight:700;">' . htmlspecialchars($formTitle) . '</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding:36px;">
+                        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin:0 0 18px;border-collapse:collapse;">
+                            <tr>
+                                <td style="padding:0 0 10px;color:#51627f;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;font-weight:700;">Lead Summary</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:0;color:#23324d;font-size:15px;line-height:1.7;">A new website enquiry has been submitted and is ready for follow-up. The full contact details, budget, message, and source metadata are listed below.</td>
+                            </tr>
+                        </table>
+                        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;">
+                            ' . $rowsHtml . '
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </body>
+        </html>';
     $notificationText =
-        "New Contact Form Submission\n\n" .
+        "NEW WEBSITE LEAD\n" .
+        "{$formTitle}\n\n" .
         "Name: {$lead['name']}\n" .
         "Email: {$lead['email']}\n" .
         "Phone: " . ($lead['phone'] ?: 'Not provided') . "\n" .
         "Company: " . ($lead['company'] ?: 'Not provided') . "\n" .
+        "WhatsApp: Not provided\n" .
         "Website: " . ($lead['website'] ?: 'Not provided') . "\n" .
-        "Service: {$lead['service_label']}\n" .
-        "Budget: " . ($lead['budget'] ?: 'Not specified') . "\n" .
+        "Service Needed: {$lead['service_label']}\n" .
+        "Monthly Budget: " . ($lead['budget'] ?: 'Not specified') . "\n" .
+        "Submitted: {$submittedAt}\n" .
         "IP Address: " . ($lead['ip_address'] ?: 'Unavailable') . "\n" .
         "Country: " . ($lead['country_name'] ?: 'Unavailable') . ($lead['country_code'] !== '' ? " ({$lead['country_code']})" : '') . "\n" .
         "Remote Address: " . ($lead['remote_address'] ?: 'Unavailable') . "\n" .

@@ -489,8 +489,15 @@ function cms_mime_from_file(string $path, string $fallbackName = ''): string
 
 function cms_upload_media(array $file, int $adminId, string $title = '', string $altText = ''): array
 {
-    if (($file['error'] ?? UPLOAD_ERR_NO_FILE) !== UPLOAD_ERR_OK) {
-        throw new RuntimeException('Choose a file before uploading.');
+    $errorCode = (int) ($file['error'] ?? UPLOAD_ERR_NO_FILE);
+    if ($errorCode !== UPLOAD_ERR_OK) {
+        $msg = match ($errorCode) {
+            UPLOAD_ERR_INI_SIZE, UPLOAD_ERR_FORM_SIZE => 'File exceeds maximum upload size limit.',
+            UPLOAD_ERR_PARTIAL => 'File was only partially uploaded.',
+            UPLOAD_ERR_NO_FILE => 'Choose a file before uploading.',
+            default => 'Upload error (code ' . $errorCode . ').',
+        };
+        throw new RuntimeException($msg);
     }
 
     $tmpName = (string) ($file['tmp_name'] ?? '');
@@ -503,7 +510,7 @@ function cms_upload_media(array $file, int $adminId, string $title = '', string 
     $mimeType = cms_mime_from_file($tmpName, $originalName);
 
     if (!in_array($mimeType, cms_allowed_media_types(), true)) {
-        throw new RuntimeException('Unsupported media type. Upload JPG, PNG, WebP, GIF, SVG, MP4, WebM, or PDF files.');
+        throw new RuntimeException('Unsupported media type: ' . ($mimeType ?: pathinfo($originalName, PATHINFO_EXTENSION)) . '. Upload JPG, PNG, WebP, GIF, SVG, MP4, WebM, or PDF files.');
     }
 
     $directory = cms_ensure_media_dir();
@@ -533,6 +540,85 @@ function cms_upload_media(array $file, int $adminId, string $title = '', string 
     ]);
 
     return cms_get_media((int) cms_db()->lastInsertId()) ?? [];
+}
+
+/**
+ * Normalizes $_FILES array structures (both single file and multiple files)
+ * into a uniform list of file arrays.
+ */
+function cms_normalize_uploaded_files(array $files): array
+{
+    if (!isset($files['name'])) {
+        return [];
+    }
+
+    $normalized = [];
+    if (is_array($files['name'])) {
+        $count = count($files['name']);
+        for ($i = 0; $i < $count; $i++) {
+            $err = (int) ($files['error'][$i] ?? UPLOAD_ERR_NO_FILE);
+            if ($err === UPLOAD_ERR_NO_FILE) {
+                continue;
+            }
+            $normalized[] = [
+                'name'     => (string) ($files['name'][$i] ?? ''),
+                'type'     => (string) ($files['type'][$i] ?? ''),
+                'tmp_name' => (string) ($files['tmp_name'][$i] ?? ''),
+                'error'    => $err,
+                'size'     => (int) ($files['size'][$i] ?? 0),
+            ];
+        }
+    } elseif (($files['error'] ?? UPLOAD_ERR_NO_FILE) !== UPLOAD_ERR_NO_FILE) {
+        $normalized[] = [
+            'name'     => (string) ($files['name'] ?? ''),
+            'type'     => (string) ($files['type'] ?? ''),
+            'tmp_name' => (string) ($files['tmp_name'] ?? ''),
+            'error'    => (int) ($files['error'] ?? UPLOAD_ERR_OK),
+            'size'     => (int) ($files['size'] ?? 0),
+        ];
+    }
+
+    return $normalized;
+}
+
+/**
+ * Uploads a single media file and applies automatic WebP optimization & dimension metadata.
+ */
+function cms_process_uploaded_media_item(array $file, int $adminId, string $title = '', string $altText = ''): array
+{
+    $uploaded = cms_upload_media($file, $adminId, $title, $altText);
+
+    if (!empty($uploaded['file_path'])) {
+        $absPath = cms_root(ltrim((string) $uploaded['file_path'], '/\\'));
+        $webpAbs = cms_convert_upload_to_webp($absPath, (string) ($uploaded['mime_type'] ?? ''));
+        $dims    = cms_image_dimensions($absPath);
+
+        if ($webpAbs !== null || $dims['width'] !== null) {
+            $rootPath = cms_root();
+            $webpRel = null;
+            if ($webpAbs !== null) {
+                $cleanRel = str_replace([$rootPath, '\\'], ['', '/'], $webpAbs);
+                $webpRel  = ltrim($cleanRel, '/');
+            }
+
+            cms_db()->prepare(
+                'UPDATE media_files SET webp_path=:wp, original_size=:os, width=:w, height=:h WHERE id=:id'
+            )->execute([
+                'wp' => $webpRel,
+                'os' => (int) ($uploaded['file_size'] ?? 0),
+                'w'  => $dims['width'],
+                'h'  => $dims['height'],
+                'id' => (int) ($uploaded['id'] ?? 0),
+            ]);
+
+            $uploaded['webp_path']     = $webpRel;
+            $uploaded['original_size'] = (int) ($uploaded['file_size'] ?? 0);
+            $uploaded['width']         = $dims['width'];
+            $uploaded['height']        = $dims['height'];
+        }
+    }
+
+    return $uploaded;
 }
 
 function cms_stock_image_allowed_hosts(): array
@@ -1197,6 +1283,7 @@ function cms_get_site_image_assets(string $directory = 'assets/images'): array
         $absolutePath = $fileInfo->getPathname();
         $relativePath = ltrim(str_replace('\\', '/', substr($absolutePath, strlen($root))), '/');
         $title = pathinfo($fileInfo->getFilename(), PATHINFO_FILENAME);
+        $isProtected = in_array($relativePath, cms_protected_site_image_paths(), true);
 
         $items[] = [
             'title' => str_replace(['-', '_'], ' ', $title),
@@ -1205,12 +1292,80 @@ function cms_get_site_image_assets(string $directory = 'assets/images'): array
             'url' => cms_media_url($relativePath),
             'extension' => $extension,
             'size' => $fileInfo->getSize(),
+            'is_protected' => $isProtected,
         ];
     }
 
     usort($items, static fn (array $a, array $b): int => strnatcasecmp((string) $a['file_path'], (string) $b['file_path']));
 
     return $items;
+}
+
+function cms_protected_site_image_paths(): array
+{
+    return [
+        'assets/images/favicon.png',
+        'assets/images/apple-touch-icon.png',
+    ];
+}
+
+function cms_delete_site_image(string $relativePath): bool
+{
+    $relativePath = trim(str_replace('\\', '/', $relativePath));
+    $relativePath = ltrim($relativePath, '/');
+
+    if (!str_starts_with($relativePath, 'assets/images/')) {
+        return false;
+    }
+
+    if (in_array($relativePath, cms_protected_site_image_paths(), true)) {
+        return false;
+    }
+
+    $allowedExtensions = ['avif', 'gif', 'jpg', 'jpeg', 'png', 'svg', 'webp'];
+    $extension = strtolower(pathinfo($relativePath, PATHINFO_EXTENSION));
+    if (!in_array($extension, $allowedExtensions, true)) {
+        return false;
+    }
+
+    $imagesDir = realpath(cms_root('assets/images'));
+    $absolutePath = cms_root($relativePath);
+    $realFile = realpath($absolutePath);
+
+    if ($imagesDir === false || $realFile === false) {
+        return false;
+    }
+
+    if (!str_starts_with($realFile, $imagesDir . DIRECTORY_SEPARATOR) && $realFile !== $imagesDir) {
+        return false;
+    }
+
+    if (is_file($realFile)) {
+        $deleted = @unlink($realFile);
+        if ($deleted) {
+            try {
+                if (cms_table_exists('media_files')) {
+                    $stmt = cms_db()->prepare('DELETE FROM media_files WHERE file_path = :path OR file_path = :rpath');
+                    $stmt->execute(['path' => $relativePath, 'rpath' => str_replace('/', DIRECTORY_SEPARATOR, $relativePath)]);
+                }
+            } catch (Throwable) {
+            }
+        }
+        return $deleted;
+    }
+
+    return false;
+}
+
+function cms_bulk_delete_site_images(array $relativePaths): int
+{
+    $deleted = 0;
+    foreach ($relativePaths as $path) {
+        if (is_string($path) && cms_delete_site_image($path)) {
+            $deleted++;
+        }
+    }
+    return $deleted;
 }
 
 function cms_delete_media(int $id): void
@@ -1229,6 +1384,19 @@ function cms_delete_media(int $id): void
 
     $statement = cms_db()->prepare('DELETE FROM media_files WHERE id = :id');
     $statement->execute(['id' => $id]);
+}
+
+function cms_bulk_delete_media(array $ids): int
+{
+    $deleted = 0;
+    foreach ($ids as $id) {
+        $id = (int) $id;
+        if ($id > 0) {
+            cms_delete_media($id);
+            $deleted++;
+        }
+    }
+    return $deleted;
 }
 
 function cms_get_post(int $id): ?array
@@ -5858,6 +6026,28 @@ if (!function_exists('cms_static_blog_file_to_source')) {
             $title = trim(html_entity_decode(strip_tags((string) $headingMatch[1]), ENT_QUOTES, 'UTF-8'));
         }
 
+        $description = '';
+        if (preg_match('#<meta[^>]+name=["\']description["\'][^>]+content=["\']([^"\']+)["\']#i', $html, $descriptionMatch) === 1) {
+            $description = trim(html_entity_decode((string) $descriptionMatch[1], ENT_QUOTES, 'UTF-8'));
+        }
+
+        $authorName = trim((string) cms_config('app.default_author', 'A1 Technovation'));
+        if (preg_match('#<meta[^>]+name=["\']author["\'][^>]+content=["\']([^"\']+)["\']#i', $html, $authorMatch) === 1) {
+            $authorName = trim(html_entity_decode((string) $authorMatch[1], ENT_QUOTES, 'UTF-8')) ?: $authorName;
+        }
+
+        $publishedAt = '';
+        if (preg_match('#<meta[^>]+property=["\']article:published_time["\'][^>]+content=["\']([^"\']+)["\']#i', $html, $publishedMatch) === 1) {
+            $publishedAt = trim((string) $publishedMatch[1]);
+        } elseif (preg_match('#<time[^>]+datetime=["\']([^"\']+)["\']#i', $html, $timeMatch) === 1) {
+            $publishedAt = trim((string) $timeMatch[1]);
+        }
+
+        $category = '';
+        if (preg_match('#<meta[^>]+property=["\']article:section["\'][^>]+content=["\']([^"\']+)["\']#i', $html, $categoryMatch) === 1) {
+            $category = trim(html_entity_decode((string) $categoryMatch[1], ENT_QUOTES, 'UTF-8'));
+        }
+
         $featuredDetected = cms_extract_first_image_src($html);
         $overrides = cms_static_blog_featured_image_overrides();
         $featuredOverride = trim((string) ($overrides[$relativePath] ?? ''));
@@ -5866,6 +6056,12 @@ if (!function_exists('cms_static_blog_file_to_source')) {
             'path' => $relativePath,
             'slug' => $slug,
             'title' => $title,
+            'excerpt' => $description,
+            'meta_description' => $description,
+            'author_name' => $authorName,
+            'author_image' => cms_default_author_image_url(),
+            'category' => $category,
+            'published_at' => $publishedAt,
             'featured_image_detected' => $featuredDetected,
             'featured_image_override' => $featuredOverride,
             'featured_image' => $featuredOverride !== '' ? $featuredOverride : $featuredDetected,

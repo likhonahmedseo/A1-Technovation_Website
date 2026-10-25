@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Core Web Vitals: What They Are and How to Fix Them</title>
+    <meta name="description" content="Learn what Core Web Vitals are, how Google measures LCP, INP, and CLS, and the exact fixes that improve real user experience and search performance.">
+    <meta name="author" content="Likhon Ahmed">
+    <meta property="article:published_time" content="2026-06-16">
+    <meta property="article:modified_time" content="2026-06-16">
+    <meta property="article:section" content="Technical SEO">
+    <link rel="canonical" href="https://a1technovation.com/blog/core-web-vitals-guide/">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="A1 Technovation">
+    <meta property="og:title" content="Core Web Vitals: What They Are and How to Fix Them">
+    <meta property="og:description" content="Learn what Core Web Vitals are, how Google measures LCP, INP, and CLS, and the exact fixes that improve real user experience and search performance.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://a1technovation.com/blog/core-web-vitals-guide/">
+    <meta property="og:image" content="https://a1technovation.com/assets/uploads/media/Core%20Web%20Vitals%20-%20What%20They%20Are%20and%20How%20to%20Fix%20Them.webp">
+    <meta property="og:image:alt" content="Core Web Vitals: What They Are and How to Fix Them">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Core Web Vitals: What They Are and How to Fix Them">
+    <meta name="twitter:description" content="Learn what Core Web Vitals are, how Google measures LCP, INP, and CLS, and the exact fixes that improve real user experience and search performance.">
+    <meta name="twitter:image" content="https://a1technovation.com/assets/uploads/media/Core%20Web%20Vitals%20-%20What%20They%20Are%20and%20How%20to%20Fix%20Them.webp">
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+    <link rel="apple-touch-icon" href="/assets/images/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin><link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
+    <link rel="stylesheet" href="/css/style.min.css">
+    <link rel="stylesheet" href="/css/responsive.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://a1technovation.com/blog/core-web-vitals-guide/#article",
+      "headline": "Core Web Vitals: What They Are and How to Fix Them",
+      "description": "A complete guide to Core Web Vitals covering LCP, INP, CLS, the 2026 thresholds, measurement methods, and practical fixes.",
+      "url": "https://a1technovation.com/blog/core-web-vitals-guide/",
+      "datePublished": "2026-06-16",
+      "dateModified": "2026-06-16",
+      "author": {
+        "@type": "Person",
+        "name": "Likhon Ahmed",
+        "url": "https://a1technovation.com/about/",
+        "jobTitle": "Founder and CEO",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "A1 Technovation",
+          "url": "https://a1technovation.com"
+        }
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "A1 Technovation",
+        "url": "https://a1technovation.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://a1technovation.com/logo.png"
+        }
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://a1technovation.com/assets/uploads/media/Core%20Web%20Vitals%20-%20What%20They%20Are%20and%20How%20to%20Fix%20Them.webp"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://a1technovation.com/blog/core-web-vitals-guide/"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://a1technovation.com/blog/core-web-vitals-guide/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What are Core Web Vitals in simple terms?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Core Web Vitals are three scores that show how fast a page loads, how quickly it responds to clicks or taps, and how stable the layout stays while loading. Google uses these scores as part of its ranking system."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What changed with Core Web Vitals in 2026?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Google lowered the Good LCP threshold from 2.5 seconds to 2.0 seconds in March 2026. Google also moved to a site-wide aggregation model, so pages across a domain now affect each other's scores instead of standing alone."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is INP harder to pass than FID was?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. INP measures every interaction during a visit, not just the first one. FID only checked the first click or tap. INP gives a stricter and more complete picture of real responsiveness."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do Core Web Vitals affect my Google rankings directly?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Core Web Vitals act as a tiebreaker. If two pages offer similar content quality, the page with better Core Web Vitals scores tends to win the higher position."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What tool should I use first to check my scores?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Start with Google Search Console's Core Web Vitals report. It shows real Field Data grouped by URL pattern, which tells you which templates need attention before you run deeper Lighthouse or WebPageTest audits."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can good Core Web Vitals fix weak content?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Core Web Vitals improve user experience and can support rankings, but they cannot replace thin or low-value content. Strong content paired with strong performance produces the best result."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How often should I check my Core Web Vitals scores?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Check monthly at minimum, and immediately after any major deploy, theme change, or new third-party script addition. Field Data updates on a rolling 28-day basis, so changes take time to fully reflect in reports."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://a1technovation.com/blog/core-web-vitals-guide/#breadcrumb",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://a1technovation.com/"},
+        {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://a1technovation.com/blog/"},
+        {"@type": "ListItem", "position": 3, "name": "Core Web Vitals Guide", "item": "https://a1technovation.com/blog/core-web-vitals-guide/"}
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://a1technovation.com/#organization",
+      "name": "A1 Technovation",
+      "url": "https://a1technovation.com",
+      "foundingDate": "2018",
+      "foundingLocation": "Dhaka, Bangladesh",
+      "description": "A1 Technovation is a full-stack digital marketing agency specializing in SEO, AEO, and GEO, serving 150+ global clients across the USA, UAE, Qatar, Saudi Arabia, and Bahrain.",
+      "sameAs": [
+        "https://www.linkedin.com/company/a1technovation",
+        "https://twitter.com/a1technovation"
+      ]
+    },
+    {
+      "@type": "Speakable",
+      "@id": "https://a1technovation.com/blog/core-web-vitals-guide/#speakable",
+      "cssSelector": [".direct-answer", ".faq-answer"]
+    }
+  ]
+}
+    </script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0f172a',
+                            primary: '#2563eb',
+                            hover: '#1d4ed8',
+                            light: '#f8fafc',
+                            border: '#e2e8f0'
+                        }
+                    }
+                }
+            }
+        };
+    </script>
+    <style>
+        .prose h2 { font-size: 1.875rem; font-weight: 800; color: #0f172a; margin-top: 3.5rem; margin-bottom: 1.25rem; line-height: 1.3; letter-spacing: -0.025em; }
+        .prose h3 { font-size: 1.4rem; font-weight: 700; color: #1e293b; margin-top: 2.5rem; margin-bottom: 1rem; }
+        .prose h4 { font-size: 1.15rem; font-weight: 700; color: #1e293b; margin-top: 2rem; margin-bottom: 0.75rem; }
+        .prose p { font-size: 1.125rem; color: #475569; line-height: 1.8; margin-bottom: 1.75rem; }
+        .prose a { color: #2563eb; text-decoration: none; font-weight: 600; border-bottom: 1px dashed #2563eb; transition: all 0.2s ease; }
+        .prose a:hover { color: #1d4ed8; border-bottom-style: solid; }
+        .prose ul, .prose ol { padding-left: 1.5rem; margin-bottom: 2rem; color: #475569; font-size: 1.125rem; line-height: 1.8; }
+        .prose ul { list-style-type: disc; }
+        .prose ol { list-style-type: decimal; }
+        .prose li { margin-bottom: 0.75rem; }
+        .prose li strong { color: #0f172a; }
+        .prose table { width: 100%; border-collapse: collapse; margin: 2.5rem 0; font-size: 1rem; text-align: left; border-radius: 0.75rem; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; }
+        .prose thead tr { background-color: #0f172a; color: #ffffff; }
+        .prose th, .prose td { padding: 1.15rem 1.5rem; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        .prose tbody tr:nth-of-type(even) { background-color: #f8fafc; }
+        .prose tbody tr:last-of-type { border-bottom: 2px solid #2563eb; }
+        .prose hr { margin: 2.75rem 0; border: 0; border-top: 1px solid #e2e8f0; }
+        .prose code { background: rgba(148,163,184,0.18); color: #0f172a; padding: 0.15rem 0.4rem; border-radius: 0.35rem; font-size: 0.9em; }
+        .visual-container { width: 100%; margin: 3rem 0; border-radius: 1.25rem; overflow: hidden; background-color: #0f172a; border: 1px solid #1e293b; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1),0 10px 10px -5px rgba(0,0,0,0.04); }
+        .direct-answer { background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%); border-left: 5px solid #2563eb; border-radius: 0 1rem 1rem 0; padding: 2.5rem; margin: 3rem 0; box-shadow: 0 10px 25px -5px rgba(37,99,235,0.1); border: 1px solid #e2e8f0; border-left: 5px solid #2563eb; position: relative; }
+        .direct-answer p { margin-bottom: 0; font-size: 1.15rem; color: #1e293b; font-weight: 500; line-height: 1.8; }
+        .article-navbar,.article-navbar.scrolled { background: rgba(255,255,255,.96); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border-bottom: 1px solid rgba(15,23,42,.08); box-shadow: 0 4px 24px rgba(15,23,42,.06); }
+        .article-navbar .logo-brand-dark { opacity: 0; }
+        .article-navbar .logo-brand-light { opacity: 1; }
+        .article-navbar .nav-link,.article-navbar .nav-item.current>.nav-link { color: #475569; }
+        .article-navbar .nav-link:hover,.article-navbar .nav-link.active,.article-navbar .nav-item.current>.nav-link { color: #2563eb; background: rgba(37,99,235,.08); }
+        .article-navbar .mobile-toggle span { background: #0f172a; }
+        .article-cta-card { background: linear-gradient(135deg,#0f172a 0%,#162248 100%); color: #fff; }
+        .article-cta-card p,.article-cta-card .cta-copy { color: #cbd5e1; }
+        .article-cta-button { display: inline-flex; align-items: center; justify-content: center; background: linear-gradient(135deg,#2563eb,#3b82f6); color: #fff !important; font-weight: 700; padding: .95rem 2rem; border-radius: .75rem; box-shadow: 0 18px 32px rgba(37,99,235,.28); border-bottom: none !important; min-width: 280px; }
+        .article-cta-button:hover { background: linear-gradient(135deg,#1d4ed8,#2563eb); color: #fff !important; transform: translateY(-1px); }
+        .article-sidebar-newsletter { background: linear-gradient(160deg,#0f172a 0%,#162248 100%); color: #fff; }
+        .article-sidebar-newsletter p,.article-sidebar-newsletter h3,.article-sidebar-newsletter .newsletter-status { color: inherit; }
+        .article-sidebar-newsletter .newsletter-copy { color: #cbd5e1; }
+        .article-sidebar-newsletter .newsletter-form { display: grid; grid-template-columns: 1fr; gap: .85rem; }
+        .article-sidebar-newsletter .newsletter-form input[type="email"] { width: 100%; min-height: 52px; border: 1px solid rgba(148,163,184,.3); border-radius: .75rem; background: rgba(15,23,42,.55); color: #fff; padding: .85rem 1rem; box-shadow: none; }
+        .article-sidebar-newsletter .newsletter-form input[type="email"]::placeholder { color: #94a3b8; }
+        .article-sidebar-newsletter .newsletter-form input[type="email"]:focus { border-color: #60a5fa; background: rgba(15,23,42,.8); box-shadow: 0 0 0 3px rgba(59,130,246,.2); }
+        .article-sidebar-newsletter .newsletter-form button[type="submit"] { width: 100%; min-height: 52px; border: 0; border-radius: .75rem; background: linear-gradient(135deg,#2563eb,#3b82f6); color: #fff; font-weight: 700; box-shadow: none; }
+        .article-sidebar-newsletter .newsletter-form button[type="submit"]:hover { background: linear-gradient(135deg,#1d4ed8,#2563eb); }
+        .article-sidebar-newsletter .newsletter-note { color: #94a3b8; }
+        .scroll-top { position: fixed; right: 24px; bottom: 24px; width: 52px; height: 52px; border: 0; border-radius: 999px; background: linear-gradient(135deg,#2563eb,#7c3aed); color: #fff; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 18px 36px rgba(37,99,235,.24); cursor: pointer; opacity: 0; visibility: hidden; transform: translateY(16px); transition: opacity .22s ease,transform .22s ease,visibility .22s ease; z-index: 50; }
+        .scroll-top.is-visible { opacity: 1; visibility: visible; transform: translateY(0); }
+        .newsletter-status { display: block; margin-top: .75rem; font-size: .875rem; line-height: 1.5; }
+        .newsletter-status.success { color: #86efac; }
+        .newsletter-status.error { color: #fca5a5; }
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="bg-brand-light font-sans text-slate-800 antialiased selection:bg-brand-primary selection:text-white">
+    <nav class="navbar article-navbar" id="navbar">
+        <div class="container"><div class="navbar-inner">
+            <a href="/" class="navbar-logo" aria-label="A1 Technovation home"><span class="logo-mark"><img src="/assets/images/A1Technovation-Dark-Background.png" alt="A1 Technovation" class="logo-brand logo-brand-dark"><img src="/assets/images/A1Technovation-Light-Background.png" alt="A1 Technovation" class="logo-brand logo-brand-light"></span></a>
+            <nav class="navbar-nav">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/pages/about" class="nav-link">About</a>
+                <div class="nav-item megamenu-item"><a href="/pages/services" class="nav-link">Services <i class="fas fa-chevron-down" style="font-size:.7em;opacity:.7"></i></a>
+                    <div class="megamenu">
+                        <div class="megamenu-inner">
+                            <div class="mm-col mm-col-main">
+                                <p class="mm-col-head">Core Services</p>
+                                <a href="/pages/services-seo" class="mm-service"><div class="mm-icon"><i class="fas fa-search"></i></div><div class="mm-body"><span class="mm-title">SEO Services</span><span class="mm-desc">Technical, content, and authority growth</span></div></a>
+                                <a href="/aeo-optimization-services/" class="mm-service"><div class="mm-icon"><i class="fas fa-comment-dots"></i></div><div class="mm-body"><span class="mm-title">AEO Optimization</span><span class="mm-desc">Win snippets and answer boxes</span></div></a>
+                                <a href="/geo-optimization-services/" class="mm-service"><div class="mm-icon"><i class="fas fa-diagram-project"></i></div><div class="mm-body"><span class="mm-title">GEO Optimization</span><span class="mm-desc">Get cited by AI engines</span></div></a>
+                                <a href="/pages/services-local-seo" class="mm-service"><div class="mm-icon"><i class="fas fa-location-dot"></i></div><div class="mm-body"><span class="mm-title">Local SEO</span><span class="mm-desc">Maps, local pack, and city rankings</span></div></a>
+                            </div>
+                            <div class="mm-col mm-col-links">
+                                <p class="mm-col-head">SEO Specialties</p>
+                                <a href="/ecommerce-seo-services/" class="mm-link">Ecommerce SEO</a>
+                                <a href="/pages/services-web-dev" class="mm-link">Web Design</a>
+                                <a href="/pages/services-ppc-ads" class="mm-link">PPC Advertising</a>
+                                <a href="/pages/services-social-media" class="mm-link">Social Media</a>
+                                <a href="/seo-services-for-hvac-companies/" class="mm-link">HVAC SEO</a>
+                                <a href="/seo-services-usa/" class="mm-link">SEO Services USA</a>
+                                <a href="/pages/services-car-rental-seo" class="mm-link">Car Rental SEO</a>
+                                <a href="/pages/services-limousine-business-seo" class="mm-link">Limousine Business SEO</a>
+                                <a href="/pages/services-car-repair-seo" class="mm-link">Car Repair SEO</a>
+                                <a href="/pages/services-car-dealership-seo" class="mm-link">Car Dealership SEO</a>
+                                <a href="/pages/services-tree-service-seo" class="mm-link">Tree Service SEO</a>
+                                <a href="/pages/services-lawyer-seo" class="mm-link">Lawyer SEO</a>
+                                <a href="/pages/services-small-business-seo" class="mm-link">Small Business SEO</a>
+                            </div>
+                            <div class="mm-col mm-col-feature">
+                                <div class="mm-feature-card">
+                                    <div class="mm-feature-badge">Free Audit</div>
+                                    <h4 class="mm-feature-title">Grow Your Business Online</h4>
+                                    <p class="mm-feature-body">Get a free 30-minute strategy session with our experts - no strings attached.</p>
+                                    <a href="https://wa.me/8801799976295" class="btn btn-primary btn-sm" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Free Consultation</a>
+                                    <a href="/pages/services" class="mm-feature-link">View all services -&gt;</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="/pages/portfolio" class="nav-link">Work</a>
+                <a href="/pages/blog" class="nav-link active">Blog</a>
+                <a href="/pages/tools" class="nav-link">Tools</a>
+                <a href="/pages/contact" class="nav-link">Contact</a>
+            </nav>
+            <div class="navbar-right">
+                <a href="https://wa.me/8801799976295" class="btn btn-primary btn-sm nav-cta" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Free Consultation</a>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false"><span></span><span></span><span></span></button>
+            </div>
+        </div></div>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="/" class="mobile-menu-link">Home <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
+        <a href="/pages/about" class="mobile-menu-link">About <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
+        <a href="/pages/services" class="mobile-menu-link">Services <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
+        <a href="/pages/portfolio" class="mobile-menu-link">Work <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
+        <a href="/pages/blog" class="mobile-menu-link">Blog <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
+        <a href="/pages/tools" class="mobile-menu-link">Tools <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
+        <a href="/pages/contact" class="mobile-menu-link">Contact <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
+    </div>
+    <main class="py-12 lg:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="flex text-sm text-slate-500 mb-10" aria-label="Breadcrumb">
+                <ol class="flex items-center space-x-2">
+                    <li><a href="https://a1technovation.com/" class="hover:text-brand-primary transition-colors">Home</a></li>
+                    <li><i class="ph ph-caret-right text-xs"></i></li>
+                    <li><a href="https://a1technovation.com/blog/" class="hover:text-brand-primary transition-colors">Blog</a></li>
+                    <li><i class="ph ph-caret-right text-xs"></i></li>
+                    <li class="text-slate-800 font-semibold" aria-current="page">Core Web Vitals: What They Are and How to Fix Them</li>
+                </ol>
+            </nav>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 xl:gap-16">
+                <div class="lg:col-span-8">
+                    <header class="mb-8">
+                        <div class="flex items-center gap-3 mb-6">
+                            <span class="bg-blue-100 text-brand-primary text-xs font-bold px-3.5 py-1.5 uppercase tracking-wider rounded-full">Technical SEO</span>
+                            <span class="text-slate-500 text-sm flex items-center gap-1.5"><i class="ph ph-clock"></i> ~12 min read</span>
+                        </div>
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-brand-dark leading-tight mb-8 tracking-tight">Core Web Vitals: What They Are and How to Fix Them</h1>
+                        <div class="flex items-center gap-4 py-6 border-y border-brand-border">
+                            <div class="w-14 h-14 rounded-full bg-slate-200 overflow-hidden flex-shrink-0 shadow-[0_0_15px_rgba(37,99,235,0.2)]">
+                                <img src="/assets/images/CEO%20of%20A1%20Technovation.webp" alt="Likhon Ahmed, Founder and CEO of A1 Technovation" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <div class="font-bold text-slate-900 text-lg leading-tight">By Likhon Ahmed</div>
+                                <div class="text-sm text-slate-500 mt-1">CEO &amp; Senior SEO Consultant, A1 Technovation • Updated: June 2026</div>
+                            </div>
+                            <div class="ml-auto flex gap-2">
+                                <button class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-brand-primary hover:text-white transition-colors" title="Copy Link" data-copy-link>
+                                    <i class="ph ph-link text-xl"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </header>
+                    <p class="text-xl text-slate-600 font-medium mb-8">Learn what Core Web Vitals are, how Google measures LCP, INP, and CLS, and the exact fixes that improve real user experience and search performance.</p>
+
+                    <div class="visual-container mb-12">
+                        <img src="/assets/uploads/media/Core%20Web%20Vitals%20-%20What%20They%20Are%20and%20How%20to%20Fix%20Them.webp" alt="Core Web Vitals: What They Are and How to Fix Them" class="w-full h-auto object-cover">
+                    </div>
+
+                    <article class="prose max-w-none">
+<div class="direct-answer relative">
+    <div class="absolute -left-4 -top-4 bg-brand-primary text-white p-3 rounded-full shadow-lg border-4 border-white">
+        <i class="ph ph-sparkle text-xl"></i>
+    </div>
+    <p>Core Web Vitals are three metrics Google uses to measure real user experience on a webpage. They cover loading speed through Largest Contentful Paint, responsiveness through Interaction to Next Paint, and visual stability through Cumulative Layout Shift. Google scores each metric using real visitor data from the Chrome UX Report, not lab simulations. As of the March 2026 update, a page needs an LCP under 2.0 seconds, an INP under 200 milliseconds, and a CLS under 0.1 to earn a Good rating at the 75th percentile.</p>
+</div>
+<p>We work on Core Web Vitals fixes for clients across the USA, UAE, Qatar, Saudi Arabia, and Bahrain every month. This guide breaks down each metric, the exact 2026 thresholds, the tools we use to diagnose problems, and the fixes that move the needle fastest.</p>
+
+<h2 id="what-are-core-web-vitals">What Are Core Web Vitals</h2>
+<p>Core Web Vitals form a subset of Google&#39;s page experience signals. They focus on three measurable parts of a visit: how fast the main content appears, how fast the page responds when someone clicks or taps, and how much the layout jumps around while loading.</p>
+<p>Google built these metrics because older speed signals told an incomplete story. A page could load fast on paper and still feel sluggish to a real visitor. Core Web Vitals fix that gap by scoring the experience users actually feel, not just raw load time.</p>
+<p>The table below shows all three metrics at a glance.</p>
+<div class="overflow-x-auto"><table><thead><tr><th>Metric</th><th>What it measures</th><th>Good threshold (2026)</th><th>Needs Improvement</th><th>Poor</th></tr></thead><tbody><tr><td>Largest Contentful Paint (LCP)</td><td>Loading speed of the main content</td><td>Under 2.0 seconds</td><td>2.0s to 4.0s</td><td>Over 4.0 seconds</td></tr><tr><td>Interaction to Next Paint (INP)</td><td>Responsiveness to clicks, taps, and key presses</td><td>Under 200 milliseconds</td><td>200ms to 500ms</td><td>Over 500ms</td></tr><tr><td>Cumulative Layout Shift (CLS)</td><td>Visual stability during load</td><td>Under 0.1</td><td>0.1 to 0.25</td><td>Over 0.25</td></tr></tbody></table></div>
+<p>Google requires all three metrics to fall in the Good range at the same time. A site that passes LCP and CLS but fails INP still earns a Needs Improvement label, not a Good one. Each metric closes a separate gap, and Google treats the set as a single pass-fail bundle.</p>
+
+<h2 id="the-2026-core-web-vitals-thresholds">The 2026 Core Web Vitals Thresholds</h2>
+<p>Google tightened its Core Web Vitals standards in the March 2026 core update, and the change caught a large share of the web off guard.</p>
+
+<h3 id="lcp-threshold-change-explained">LCP Threshold Change Explained</h3>
+<p>The Good LCP threshold dropped from 2.5 seconds to 2.0 seconds. A page that scored 2.3 seconds before March 2026 passed comfortably. That same page now lands in the Needs Improvement zone without a single code change. Sites with an LCP above 2.5 seconds saw average ranking drops of two to four positions on competitive queries after the update rolled out.</p>
+
+<h3 id="inp-threshold">INP Threshold</h3>
+<p>INP keeps its 200 millisecond ceiling for a Good score, but Google raised its overall ranking weight. INP now carries equal weight alongside LCP and CLS instead of sitting as a secondary signal. Roughly 43% of sites still fail this threshold, which makes INP the most commonly failed Core Web Vital in 2026.</p>
+
+<h3 id="cls-threshold">CLS Threshold</h3>
+<p>CLS keeps its 0.1 ceiling. A score above 0.25 still counts as Poor. CLS has stayed the most stable of the three metrics since launch, but it remains a frequent failure point on pages with ads, embeds, or web fonts that load late.</p>
+
+<h3 id="the-75th-percentile-rule">The 75th Percentile Rule</h3>
+<p>Google scores Core Web Vitals at the 75th percentile of real visitor sessions, not the average. A URL group only earns a Good rating when at least 75% of visits to those pages meet the Good threshold for all three metrics during the measurement window. This rule punishes inconsistency. A page that loads fast for most visitors but spikes badly for a smaller group can still fail.</p>
+
+<h3 id="field-data-vs-lab-data">Field Data vs Lab Data</h3>
+<p>Field Data comes from real visitors browsing your site with Chrome, collected through the Chrome UX Report. Lab Data comes from simulated tests run in controlled conditions through tools like Lighthouse. Google ranking systems use Field Data only. Lab Data stays useful for diagnosis and testing changes before they ship, but it never determines your ranking-facing score.</p>
+
+<h2 id="how-google-measures-core-web-vitals-in-2026">How Google Measures Core Web Vitals in 2026</h2>
+<p>Understanding the measurement system changes how you prioritize fixes.</p>
+<div class="visual-container">
+    <img src="/assets/uploads/media/How%20Google%20Measures%20Core%20Web%20Vitals%20in%202026.webp" alt="How Google Measures Core Web Vitals in 2026" class="w-full h-auto object-cover">
+</div>
+
+<h3 id="chrome-ux-report-crux-explained">Chrome UX Report (CrUX) Explained</h3>
+<p>The Chrome UX Report collects anonymized performance data from real Chrome users who opt in to sync their browsing data and usage statistics. Google aggregates this data by URL and by origin, then exposes it through Search Console, PageSpeed Insights, and the public CrUX dataset.</p>
+
+<h3 id="the-28-day-rolling-window">The 28-Day Rolling Window</h3>
+<p>Search Console reports Core Web Vitals using a rolling 28-day window of aggregated Field Data. A fix you ship today does not appear instantly in your dashboard. Older, slower sessions stay mixed into the data until they age out of the 28-day window, so a real improvement can take close to a month to fully surface in your reports.</p>
+
+<h3 id="the-site-wide-aggregation-model">The Site-Wide Aggregation Model</h3>
+<p>The March 2026 update introduced a site-wide aggregation model for Core Web Vitals scoring. Google previously evaluated each URL on its own merit. The new model lets aggregate site performance influence how individual pages rank. A site where 40% of pages fail LCP now faces a broader ranking drag, even on the pages that pass. This single change explains why some sites that had optimized their top landing pages still saw declines after the March update. The fix can no longer stop at your homepage and a handful of priority pages. It has to extend across templates.</p>
+
+<h3 id="mobile-first-scoring">Mobile-First Scoring</h3>
+<p>Google evaluates mobile and desktop performance separately, but mobile now drives the primary signal under Mobile-First Indexing. Since mobile traffic accounts for more than 60% of search visits in 2026, a site with strong desktop scores and weak mobile scores still faces a ranking penalty. Fix mobile first, then confirm desktop holds steady.</p>
+
+<h2 id="largest-contentful-paint-lcp-what-it-is-and-how-to-fix-it">Largest Contentful Paint (LCP): What It Is and How to Fix It</h2>
+<p>LCP measures the time it takes for the largest visible element, usually a hero image, video poster, or block of text, to fully render within the viewport. It approximates the moment a visitor perceives the page as loaded.</p>
+<div class="visual-container">
+    <img src="/assets/uploads/media/Largest%20Contentful%20Paint%20%28LCP%29%20-%20What%20It%20Is%20and%20How%20to%20Fix%20It.webp" alt="Largest Contentful Paint (LCP): What It Is and How to Fix It" class="w-full h-auto object-cover">
+</div>
+
+<h3 id="common-causes-of-poor-lcp">Common Causes of Poor LCP</h3>
+<p>Slow server response time delays everything downstream, including the LCP element itself. Render-blocking CSS and JavaScript stop the browser from painting content until those files finish downloading and executing. Oversized, uncompressed images force the browser to spend extra time downloading and decoding before display. Missing image preload hints mean the browser finds the LCP resource too late in the loading sequence.</p>
+
+<h3 id="step-by-step-lcp-fixes">Step-by-Step LCP Fixes</h3>
+<p><strong>Preload the LCP image.</strong> Add a <code>&lt;link rel="preload"&gt;</code> tag for the hero image or background image that renders as your largest element. This tells the browser to fetch that resource immediately instead of waiting for the normal resource-finding process.</p>
+<p><strong>Remove render-blocking CSS and JS.</strong> Move non-critical CSS to load asynchronously and defer JavaScript that does not affect the initial paint. Use the <code>defer</code> or <code>async</code> attributes on script tags that are not required for the first render.</p>
+<p><strong>Use a CDN and faster server response.</strong> A content delivery network places your assets closer to the visitor, which cuts network latency. Pair this with a hosting environment that returns the initial HTML response quickly, since every millisecond of server delay pushes LCP back directly.</p>
+<p><strong>Compress and modernize image formats.</strong> Convert hero images to WebP or AVIF, which produce smaller file sizes than JPEG or PNG at comparable quality. Compress every image before upload instead of relying on the browser to handle oversized files.</p>
+<p><strong>Inline critical CSS.</strong> Extract the CSS rules needed for above-the-fold content and inline them directly in the HTML head. This removes one network round trip from the critical rendering path and lets the browser paint sooner.</p>
+
+<h2 id="interaction-to-next-paint-inp-what-it-is-and-how-to-fix-it">Interaction to Next Paint (INP): What It Is and How to Fix It</h2>
+<p>INP measures how long it takes for the page to visually respond after a visitor clicks, taps, or presses a key. Unlike its predecessor, INP tracks every interaction during a visit and reports the worst representative value, not just the first one.</p>
+
+<h3 id="what-inp-measures-and-why-it-replaced-fid">What INP Measures and Why It Replaced FID</h3>
+<p>First Input Delay only measured the delay before the browser began processing the first interaction. It ignored everything that happened afterward. INP closes that gap by scoring the full lifecycle of an interaction: input delay, processing time, and the time until the next frame paints. Google retired FID and made INP the official responsiveness metric in March 2024, and the stricter scope is exactly why more sites fail it.</p>
+
+<h3 id="common-causes-of-poor-inp">Common Causes of Poor INP</h3>
+<p>Long JavaScript tasks block the main thread and delay every interaction queued behind them. Heavy third-party scripts, including ad tags, chat widgets, and analytics tools, often run expensive code that competes for the same thread. Large component re-renders in JavaScript frameworks can repaint more of the page than necessary after a simple click. Unoptimized event handlers that run synchronous, expensive logic on every keystroke or click add delay that compounds across a session.</p>
+
+<h3 id="step-by-step-inp-fixes">Step-by-Step INP Fixes</h3>
+<div class="visual-container">
+    <img src="/assets/uploads/media/Step-by-Step%20INP%20Fixes.webp" alt="Step-by-Step INP Fixes" class="w-full h-auto object-cover">
+</div>
+<p><strong>Break up long JavaScript tasks.</strong> Split tasks that run longer than 50 milliseconds into smaller chunks using <code>setTimeout</code>, <code>requestIdleCallback</code>, or the <code>scheduler.yield()</code> API. This frees the main thread to handle user input between chunks instead of finishing one long block first.</p>
+<p><strong>Reduce main thread work.</strong> Audit your JavaScript bundle for unused code and remove it. Lazy-load components that are not visible on initial render. Smaller bundles parse and execute faster, which leaves more main thread capacity for responding to input.</p>
+<p><strong>Defer non-critical third-party scripts.</strong> Load chat widgets, marketing pixels, and non-essential trackers after the page becomes interactive, not during initial load. Use <code>async</code> loading or load these scripts on a delay tied to user interaction, such as a scroll or click event.</p>
+<p><strong>Use web workers for heavy computation.</strong> Move CPU-intensive tasks like data processing, sorting, or filtering off the main thread and into a web worker. This keeps the main thread free to respond to clicks and taps while the heavy work runs in parallel.</p>
+
+<h2 id="cumulative-layout-shift-cls-what-it-is-and-how-to-fix-it">Cumulative Layout Shift (CLS): What It Is and How to Fix It</h2>
+<p>CLS measures how much visible content shifts position during the loading process. Every unexpected shift adds to a cumulative score, and a higher score means a less stable page.</p>
+
+<h3 id="what-cls-measures">What CLS Measures</h3>
+<p>Google calculates CLS by multiplying the impact fraction of a shift, how much of the viewport moved, by the distance fraction, how far it moved. The sum of every unexpected shift during the page lifecycle produces the final score.</p>
+
+<h3 id="common-causes-of-layout-shift">Common Causes of Layout Shift</h3>
+<p>Images and videos without defined dimensions cause the page to reflow once the file finishes loading and the browser learns its true size. Ads, embeds, and iframes injected without reserved space push surrounding content down or sideways. Web fonts that load after a fallback font has already rendered text can change line length and cause a visible jump. Content inserted above existing content, such as a banner or notification that appears after the user starts scrolling, pushes everything below it.</p>
+
+<h3 id="step-by-step-cls-fixes">Step-by-Step CLS Fixes</h3>
+<div class="visual-container">
+    <img src="/assets/uploads/media/cls_fixes.webp" alt="CLS Fixes" class="w-full h-auto object-cover">
+</div>
+<p><strong>Set explicit width and height on images and video.</strong> Define dimension attributes or use CSS <code>aspect-ratio</code> on every image and video element. The browser then reserves the correct amount of space before the file finishes downloading, which prevents the reflow entirely.</p>
+<p><strong>Reserve space for ads and embeds.</strong> Set a fixed minimum height on ad containers and embed wrappers before the ad network or third-party script populates them. This stops the surrounding layout from jumping once the content loads.</p>
+<p><strong>Use font-display swap correctly.</strong> Pair <code>font-display: swap</code> with matched fallback fonts that share similar metrics to your web font. This reduces the size difference between the fallback text and the final text, which shrinks the visible jump when the web font finishes loading.</p>
+<p><strong>Avoid inserting content above existing content.</strong> Build banners, cookie notices, and promotional bars into the initial layout instead of injecting them after the page has already rendered. If dynamic insertion is unavoidable, reserve the space in advance with a placeholder.</p>
+
+<h2 id="how-to-check-your-core-web-vitals-scores">How to Check Your Core Web Vitals Scores</h2>
+<p>Each diagnostic tool serves a different purpose, and using the right one first saves time.</p>
+
+<h3 id="google-search-console-core-web-vitals-report">Google Search Console Core Web Vitals Report</h3>
+<p>Open Search Console and go to Experience, then Core Web Vitals. This report shows real Field Data grouped by URL pattern, which tells you which templates need attention across your entire site rather than one page at a time. Start every audit here, since this report reflects the same aggregated data Google uses for ranking.</p>
+
+<h3 id="pagespeed-insights">PageSpeed Insights</h3>
+<p>PageSpeed Insights combines Field Data for your specific URL, when enough traffic exists, with a Lab Data Lighthouse audit. Visit pagespeed.web.dev, enter your URL, and review the Opportunities and Diagnostics sections for specific, prioritized fixes.</p>
+
+<h3 id="chrome-devtools-and-lighthouse">Chrome DevTools and Lighthouse</h3>
+<p>Lighthouse, built into Chrome DevTools, generates a detailed Lab Data performance audit you can run during development before a change ships. Use the Performance panel in DevTools to record a session and inspect the exact tasks blocking your main thread.</p>
+
+<h3 id="webpagetest-for-deep-diagnosis">WebPageTest for Deep Diagnosis</h3>
+<p>WebPageTest simulates page loads under controlled network and device conditions, then breaks down every request in a waterfall chart. Use it when PageSpeed Insights and Lighthouse point to a problem but you need to isolate the exact script or resource causing it.</p>
+
+<h2 id="core-web-vitals-and-seo-rankings">Core Web Vitals and SEO Rankings</h2>
+<p>Google confirmed Core Web Vitals as a ranking signal during the 2021 Page Experience Update, and the signal has carried more weight every year since.</p>
+
+<h3 id="how-much-core-web-vitals-affects-rankings">How Much Core Web Vitals Affects Rankings</h3>
+<p>Industry research from 2026 places Core Web Vitals at roughly 10% to 15% of total ranking signals. That share makes Core Web Vitals a meaningful factor, but not the dominant one. Sites that pass all three thresholds report an 8% to 15% visibility boost on competitive queries compared to sites that fail one or more metrics.</p>
+
+<h3 id="core-web-vitals-as-a-tiebreaker">Core Web Vitals as a Tiebreaker</h3>
+<p>Core Web Vitals function best as a tiebreaker. Two pages with comparable content quality and topical depth will not rank the same. The page with better Core Web Vitals scores tends to win the higher position. Strong performance cannot rescue thin or low-value content, and weak performance can hold back content that would otherwise rank well. The two factors work together, not as substitutes for each other.</p>
+
+<h3 id="core-web-vitals-and-ai-search-visibility">Core Web Vitals and AI Search Visibility</h3>
+<p>Fast, stable pages also improve citation odds in Answer Engine Optimization and Generative Engine Optimization contexts. AI engines like ChatGPT, Gemini, and Perplexity retrieve and parse content more reliably from pages that load quickly and render a stable DOM structure. A page that shifts layout or delays content rendering makes the retrieval process harder for these systems, which lowers the odds of getting cited even when the underlying content answers the query well. We treat Core Web Vitals as part of our AEO and GEO process for this exact reason: a page has to be retrievable before it can be citable.</p>
+
+<h2 id="a-real-fix-example">A Real Fix Example</h2>
+<p>[Note for review before publishing: replace this section with a verified before-and-after data point from an A1 Technovation client project. Confirm exact LCP, INP, or CLS values and get client permission to reference the result, anonymized if required, before this page goes live.]</p>
+<p>We document every Core Web Vitals fix with before-and-after field data, not lab estimates, since lab improvements do not always translate into ranking-facing gains. A typical fix sequence on a client site starts with the Search Console report, moves to a template-level audit instead of a single-URL fix, and confirms improvement only after a full 28-day Field Data cycle.</p>
+
+<h2 id="core-web-vitals-monitoring-checklist">Core Web Vitals Monitoring Checklist</h2>
+<ol>
+    <li>Check the Search Console Core Web Vitals report at least once a month.</li>
+    <li>Set internal alert thresholds below Google&#39;s pass line, such as LCP above 1.8 seconds or INP above 160 milliseconds, to catch problems early.</li>
+    <li>Run a Lighthouse audit in staging before every major deploy.</li>
+    <li>Review third-party scripts every quarter and remove any that no longer earn their performance cost.</li>
+    <li>Set explicit dimensions on every new image, video, and embed added to the site.</li>
+    <li>Re-check mobile scores separately from desktop scores after every theme or template change.</li>
+    <li>Wait for a full 28-day Field Data cycle before judging whether a fix worked.</li>
+</ol>
+
+<div class="mt-16 rounded-3xl border border-slate-200 bg-white p-8 md:p-10 shadow-sm">
+    <h2 class="!mt-0" id="faq">FAQ</h2>
+    <div class="space-y-8 my-10 border-t border-brand-border pt-10">
+        <div><h4 class="font-bold text-brand-dark text-lg">What are Core Web Vitals in simple terms?</h4><p class="faq-answer mt-2 text-slate-600">Core Web Vitals are three scores that show how fast a page loads, how quickly it responds to clicks or taps, and how stable the layout stays while loading. Google uses these scores as part of its ranking system.</p></div>
+        <div><h4 class="font-bold text-brand-dark text-lg">What changed with Core Web Vitals in 2026?</h4><p class="faq-answer mt-2 text-slate-600">Google lowered the Good LCP threshold from 2.5 seconds to 2.0 seconds in March 2026. Google also moved to a site-wide aggregation model, so pages across a domain now affect each other&#39;s scores instead of standing alone.</p></div>
+        <div><h4 class="font-bold text-brand-dark text-lg">Is INP harder to pass than FID was?</h4><p class="faq-answer mt-2 text-slate-600">Yes. INP measures every interaction during a visit, not just the first one. FID only checked the first click or tap. INP gives a stricter and more complete picture of real responsiveness.</p></div>
+        <div><h4 class="font-bold text-brand-dark text-lg">Do Core Web Vitals affect my Google rankings directly?</h4><p class="faq-answer mt-2 text-slate-600">Core Web Vitals act as a tiebreaker. If two pages offer similar content quality, the page with better Core Web Vitals scores tends to win the higher position.</p></div>
+        <div><h4 class="font-bold text-brand-dark text-lg">What tool should I use first to check my scores?</h4><p class="faq-answer mt-2 text-slate-600">Start with Google Search Console&#39;s Core Web Vitals report. It shows real Field Data grouped by URL pattern, which tells you which templates need attention before you run deeper Lighthouse or WebPageTest audits.</p></div>
+        <div><h4 class="font-bold text-brand-dark text-lg">Can good Core Web Vitals fix weak content?</h4><p class="faq-answer mt-2 text-slate-600">No. Core Web Vitals improve user experience and can support rankings, but they cannot replace thin or low-value content. Strong content paired with strong performance produces the best result.</p></div>
+        <div><h4 class="font-bold text-brand-dark text-lg">How often should I check my Core Web Vitals scores?</h4><p class="faq-answer mt-2 text-slate-600">Check monthly at minimum, and immediately after any major deploy, theme change, or new third-party script addition. Field Data updates on a rolling 28-day basis, so changes take time to fully reflect in reports.</p></div>
+    </div>
+</div>
+
+<h2 id="get-your-core-web-vitals-fixed">Get Your Core Web Vitals Fixed</h2>
+<p>Our technical SEO team audits, prioritizes, and fixes Core Web Vitals issues across full site templates, not just individual pages. <a href="/seo-services/technical-seo/">Explore our technical SEO services</a> to see how we approach a full Core Web Vitals fix, or read our <a href="/blog/technical-seo-guide/">complete technical SEO guide</a> for the broader framework these fixes fit into. Performance is one input into <a href="/blog/what-is-aeo/">AI search visibility</a>, and we treat it as a required step, not an optional one, inside every <a href="/seo-services/">SEO services</a> engagement.</p>
+
+<div class="mt-16 rounded-3xl border border-slate-200 bg-slate-50 p-8 md:p-10">
+    <span class="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-700 border border-slate-200">Related reading</span>
+    <h3 class="mt-4 text-2xl font-bold text-slate-900">Go deeper on the technical layer</h3>
+    <p class="mt-3 text-slate-600">These companion pages connect Core Web Vitals work with broader technical SEO and AI visibility decisions.</p>
+    <div class="mt-6 grid gap-4 md:grid-cols-3">
+        <a href="/blog/technical-seo-guide/" class="rounded-2xl border border-slate-200 bg-white p-5 no-underline transition hover:border-blue-500 hover:shadow-sm"><strong class="block text-slate-900">Technical SEO Guide</strong><span class="mt-2 block text-sm text-slate-600">See how performance fits into crawling, indexation, schema, and site health.</span></a>
+        <a href="/seo-services/technical-seo/" class="rounded-2xl border border-slate-200 bg-white p-5 no-underline transition hover:border-blue-500 hover:shadow-sm"><strong class="block text-slate-900">Technical SEO Services</strong><span class="mt-2 block text-sm text-slate-600">Get a template-level fix plan for LCP, INP, CLS, and deeper infrastructure issues.</span></a>
+        <a href="/blog/what-is-aeo/" class="rounded-2xl border border-slate-200 bg-white p-5 no-underline transition hover:border-blue-500 hover:shadow-sm"><strong class="block text-slate-900">What Is AEO?</strong><span class="mt-2 block text-sm text-slate-600">Understand why fast, stable pages are easier for answer engines to retrieve and cite.</span></a>
+    </div>
+</div>
+
+<p class="mt-12 rounded-2xl border border-slate-200 bg-slate-50 px-6 py-5 text-base italic text-slate-600"><em>Written by Likhon Ahmed, Founder and CEO of A1 Technovation. Likhon has 7+ years of hands-on SEO experience working with 150+ clients across the USA, UAE, Qatar, Saudi Arabia, and Bahrain. A1 Technovation has been a full-stack digital marketing agency since 2018, specializing in technical SEO, AEO, and GEO for businesses that need to rank on Google and get cited by AI engines.</em></p>
+
+                        <div class="article-cta-card p-10 rounded-2xl mt-16 relative overflow-hidden shadow-2xl border border-slate-800">
+                            <div class="absolute -right-20 -top-20 w-64 h-64 bg-blue-600 rounded-full blur-[80px] opacity-40"></div>
+                            <div class="absolute -left-20 -bottom-20 w-64 h-64 bg-indigo-600 rounded-full blur-[80px] opacity-30"></div>
+                            <div class="relative z-10 text-center">
+                                <h3 class="text-3xl font-bold mb-4 !mt-0 !text-white tracking-tight">Need Help Fixing Core Web Vitals Across Your Site?</h3>
+                                <p class="cta-copy mb-8 max-w-2xl mx-auto text-lg">A1 Technovation helps teams diagnose template-level speed, interaction, and layout issues that hold back rankings and user experience.</p>
+                                <a href="/pages/contact" class="article-cta-button text-lg">Talk to our team &rarr;</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <aside class="lg:col-span-4 space-y-8 hidden lg:block">
+                    <div class="sticky top-12 space-y-8">
+                        <div class="bg-white rounded-2xl p-6 border border-brand-border shadow-sm">
+                            <h3 class="font-bold text-lg text-brand-dark mb-4 flex items-center gap-2">
+                                <i class="ph ph-list-dashes text-brand-primary"></i> In this article
+                            </h3>
+                            <nav class="space-y-3 text-sm font-medium">
+<a href="#what-are-core-web-vitals" class="block text-slate-600 hover:text-brand-primary transition-colors">What Are Core Web Vitals</a>
+<a href="#the-2026-core-web-vitals-thresholds" class="block text-slate-600 hover:text-brand-primary transition-colors">The 2026 Core Web Vitals Thresholds</a>
+<a href="#how-google-measures-core-web-vitals-in-2026" class="block text-slate-600 hover:text-brand-primary transition-colors">How Google Measures Core Web Vitals in 2026</a>
+<a href="#largest-contentful-paint-lcp-what-it-is-and-how-to-fix-it" class="block text-slate-600 hover:text-brand-primary transition-colors">Largest Contentful Paint (LCP)</a>
+<a href="#interaction-to-next-paint-inp-what-it-is-and-how-to-fix-it" class="block text-slate-600 hover:text-brand-primary transition-colors">Interaction to Next Paint (INP)</a>
+<a href="#cumulative-layout-shift-cls-what-it-is-and-how-to-fix-it" class="block text-slate-600 hover:text-brand-primary transition-colors">Cumulative Layout Shift (CLS)</a>
+<a href="#how-to-check-your-core-web-vitals-scores" class="block text-slate-600 hover:text-brand-primary transition-colors">How to Check Your Scores</a>
+<a href="#core-web-vitals-and-seo-rankings" class="block text-slate-600 hover:text-brand-primary transition-colors">Core Web Vitals and SEO Rankings</a>
+<a href="#core-web-vitals-monitoring-checklist" class="block text-slate-600 hover:text-brand-primary transition-colors">Monitoring Checklist</a>
+<a href="#faq" class="block text-slate-600 hover:text-brand-primary transition-colors">FAQ</a>
+<a href="#get-your-core-web-vitals-fixed" class="block text-slate-600 hover:text-brand-primary transition-colors">Get Your Core Web Vitals Fixed</a>
+                            </nav>
+                        </div>
+
+                        <div class="article-sidebar-newsletter rounded-2xl p-8 shadow-xl relative overflow-hidden border border-slate-800">
+                            <div class="absolute -right-10 -top-10 w-32 h-32 bg-blue-600 rounded-full blur-[50px] opacity-40"></div>
+                            <div class="relative z-10">
+                                <i class="ph ph-envelope-open text-3xl text-blue-500 mb-4 block"></i>
+                                <h3 class="font-bold text-xl mb-2 text-white">A1 Growth Notes</h3>
+                                <p class="newsletter-copy text-sm mb-6 leading-relaxed">Get practical search and conversion ideas monthly directly to your inbox.</p>
+                                <form class="newsletter-form" data-source="core-web-vitals-guide-sidebar" action="/api/newsletter_subscribe" method="post">
+                                    <input type="email" name="email" placeholder="Your work email" required>
+                                    <button type="submit">Subscribe</button>
+                                    <p class="newsletter-status" hidden aria-live="polite"></p>
+                                </form>
+                                <p class="newsletter-note text-xs mt-4 text-center">No spam. Unsubscribe anytime.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-100 rounded-2xl p-7 text-center shadow-sm">
+                            <h3 class="font-bold text-brand-dark text-lg mb-2">Need a Core Web Vitals Audit?</h3>
+                            <p class="text-sm text-slate-600 mb-6">See which templates, assets, and scripts are dragging down LCP, INP, and CLS across your site.</p>
+                            <a href="https://a1technovation.com/contact/" class="inline-block bg-slate-900 hover:bg-blue-600 text-white font-bold px-6 py-3.5 rounded-lg w-full transition-all shadow-lg hover:shadow-blue-500/30">Get a Free Audit</a>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="/" class="footer-logo" aria-label="A1 Technovation home">
+                        <img src="../assets/images/A1Technovation-Dark-Background.png" alt="A1 Technovation" class="footer-logo-image">
+                    </a>
+                    <p>A1 Technovation is a results-driven digital marketing agency delivering SEO, AEO, GEO, web design, PPC, local SEO, ecommerce SEO, and social media marketing for clients across 20+ countries.</p>
+                    <div class="footer-socials">
+                        <a href="https://www.facebook.com/a1technovation/" class="f-social" aria-label="Facebook" target="_blank" rel="nofollow noopener"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/a1technovation/?hl=en" class="f-social" aria-label="Instagram" target="_blank" rel="nofollow noopener"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/92598277/" class="f-social" aria-label="LinkedIn" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://wa.me/8801799976295" class="f-social" aria-label="WhatsApp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://t.me/likhonahmedseo" class="f-social" aria-label="Telegram" target="_blank" rel="nofollow noopener"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h6>Services</h6>
+                    <div class="footer-links">
+                        <a href="/pages/services-seo" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> SEO Services</a>
+                        <a href="/aeo-optimization-services/" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> AEO Optimization</a>
+                        <a href="/geo-optimization-services/" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> GEO Optimization</a>
+                        <a href="/ecommerce-seo-services/" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Ecommerce SEO</a>
+                        <a href="/pages/services-local-seo" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Local SEO</a>
+                        <a href="/pages/services-web-dev" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Web Design</a>
+                        <a href="/pages/services-ppc-ads" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> PPC Advertising</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h6>Company</h6>
+                    <div class="footer-links">
+                        <a href="/pages/about" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> About Us</a>
+                        <a href="/pages/portfolio" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Our Work</a>
+                        <a href="/pages/blog" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Blog &amp; Insights</a>
+                        <a href="/pages/contact" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Contact Us</a>
+                        <a href="/pages/contact" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Free Consultation</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h6>Get in Touch</h6>
+                    <div class="f-contact-item"><i class="fas fa-location-dot"></i><span>35/A Srijoni Road, Ibrahimpur<br>Dhaka Cantonment, Dhaka 1206, Bangladesh</span></div>
+                    <div class="f-contact-item"><i class="fas fa-phone"></i><a href="tel:+8801799976295">+880 1799-976295</a></div>
+                    <div class="f-contact-item"><i class="fas fa-envelope"></i><a href="mailto:info.a1technovation@gmail.com">info.a1technovation@gmail.com</a></div>
+                    <div class="f-contact-item"><i class="fas fa-clock"></i><span>Mon-Fri: 9 AM - 7 PM BST<br>Sat: 10 AM - 4 PM BST</span></div>
+                </div>
+            </div>
+            <div class="footer-newsletter"><div class="footer-newsletter-copy"><span class="footer-newsletter-kicker"><i class="fas fa-bolt"></i> A1 Growth Notes</span><h6>Get practical search and conversion ideas monthly.</h6><p>SEO, AI search, web performance, and conversion insights from the A1 Technovation team.</p></div><form class="newsletter-form" data-source="global-footer" action="/api/newsletter_subscribe" method="post"><div class="newsletter-field-wrap"><i class="fas fa-envelope"></i><input type="email" name="email" placeholder="Enter your email" autocomplete="email" required></div><button type="submit" class="btn btn-primary" aria-label="Subscribe to newsletter"><i class="fas fa-paper-plane"></i><span>Subscribe</span></button><p class="newsletter-status" hidden aria-live="polite"></p><p class="newsletter-privacy"><i class="fas fa-lock"></i> No spam. Unsubscribe anytime.</p></form></div>
+            <div class="footer-bottom">
+                <p class="f-copy">&copy; 2026 A1 Technovation. All rights reserved.</p>
+                <div class="f-bottom-links">
+                    <a href="/pages/privacy" class="f-bl">Privacy Policy</a>
+                    <a href="/pages/terms" class="f-bl">Terms and Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <button class="scroll-top" id="scrollTop" aria-label="Back to top"><i class="ph ph-arrow-up"></i></button>
+    <script src="/js/main.min.js"></script>
+    <script>
+        (function () {
+            var scrollButton = document.getElementById('scrollTop');
+            var toggleScrollButton = function () {
+                if (!scrollButton) return;
+                scrollButton.classList.toggle('is-visible', window.scrollY > 420);
+            };
+            if (scrollButton) {
+                window.addEventListener('scroll', toggleScrollButton, { passive: true });
+                toggleScrollButton();
+                scrollButton.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+            }
+            document.querySelectorAll('[data-copy-link]').forEach(function (button) {
+                button.addEventListener('click', async function () {
+                    try {
+                        if (navigator.clipboard && navigator.clipboard.writeText) await navigator.clipboard.writeText(window.location.href);
+                        button.setAttribute('data-copy-state', 'copied');
+                    } catch (error) {
+                        window.prompt('Copy this link:', window.location.href);
+                    }
+                    var icon = button.querySelector('i');
+                    var original = icon ? icon.className : '';
+                    if (icon) icon.className = 'ph ph-check text-xl';
+                    setTimeout(function () {
+                        button.removeAttribute('data-copy-state');
+                        if (icon) icon.className = original;
+                    }, 1600);
+                });
+            });
+            document.querySelectorAll('.newsletter-form').forEach(function (form) {
+                form.addEventListener('submit', async function (event) {
+                    event.preventDefault();
+                    var emailInput = form.querySelector('input[type="email"]');
+                    var submitButton = form.querySelector('[type="submit"]');
+                    var status = form.querySelector('.newsletter-status');
+                    var email = emailInput ? emailInput.value.trim() : '';
+                    if (!email) return;
+                    var setStatus = function (type, message) {
+                        if (!status) return;
+                        status.hidden = false;
+                        status.className = 'newsletter-status ' + type;
+                        status.textContent = message;
+                    };
+                    var originalHtml = submitButton ? submitButton.innerHTML : '';
+                    if (submitButton) { submitButton.disabled = true; submitButton.innerHTML = 'Submitting...'; }
+                    try {
+                        var response = await fetch(form.getAttribute('action') || '/api/newsletter_subscribe', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ email: email, source: form.getAttribute('data-source') || window.location.pathname || 'blog' })
+                        });
+                        var result = await response.json().catch(function () { return {}; });
+                        setStatus(response.ok ? 'success' : 'error', result.message || (response.ok ? 'Subscribed successfully.' : 'Subscription failed. Please try again.'));
+                        if (response.ok && emailInput) emailInput.value = '';
+                    } catch (error) {
+                        setStatus('error', 'Something went wrong. Please try again.');
+                    } finally {
+                        if (submitButton) { submitButton.disabled = false; submitButton.innerHTML = originalHtml; }
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>

@@ -1,3 +1,5 @@
+
+RewriteOptions inherit
 Options -Indexes -MultiViews
 ErrorDocument 404 /404.html
 
@@ -34,6 +36,12 @@ ErrorDocument 404 /404.html
   RewriteRule ^seo-for-renovation-companies/?$ /pages/seo-for-renovation-companies.html [L,QSA,NC]
   RewriteRule ^seo-for-renovation-companies-toronto/?$ /pages/seo-for-renovation-companies-toronto.html [L,QSA,NC]
   RewriteRule ^best-seo-expert-in-bangladesh/?$ /pages/best-seo-expert-in-bangladesh.html [L,QSA,NC]
+  RewriteRule ^pages/luxury-car-dealership-seo/?$ "/pages/Car Dealership SEO Case Study.html" [R=301,L,NC]
+  RewriteRule ^case-studies/luxury-car-dealership-seo/?$ "/pages/Car Dealership SEO Case Study.html" [L,QSA,NC]
+  RewriteRule ^case-studies/car-dealership-seo-case-study/?$ "/pages/Car Dealership SEO Case Study.html" [L,QSA,NC]
+  RewriteRule ^pages/car-dealership-seo-case-study/?$ "/pages/Car Dealership SEO Case Study.html" [L,QSA,NC]
+  RewriteRule ^blog/luxury-car-dealership-seo/?$ "/pages/Car Dealership SEO Case Study.html" [L,QSA,NC]
+  RewriteRule ^blog/car-dealership-seo-case-study/?$ "/pages/Car Dealership SEO Case Study.html" [L,QSA,NC]
   RewriteCond %{DOCUMENT_ROOT}/pages/$1.html -f
   RewriteRule ^(seo-services-[a-z-]+)/?$ /pages/$1.html [L,QSA,NC]
   # REST API

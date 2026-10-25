@@ -15,6 +15,12 @@ if (cms_is_post()) {
         cms_require_csrf();
         $action = (string) cms_post('action');
         $selectedIds = array_values(array_filter(array_map('intval', (array) cms_post('selected_ids', []))));
+        if ($selectedIds === [] && cms_post('single_id')) {
+            $singleId = (int) cms_post('single_id');
+            if ($singleId > 0) {
+                $selectedIds = [$singleId];
+            }
+        }
 
         if ($action === 'export_selected') {
             if ($selectedIds === []) {
@@ -156,11 +162,13 @@ require __DIR__ . '/includes/header.php';
               <th>Message</th>
               <th>Status</th>
               <th>Received</th>
+              <th style="text-align:right">Action</th>
             </tr>
           </thead>
           <tbody>
             <?php foreach ($mailCopies as $mail): ?>
               <?php
+                $mailId = (int) $mail['id'];
                 $status = (string) ($mail['status'] ?? 'new');
                 $statusClass = in_array($status, ['new', 'reviewed', 'archived'], true) ? $status : 'new';
                 $sourcePage = trim((string) ($mail['source_page'] ?? ''));
@@ -169,9 +177,12 @@ require __DIR__ . '/includes/header.php';
                 $company = trim((string) ($mail['company'] ?? ''));
                 $country = trim((string) ($mail['country_name'] ?? ''));
                 $ipAddress = trim((string) ($mail['ip_address'] ?? ''));
+                $rawMessage = (string) ($mail['message'] ?? '');
+                $isLongMessage = mb_strlen($rawMessage) > 160;
+                $previewMessage = $isLongMessage ? mb_strimwidth($rawMessage, 0, 160, '...') : $rawMessage;
               ?>
-              <tr class="mail-row mail-row-<?= cms_e($statusClass) ?>">
-                <td><input type="checkbox" name="selected_ids[]" value="<?= (int) $mail['id'] ?>" aria-label="Select mail from <?= cms_e((string) $mail['full_name']) ?>" /></td>
+              <tr class="mail-row mail-row-<?= cms_e($statusClass) ?>" id="mail-row-<?= $mailId ?>">
+                <td><input type="checkbox" name="selected_ids[]" value="<?= $mailId ?>" aria-label="Select mail from <?= cms_e((string) $mail['full_name']) ?>" /></td>
                 <td>
                   <div class="mail-contact">
                     <strong><?= cms_e((string) $mail['full_name']) ?></strong>
@@ -187,11 +198,36 @@ require __DIR__ . '/includes/header.php';
                   <?php if ($budgetRange !== ''): ?><span class="mail-budget"><?= cms_e($budgetRange) ?></span><?php endif; ?>
                 </td>
                 <td>
-                  <div class="mail-message-preview"><?= cms_e(mb_strimwidth((string) $mail['message'], 0, 240, '...')) ?></div>
-                  <?php if ($sourcePage !== ''): ?><span class="mail-source"><i class="fas fa-link"></i> <?= cms_e($sourcePage) ?></span><?php endif; ?>
+                  <div class="mail-message-container">
+                    <div class="mail-message-preview" id="mail-preview-<?= $mailId ?>">
+                      <?= nl2br(cms_e($previewMessage)) ?>
+                    </div>
+                    <?php if ($isLongMessage): ?>
+                      <div class="mail-message-preview mail-message-full" id="mail-full-<?= $mailId ?>" style="display:none">
+                        <?= nl2br(cms_e($rawMessage)) ?>
+                      </div>
+                      <div class="mail-message-actions">
+                        <button type="button" class="mail-inline-toggle-btn" data-target="<?= $mailId ?>" aria-expanded="false">
+                          <i class="fas fa-chevron-down"></i> Show full text
+                        </button>
+                        <button type="button" class="mail-open-modal-link" data-mail-id="<?= $mailId ?>" title="View formatted email details">
+                          <i class="fas fa-up-right-from-square"></i> Full email
+                        </button>
+                      </div>
+                    <?php else: ?>
+                      <div class="mail-message-actions">
+                        <button type="button" class="mail-open-modal-link" data-mail-id="<?= $mailId ?>" title="View formatted email details">
+                          <i class="fas fa-up-right-from-square"></i> Full email
+                        </button>
+                      </div>
+                    <?php endif; ?>
+                    <?php if ($sourcePage !== ''): ?>
+                      <span class="mail-source"><i class="fas fa-link"></i> <?= cms_e($sourcePage) ?></span>
+                    <?php endif; ?>
+                  </div>
                 </td>
                 <td>
-                  <span class="mail-status mail-status-<?= cms_e($statusClass) ?>">
+                  <span class="mail-status mail-status-<?= cms_e($statusClass) ?>" id="status-badge-<?= $mailId ?>">
                     <i class="fas fa-circle"></i><?= cms_e($status) ?>
                   </span>
                 </td>
@@ -201,6 +237,11 @@ require __DIR__ . '/includes/header.php';
                     <span><?= cms_e(cms_format_date((string) $mail['created_at'], 'g:i A')) ?></span>
                     <?php if ($country !== '' || $ipAddress !== ''): ?><span><?= cms_e(trim($country . ' ' . $ipAddress)) ?></span><?php endif; ?>
                   </div>
+                </td>
+                <td style="text-align:right">
+                  <button type="button" class="admin-btn admin-btn-outline admin-btn-sm mail-open-modal-btn" data-mail-id="<?= $mailId ?>" title="Open full email details">
+                    <i class="fas fa-eye"></i> View email
+                  </button>
                 </td>
               </tr>
             <?php endforeach; ?>
@@ -219,4 +260,277 @@ require __DIR__ . '/includes/header.php';
   <?php endif; ?>
 </section>
 
+<!-- Full Email View Modal Dialog -->
+<div id="mailDetailModal" class="mail-modal-overlay" style="display:none" role="dialog" aria-modal="true" aria-labelledby="modalSenderName">
+  <div class="mail-modal-dialog">
+    <div class="mail-modal-header">
+      <div class="mail-modal-title-group">
+        <div class="mail-modal-icon">
+          <i class="fas fa-envelope-open-text"></i>
+        </div>
+        <div>
+          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+            <h3 id="modalSenderName" class="mail-modal-title">Sender Name</h3>
+            <span id="modalStatusBadge" class="mail-status mail-status-new">New</span>
+          </div>
+          <span id="modalReceivedTime" class="mail-modal-subtitle">Oct 9, 2026 at 6:23 PM</span>
+        </div>
+      </div>
+      <button type="button" class="mail-modal-close" id="closeMailModalBtn" aria-label="Close dialog">&times;</button>
+    </div>
+
+    <div class="mail-modal-body">
+      <!-- Contact Info Cards -->
+      <div class="mail-modal-meta-grid">
+        <div class="mail-meta-item">
+          <span class="mail-meta-label"><i class="fas fa-envelope"></i> Email</span>
+          <a id="modalEmailLink" href="#" class="mail-meta-value mail-email-link"></a>
+        </div>
+        <div class="mail-meta-item">
+          <span class="mail-meta-label"><i class="fas fa-phone"></i> Phone</span>
+          <span id="modalPhone" class="mail-meta-value">—</span>
+        </div>
+        <div class="mail-meta-item">
+          <span class="mail-meta-label"><i class="fas fa-building"></i> Company</span>
+          <span id="modalCompany" class="mail-meta-value">—</span>
+        </div>
+        <div class="mail-meta-item">
+          <span class="mail-meta-label"><i class="fas fa-briefcase"></i> Service Requested</span>
+          <span id="modalService" class="mail-meta-value">—</span>
+        </div>
+        <div class="mail-meta-item">
+          <span class="mail-meta-label"><i class="fas fa-dollar-sign"></i> Budget</span>
+          <span id="modalBudget" class="mail-meta-value">—</span>
+        </div>
+        <div class="mail-meta-item">
+          <span class="mail-meta-label"><i class="fas fa-globe"></i> Location / IP</span>
+          <span id="modalLocation" class="mail-meta-value">—</span>
+        </div>
+      </div>
+
+      <div id="modalSourcePageRow" class="mail-meta-source-row" style="display:none">
+        <span class="mail-meta-label"><i class="fas fa-link"></i> Submitted From Page:</span>
+        <a id="modalSourcePageLink" href="#" target="_blank" rel="noopener" class="mail-source-url" style="color:var(--admin-primary);word-break:break-all"></a>
+      </div>
+
+      <!-- Full Message Section -->
+      <div class="mail-modal-message-box">
+        <div class="mail-message-box-header">
+          <strong><i class="fas fa-message"></i> Complete Email Message</strong>
+          <button type="button" class="admin-btn admin-btn-ghost admin-btn-sm" id="copyMessageBtn" title="Copy full message text">
+            <i class="fas fa-copy"></i> Copy text
+          </button>
+        </div>
+        <div id="modalFullMessage" class="mail-message-full-content"></div>
+      </div>
+    </div>
+
+    <div class="mail-modal-footer">
+      <div class="mail-footer-left">
+        <form method="post" id="modalStatusForm" style="display:inline-flex;gap:8px">
+          <input type="hidden" name="_token" value="<?= cms_e(cms_csrf_token()) ?>" />
+          <input type="hidden" name="single_id" id="modalSingleId" value="" />
+          <button type="submit" name="action" value="mark_reviewed" id="modalMarkReviewedBtn" class="admin-btn admin-btn-outline admin-btn-sm">
+            <i class="fas fa-check"></i> Mark reviewed
+          </button>
+          <button type="submit" name="action" value="archive_selected" id="modalArchiveBtn" class="admin-btn admin-btn-outline admin-btn-sm" style="color:var(--admin-danger);border-color:rgba(220,38,38,0.2)" onclick="return confirm('Archive this message?')">
+            <i class="fas fa-box-archive"></i> Archive
+          </button>
+        </form>
+      </div>
+      <div class="mail-footer-right" style="display:inline-flex;gap:8px">
+        <a id="modalReplyBtn" href="#" class="admin-btn admin-btn-primary admin-btn-sm">
+          <i class="fas fa-reply"></i> Reply via Email
+        </a>
+        <button type="button" class="admin-btn admin-btn-ghost admin-btn-sm" id="closeMailModalBtn2">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script id="mailCopiesData" type="application/json">
+<?= json_encode(array_map(static function (array $m): array {
+    return [
+        'id'               => (int) $m['id'],
+        'full_name'        => (string) ($m['full_name'] ?? 'Anonymous'),
+        'email'            => (string) ($m['email'] ?? ''),
+        'phone'            => (string) ($m['phone'] ?? ''),
+        'company'          => (string) ($m['company'] ?? ''),
+        'service_interest' => (string) ($m['service_interest'] ?? 'General inquiry'),
+        'budget_range'     => (string) ($m['budget_range'] ?? ''),
+        'message'          => (string) ($m['message'] ?? ''),
+        'source_page'      => (string) ($m['source_page'] ?? ''),
+        'status'           => (string) ($m['status'] ?? 'new'),
+        'created_at'       => (string) ($m['created_at'] ?? ''),
+        'formatted_date'   => cms_format_date((string) $m['created_at'], 'M j, Y \a\t g:i A'),
+        'country_name'     => (string) ($m['country_name'] ?? ''),
+        'ip_address'       => (string) ($m['ip_address'] ?? ''),
+    ];
+}, $mailCopies), JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT) ?>
+</script>
+
+<script>
+(function () {
+  // Parse message data
+  const mailMap = {};
+  try {
+    const dataEl = document.getElementById('mailCopiesData');
+    if (dataEl) {
+      const items = JSON.parse(dataEl.textContent);
+      items.forEach(item => { mailMap[item.id] = item; });
+    }
+  } catch (err) {
+    console.error('Failed to parse mail copies data:', err);
+  }
+
+  // 1. Inline expand/collapse toggles
+  document.querySelectorAll('.mail-inline-toggle-btn').forEach(btn => {
+    btn.addEventListener('click', function () {
+      const targetId = this.getAttribute('data-target');
+      const previewEl = document.getElementById('mail-preview-' + targetId);
+      const fullEl    = document.getElementById('mail-full-' + targetId);
+      if (!previewEl || !fullEl) return;
+
+      const isExpanded = fullEl.style.display !== 'none';
+      if (isExpanded) {
+        fullEl.style.display = 'none';
+        previewEl.style.display = '';
+        this.innerHTML = '<i class="fas fa-chevron-down"></i> Show full text';
+        this.setAttribute('aria-expanded', 'false');
+      } else {
+        fullEl.style.display = '';
+        previewEl.style.display = 'none';
+        this.innerHTML = '<i class="fas fa-chevron-up"></i> Show less';
+        this.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  // 2. Full Email Modal logic
+  const modal       = document.getElementById('mailDetailModal');
+  const closeBtn1   = document.getElementById('closeMailModalBtn');
+  const closeBtn2   = document.getElementById('closeMailModalBtn2');
+  const copyBtn     = document.getElementById('copyMessageBtn');
+  let currentMail   = null;
+
+  function openModal(id) {
+    const mail = mailMap[id];
+    if (!mail || !modal) return;
+    currentMail = mail;
+
+    document.getElementById('modalSenderName').textContent = mail.full_name || 'Anonymous';
+    
+    const badge = document.getElementById('modalStatusBadge');
+    if (badge) {
+      badge.className = 'mail-status mail-status-' + (mail.status || 'new');
+      badge.innerHTML = '<i class="fas fa-circle"></i> ' + (mail.status || 'new');
+    }
+
+    document.getElementById('modalReceivedTime').textContent = mail.formatted_date ? 'Received ' + mail.formatted_date : '';
+    
+    const emailLink = document.getElementById('modalEmailLink');
+    if (emailLink) {
+      emailLink.textContent = mail.email || '—';
+      emailLink.href = mail.email ? 'mailto:' + encodeURIComponent(mail.email) : '#';
+    }
+
+    document.getElementById('modalPhone').textContent    = mail.phone || '—';
+    document.getElementById('modalCompany').textContent  = mail.company || '—';
+    document.getElementById('modalService').textContent  = mail.service_interest || 'General inquiry';
+    document.getElementById('modalBudget').textContent   = mail.budget_range || '—';
+
+    const locationParts = [mail.country_name, mail.ip_address].filter(Boolean);
+    document.getElementById('modalLocation').textContent = locationParts.length > 0 ? locationParts.join(' • ') : '—';
+
+    const sourceRow  = document.getElementById('modalSourcePageRow');
+    const sourceLink = document.getElementById('modalSourcePageLink');
+    if (sourceRow && sourceLink) {
+      if (mail.source_page) {
+        sourceRow.style.display = 'flex';
+        sourceLink.textContent = mail.source_page;
+        sourceLink.href = mail.source_page;
+      } else {
+        sourceRow.style.display = 'none';
+      }
+    }
+
+    // Full Message Body
+    const msgBox = document.getElementById('modalFullMessage');
+    if (msgBox) {
+      msgBox.textContent = mail.message || '(Empty message)';
+    }
+
+    // Modal Actions
+    const singleIdInput = document.getElementById('modalSingleId');
+    if (singleIdInput) singleIdInput.value = mail.id;
+
+    const replyBtn = document.getElementById('modalReplyBtn');
+    if (replyBtn) {
+      if (mail.email) {
+        const subject = encodeURIComponent('Re: Inquiry regarding ' + (mail.service_interest || 'A1 Technovation'));
+        replyBtn.href = 'mailto:' + encodeURIComponent(mail.email) + '?subject=' + subject;
+        replyBtn.style.display = 'inline-flex';
+      } else {
+        replyBtn.style.display = 'none';
+      }
+    }
+
+    // Reset copy button
+    if (copyBtn) {
+      copyBtn.innerHTML = '<i class="fas fa-copy"></i> Copy text';
+    }
+
+    modal.style.display = 'flex';
+    requestAnimationFrame(() => modal.classList.add('is-active'));
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    if (!modal) return;
+    modal.classList.remove('is-active');
+    setTimeout(() => {
+      modal.style.display = 'none';
+      document.body.style.overflow = '';
+    }, 200);
+  }
+
+  if (closeBtn1) closeBtn1.addEventListener('click', closeModal);
+  if (closeBtn2) closeBtn2.addEventListener('click', closeModal);
+
+  if (modal) {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal && modal.classList.contains('is-active')) {
+      closeModal();
+    }
+  });
+
+  // Attach open listeners
+  document.querySelectorAll('.mail-open-modal-link, .mail-open-modal-btn').forEach(btn => {
+    btn.addEventListener('click', function () {
+      const id = this.getAttribute('data-mail-id');
+      if (id) openModal(id);
+    });
+  });
+
+  // Copy full message
+  if (copyBtn) {
+    copyBtn.addEventListener('click', () => {
+      if (!currentMail || !currentMail.message) return;
+      navigator.clipboard.writeText(currentMail.message).then(() => {
+        copyBtn.innerHTML = '<i class="fas fa-check" style="color:var(--admin-success)"></i> Copied!';
+        setTimeout(() => {
+          copyBtn.innerHTML = '<i class="fas fa-copy"></i> Copy text';
+        }, 2200);
+      }).catch(err => {
+        console.error('Failed to copy message:', err);
+      });
+    });
+  }
+})();
+</script>
 <?php require __DIR__ . '/includes/footer.php'; ?>
