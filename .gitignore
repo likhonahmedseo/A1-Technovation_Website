@@ -4,4 +4,11 @@ output/
 config/contact-form.php
 node_modules/
 .tmp-*.ps1
-
+error_log
+admin/error_log
+php/error_log
+.vscode/
+.commandcode/
+.ftpquota
+__pycache__/
+*.pyc
