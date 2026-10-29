@@ -78,3 +78,4 @@ A1 Technovation - Website/
 - `config/contact-form.php` is ignored by git so production credentials stay local.
 - The site remains static everywhere except the contact form endpoint.
 - No Composer or third-party PHP package install is required.
+# a1technovation
