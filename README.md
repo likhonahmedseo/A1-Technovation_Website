@@ -79,3 +79,4 @@ A1 Technovation - Website/
 - The site remains static everywhere except the contact form endpoint.
 - No Composer or third-party PHP package install is required.
 # a1technovation
+# A1-Technovation_Website
