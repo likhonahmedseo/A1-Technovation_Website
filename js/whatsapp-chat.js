@@ -9,6 +9,7 @@
 
   var WA_PHONE = '8801799976295';
   var WA_DISPLAY_PHONE = '+880 1799-976295';
+  var TG_USERNAME = 'likhonahmedseo';
 
   // Ensure CSS stylesheet is present
   function ensureStyles() {
@@ -97,6 +98,10 @@
               <span>📈 Digital Marketing Consultation</span>
               <i class="fas fa-chevron-right"></i>
             </button>
+            <a href="https://t.me/${TG_USERNAME}" target="_blank" rel="noopener noreferrer" class="wa-chip-btn" style="color:#0088cc;border-color:#bae6fd;text-decoration:none;">
+              <span><i class="fab fa-telegram me-1"></i> Chat on Telegram instead</span>
+              <i class="fas fa-external-link-alt" style="font-size:9px;color:#7dd3fc;"></i>
+            </a>
           </div>
         </div>
 
@@ -117,6 +122,23 @@
     `;
 
     document.body.appendChild(root);
+
+    // Telegram floating button (separate element, sits above WhatsApp button)
+    var tgWrap = document.createElement('div');
+    tgWrap.className = 'tg-trigger-wrap wa-chat-root not-prose';
+    tgWrap.id = 'tgTriggerWrap';
+    tgWrap.innerHTML = `
+      <div class="tg-tooltip-pill" id="tgTooltipPill">
+        <i class="fab fa-telegram text-sky-500 text-sm"></i>
+        <span>Message us on Telegram!</span>
+      </div>
+      <a href="https://t.me/${TG_USERNAME}" target="_blank" rel="noopener noreferrer"
+         class="tg-trigger-btn" id="tgTriggerBtn" aria-label="Open Telegram chat">
+        <i class="fab fa-telegram"></i>
+      </a>
+    `;
+    document.body.appendChild(tgWrap);
+
     bindEvents();
   }
 
@@ -204,6 +226,14 @@
         .replace(/>/g, '&gt;')
         .replace(/"/g, '&quot;')
         .replace(/'/g, '&#039;');
+    }
+
+    // Dismiss Telegram tooltip on click anywhere
+    var tgTooltip = document.getElementById('tgTooltipPill');
+    if (tgTooltip) {
+      document.addEventListener('click', function () {
+        tgTooltip.style.display = 'none';
+      }, { once: true });
     }
 
     // Trigger toggle
