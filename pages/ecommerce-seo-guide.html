@@ -1004,5 +1004,6 @@ const copyBtn=document.querySelector('[data-copy-link]');if(copyBtn){copyBtn.add
 const scrollTopBtn=document.getElementById('scrollTop');if(scrollTopBtn){window.addEventListener('scroll',()=>{scrollTopBtn.classList.toggle('is-visible',window.scrollY>500);});scrollTopBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));}
 document.querySelectorAll('[data-newsletter-form]').forEach(form=>{const status=form.querySelector('[data-newsletter-status]');form.addEventListener('submit',e=>{e.preventDefault();if(status){status.textContent='Thanks. You are on the list.';status.className='newsletter-status success';}form.reset();});});
 </script>
+<script src="/js/whatsapp-chat.js" defer></script>
 </body>
 </html>

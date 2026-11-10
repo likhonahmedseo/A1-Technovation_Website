@@ -1,0 +1,2509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZLZWHYFJBW"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-ZLZWHYFJBW');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Back Up and Restore a Minecraft Server Without Losing World Data | A1 Technovation</title>
+    <meta name="description" content="Stop the Minecraft server cleanly. Copy the active world, all enabled dimensions, player data, and the files your server needs to run. Store a copy off the host. To restore it, use the same server build and test the copy on a private instance before players rejoin.">
+    <link rel="canonical" href="https://a1technovation.com/blog/backup-and-restore-minecraft-server-without-losing-world-data/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Back Up and Restore a Minecraft Server Without Losing World Data | A1 Technovation">
+    <meta property="og:description" content="Stop the Minecraft server cleanly. Copy the active world, all enabled dimensions, player data, and the files your server needs to run. Store a copy off the host. To restore it, use the same server build and test the copy on a private instance before players rejoin.">
+    <meta property="og:url" content="https://a1technovation.com/blog/backup-and-restore-minecraft-server-without-losing-world-data/">
+    <meta property="og:image" content="https://a1technovation.com/assets/images/backup-and-restore-minecraft-server-without-losing-world-data.webp">
+    <meta property="og:image:alt" content="Back Up and Restore a Minecraft Server Without Losing World Data - Server Admin Architecture">
+    <meta property="og:site_name" content="A1 Technovation">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Back Up and Restore a Minecraft Server Without Losing World Data">
+    <meta name="twitter:description" content="Stop the Minecraft server cleanly. Copy the active world, all enabled dimensions, player data, and the files your server needs to run. Store a copy off the host.">
+    <meta name="twitter:image" content="https://a1technovation.com/assets/images/backup-and-restore-minecraft-server-without-losing-world-data.webp">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+    <link rel="apple-touch-icon" href="/assets/images/favicon.png">
+
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+    <!-- Core Stylesheets -->
+    <link rel="stylesheet" href="/css/style.min.css">
+    <link rel="stylesheet" href="/css/responsive.min.css">
+    <link rel="stylesheet" href="/css/whatsapp-chat.css">
+
+    <style>
+        :root {
+            --net-blue: #2563eb;
+            --net-indigo: #4f46e5;
+            --net-cyan: #06b6d4;
+            --net-dark: #0f172a;
+            --net-slate: #1e293b;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #334155;
+            background-color: #f8fafc;
+            line-height: 1.75;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #0f172a;
+            font-weight: 700;
+        }
+
+        /* Reading Progress Bar */
+        .reading-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #2563eb, #06b6d4);
+            z-index: 1000;
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+
+        /* Navbar & Global Header Overrides */
+        .article-navbar,
+        .article-navbar.scrolled {
+            background: rgba(255, 255, 255, .96) !important;
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid rgba(15, 23, 42, .08) !important;
+            box-shadow: 0 4px 24px rgba(15, 23, 42, .06) !important;
+        }
+
+        .article-navbar .logo-brand-dark {
+            opacity: 0 !important;
+            display: none !important;
+        }
+
+        .article-navbar .logo-brand-light {
+            opacity: 1 !important;
+            display: block !important;
+        }
+
+        .article-navbar .nav-link,
+        .article-navbar .nav-item.current > .nav-link {
+            color: #475569 !important;
+        }
+
+        .article-navbar .nav-link:hover,
+        .article-navbar .nav-link.active,
+        .article-navbar .nav-item.current > .nav-link {
+            color: #2563eb !important;
+            background: rgba(37, 99, 235, .08) !important;
+        }
+
+        .article-navbar .mobile-toggle span {
+            background: #0f172a !important;
+        }
+
+        /* Hero Header (A1 Global Brand Dark Theme) */
+        .mc-hero {
+            background: linear-gradient(145deg, #060b18 0%, #0d1526 55%, #160826 100%) !important;
+            color: #ffffff !important;
+            position: relative;
+            overflow: hidden;
+        }
+        .mc-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 80% 20%, rgba(37, 99, 235, 0.22) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .mc-hero p,
+        .mc-hero .lead-p,
+        header.mc-hero p {
+            color: #f1f5f9 !important;
+        }
+        .mc-hero a {
+            color: #38bdf8 !important;
+        }
+        .mc-hero a:hover {
+            color: #7dd3fc !important;
+        }
+
+        /* Prose Overrides */
+        .prose h2 {
+            font-size: 1.75rem;
+            margin-top: 2.75rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: #0f172a;
+        }
+        .prose h3 {
+            font-size: 1.35rem;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+            color: #1e293b;
+        }
+        .prose p {
+            margin-bottom: 1.25rem;
+            font-size: 1.0625rem;
+            color: #334155;
+        }
+
+        /* Code Block Styling - High Contrast Fonts */
+        .code-window {
+            background-color: #090d16 !important;
+            border: 1px solid #1e293b !important;
+            border-radius: 1rem !important;
+            overflow: hidden !important;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3) !important;
+            margin: 2rem 0 !important;
+        }
+        .code-window-header {
+            background-color: #0f172a !important;
+            border-bottom: 1px solid #1e293b !important;
+            padding: 0.75rem 1.25rem !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+        }
+        .code-title {
+            color: #e2e8f0 !important;
+            font-size: 0.875rem !important;
+            font-weight: 600 !important;
+            font-family: 'JetBrains Mono', monospace !important;
+        }
+        .code-copy-btn {
+            background: rgba(255, 255, 255, 0.08) !important;
+            color: #f1f5f9 !important;
+            font-size: 0.8rem !important;
+            font-weight: 600 !important;
+            padding: 0.4rem 0.85rem !important;
+            border-radius: 0.5rem !important;
+            border: 1px solid rgba(255, 255, 255, 0.15) !important;
+            cursor: pointer !important;
+            transition: all 0.2s ease !important;
+        }
+        .code-copy-btn:hover {
+            background: rgba(37, 99, 235, 0.3) !important;
+            color: #ffffff !important;
+            border-color: #3b82f6 !important;
+        }
+        .code-body,
+        pre.code-body,
+        .code-window pre,
+        .code-window code,
+        .code-window pre code,
+        .prose .code-window pre code,
+        #article-body .code-window pre code {
+            background-color: #090d16 !important;
+            color: #f8fafc !important;
+            font-family: 'JetBrains Mono', monospace !important;
+            font-size: 0.9375rem !important;
+            line-height: 1.7 !important;
+        }
+        pre.code-body {
+            padding: 1.5rem !important;
+            margin: 0 !important;
+            overflow-x: auto !important;
+        }
+        .code-body code {
+            background: transparent !important;
+            padding: 0 !important;
+            border: none !important;
+            color: #f8fafc !important;
+            white-space: pre !important;
+            display: block !important;
+        }
+        .code-dots {
+            display: flex;
+            gap: 0.5rem;
+        }
+        .code-dot {
+            width: 0.75rem;
+            height: 0.75rem;
+            border-radius: 9999px;
+        }
+        .code-dot-red { background: #ef4444; }
+        .code-dot-yellow { background: #f59e0b; }
+        .code-dot-green { background: #10b981; }
+
+        /* Direct Answer / Callout Boxes */
+        .direct-answer {
+            background: linear-gradient(135deg, #eff6ff 0%, #f0fdf4 100%);
+            border-left: 4px solid var(--net-blue);
+            padding: 1.5rem 1.75rem;
+            border-radius: 0 1rem 1rem 0;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+        .direct-answer p {
+            margin-bottom: 0;
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: #1e293b;
+            line-height: 1.7;
+        }
+
+        /* Table Styling */
+        .mc-table-container, .net-table-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            border-radius: 1rem;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            margin: 2rem 0;
+            background: #ffffff;
+        }
+        .mc-table, .net-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9375rem;
+            text-align: left;
+        }
+        .mc-table th, .net-table th {
+            background-color: #0f172a;
+            color: #ffffff;
+            font-weight: 600;
+            padding: 1rem 1.25rem;
+            border-bottom: 2px solid #2563eb;
+        }
+        .mc-table td, .net-table td {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid #e2e8f0;
+            color: #334155;
+            vertical-align: top;
+        }
+        .mc-table tr:nth-child(even), .net-table tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+        .mc-table tr:hover, .net-table tr:hover {
+            background-color: #eff6ff;
+        }
+
+        /* High-Contrast CTA Card (Global Brand Theme) */
+        .article-cta-card,
+        .prose .article-cta-card {
+            background: linear-gradient(135deg, #090d16 0%, #0f172a 45%, #172554 100%) !important;
+            color: #ffffff !important;
+            border: 1px solid rgba(59, 130, 246, 0.35) !important;
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.5rem !important;
+            padding: 2.5rem !important;
+            box-shadow: 0 15px 35px -5px rgba(15, 23, 42, 0.45) !important;
+        }
+        .article-cta-card h2,
+        .article-cta-card h3,
+        .prose .article-cta-card h2,
+        .prose .article-cta-card h3 {
+            color: #ffffff !important;
+            font-size: 1.75rem !important;
+            font-weight: 800 !important;
+            margin-top: 0 !important;
+            margin-bottom: 1.25rem !important;
+            letter-spacing: -0.025em !important;
+            border-bottom: none !important;
+            padding-bottom: 0 !important;
+        }
+        .article-cta-card p,
+        .article-cta-card .cta-copy,
+        .prose .article-cta-card p,
+        .prose .article-cta-card .cta-copy,
+        #article-body .article-cta-card p,
+        #article-body .article-cta-card .cta-copy,
+        .not-prose.article-cta-card p {
+            color: #f8fafc !important;
+            font-size: 1.125rem !important;
+            line-height: 1.75 !important;
+            margin-bottom: 1.25rem !important;
+        }
+        .article-cta-button,
+        .prose .article-cta-button {
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            background: linear-gradient(135deg, #2563eb, #0ea5e9) !important;
+            color: #ffffff !important;
+            font-weight: 700 !important;
+            font-size: 1.0625rem !important;
+            padding: 0.95rem 1.75rem !important;
+            border-radius: 0.75rem !important;
+            text-decoration: none !important;
+            transition: all 0.25s ease !important;
+            box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        }
+        .article-cta-button:hover,
+        .prose .article-cta-button:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 15px 30px -5px rgba(37, 99, 235, 0.6) !important;
+            background: linear-gradient(135deg, #1d4ed8, #0284c7) !important;
+        }
+
+        /* Accordion FAQ */
+        .faq-item {
+            border: 1px solid #e2e8f0;
+            border-radius: 1rem;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.2s ease;
+            background: #ffffff;
+        }
+        .faq-item:hover {
+            border-color: #cbd5e1;
+        }
+        .faq-question {
+            width: 100%;
+            padding: 1.25rem 1.5rem;
+            text-align: left;
+            background: #ffffff;
+            font-weight: 700;
+            font-size: 1.125rem;
+            color: #0f172a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: none;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .faq-question:hover {
+            color: #2563eb;
+        }
+        .faq-question.active {
+            color: #2563eb;
+            background-color: #f8fafc;
+        }
+        .faq-question i {
+            transition: transform 0.3s ease;
+            color: #64748b;
+        }
+        .faq-question.active i {
+            transform: rotate(180deg);
+            color: #2563eb;
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding: 0 1.5rem;
+            background: #ffffff;
+            color: #334155;
+            line-height: 1.7;
+        }
+        .faq-answer.show {
+            max-height: 500px;
+            padding: 0 1.5rem 1.5rem 1.5rem;
+            transition: max-height 0.5s ease-in;
+        }
+
+        /* Sidebar Styling */
+        .toc-list a {
+            color: #94a3b8;
+            font-size: 0.875rem;
+            display: block;
+            padding: 0.35rem 0;
+            text-decoration: none;
+            transition: all 0.15s ease;
+        }
+        .toc-list a:hover {
+            color: #38bdf8;
+            padding-left: 0.25rem;
+        }
+
+        .mc-sidebar-card {
+            background: linear-gradient(160deg, #0b1120 0%, #172554 100%);
+            border: 1px solid rgba(37, 99, 235, 0.25);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            color: #ffffff;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.25);
+        }
+    
+        /* Mobile Infographic & Touch Scroll Enhancements */
+                /* Enhanced Responsive Infographic Diagrams */
+        .fig-diagram {
+            position: relative;
+            width: 100%;
+        }
+        .infographic-scroll {
+            position: relative;
+            width: 100%;
+        }
+        @media (min-width: 641px) {
+            .infographic-scroll {
+                overflow-x: visible !important;
+                padding-bottom: 0 !important;
+            }
+            .infographic-scroll svg {
+                min-width: 0 !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                height: auto !important;
+                display: block !important;
+            }
+        }
+        @media (max-width: 640px) {
+            .infographic-scroll {
+                overflow-x: auto !important;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 0.5rem;
+            }
+            .infographic-scroll svg {
+                min-width: 580px !important;
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+        }
+        .fig-toggle-btn {
+            cursor: pointer;
+            outline: none;
+            transition: all 0.2s ease;
+            color: #94a3b8;
+        }
+        .fig-toggle-btn.active {
+            background-color: rgba(37, 99, 235, 0.35) !important;
+            color: #38bdf8 !important;
+            font-weight: 700;
+        }
+        .fig-toggle-btn:not(.active):hover {
+            color: #f8fafc;
+        }
+        .fig-toggle-btn:not(.active) {
+            color: #94a3b8 !important;
+            background-color: transparent !important;
+        }
+        .fig-toggle-btn:not(.active):hover {
+            color: #f1f5f9 !important;
+        }
+    </style>
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "TechArticle",
+          "@id": "https://a1technovation.com/blog/backup-and-restore-minecraft-server-without-losing-world-data/#article",
+          "headline": "Back Up and Restore a Minecraft Server Without Losing World Data",
+          "description": "Stop the Minecraft server cleanly. Copy the active world, all enabled dimensions, player data, and the files your server needs to run. Store a copy off the host. To restore it, use the same server build and test the copy on a private instance before players rejoin.",
+          "url": "https://a1technovation.com/blog/backup-and-restore-minecraft-server-without-losing-world-data/",
+          "datePublished": "2026-11-08T00:00:00+00:00",
+          "dateModified": "2026-11-08T00:00:00+00:00",
+          "inLanguage": "en-US",
+          "image": "https://a1technovation.com/assets/images/backup-and-restore-minecraft-server-without-losing-world-data.webp",
+          "author": {
+            "@type": "Person",
+            "name": "Likhon Ahmed",
+            "jobTitle": "CEO & Lead Infrastructure Specialist",
+            "url": "https://a1technovation.com/pages/about"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "A1 Technovation",
+            "url": "https://a1technovation.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://a1technovation.com/assets/images/A1Technovation-Light-Background.png"
+            }
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://a1technovation.com/blog/backup-and-restore-minecraft-server-without-losing-world-data/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Does a Minecraft server backup include player inventories?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, if it includes the active world's player data and any plugin data that stores or changes inventories. Restore the matching files and keep the same player identity setup. Check an actual player's inventory before reopening."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I restore a Minecraft server backup to a different host?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. Use the same edition, server build, runtime, and plugins or mods for the first boot. Update paths and permissions on the new host and test a player join before moving traffic."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I recover progress made after my last backup?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Only if you have another usable copy or a record of those changes. Check for a newer snapshot or a separate plugin history before you overwrite the current files. A backup only returns the data it captured."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How often should I back up a Minecraft server?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Schedule backups based on how much play you can afford to lose. Also take a separate backup before you update the game, change the modpack, or move hosts. Check the timestamp of the last successful copy regularly."
+              }
+            }
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://a1technovation.com/blog/backup-and-restore-minecraft-server-without-losing-world-data/#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://a1technovation.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Blog",
+              "item": "https://a1technovation.com/pages/blog"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Minecraft Backup and Restore",
+              "item": "https://a1technovation.com/blog/backup-and-restore-minecraft-server-without-losing-world-data/"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-blue-200 selection:text-slate-900">
+
+    <!-- Reading Progress Bar -->
+    <div class="reading-progress" id="readingProgress"></div>
+
+        <!-- Official Header / Global Navigation Bar -->
+    <nav class="navbar article-navbar" id="navbar">
+        <div class="container"><div class="navbar-inner">
+            <a href="/" class="navbar-logo" aria-label="A1 Technovation home"><span class="logo-mark"><img src="/assets/images/A1Technovation-Dark-Background.png" alt="A1 Technovation" class="logo-brand logo-brand-dark" /><img src="/assets/images/A1Technovation-Light-Background.png" alt="A1 Technovation" class="logo-brand logo-brand-light" /></span></a>
+            <nav class="navbar-nav">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/pages/about" class="nav-link">About</a>
+                <div class="nav-item megamenu-item"><a href="/pages/services" class="nav-link">Services <i class="fas fa-chevron-down" style="font-size:.7em;opacity:.7"></i></a>
+                    <div class="megamenu">
+            <div class="megamenu-inner">
+              <div class="mm-col mm-col-main">
+                <p class="mm-col-head">Core Services</p>
+                <a href="/pages/services-seo" class="mm-service"><div class="mm-icon"><i class="fas fa-search"></i></div><div class="mm-body"><span class="mm-title">SEO Services</span><span class="mm-desc">Technical, content, and authority growth</span></div></a>
+                <a href="/aeo-optimization-services/" class="mm-service"><div class="mm-icon"><i class="fas fa-comment-dots"></i></div><div class="mm-body"><span class="mm-title">AEO Optimization</span><span class="mm-desc">Win snippets and answer boxes</span></div></a>
+                <a href="/geo-optimization-services/" class="mm-service"><div class="mm-icon"><i class="fas fa-diagram-project"></i></div><div class="mm-body"><span class="mm-title">GEO Optimization</span><span class="mm-desc">Get cited by AI engines</span></div></a>
+                <a href="/pages/services-local-seo" class="mm-service"><div class="mm-icon"><i class="fas fa-location-dot"></i></div><div class="mm-body"><span class="mm-title">Local SEO</span><span class="mm-desc">Maps, local pack, and city rankings</span></div></a>
+              </div>
+              <div class="mm-col mm-col-links">
+                <p class="mm-col-head">SEO Specialties</p>
+                <a href="/ecommerce-seo-services/" class="mm-link">Ecommerce SEO</a>
+                <a href="/pages/services-web-dev" class="mm-link">Web Design</a>
+                <a href="/pages/services-ppc-ads" class="mm-link">PPC Advertising</a>
+                <a href="/pages/services-social-media" class="mm-link">Social Media</a>
+                <a href="/seo-services-for-hvac-companies/" class="mm-link">HVAC SEO</a>
+                <a href="/seo-services-usa/" class="mm-link">SEO Services USA</a>
+                <a href="/pages/services-car-rental-seo" class="mm-link">Car Rental SEO</a>
+                <a href="/pages/services-limousine-business-seo" class="mm-link">Limousine Business SEO</a>
+                <a href="/pages/services-car-repair-seo" class="mm-link">Car Repair SEO</a>
+                <a href="/pages/services-car-dealership-seo" class="mm-link">Car Dealership SEO</a>
+                <a href="/pages/services-tree-service-seo" class="mm-link">Tree Service SEO</a>
+                <a href="/pages/services-lawyer-seo" class="mm-link">Lawyer SEO</a>
+                <a href="/pages/services-small-business-seo" class="mm-link">Small Business SEO</a>
+              </div>
+              <div class="mm-col mm-col-feature">
+                <div class="mm-feature-card">
+                  <div class="mm-feature-badge">Free Audit</div>
+                  <h4 class="mm-feature-title">Grow Your Business Online</h4>
+                  <p class="mm-feature-body">Get a free 30-minute strategy session with our experts - no strings attached.</p>
+                  <a href="https://wa.me/8801799976295" class="btn btn-primary btn-sm" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Free Consultation</a>
+                  <a href="/pages/services" class="mm-feature-link">View all services -&gt;</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a href="/pages/portfolio" class="nav-link">Work</a>
+                <a href="/pages/blog" class="nav-link active">Blog</a>
+                <a href="/pages/tools" class="nav-link">Tools</a>
+                <a href="/pages/contact" class="nav-link">Contact</a>
+            </nav>
+            <div class="navbar-right">
+                <a href="https://wa.me/8801799976295" class="btn btn-primary btn-sm nav-cta" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Free Consultation</a>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false"><span></span><span></span><span></span></button>
+            </div>
+        </div></div>
+    </nav>
+
+    <!-- Global Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+  <a href="/"                   class="mobile-menu-link">Home <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
+  <a href="/pages/about"             class="mobile-menu-link">About <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
+  <div class="mobile-menu-group">
+    <a href="/pages/services"        class="mobile-menu-link">Services <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
+    <div class="mobile-submenu">
+      <a href="/pages/services-seo" class="mobile-submenu-link">SEO Services</a>
+      <a href="/aeo-optimization-services/" class="mobile-submenu-link">AEO Optimization</a>
+      <a href="/geo-optimization-services/" class="mobile-submenu-link">GEO Optimization</a>
+      <a href="/pages/services-local-seo" class="mobile-submenu-link">Local SEO Services</a>
+      <a href="/ecommerce-seo-services/" class="mobile-submenu-link">Ecommerce SEO Services</a>
+      <a href="/seo-services-for-hvac-companies/" class="mobile-submenu-link">HVAC SEO Services</a>
+      <a href="/seo-services-usa/" class="mobile-submenu-link">SEO Services USA</a>
+      <div class="mobile-submenu-nested">
+        <a href="/pages/services-car-rental-seo" class="mobile-submenu-link mobile-submenu-sublink">Car Rental SEO Service</a>
+        <a href="/pages/services-limousine-business-seo" class="mobile-submenu-link mobile-submenu-sublink">Limousine Business SEO Service</a>
+        <a href="/pages/services-car-repair-seo" class="mobile-submenu-link mobile-submenu-sublink">Car Repair SEO Service</a>
+        <a href="/pages/services-car-dealership-seo" class="mobile-submenu-link mobile-submenu-sublink">Car Dealership SEO Service</a>
+        <a href="/pages/services-tree-service-seo" class="mobile-submenu-link mobile-submenu-sublink">Tree Service SEO</a>
+        <a href="/pages/services-lawyer-seo" class="mobile-submenu-link mobile-submenu-sublink">Lawyer SEO Service</a>
+        <a href="/pages/services-small-business-seo" class="mobile-submenu-link mobile-submenu-sublink">Small Business SEO Service</a>
+      </div>
+      <a href="/pages/services-web-dev" class="mobile-submenu-link">Web Design &amp; Development</a>
+      <a href="/pages/services-ppc-ads" class="mobile-submenu-link">PPC Advertising</a>
+      <a href="/pages/services-social-media" class="mobile-submenu-link">Social Media Marketing</a>
+    </div>
+  </div>
+  <a href="/pages/portfolio"         class="mobile-menu-link">Work <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
+  <a href="/pages/blog"              class="mobile-menu-link">Blog <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
+  <a href="/pages/tools"             class="mobile-menu-link">Tools <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
+  <a href="/pages/contact"           class="mobile-menu-link">Contact <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
+  <div class="mobile-menu-footer">
+    <a href="https://wa.me/8801799976295" class="btn btn-primary btn-lg" target="_blank" rel="noopener" style="justify-content:center">
+      <i class="fab fa-whatsapp"></i> Start a Free Consultation
+    </a>
+    <p class="mobile-menu-note">info.a1technovation@gmail.com</p>
+  </div>
+</div>
+
+    <!-- Hero Header -->
+    <header class="mc-hero py-16 lg:py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <!-- Breadcrumb Navigation -->
+            <nav class="flex items-center gap-2 text-sm text-slate-400 mb-6" aria-label="Breadcrumb">
+                <a href="/" class="hover:text-white transition">Home</a>
+                <i class="fas fa-chevron-right text-xs text-cyan-400/60"></i>
+                <a href="/pages/blog" class="hover:text-white transition">Blog</a>
+                <i class="fas fa-chevron-right text-xs text-cyan-400/60"></i>
+                <span class="text-white font-medium">Minecraft Server Backup &amp; Recovery</span>
+            </nav>
+
+            <div class="flex flex-wrap items-center gap-3 mb-6">
+                <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-900/60 text-cyan-300 border border-cyan-500/30">
+                    <i class="fas fa-cube text-cyan-400"></i> Server Administration &amp; DevOps
+                </span>
+                <span class="text-slate-400 text-xs flex items-center gap-1.5 bg-slate-900/60 px-3 py-1.5 rounded-full border border-slate-700/60">
+                    <i class="fas fa-clock text-cyan-400"></i> 16 min read
+                </span>
+                <span class="text-slate-400 text-xs flex items-center gap-1.5 bg-slate-900/60 px-3 py-1.5 rounded-full border border-slate-700/60">
+                    <i class="fas fa-check-double text-cyan-400"></i> Verified: Java, Paper &amp; Bedrock
+                </span>
+            </div>
+
+            <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight mb-6">
+                Back Up and Restore a Minecraft Server Without Losing World Data
+            </h1>
+
+            <div class="text-lg sm:text-xl leading-relaxed max-w-4xl font-normal space-y-4">
+                <p class="text-slate-100 text-lg sm:text-xl leading-relaxed" style="color: #f8fafc !important;">
+                    Stop the Minecraft server cleanly. Copy the active world, all enabled dimensions, player data, and the files your server needs to run. Store a copy off the host. To restore it, use the same server build and test the copy on a private instance before players rejoin. Changes made after the backup may be lost.
+                </p>
+                <p class="text-base sm:text-lg text-slate-200" style="color: #e2e8f0 !important;">
+                    If your server is already down, skip to <a href="#run-a-recovery-drill" class="text-cyan-400 font-bold underline hover:text-cyan-300" style="color: #38bdf8 !important;">the recovery drill</a>. Keep the current files and database before you replace anything. They give you a rollback point and may contain newer data.
+                </p>
+            </div>
+
+            <!-- Author & Metadata -->
+            <div class="flex items-center gap-4 mt-8 pt-6 border-t border-slate-800">
+                <a href="/pages/about" class="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 border-2 border-cyan-400/40">
+                    <img src="/assets/images/CEO%20of%20A1%20Technovation.webp" alt="Likhon Ahmed" class="w-full h-full object-cover">
+                </a>
+                <div>
+                    <div class="text-white font-bold text-sm">
+                        <a href="/pages/about" class="hover:text-cyan-400 transition">Likhon Ahmed</a>
+                    </div>
+                    <div class="text-slate-400 text-xs">
+                        Lead Infrastructure Specialist &bull; Published for Production Game Admins
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Layout -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 xl:gap-16">
+
+            <!-- Primary Article Column -->
+            <div class="lg:col-span-8">
+                <article class="prose prose-lg max-w-none text-slate-700" id="article-body">
+
+                    <!-- Featured Cover Image (Optimized WebP, 80KB) -->
+                    <div class="mb-10 rounded-2xl overflow-hidden border border-slate-200 shadow-lg bg-slate-900 not-prose">
+                        <picture>
+                            <source srcset="/assets/images/backup-and-restore-minecraft-server-without-losing-world-data.webp" type="image/webp">
+                            <img src="/assets/images/backup-and-restore-minecraft-server-without-losing-world-data.webp"
+                                alt="Back Up and Restore a Minecraft Server Without Losing World Data - Server Admin Architecture"
+                                width="1200" height="670" loading="eager" fetchpriority="high"
+                                class="w-full h-auto object-cover transform hover:scale-[1.01] transition-transform duration-300">
+                        </picture>
+                        <div class="p-3 bg-slate-900 text-slate-400 text-xs text-center border-t border-slate-800">
+                            Enterprise gaming server architecture featuring isolated world data backups, atomic replication, and recovery staging.
+                        </div>
+                    </div>
+
+                    <!-- Section 1 -->
+                    <section id="consistency-requirements" class="mb-12">
+                        <h2>
+                            <i class="fas fa-lock text-blue-600"></i> Define world consistency requirements
+                        </h2>
+                        <p>
+                            A consistent backup captures files that belong to the same saved point. A copy made while Minecraft or a plugin is writing can mix older and newer data. For example, the copy can contain a player file from after an item trade and a world file from before it. We recommend a clean shutdown for your first backup and before a major update.
+                        </p>
+
+                        <!-- Infographic 1: Concurrency Hazard vs Clean Shutdown -->
+                        <figure class="my-8 not-prose">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-5 md:p-6 shadow-xl overflow-hidden">
+        <div class="flex items-center justify-between mb-4 border-b border-slate-800 pb-3">
+            <span class="text-xs font-bold uppercase tracking-wider text-cyan-400 flex items-center gap-2">
+                <i class="fas fa-shield-halved"></i> Data Integrity Architecture
+            </span>
+            <!-- Mobile View Switcher -->
+            <div class="flex items-center bg-slate-950 rounded-lg p-0.5 border border-slate-800 text-[11px] font-semibold">
+                <button type="button" onclick="toggleFig(1, 'cards')" id="fig1-btn-cards" class="fig-toggle-btn active px-2.5 py-1 rounded transition-all flex items-center gap-1.5"><i class="fas fa-list-ul text-[10px]"></i> Cards</button>
+                <button type="button" onclick="toggleFig(1, 'diagram')" id="fig1-btn-diagram" class="fig-toggle-btn px-2.5 py-1 rounded transition-all flex items-center gap-1.5"><i class="fas fa-project-diagram text-[10px]"></i> Diagram</button>
+            </div>
+            <!-- Desktop Subtitle -->
+            <span class="hidden md:inline text-xs text-slate-400">Live Copy Hazard vs Clean Shutdown Snapshot</span>
+        </div>
+
+        <!-- Mobile Cards View -->
+        <div id="fig1-cards" class="fig-cards block md:hidden space-y-3">
+            <!-- Hazard Card -->
+            <div class="bg-red-950/20 border border-red-500/30 rounded-xl p-3.5">
+                <div class="flex items-center gap-2 mb-2.5 pb-2 border-b border-red-500/20">
+                    <span class="w-5 h-5 rounded-full bg-red-500/20 text-red-400 flex items-center justify-center text-xs font-bold">&#10006;</span>
+                    <span class="text-xs font-bold text-red-300 uppercase tracking-wide">Unsynchronized Live Copy (Hazard)</span>
+                </div>
+                <div class="space-y-2 text-xs">
+                    <div class="flex items-start gap-2">
+                        <span class="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 font-mono text-[10px]">T1</span>
+                        <div>
+                            <div class="font-semibold text-slate-200">File copy reads chunk region</div>
+                            <div class="text-slate-400 text-[11px]">Region <code class="text-amber-300 font-mono">.mca</code> contains world terrain before item trade</div>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-2">
+                        <span class="px-1.5 py-0.5 rounded bg-amber-950/80 text-amber-300 border border-amber-800/40 font-mono text-[10px]">T2</span>
+                        <div>
+                            <div class="font-semibold text-amber-300">&#9888; Time T2: Player trades item or deposits in chest</div>
+                            <div class="text-slate-400 text-[11px]">Game ticks continue; server memory updates in background</div>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-2">
+                        <span class="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 font-mono text-[10px]">T3</span>
+                        <div>
+                            <div class="font-semibold text-slate-200">File copy reads <code class="text-cyan-300 font-mono">playerdata/</code></div>
+                            <div class="text-slate-400 text-[11px]"><code class="text-amber-300 font-mono">UUID.dat</code> contains inventory after item trade</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-3 p-2.5 bg-red-900/40 border border-red-700/50 rounded-lg text-[11px] text-red-200">
+                    <div class="font-bold text-red-300 flex items-center gap-1.5">
+                        <i class="fas fa-triangle-exclamation text-xs"></i> CORRUPTION / DESYNC RISK
+                    </div>
+                    <div class="text-slate-300 mt-0.5">Item Duplication, Voided Inventories, Chunk Seams</div>
+                </div>
+            </div>
+
+            <!-- Consistent Card -->
+            <div class="bg-blue-950/20 border border-cyan-500/30 rounded-xl p-3.5">
+                <div class="flex items-center gap-2 mb-2.5 pb-2 border-b border-cyan-500/20">
+                    <span class="w-5 h-5 rounded-full bg-cyan-500/20 text-cyan-300 flex items-center justify-center text-xs font-bold">&#10004;</span>
+                    <span class="text-xs font-bold text-cyan-300 uppercase tracking-wide">Point-in-Time Clean Shutdown (Consistent)</span>
+                </div>
+                <div class="space-y-2 text-xs">
+                    <div class="flex items-start gap-2">
+                        <span class="px-1.5 py-0.5 rounded bg-blue-900/60 text-cyan-300 font-mono text-[10px]">1</span>
+                        <div>
+                            <div class="font-semibold text-slate-200 font-mono text-[11px]">systemctl stop minecraft.service</div>
+                            <div class="text-emerald-400 text-[11px]">&#10003; Minecraft flushes dirty chunk memory &amp; player states</div>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-2">
+                        <span class="px-1.5 py-0.5 rounded bg-blue-900/60 text-cyan-300 font-mono text-[10px]">2</span>
+                        <div>
+                            <div class="font-semibold text-slate-200">Zero Concurrent Disk Writes</div>
+                            <div class="text-slate-400 text-[11px]"><code class="text-cyan-300 font-mono">ActiveState=inactive</code> ensures static lock on world tree</div>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-2">
+                        <span class="px-1.5 py-0.5 rounded bg-blue-900/60 text-cyan-300 font-mono text-[10px]">3</span>
+                        <div>
+                            <div class="font-semibold text-slate-200 font-mono text-[11px]">Atomic tar -cf server.tar . &amp; Restart</div>
+                            <div class="text-slate-400 text-[11px]">Archives static disk snapshot, then resumes service</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-3 p-2.5 bg-blue-900/40 border border-cyan-700/50 rounded-lg text-[11px] text-cyan-100">
+                    <div class="font-bold text-cyan-300 flex items-center gap-1.5">
+                        <i class="fas fa-check-double text-xs text-emerald-400"></i> 100% WORLD CONSISTENCY
+                    </div>
+                    <div class="text-slate-300 mt-0.5">Matching Player UUIDs, Inventories, Claims &amp; Dimensions</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Diagram View (Desktop & Toggled Mobile) -->
+        <div id="fig1-diagram" class="fig-diagram hidden md:block">
+            <div class="md:hidden flex items-center justify-between text-[11px] text-cyan-300 bg-blue-950/60 px-3 py-1.5 rounded-lg border border-cyan-800/40 mb-2">
+                <span><i class="fas fa-arrows-left-right text-cyan-400 mr-1.5"></i> Swipe horizontally to explore full diagram</span>
+                <span class="text-slate-400 text-[10px]">Scroll &rarr;</span>
+            </div>
+            <div class="infographic-scroll overflow-x-auto">
+                <svg style="width: 100%; max-width: 100%; height: auto;" viewBox="0 0 880 340" class="w-full h-auto " aria-label="Visual comparison of live unpaused copy corruption risk versus clean shutdown point-in-time consistency">
+                <defs>
+                    <linearGradient id="hazardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#ef4444" stop-opacity="0.15" />
+                        <stop offset="100%" stop-color="#7f1d1d" stop-opacity="0.25" />
+                    </linearGradient>
+                    <linearGradient id="cleanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.15" />
+                        <stop offset="100%" stop-color="#1e3a8a" stop-opacity="0.25" />
+                    </linearGradient>
+                </defs>
+
+                <!-- Panel 1: Live Unpaused Copy -->
+                <rect x="20" y="20" width="405" height="300" rx="14" fill="#0f172a" stroke="#ef4444" stroke-width="1.5" stroke-opacity="0.6" />
+                <rect x="20" y="20" width="405" height="42" rx="14" fill="url(#hazardGrad)" />
+                <circle cx="45" cy="41" r="10" fill="#ef4444" fill-opacity="0.2" />
+                <text x="45" y="45" font-family="Inter, sans-serif" font-size="12" font-weight="900" fill="#ef4444" text-anchor="middle">&#10006;</text>
+                <text x="65" y="46" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#f87171">Unsynchronized Live Copy (Hazard)</text>
+
+                <!-- Process 1 -->
+                <rect x="40" y="78" width="365" height="52" rx="8" fill="#1e293b" stroke="#334155" />
+                <text x="55" y="100" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#cbd5e1">Time T1: File copy reads chunk region</text>
+                <text x="55" y="118" font-family="Inter, sans-serif" font-size="11" fill="#94a3b8">Region .mca contains world terrain before item trade</text>
+
+                <!-- Event in middle -->
+                <rect x="40" y="142" width="365" height="44" rx="8" fill="#450a0a" stroke="#dc2626" stroke-dasharray="4 3" />
+                <text x="55" y="162" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#fca5a5">&#9888; Time T2: Player trades item or deposits in chest</text>
+                <text x="55" y="176" font-family="Inter, sans-serif" font-size="10" fill="#f87171">Game ticks continue; server memory updates in background</text>
+
+                <!-- Process 2 -->
+                <rect x="40" y="198" width="365" height="52" rx="8" fill="#1e293b" stroke="#334155" />
+                <text x="55" y="220" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#cbd5e1">Time T3: File copy reads playerdata/</text>
+                <text x="55" y="238" font-family="Inter, sans-serif" font-size="11" fill="#94a3b8">UUID.dat contains inventory after item trade</text>
+
+                <!-- Danger Outcome -->
+                <rect x="40" y="262" width="365" height="46" rx="8" fill="#7f1d1d" fill-opacity="0.4" stroke="#ef4444" />
+                <text x="222" y="282" font-family="Inter, sans-serif" font-size="12" font-weight="800" fill="#fca5a5" text-anchor="middle">CORRUPTION / DESYNC RISK</text>
+                <text x="222" y="298" font-family="Inter, sans-serif" font-size="10.5" fill="#fecaca" text-anchor="middle">Item Duplication, Voided Inventories, Chunk Seams</text>
+
+                <!-- Panel 2: Clean Shutdown Snapshot -->
+                <rect x="455" y="20" width="405" height="300" rx="14" fill="#0f172a" stroke="#3b82f6" stroke-width="1.5" stroke-opacity="0.6" />
+                <rect x="455" y="20" width="405" height="42" rx="14" fill="url(#blueGrad)" />
+                <circle cx="480" cy="41" r="10" fill="#10b981" fill-opacity="0.2" />
+                <text x="480" y="45" font-family="Inter, sans-serif" font-size="12" font-weight="900" fill="#10b981" text-anchor="middle">&#10004;</text>
+                <text x="500" y="46" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#38bdf8">Point-in-Time Clean Shutdown (Consistent)</text>
+
+                <!-- Step 1 -->
+                <rect x="475" y="78" width="365" height="52" rx="8" fill="#1e293b" stroke="#334155" />
+                <text x="490" y="100" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#cbd5e1">1. systemctl stop minecraft.service</text>
+                <text x="490" y="118" font-family="Inter, sans-serif" font-size="11" fill="#38bdf8">&#10003; Minecraft flushes dirty chunk memory &amp; player states</text>
+
+                <!-- Step 2 -->
+                <rect x="475" y="142" width="365" height="48" rx="8" fill="#1e293b" stroke="#334155" />
+                <text x="490" y="164" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#cbd5e1">2. Zero Concurrent Disk Writes</text>
+                <text x="490" y="180" font-family="Inter, sans-serif" font-size="11" fill="#94a3b8">ActiveState=inactive ensures static lock on world tree</text>
+
+                <!-- Step 3 -->
+                <rect x="475" y="202" width="365" height="48" rx="8" fill="#1e293b" stroke="#334155" />
+                <text x="490" y="222" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#cbd5e1">3. Atomic tar -cf server.tar . &amp; Restart</text>
+                <text x="490" y="238" font-family="Inter, sans-serif" font-size="11" fill="#94a3b8">Archives static disk snapshot, then resumes service</text>
+
+                <!-- Success Outcome -->
+                <rect x="475" y="262" width="365" height="46" rx="8" fill="#064e3b" fill-opacity="0.5" stroke="#3b82f6" />
+                <text x="657" y="282" font-family="Inter, sans-serif" font-size="12" font-weight="800" fill="#6ee7b7" text-anchor="middle">100% WORLD CONSISTENCY</text>
+                <text x="657" y="298" font-family="Inter, sans-serif" font-size="10.5" fill="#a7f3d0" text-anchor="middle">Matching Player UUIDs, Inventories, Claims &amp; Dimensions</text>
+            </svg>
+            </div>
+        </div>
+
+        <figcaption class="text-xs text-slate-400 text-center mt-3">
+            Figure 1: Concurrency hazard during live file copies versus deterministic point-in-time state achieved through clean shutdown.
+        </figcaption>
+    </div>
+</figure>
+                    </section>
+
+                    <!-- Section 2 -->
+                    <section id="prerequisites-versions" class="mb-12">
+                        <h2>
+                            <i class="fas fa-list-check text-blue-600"></i> Prerequisites and supported versions
+                        </h2>
+                        <p>
+                            The commands below are for a self-managed Java Edition server on Linux with systemd, Bash, and GNU command-line tools. The example uses a Paper server with all its files under one directory and no external plugin database. Use your installed Paper build and the Java version it requires. Paper's 26.1 and later series requires Java 25 according to its current setup guide. <a href="https://docs.papermc.io/paper/getting-started/" target="_blank" rel="noopener noreferrer" class="text-blue-600 font-semibold underline hover:text-blue-700">PaperMC setup guide</a>
+                        </p>
+                        <p>
+                            Before you start, record the exact Minecraft build, Java version, server directory, service name, and plugin or mod versions. Check that you can stop the service cleanly. Set aside local space for an uncompressed archive and space on a separate host for a second copy. If the service can restart through a panel, watchdog, or other job, prevent that during the copy.
+                        </p>
+                        <p>
+                            Start with a known world. Write down the active world name, the coordinates of a build in each enabled dimension, and the items in a test player's inventory and Ender Chest. Use this record when you test the restore.
+                        </p>
+                    </section>
+
+                    <!-- Section 3 -->
+                    <section id="what-files-to-copy" class="mb-12">
+                        <h2>
+                            <i class="fas fa-folder-open text-blue-600"></i> What files does a Minecraft server backup need?
+                        </h2>
+                        <p>
+                            Check level-name in server.properties. The examples below assume the level name is world. Check the actual server directory, including any custom worlds or paths your startup command or plugins use.
+                        </p>
+
+                        <!-- Table: Server type and What to copy -->
+                        <div class="mc-table-container not-prose">
+                            <table class="mc-table">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 32%;">Server type</th>
+                                        <th>What to copy</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="font-bold text-slate-900">
+                                            <span class="inline-block px-2.5 py-1 rounded bg-blue-100 text-blue-800 text-xs font-mono uppercase mb-1">Java Vanilla</span><br>
+                                            Java Vanilla before 26.1
+                                        </td>
+                                        <td>
+                                            The full active world folder. Its Nether and End typically use DIM-1 and DIM1 inside that folder.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-bold text-slate-900">
+                                            <span class="inline-block px-2.5 py-1 rounded bg-blue-100 text-blue-800 text-xs font-mono uppercase mb-1">Paper Server</span><br>
+                                            Paper before 26.1
+                                        </td>
+                                        <td>
+                                            The active world and the separate dimension folders when present, such as world_nether and world_the_end. Include worlds loaded by plugins.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-bold text-slate-900">
+                                            <span class="inline-block px-2.5 py-1 rounded bg-purple-100 text-purple-800 text-xs font-mono uppercase mb-1">26.1+ Modern</span><br>
+                                            Java Vanilla or Paper 26.1 and later
+                                        </td>
+                                        <td>
+                                            The complete active world tree, including dimensions/minecraft/ for the default dimensions and players/data/ for player records. Confirm the paths on your build. Keep all plugin-managed worlds as well.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-bold text-slate-900">
+                                            <span class="inline-block px-2.5 py-1 rounded bg-amber-100 text-amber-800 text-xs font-mono uppercase mb-1">Bedrock BDS</span><br>
+                                            Bedrock Dedicated Server
+                                        </td>
+                                        <td>
+                                            The full active level under worlds/, including its db/ directory. Keep server settings, access lists, and any required resource or behavior packs with a full server backup.
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <p>
+                            Sources for the layouts and edition differences. <a href="https://www.minecraft.net/en-us/article/minecraft-java-edition-26-1" target="_blank" rel="noopener noreferrer" class="text-blue-600 font-semibold underline hover:text-blue-700">Minecraft Java 26.1 release notes</a> &middot; <a href="https://docs.papermc.io/paper/migration/" target="_blank" rel="noopener noreferrer" class="text-blue-600 font-semibold underline hover:text-blue-700">PaperMC migration guide</a> &middot; <a href="https://help.minecraft.net/hc/en-us/articles/49914677714957" target="_blank" rel="noopener noreferrer" class="text-blue-600 font-semibold underline hover:text-blue-700">Minecraft Bedrock server setup</a>
+                        </p>
+
+                        <!-- Infographic 2: Directory Anatomy -->
+                        <figure class="my-8 not-prose">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-5 md:p-6 shadow-xl overflow-hidden">
+        <div class="flex items-center justify-between mb-4 border-b border-slate-800 pb-3">
+            <span class="text-xs font-bold uppercase tracking-wider text-cyan-400 flex items-center gap-2">
+                <i class="fas fa-folder-tree"></i> Filesystem Architecture
+            </span>
+            <!-- Mobile View Switcher -->
+            <div class="flex items-center bg-slate-950 rounded-lg p-0.5 border border-slate-800 text-[11px] font-semibold">
+                <button type="button" onclick="toggleFig(2, 'cards')" id="fig2-btn-cards" class="fig-toggle-btn active px-2.5 py-1 rounded transition-all flex items-center gap-1.5"><i class="fas fa-list-ul text-[10px]"></i> Cards</button>
+                <button type="button" onclick="toggleFig(2, 'diagram')" id="fig2-btn-diagram" class="fig-toggle-btn px-2.5 py-1 rounded transition-all flex items-center gap-1.5"><i class="fas fa-project-diagram text-[10px]"></i> Diagram</button>
+            </div>
+            <!-- Desktop Subtitle -->
+            <span class="hidden md:inline text-xs text-slate-400">Directory Layouts Across Server Builds &amp; Database State</span>
+        </div>
+
+        <!-- Mobile Cards View -->
+        <div id="fig2-cards" class="fig-cards block md:hidden space-y-3">
+            <!-- Paper / Vanilla < 26.1 -->
+            <div class="bg-slate-800/80 border border-slate-700/80 rounded-xl p-3.5">
+                <div class="flex items-center justify-between mb-2 pb-2 border-b border-slate-700">
+                    <span class="text-xs font-bold text-slate-200">Paper / Vanilla &lt; 26.1</span>
+                    <span class="text-[10px] text-cyan-400 font-mono">/srv/minecraft/</span>
+                </div>
+                <div class="space-y-1 text-xs font-mono text-slate-300">
+                    <div>📁 world/</div>
+                    <div class="pl-3 text-slate-400">📄 level.dat</div>
+                    <div class="pl-3 text-slate-400">📁 playerdata/</div>
+                    <div class="pl-3 text-amber-300">📁 DIM-1 (Nether)</div>
+                    <div class="pl-3 text-purple-300">📁 DIM1 (The End)</div>
+                    <div class="text-amber-300">📁 world_nether/ *</div>
+                    <div class="text-purple-300">📁 world_the_end/ *</div>
+                    <div>📁 plugins/</div>
+                    <div>📄 server.properties</div>
+                </div>
+                <div class="mt-2.5 pt-2 border-t border-slate-700/60 text-[11px] text-slate-400 italic">
+                    * Paper stores Nether &amp; End in root-level folders
+                </div>
+            </div>
+
+            <!-- Java / Paper 26.1+ -->
+            <div class="bg-slate-800/80 border border-cyan-500/40 rounded-xl p-3.5">
+                <div class="flex items-center justify-between mb-2 pb-2 border-b border-cyan-500/30">
+                    <span class="text-xs font-bold text-cyan-300">Java / Paper 26.1+ Tree</span>
+                    <span class="px-1.5 py-0.5 rounded bg-cyan-950 text-cyan-300 border border-cyan-800/50 text-[10px] font-semibold">&#9889; Java 25+</span>
+                </div>
+                <div class="space-y-1 text-xs font-mono text-slate-300">
+                    <div class="text-slate-400 text-[10px]">/srv/minecraft/</div>
+                    <div>📁 world/</div>
+                    <div class="pl-3 text-slate-400">📄 level.dat</div>
+                    <div class="pl-3 text-cyan-300">📁 dimensions/minecraft/nether/</div>
+                    <div class="pl-3 text-cyan-300">📁 dimensions/minecraft/the_end/</div>
+                    <div class="pl-3 text-slate-400">📁 players/data/ (UUIDs)</div>
+                </div>
+                <div class="mt-2.5 pt-2 border-t border-slate-700/60 text-[11px] text-cyan-400">
+                    Standardized dimension paths under dimensions/
+                </div>
+            </div>
+
+            <!-- Bedrock Dedicated -->
+            <div class="bg-slate-800/80 border border-slate-700/80 rounded-xl p-3.5">
+                <div class="flex items-center justify-between mb-2 pb-2 border-b border-slate-700">
+                    <span class="text-xs font-bold text-slate-200">Bedrock Dedicated</span>
+                    <span class="text-[10px] text-cyan-400 font-mono">/srv/bedrock/</span>
+                </div>
+                <div class="space-y-1 text-xs font-mono text-slate-300">
+                    <div>📁 worlds/&lt;level-name&gt;/</div>
+                    <div class="pl-3 text-amber-300">📁 db/ (LevelDB *.ldb chunks)</div>
+                    <div class="pl-3 text-slate-400">📄 levelname.txt</div>
+                    <div>📄 server.properties</div>
+                    <div>📄 permissions.json</div>
+                    <div>📁 resource_packs/</div>
+                </div>
+                <div class="mt-2.5 pt-2 border-t border-slate-700/60 text-[11px] text-amber-300">
+                    LevelDB requires binary lock before safe copy
+                </div>
+            </div>
+
+            <!-- External Database State -->
+            <div class="bg-amber-950/20 border border-amber-500/40 rounded-xl p-3.5">
+                <div class="flex items-center justify-between mb-2 pb-2 border-b border-amber-500/30">
+                    <span class="text-xs font-bold text-amber-300 flex items-center gap-1.5">
+                        <i class="fas fa-database text-xs"></i> External Database State
+                    </span>
+                    <span class="text-[10px] text-amber-400">MySQL / PostgreSQL</span>
+                </div>
+                <div class="space-y-1 text-xs text-slate-300">
+                    <div>&bull; LuckPerms permissions</div>
+                    <div>&bull; Vault / Economy balances</div>
+                    <div>&bull; GriefPrevention claims</div>
+                    <div>&bull; CoreProtect block logs</div>
+                </div>
+                <div class="mt-2.5 p-2 bg-red-950/50 border border-red-800/60 rounded-lg text-[11px] text-red-200">
+                    <span class="font-bold text-red-300">&#9888; CRITICAL NOTICE:</span> File tar of <code class="font-mono text-amber-200">/srv/minecraft</code> DOES NOT BACK UP remote database records! Requires synchronized mysqldump.
+                </div>
+            </div>
+        </div>
+
+        <!-- Diagram View -->
+        <div id="fig2-diagram" class="fig-diagram hidden md:block">
+            <div class="md:hidden flex items-center justify-between text-[11px] text-cyan-300 bg-blue-950/60 px-3 py-1.5 rounded-lg border border-cyan-800/40 mb-2">
+                <span><i class="fas fa-arrows-left-right text-cyan-400 mr-1.5"></i> Swipe horizontally to explore full diagram</span>
+                <span class="text-slate-400 text-[10px]">Scroll &rarr;</span>
+            </div>
+            <div class="infographic-scroll overflow-x-auto">
+                <svg style="width: 100%; max-width: 100%; height: auto;" viewBox="0 0 880 360" class="w-full h-auto " aria-label="Minecraft directory structure comparison across Java Vanilla, Paper pre-26.1, Java 26.1+, and Bedrock Dedicated Server">
+                <!-- Column 1: Java Vanilla & Paper <26.1 -->
+                <rect x="15" y="15" width="200" height="330" rx="10" fill="#0f172a" stroke="#334155" />
+                <rect x="15" y="15" width="200" height="38" rx="10" fill="#1e293b" />
+                <text x="115" y="38" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#38bdf8" text-anchor="middle">Paper / Vanilla &lt; 26.1</text>
+                <text x="25" y="75" font-family="Courier New, monospace" font-size="11" fill="#94a3b8">/srv/minecraft/</text>
+                <text x="35" y="95" font-family="Courier New, monospace" font-size="11" fill="#cbd5e1">&#128193; world/</text>
+                <text x="50" y="115" font-family="Courier New, monospace" font-size="10.5" fill="#64748b">&#128196; level.dat</text>
+                <text x="50" y="135" font-family="Courier New, monospace" font-size="10.5" fill="#64748b">&#128193; playerdata/</text>
+                <text x="50" y="155" font-family="Courier New, monospace" font-size="10.5" fill="#f59e0b">&#128193; DIM-1 (Nether)</text>
+                <text x="50" y="175" font-family="Courier New, monospace" font-size="10.5" fill="#c084fc">&#128193; DIM1 (The End)</text>
+                <text x="35" y="200" font-family="Courier New, monospace" font-size="11" fill="#f59e0b">&#128193; world_nether/ *</text>
+                <text x="35" y="220" font-family="Courier New, monospace" font-size="11" fill="#c084fc">&#128193; world_the_end/ *</text>
+                <text x="35" y="245" font-family="Courier New, monospace" font-size="10.5" fill="#64748b">&#128193; plugins/</text>
+                <text x="35" y="265" font-family="Courier New, monospace" font-size="10.5" fill="#64748b">&#128196; server.properties</text>
+                <rect x="25" y="290" width="180" height="42" rx="6" fill="#1e293b" />
+                <text x="115" y="306" font-family="Inter, sans-serif" font-size="9.5" fill="#94a3b8" text-anchor="middle">* Paper stores Nether &amp; End</text>
+                <text x="115" y="322" font-family="Inter, sans-serif" font-size="9.5" fill="#38bdf8" text-anchor="middle">in root-level folders</text>
+
+                <!-- Column 2: Java 26.1+ Unified Tree -->
+                <rect x="230" y="15" width="205" height="330" rx="10" fill="#0f172a" stroke="#3b82f6" stroke-width="1.5" />
+                <rect x="230" y="15" width="205" height="38" rx="10" fill="#064e3b" />
+                <text x="332" y="38" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#6ee7b7" text-anchor="middle">Java / Paper 26.1+ Tree</text>
+                <text x="240" y="75" font-family="Courier New, monospace" font-size="11" fill="#94a3b8">/srv/minecraft/</text>
+                <text x="250" y="95" font-family="Courier New, monospace" font-size="11" fill="#cbd5e1">&#128193; world/</text>
+                <text x="265" y="115" font-family="Courier New, monospace" font-size="10.5" fill="#64748b">&#128196; level.dat</text>
+                <text x="265" y="135" font-family="Courier New, monospace" font-size="10.5" fill="#38bdf8">&#128193; dimensions/</text>
+                <text x="280" y="155" font-family="Courier New, monospace" font-size="10" fill="#38bdf8">&#128193; minecraft/</text>
+                <text x="295" y="175" font-family="Courier New, monospace" font-size="9.5" fill="#f59e0b">&#128193; nether/</text>
+                <text x="295" y="195" font-family="Courier New, monospace" font-size="9.5" fill="#c084fc">&#128193; the_end/</text>
+                <text x="265" y="220" font-family="Courier New, monospace" font-size="10.5" fill="#38bdf8">&#128193; players/</text>
+                <text x="280" y="240" font-family="Courier New, monospace" font-size="10" fill="#38bdf8">&#128193; data/ (UUIDs)</text>
+                <rect x="240" y="285" width="185" height="48" rx="6" fill="#064e3b" fill-opacity="0.4" stroke="#3b82f6" />
+                <text x="332" y="304" font-family="Inter, sans-serif" font-size="9.5" font-weight="700" fill="#a7f3d0" text-anchor="middle">&#9889; Requires Java 25+</text>
+                <text x="332" y="320" font-family="Inter, sans-serif" font-size="9.5" fill="#6ee7b7" text-anchor="middle">Standardized dimension paths</text>
+
+                <!-- Column 3: Bedrock Dedicated Server -->
+                <rect x="450" y="15" width="200" height="330" rx="10" fill="#0f172a" stroke="#334155" />
+                <rect x="450" y="15" width="200" height="38" rx="10" fill="#1e293b" />
+                <text x="550" y="38" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#f59e0b" text-anchor="middle">Bedrock Dedicated</text>
+                <text x="460" y="75" font-family="Courier New, monospace" font-size="11" fill="#94a3b8">/srv/bedrock/</text>
+                <text x="470" y="95" font-family="Courier New, monospace" font-size="11" fill="#cbd5e1">&#128193; worlds/</text>
+                <text x="485" y="115" font-family="Courier New, monospace" font-size="10.5" fill="#cbd5e1">&#128193; &lt;level-name&gt;/</text>
+                <text x="500" y="135" font-family="Courier New, monospace" font-size="10" fill="#f59e0b">&#128193; db/ (LevelDB)</text>
+                <text x="515" y="155" font-family="Courier New, monospace" font-size="9" fill="#94a3b8">*.ldb chunks</text>
+                <text x="500" y="175" font-family="Courier New, monospace" font-size="10" fill="#64748b">&#128196; levelname.txt</text>
+                <text x="470" y="200" font-family="Courier New, monospace" font-size="10.5" fill="#64748b">&#128196; server.properties</text>
+                <text x="470" y="220" font-family="Courier New, monospace" font-size="10.5" fill="#64748b">&#128196; permissions.json</text>
+                <text x="470" y="240" font-family="Courier New, monospace" font-size="10.5" fill="#64748b">&#128193; resource_packs/</text>
+                <rect x="460" y="290" width="180" height="42" rx="6" fill="#1e293b" />
+                <text x="550" y="306" font-family="Inter, sans-serif" font-size="9.5" fill="#94a3b8" text-anchor="middle">LevelDB requires binary</text>
+                <text x="550" y="322" font-family="Inter, sans-serif" font-size="9.5" fill="#f59e0b" text-anchor="middle">lock before safe copy</text>
+
+                <!-- Column 4: External State -->
+                <rect x="665" y="15" width="200" height="330" rx="10" fill="#0f172a" stroke="#a855f7" stroke-width="1.5" />
+                <rect x="665" y="15" width="200" height="38" rx="10" fill="#581c87" />
+                <text x="765" y="38" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#e9d5ff" text-anchor="middle">External Database State</text>
+                <text x="675" y="75" font-family="Courier New, monospace" font-size="11" fill="#94a3b8">Remote Services:</text>
+                <text x="685" y="100" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#c084fc">&#128452; MySQL / PostgreSQL</text>
+                <text x="695" y="125" font-family="Inter, sans-serif" font-size="10.5" fill="#cbd5e1">&bull; LuckPerms permissions</text>
+                <text x="695" y="145" font-family="Inter, sans-serif" font-size="10.5" fill="#cbd5e1">&bull; Vault / Economy balances</text>
+                <text x="695" y="165" font-family="Inter, sans-serif" font-size="10.5" fill="#cbd5e1">&bull; GriefPrevention claims</text>
+                <text x="695" y="185" font-family="Inter, sans-serif" font-size="10.5" fill="#cbd5e1">&bull; CoreProtect block logs</text>
+                <rect x="675" y="225" width="180" height="105" rx="8" fill="#3b0764" stroke="#a855f7" stroke-dasharray="3 3" />
+                <text x="765" y="250" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#f3e8ff" text-anchor="middle">&#9888; CRITICAL NOTICE</text>
+                <text x="765" y="270" font-family="Inter, sans-serif" font-size="9.5" fill="#e9d5ff" text-anchor="middle">File tar of /srv/minecraft</text>
+                <text x="765" y="286" font-family="Inter, sans-serif" font-size="9.5" font-weight="700" fill="#fca5a5" text-anchor="middle">DOES NOT BACK UP</text>
+                <text x="765" y="302" font-family="Inter, sans-serif" font-size="9.5" fill="#e9d5ff" text-anchor="middle">remote database records!</text>
+                <text x="765" y="318" font-family="Inter, sans-serif" font-size="9.5" fill="#c084fc" text-anchor="middle">Requires synchronized mysqldump</text>
+            </svg>
+            </div>
+        </div>
+
+        <figcaption class="text-xs text-slate-400 text-center mt-3">
+            Figure 2: World tree anatomy across versions and the strict requirement to pair local archives with remote database dumps.
+        </figcaption>
+    </div>
+</figure>
+
+                        <p>
+                            A world backup holds the map, builds, chunks, and world-managed player data. A full server backup also keeps the startup files, server settings, access lists, plugins or mods, and their data. Keep the exact server and mod loader builds for Forge or Fabric. A modded world can depend on those builds for its blocks and items.
+                        </p>
+                        <p>
+                            Check where plugins store claims, balances, homes, and permissions. If they use a separate database, export it while the relevant writers are stopped or through a backup procedure that coordinates those writers. Keep the export with the matching world archive. A file copy of the server directory does not capture a remote database.
+                        </p>
+                    </section>
+
+                    <!-- Section 4 -->
+                    <section id="scheduled-off-host-backups" class="mb-12">
+                        <h2>
+                            <i class="fas fa-clock-rotate-left text-blue-600"></i> Create scheduled off-host backups
+                        </h2>
+                        <p>
+                            The example stops the server only for the local archive. It starts the server again before copying the archive off-host. Use a maintenance window. An uncompressed archive can still take time when the world is large or the disk is busy.
+                        </p>
+
+                        <div id="configuration-expected-output">
+                            <h3>Configuration and expected output</h3>
+                            <p>
+                                Use a private staging directory outside the server tree. Mount a dedicated directory from a separate backup host at /mnt/minecraft-backups. Restrict access to both locations because the archive can contain credentials and player data. Use encrypted transport and protect the backup host with its own retention policy.
+                            </p>
+                            <p>
+                                Replace the paths and service name in the script. Before the first run, confirm that the server service shuts down cleanly and that the server tree contains every file you need. GNU tar archives symbolic links as links. If data lives behind a link or outside the tree, capture that data separately and record where it belongs.
+                            </p>
+                            <p>
+                                Save the script as /usr/local/sbin/minecraft-backup. Give the service operator permission to run it. The example assumes an administrator runs it and the source is a trusted local server directory.
+                            </p>
+                        </div>
+
+                        <!-- Infographic 3: Pipeline Flowchart -->
+                        <figure class="my-8 not-prose">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-5 md:p-6 shadow-xl overflow-hidden">
+        <div class="flex items-center justify-between mb-4 border-b border-slate-800 pb-3">
+            <span class="text-xs font-bold uppercase tracking-wider text-cyan-400 flex items-center gap-2">
+                <i class="fas fa-diagram-project"></i> Script Execution Pipeline
+            </span>
+            <!-- Mobile View Switcher -->
+            <div class="flex items-center bg-slate-950 rounded-lg p-0.5 border border-slate-800 text-[11px] font-semibold">
+                <button type="button" onclick="toggleFig(3, 'cards')" id="fig3-btn-cards" class="fig-toggle-btn active px-2.5 py-1 rounded transition-all flex items-center gap-1.5"><i class="fas fa-list-ul text-[10px]"></i> Cards</button>
+                <button type="button" onclick="toggleFig(3, 'diagram')" id="fig3-btn-diagram" class="fig-toggle-btn px-2.5 py-1 rounded transition-all flex items-center gap-1.5"><i class="fas fa-project-diagram text-[10px]"></i> Diagram</button>
+            </div>
+            <!-- Desktop Subtitle -->
+            <span class="hidden md:inline text-xs text-slate-400">Atomic Workflow of /usr/local/sbin/minecraft-backup</span>
+        </div>
+
+        <!-- Mobile Cards View -->
+        <div id="fig3-cards" class="fig-cards block md:hidden space-y-2.5">
+            <!-- Step 1 -->
+            <div class="bg-slate-800/80 border border-slate-700/80 rounded-xl p-3 flex items-start gap-3">
+                <span class="w-6 h-6 rounded-lg bg-blue-900/80 border border-cyan-500/40 text-cyan-300 font-bold flex items-center justify-center text-xs shrink-0">1</span>
+                <div class="flex-1 text-xs">
+                    <div class="flex items-center justify-between mb-1">
+                        <span class="font-bold text-slate-200">Pre-flight Lock</span>
+                        <span class="text-[10px] text-cyan-400 font-semibold">&#10003; Safety Guards</span>
+                    </div>
+                    <div class="font-mono text-slate-300 text-[11px]">flock -n 9 &bull; Active check &bull; Mount verify</div>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="bg-amber-950/20 border border-amber-500/40 rounded-xl p-3 flex items-start gap-3">
+                <span class="w-6 h-6 rounded-lg bg-amber-900/60 border border-amber-500/40 text-amber-300 font-bold flex items-center justify-center text-xs shrink-0">2</span>
+                <div class="flex-1 text-xs">
+                    <div class="flex items-center justify-between mb-1">
+                        <span class="font-bold text-amber-300">Clean Stop</span>
+                        <span class="text-[10px] text-amber-400 font-semibold">&#9208; Brief Pause</span>
+                    </div>
+                    <div class="font-mono text-slate-300 text-[11px]">systemctl stop &bull; Flushes memory &bull; Asserts inactive</div>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="bg-slate-800/80 border border-slate-700/80 rounded-xl p-3 flex items-start gap-3">
+                <span class="w-6 h-6 rounded-lg bg-blue-900/80 border border-cyan-500/40 text-cyan-300 font-bold flex items-center justify-center text-xs shrink-0">3</span>
+                <div class="flex-1 text-xs">
+                    <div class="flex items-center justify-between mb-1">
+                        <span class="font-bold text-slate-200">Local Tar Archive</span>
+                        <span class="text-[10px] text-slate-400 font-semibold">&#128230; Uncompressed</span>
+                    </div>
+                    <div class="font-mono text-slate-300 text-[11px]">tar -cf server.tar &bull; Direct NVMe write &bull; Static snapshot</div>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="bg-emerald-950/20 border border-emerald-500/40 rounded-xl p-3 flex items-start gap-3">
+                <span class="w-6 h-6 rounded-lg bg-emerald-900/60 border border-emerald-500/40 text-emerald-300 font-bold flex items-center justify-center text-xs shrink-0">4</span>
+                <div class="flex-1 text-xs">
+                    <div class="flex items-center justify-between mb-1">
+                        <span class="font-bold text-emerald-300">Instant Restart</span>
+                        <span class="text-[10px] text-emerald-400 font-semibold">&#9654; Server Online</span>
+                    </div>
+                    <div class="font-mono text-slate-300 text-[11px]">systemctl start &bull; Players reconnect &bull; Downtime over!</div>
+                </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="bg-slate-800/80 border border-slate-700/80 rounded-xl p-3 flex items-start gap-3">
+                <span class="w-6 h-6 rounded-lg bg-blue-900/80 border border-cyan-500/40 text-cyan-300 font-bold flex items-center justify-center text-xs shrink-0">5</span>
+                <div class="flex-1 text-xs">
+                    <div class="flex items-center justify-between mb-1">
+                        <span class="font-bold text-slate-200">Checksum Hash</span>
+                        <span class="text-[10px] text-cyan-400 font-semibold">&#128270; Byte Integrity</span>
+                    </div>
+                    <div class="font-mono text-slate-300 text-[11px]">tar -tf &gt; files.txt &bull; sha256sum &gt; SHA256SUMS</div>
+                </div>
+            </div>
+
+            <!-- Step 6 -->
+            <div class="bg-blue-950/30 border border-blue-500/40 rounded-xl p-3 flex items-start gap-3">
+                <span class="w-6 h-6 rounded-lg bg-blue-800/60 border border-blue-400 text-cyan-200 font-bold flex items-center justify-center text-xs shrink-0">6</span>
+                <div class="flex-1 text-xs">
+                    <div class="flex items-center justify-between mb-1">
+                        <span class="font-bold text-cyan-200">Off-Host Staging</span>
+                        <span class="text-[10px] text-cyan-300 font-semibold">&#128640; Atomic Finish</span>
+                    </div>
+                    <div class="font-mono text-slate-300 text-[11px]">cp .incoming-... &bull; sha256sum -c &bull; mv -T $run_id</div>
+                </div>
+            </div>
+
+            <!-- Summary Note -->
+            <div class="p-3 bg-blue-950/40 border border-cyan-800/50 rounded-xl text-[11px] text-slate-300">
+                <span class="font-bold text-cyan-300">Total Downtime Window:</span> Only during Step 2 &amp; Step 3 (typically &lt; 30-90 seconds on NVMe). Steps 5 and 6 execute off-host copy and SHA256 checksum validation while players are actively playing on the restarted server.
+            </div>
+        </div>
+
+        <!-- Diagram View -->
+        <div id="fig3-diagram" class="fig-diagram hidden md:block">
+            <div class="md:hidden flex items-center justify-between text-[11px] text-cyan-300 bg-blue-950/60 px-3 py-1.5 rounded-lg border border-cyan-800/40 mb-2">
+                <span><i class="fas fa-arrows-left-right text-cyan-400 mr-1.5"></i> Swipe horizontally to explore full diagram</span>
+                <span class="text-slate-400 text-[10px]">Scroll &rarr;</span>
+            </div>
+            <div class="infographic-scroll overflow-x-auto">
+                <svg style="width: 100%; max-width: 100%; height: auto;" viewBox="0 0 880 280" class="w-full h-auto " aria-label="Step-by-step pipeline of the automated bash backup script from systemd stop to checksum verification and remote replication">
+                <defs>
+                    <linearGradient id="pipeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#3b82f6" />
+                        <stop offset="50%" stop-color="#10b981" />
+                        <stop offset="100%" stop-color="#06b6d4" />
+                    </linearGradient>
+                    <marker id="pipeArrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                        <path d="M 0 1 L 10 5 L 0 9 z" fill="#10b981" />
+                    </marker>
+                </defs>
+
+                <!-- Step 1 -->
+                <rect x="15" y="30" width="125" height="160" rx="10" fill="#0f172a" stroke="#3b82f6" stroke-width="1.5" />
+                <circle cx="77" cy="55" r="14" fill="#1e3a8a" />
+                <text x="77" y="60" font-family="Inter, sans-serif" font-size="12" font-weight="800" fill="#60a5fa" text-anchor="middle">1</text>
+                <text x="77" y="90" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#f8fafc" text-anchor="middle">Pre-flight Lock</text>
+                <text x="77" y="115" font-family="Courier New, monospace" font-size="9" fill="#94a3b8" text-anchor="middle">flock -n 9</text>
+                <text x="77" y="130" font-family="Inter, sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">Active check</text>
+                <text x="77" y="145" font-family="Inter, sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">Mount verify</text>
+                <text x="77" y="172" font-family="Inter, sans-serif" font-size="9" font-weight="700" fill="#38bdf8" text-anchor="middle">&#10003; Safety Guards</text>
+
+                <path d="M 140 110 L 158 110" stroke="#3b82f6" stroke-width="2" marker-end="url(#pipeArrow)" />
+
+                <!-- Step 2 -->
+                <rect x="160" y="30" width="125" height="160" rx="10" fill="#0f172a" stroke="#f59e0b" stroke-width="1.5" />
+                <circle cx="222" cy="55" r="14" fill="#78350f" />
+                <text x="222" y="60" font-family="Inter, sans-serif" font-size="12" font-weight="800" fill="#fbbf24" text-anchor="middle">2</text>
+                <text x="222" y="90" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#f8fafc" text-anchor="middle">Clean Stop</text>
+                <text x="222" y="115" font-family="Courier New, monospace" font-size="9" fill="#94a3b8" text-anchor="middle">systemctl stop</text>
+                <text x="222" y="130" font-family="Inter, sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">Flushes memory</text>
+                <text x="222" y="145" font-family="Inter, sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">Asserts inactive</text>
+                <text x="222" y="172" font-family="Inter, sans-serif" font-size="9" font-weight="700" fill="#fbbf24" text-anchor="middle">&#9208; Brief Pause</text>
+
+                <path d="M 285 110 L 303 110" stroke="#3b82f6" stroke-width="2" marker-end="url(#pipeArrow)" />
+
+                <!-- Step 3 -->
+                <rect x="305" y="30" width="125" height="160" rx="10" fill="#0f172a" stroke="#3b82f6" stroke-width="1.5" />
+                <circle cx="367" cy="55" r="14" fill="#064e3b" />
+                <text x="367" y="60" font-family="Inter, sans-serif" font-size="12" font-weight="800" fill="#38bdf8" text-anchor="middle">3</text>
+                <text x="367" y="90" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#f8fafc" text-anchor="middle">Local Tar Archive</text>
+                <text x="367" y="115" font-family="Courier New, monospace" font-size="9" fill="#94a3b8" text-anchor="middle">tar -cf server.tar</text>
+                <text x="367" y="130" font-family="Inter, sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">Direct NVMe write</text>
+                <text x="367" y="145" font-family="Inter, sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">Static snapshot</text>
+                <text x="367" y="172" font-family="Inter, sans-serif" font-size="9" font-weight="700" fill="#38bdf8" text-anchor="middle">&#128230; Uncompressed</text>
+
+                <path d="M 430 110 L 448 110" stroke="#3b82f6" stroke-width="2" marker-end="url(#pipeArrow)" />
+
+                <!-- Step 4 -->
+                <rect x="450" y="30" width="125" height="160" rx="10" fill="#0f172a" stroke="#3b82f6" stroke-width="2" />
+                <circle cx="512" cy="55" r="14" fill="#064e3b" />
+                <text x="512" y="60" font-family="Inter, sans-serif" font-size="12" font-weight="800" fill="#38bdf8" text-anchor="middle">4</text>
+                <text x="512" y="90" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#f8fafc" text-anchor="middle">Instant Restart</text>
+                <text x="512" y="115" font-family="Courier New, monospace" font-size="9" fill="#94a3b8" text-anchor="middle">systemctl start</text>
+                <text x="512" y="130" font-family="Inter, sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">Players reconnect</text>
+                <text x="512" y="145" font-family="Inter, sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">Downtime over!</text>
+                <text x="512" y="172" font-family="Inter, sans-serif" font-size="9" font-weight="700" fill="#10b981" text-anchor="middle">&#9654; Server Online</text>
+
+                <path d="M 575 110 L 593 110" stroke="#3b82f6" stroke-width="2" marker-end="url(#pipeArrow)" />
+
+                <!-- Step 5 -->
+                <rect x="595" y="30" width="125" height="160" rx="10" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5" />
+                <circle cx="657" cy="55" r="14" fill="#0369a1" />
+                <text x="657" y="60" font-family="Inter, sans-serif" font-size="12" font-weight="800" fill="#7dd3fc" text-anchor="middle">5</text>
+                <text x="657" y="90" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#f8fafc" text-anchor="middle">Checksum Hash</text>
+                <text x="657" y="115" font-family="Courier New, monospace" font-size="9" fill="#94a3b8" text-anchor="middle">tar -tf &gt; files.txt</text>
+                <text x="657" y="130" font-family="Courier New, monospace" font-size="9" fill="#94a3b8" text-anchor="middle">sha256sum</text>
+                <text x="657" y="145" font-family="Inter, sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">&gt; SHA256SUMS</text>
+                <text x="657" y="172" font-family="Inter, sans-serif" font-size="9" font-weight="700" fill="#38bdf8" text-anchor="middle">&#128270; Byte Integrity</text>
+
+                <path d="M 720 110 L 738 110" stroke="#3b82f6" stroke-width="2" marker-end="url(#pipeArrow)" />
+
+                <!-- Step 6 -->
+                <rect x="740" y="30" width="125" height="160" rx="10" fill="#0f172a" stroke="#a855f7" stroke-width="1.5" />
+                <circle cx="802" cy="55" r="14" fill="#581c87" />
+                <text x="802" y="60" font-family="Inter, sans-serif" font-size="12" font-weight="800" fill="#d8b4fe" text-anchor="middle">6</text>
+                <text x="802" y="90" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#f8fafc" text-anchor="middle">Off-Host Staging</text>
+                <text x="802" y="115" font-family="Courier New, monospace" font-size="9" fill="#94a3b8" text-anchor="middle">cp .incoming-...</text>
+                <text x="802" y="130" font-family="Courier New, monospace" font-size="9" fill="#94a3b8" text-anchor="middle">sha256sum -c</text>
+                <text x="802" y="145" font-family="Courier New, monospace" font-size="9" fill="#94a3b8" text-anchor="middle">mv -T $run_id</text>
+                <text x="802" y="172" font-family="Inter, sans-serif" font-size="9" font-weight="700" fill="#c084fc" text-anchor="middle">&#128640; Atomic Finish</text>
+
+                <!-- Bottom Summary Bar -->
+                <rect x="15" y="210" width="850" height="50" rx="8" fill="#1e293b" stroke="#334155" />
+                <text x="440" y="232" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#cbd5e1" text-anchor="middle">
+                    Total Downtime Window: Only during Step 2 &amp; Step 3 (typically &lt; 30-90 seconds on NVMe).
+                </text>
+                <text x="440" y="249" font-family="Inter, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">
+                    Steps 5 and 6 execute off-host copy and SHA256 checksum validation while players are actively playing on the restarted server.
+                </text>
+            </svg>
+            </div>
+        </div>
+
+        <figcaption class="text-xs text-slate-400 text-center mt-3">
+            Figure 3: High-concurrency automated backup lifecycle minimizing maintenance downtime to local NVMe tar duration.
+        </figcaption>
+    </div>
+</figure>
+
+                        <!-- Code block for Bash Script -->
+                        <div class="code-window not-prose">
+                            <div class="code-window-header">
+                                <div class="flex items-center gap-3">
+                                    <div class="code-dots">
+                                        <span class="code-dot code-dot-red"></span>
+                                        <span class="code-dot code-dot-yellow"></span>
+                                        <span class="code-dot code-dot-green"></span>
+                                    </div>
+                                    <span class="code-title"><i class="fas fa-file-code me-1 text-cyan-400"></i> /usr/local/sbin/minecraft-backup</span>
+                                </div>
+                                <button type="button" class="code-copy-btn" onclick="navigator.clipboard.writeText(document.getElementById('backupScriptCode').innerText); this.innerText='Copied!'; setTimeout(()=>this.innerText='Copy Script', 2000);">
+                                    <i class="far fa-copy me-1"></i> Copy Script
+                                </button>
+                            </div>
+                            <pre class="code-body" id="backupScriptCode" style="background-color: #090d16 !important; color: #f8fafc !important;"><code style="color: #f8fafc !important; background: transparent !important;">#!/usr/bin/env bash
+set -euo pipefail
+umask 077
+service=minecraft.service
+source_dir=/srv/minecraft
+local_dir=/var/backups/minecraft
+remote_dir=/mnt/minecraft-backups
+install -d -m 0700 "$local_dir"
+exec 9&gt;"$local_dir/backup.lock"
+flock -n 9 || { echo "Another backup is running" &gt;&amp;2; exit 1; }
+mountpoint -q "$remote_dir" || { echo "Backup mount is missing" &gt;&amp;2; exit 1; }
+test -f "$source_dir/server.properties"
+systemctl is-active --quiet "$service" || {
+echo "Server is not running. Check it before backing up." &gt;&amp;2
+exit 1
+}
+local_run=$(mktemp -d "$local_dir/$(date -u +%Y%m%dT%H%M%SZ)-XXXXXX")
+run_id=${local_run##*/}
+restart_needed=0
+cleanup() {
+status=$?
+if (( restart_needed )); then
+systemctl start "$service" || status=1
+fi
+if (( status != 0 )); then
+printf 'Backup failed. Check %s and the service log.\n' "$local_run" &gt;&amp;2
+fi
+exit "$status"
+}
+trap cleanup EXIT
+restart_needed=1
+systemctl stop "$service"
+test "$(systemctl show -p ActiveState --value "$service")" = inactive
+test "$(systemctl show -p Result --value "$service")" = success
+tar -C "$source_dir" -cf "$local_run/server.tar" .
+systemctl start "$service"
+systemctl is-active --quiet "$service"
+restart_needed=0
+(
+cd "$local_run"
+tar -tf server.tar &gt; archive-files.txt
+sha256sum server.tar archive-files.txt &gt; SHA256SUMS
+)
+mountpoint -q "$remote_dir"
+pending=$(mktemp -d "$remote_dir/.incoming-$run_id-XXXXXX")
+cp "$local_run"/{server.tar,archive-files.txt,SHA256SUMS} "$pending/"
+(cd "$pending" &amp;&amp; sha256sum -c SHA256SUMS)
+mv -T -- "$pending" "$remote_dir/$run_id"
+printf 'Backup complete: %s\n' "$run_id"</code></pre>
+                        </div>
+
+                        <p>
+                            Run the script once during a maintenance window. In a successful run, the checksum check reports OK for both files and the script prints the backup ID. Check the Minecraft console for the normal startup message, then join the server. An active systemd service can still be loading the world.
+                        </p>
+                        <p>
+                            Use only completed backup directories. A directory starting with .incoming- marks an upload that has yet to pass the checksum check. Keep the last verified copy if the new run fails. Check local and remote free space before each run, and set a separate cleanup policy for staging files and incomplete uploads.
+                        </p>
+                        <p>
+                            Once the manual run passes, schedule the script under the same administrator account. For example, add the line below to that account's crontab for 4:30 a.m. in the scheduler's time zone. Route job output to a monitored log or configure working cron mail. Alert on failed jobs and on a missing recent success.
+                        </p>
+
+                        <!-- Crontab snippet -->
+                        <div class="code-window not-prose my-4">
+                            <div class="code-window-header">
+                                <span class="code-title"><i class="fas fa-calendar-check me-1 text-cyan-400"></i> Crontab Entry (crontab -e)</span>
+                            </div>
+                            <pre class="code-body" style="background-color: #090d16 !important; color: #f8fafc !important;"><code style="color: #f8fafc !important; background: transparent !important;">30 4 * * * /usr/local/sbin/minecraft-backup</code></pre>
+                        </div>
+                    </section>
+
+                    <!-- Section 5 -->
+                    <section id="backup-while-running" class="mb-12">
+                        <h2>
+                            <i class="fas fa-play text-blue-600"></i> Can you back up a Minecraft server while it is running?
+                        </h2>
+                        <p>
+                            Yes, if your edition and backup tool can make a consistent copy. Use a clean stop if you are unsure what still writes to disk.
+                        </p>
+                        <p>
+                            Java Edition. The server commands are save-off, save-all flush, and save-on. Wait for the flush to succeed before taking a copy or snapshot. Turn saving back on after capture, even if the copy fails. Plugins and separate databases can still write during this process. Use an edition-aware tool or a clean shutdown when you need a consistent full-server backup.
+                        </p>
+                        <p>
+                            Bedrock Dedicated Server. Use its own save hold, save query, and save resume workflow. Wait for the ready response. Use a tool that honors the file list and lengths returned by the server for the copy, then resume saving. For a manual full-server copy, stop the server first.
+                        </p>
+                        <p>
+                            Hosted panel. Check which files the panel includes and whether restore replaces files or leaves old files in place. Download one copy you can reach if the panel goes offline. For Realms, use the Realm backup controls.
+                        </p>
+                        <p>
+                            Command references. <a href="https://minecraft.wiki/w/Commands/save" target="_blank" rel="noopener noreferrer" class="text-blue-600 font-semibold underline hover:text-blue-700">Minecraft Wiki save commands</a> &middot; <a href="https://learn.microsoft.com/en-us/minecraft/creator/commands/commands/save?view=minecraft-bedrock-stable" target="_blank" rel="noopener noreferrer" class="text-blue-600 font-semibold underline hover:text-blue-700">Microsoft Learn Bedrock save command</a>
+                        </p>
+                    </section>
+
+                    <!-- Section 6 -->
+                    <section id="retain-versions-credentials" class="mb-12">
+                        <h2>
+                            <i class="fas fa-shield-cat text-blue-600"></i> Retain versions and protect credentials
+                        </h2>
+                        <p>
+                            Choose how much play you can afford to lose. If four hours of play would be hard to replace, a nightly backup leaves too much time between copies. Schedule backups around that limit and alert when the newest usable copy is older than planned.
+                        </p>
+
+                        <div id="keep-copies-different-needs">
+                            <h3>Keep copies for different recovery needs</h3>
+                            <p>
+                                For a small server that can accept up to a day of lost progress, an example policy is seven daily copies, four weekly copies, and a separate copy before each major update. Keep the pre-update copy until the new build passes your checks. Keep older copies if griefing or a plugin error could go unnoticed for weeks.
+                            </p>
+                            <p>
+                                Give the backup destination separate access controls. If your storage supports retained snapshots or deletion protection, use it to keep at least one older copy that the game host cannot erase. Keep the credentials needed to recover the backup available to a second authorized operator.
+                            </p>
+                        </div>
+
+                        <!-- Infographic 4: Retention Policy -->
+                        <figure class="my-8 not-prose">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-5 md:p-6 shadow-xl overflow-hidden">
+        <div class="flex items-center justify-between mb-4 border-b border-slate-800 pb-3">
+            <span class="text-xs font-bold uppercase tracking-wider text-cyan-400 flex items-center gap-2">
+                <i class="fas fa-clock-rotate-left"></i> Disaster Recovery Retention
+            </span>
+            <!-- Mobile View Switcher -->
+            <div class="flex items-center bg-slate-950 rounded-lg p-0.5 border border-slate-800 text-[11px] font-semibold">
+                <button type="button" onclick="toggleFig(4, 'cards')" id="fig4-btn-cards" class="fig-toggle-btn active px-2.5 py-1 rounded transition-all flex items-center gap-1.5"><i class="fas fa-list-ul text-[10px]"></i> Cards</button>
+                <button type="button" onclick="toggleFig(4, 'diagram')" id="fig4-btn-diagram" class="fig-toggle-btn px-2.5 py-1 rounded transition-all flex items-center gap-1.5"><i class="fas fa-project-diagram text-[10px]"></i> Diagram</button>
+            </div>
+            <!-- Desktop Subtitle -->
+            <span class="hidden md:inline text-xs text-slate-400">Multi-Tier Backup Calendar &amp; Deletion Protection</span>
+        </div>
+
+        <!-- Mobile Cards View -->
+        <div id="fig4-cards" class="fig-cards block md:hidden space-y-3">
+            <!-- Tier 1 -->
+            <div class="bg-slate-800/80 border border-slate-700/80 rounded-xl p-3.5">
+                <div class="flex items-center justify-between mb-2 pb-2 border-b border-slate-700">
+                    <span class="text-xs font-bold text-slate-200">7 Daily Snapshots</span>
+                    <span class="px-1.5 py-0.5 rounded bg-blue-900/60 text-cyan-300 text-[10px] font-semibold">RPO: 24h</span>
+                </div>
+                <div class="space-y-1 text-xs text-slate-300">
+                    <div>&bull; Nightly automated cron (4:30 AM)</div>
+                    <div>&bull; Covers immediate crash / bad plugin</div>
+                    <div>&bull; Recovers yesterday's player progress</div>
+                    <div>&bull; Overwritten after 7 rotating days</div>
+                </div>
+                <div class="mt-2.5 pt-2 border-t border-slate-700/60 text-[11px] text-cyan-400 font-medium">
+                    Operational Buffer: Days 1-7
+                </div>
+            </div>
+
+            <!-- Tier 2 -->
+            <div class="bg-slate-800/80 border border-cyan-500/40 rounded-xl p-3.5">
+                <div class="flex items-center justify-between mb-2 pb-2 border-b border-cyan-500/30">
+                    <span class="text-xs font-bold text-cyan-300">4 Weekly Snapshots</span>
+                    <span class="px-1.5 py-0.5 rounded bg-blue-900/60 text-cyan-300 text-[10px] font-semibold">RPO: 7d</span>
+                </div>
+                <div class="space-y-1 text-xs text-slate-300">
+                    <div>&bull; Retained every Sunday morning</div>
+                    <div>&bull; Protects against unnoticed griefing</div>
+                    <div>&bull; Uncovers latent world corrupted chunks</div>
+                    <div>&bull; 30-day historical rollback depth</div>
+                </div>
+                <div class="mt-2.5 pt-2 border-t border-slate-700/60 text-[11px] text-cyan-400 font-medium">
+                    Security Buffer: 4 Full Weeks
+                </div>
+            </div>
+
+            <!-- Tier 3 -->
+            <div class="bg-slate-800/80 border border-purple-500/40 rounded-xl p-3.5">
+                <div class="flex items-center justify-between mb-2 pb-2 border-b border-purple-500/30">
+                    <span class="text-xs font-bold text-purple-300">Pre-Update Milestone Freeze</span>
+                    <span class="px-1.5 py-0.5 rounded bg-purple-950 text-purple-300 border border-purple-800/50 text-[10px] font-semibold">Permanent</span>
+                </div>
+                <div class="space-y-1 text-xs text-slate-300">
+                    <div>&bull; Taken before major Paper/MC patch</div>
+                    <div>&bull; Accompanied by DB &amp; build metadata</div>
+                    <div>&bull; Frozen indefinitely until verified</div>
+                    <div>&bull; Serves as the ultimate rollback base</div>
+                </div>
+                <div class="mt-2.5 pt-2 border-t border-slate-700/60 text-[11px] text-purple-300 font-medium">
+                    Baseline: Permanent Milestone
+                </div>
+            </div>
+
+            <!-- Protection Card -->
+            <div class="bg-blue-950/40 border border-blue-500/40 rounded-xl p-3 text-xs">
+                <div class="font-bold text-cyan-300 flex items-center gap-1.5 mb-1">
+                    <i class="fas fa-lock text-xs text-cyan-400"></i> Offsite Storage Security &amp; Deletion Protection Boundary
+                </div>
+                <div class="text-[10px] text-slate-400 font-mono mb-2">/mnt/minecraft-backups</div>
+                <div class="text-slate-300 text-[11px] leading-relaxed">
+                    Dedicated backup host with independent credentials. If the game server is root-compromised or ransomware-encrypted, the host cannot delete offsite backups.
+                </div>
+            </div>
+        </div>
+
+        <!-- Diagram View -->
+        <div id="fig4-diagram" class="fig-diagram hidden md:block">
+            <div class="md:hidden flex items-center justify-between text-[11px] text-cyan-300 bg-blue-950/60 px-3 py-1.5 rounded-lg border border-cyan-800/40 mb-2">
+                <span><i class="fas fa-arrows-left-right text-cyan-400 mr-1.5"></i> Swipe horizontally to explore full diagram</span>
+                <span class="text-slate-400 text-[10px]">Scroll &rarr;</span>
+            </div>
+            <div class="infographic-scroll overflow-x-auto">
+                <svg style="width: 100%; max-width: 100%; height: auto;" viewBox="0 0 880 300" class="w-full h-auto " aria-label="3-2-1 Minecraft backup retention strategy showing 7 daily, 4 weekly, pre-update snapshots, and off-host deletion protection">
+                <!-- Tier 1: Daily -->
+                <rect x="25" y="25" width="255" height="180" rx="10" fill="#0f172a" stroke="#3b82f6" stroke-width="1.5" />
+                <rect x="25" y="25" width="255" height="36" rx="10" fill="#064e3b" />
+                <text x="152" y="48" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#6ee7b7" text-anchor="middle">7 Daily Snapshots (RPO: 24h)</text>
+                <text x="40" y="85" font-family="Inter, sans-serif" font-size="11" fill="#cbd5e1">&bull; Nightly automated cron (4:30 AM)</text>
+                <text x="40" y="105" font-family="Inter, sans-serif" font-size="11" fill="#cbd5e1">&bull; Covers immediate crash / bad plugin</text>
+                <text x="40" y="125" font-family="Inter, sans-serif" font-size="11" fill="#cbd5e1">&bull; Recovers yesterday's player progress</text>
+                <text x="40" y="145" font-family="Inter, sans-serif" font-size="11" fill="#cbd5e1">&bull; Overwritten after 7 rotating days</text>
+                <rect x="40" y="165" width="225" height="26" rx="6" fill="#1e293b" />
+                <text x="152" y="182" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#38bdf8" text-anchor="middle">Operational Buffer: Days 1-7</text>
+
+                <!-- Tier 2: Weekly -->
+                <rect x="312" y="25" width="255" height="180" rx="10" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5" />
+                <rect x="312" y="25" width="255" height="36" rx="10" fill="#0c4a6e" />
+                <text x="439" y="48" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#7dd3fc" text-anchor="middle">4 Weekly Snapshots (RPO: 7d)</text>
+                <text x="327" y="85" font-family="Inter, sans-serif" font-size="11" fill="#cbd5e1">&bull; Retained every Sunday morning</text>
+                <text x="327" y="105" font-family="Inter, sans-serif" font-size="11" fill="#cbd5e1">&bull; Protects against unnoticed griefing</text>
+                <text x="327" y="125" font-family="Inter, sans-serif" font-size="11" fill="#cbd5e1">&bull; Uncovers latent world corrupted chunks</text>
+                <text x="327" y="145" font-family="Inter, sans-serif" font-size="11" fill="#cbd5e1">&bull; 30-day historical rollback depth</text>
+                <rect x="327" y="165" width="225" height="26" rx="6" fill="#1e293b" />
+                <text x="439" y="182" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#38bdf8" text-anchor="middle">Security Buffer: 4 Full Weeks</text>
+
+                <!-- Tier 3: Pre-Major Update -->
+                <rect x="600" y="25" width="255" height="180" rx="10" fill="#0f172a" stroke="#f59e0b" stroke-width="1.5" />
+                <rect x="600" y="25" width="255" height="36" rx="10" fill="#78350f" />
+                <text x="727" y="48" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#fde68a" text-anchor="middle">Pre-Update Milestone Freeze</text>
+                <text x="615" y="85" font-family="Inter, sans-serif" font-size="11" fill="#cbd5e1">&bull; Taken before major Paper/MC patch</text>
+                <text x="615" y="105" font-family="Inter, sans-serif" font-size="11" fill="#cbd5e1">&bull; Accompanied by DB &amp; build metadata</text>
+                <text x="615" y="125" font-family="Inter, sans-serif" font-size="11" fill="#cbd5e1">&bull; Frozen indefinitely until verified</text>
+                <text x="615" y="145" font-family="Inter, sans-serif" font-size="11" fill="#cbd5e1">&bull; Serves as the ultimate rollback base</text>
+                <rect x="615" y="165" width="225" height="26" rx="6" fill="#1e293b" />
+                <text x="727" y="182" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#fbbf24" text-anchor="middle">Baseline: Permanent Milestone</text>
+
+                <!-- Tier 4: Storage Security Foundation -->
+                <rect x="25" y="220" width="830" height="65" rx="10" fill="#111827" stroke="#a855f7" stroke-width="1.5" />
+                <circle cx="55" cy="252" r="16" fill="#581c87" />
+                <text x="55" y="258" font-family="Inter, sans-serif" font-size="16" fill="#c084fc" text-anchor="middle">&#128274;</text>
+                <text x="85" y="244" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#e9d5ff">Offsite Storage Security &amp; Deletion Protection Boundary (/mnt/minecraft-backups)</text>
+                <text x="85" y="264" font-family="Inter, sans-serif" font-size="11" fill="#cbd5e1">Dedicated backup host with independent credentials. If the game server is root-compromised or ransomware-encrypted, the host cannot delete offsite backups.</text>
+            </svg>
+            </div>
+        </div>
+
+        <figcaption class="text-xs text-slate-400 text-center mt-3">
+            Figure 4: Tiered retention policy balancing immediate recovery with long-term disaster survivability and access segregation.
+        </figcaption>
+    </div>
+</figure>
+
+                        <div id="check-archive-file-world">
+                            <h3>Check the archive, the file list, and the world</h3>
+                            <p>
+                                Check the bytes. After downloading the backup, run sha256sum -c SHA256SUMS from the backup folder. Stop if either check fails.
+                            </p>
+                            <p>
+                                Check the contents. Compare archive-files.txt with your list of required files, worlds, and dimensions. Check for the database export if your setup requires one.
+                            </p>
+                            <p>
+                                Check the game. Boot the copy on a private instance. Join and check known player and world data. A checksum confirms that the downloaded bytes match the recorded copy. The join test tells you whether Minecraft can use it.
+                            </p>
+                        </div>
+                    </section>
+
+                    <!-- Section 7 -->
+                    <section id="run-a-recovery-drill" class="mb-12">
+                        <h2>
+                            <i class="fas fa-screwdriver-wrench text-blue-600"></i> Run a recovery drill
+                        </h2>
+                        <p>
+                            Pick the newest verified backup from before the bad update, disk failure, or unwanted change. Record the timestamp and tell players which period of progress the restore will replace.
+                        </p>
+
+                        <div id="restore-separate-instance">
+                            <h3>Restore a Minecraft server backup to a separate instance</h3>
+                            <p>
+                                Keep the current state. If you plan to replace a live instance, keep players out. Stop it cleanly. Preserve its files and any linked database state before changing paths or replacing files.
+                            </p>
+                            <p>
+                                Retrieve the backup. Start timing when you begin retrieval from the off-host destination. Check its checksum. Inspect the archive list and reject unexpected paths or links. Use archives from a trusted source.
+                            </p>
+                            <p>
+                                Extract to a new directory. Use an empty directory owned by a test account. Extract as that account with tar --no-same-owner -xf /path/to/server.tar -C /path/to/empty-restore-dir. Check permissions and the configured level-name before the first start.
+                            </p>
+                            <p>
+                                Match the old environment. Use the backed-up Minecraft build, Java version, mod loader, and plugin or mod versions. Restore any matching database export to a separate test database. Check startup paths and credentials. Keep the test instance away from live databases, webhooks, proxies, and other services that could receive test changes.
+                            </p>
+                            <p>
+                                Start the private server. Use a different port if both instances share a host. Restrict network access and allow only the test users. Watch the console for world load errors and missing plugins or mods.
+                            </p>
+                        </div>
+
+                        <!-- Infographic 5: Sandbox Recovery Drill -->
+                        <figure class="my-8 not-prose">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-5 md:p-6 shadow-xl overflow-hidden">
+        <div class="flex items-center justify-between mb-4 border-b border-slate-800 pb-3">
+            <span class="text-xs font-bold uppercase tracking-wider text-cyan-400 flex items-center gap-2">
+                <i class="fas fa-microchip"></i> Recovery Drill Staging Architecture
+            </span>
+            <!-- Mobile View Switcher -->
+            <div class="flex items-center bg-slate-950 rounded-lg p-0.5 border border-slate-800 text-[11px] font-semibold">
+                <button type="button" onclick="toggleFig(5, 'cards')" id="fig5-btn-cards" class="fig-toggle-btn active px-2.5 py-1 rounded transition-all flex items-center gap-1.5"><i class="fas fa-list-ul text-[10px]"></i> Cards</button>
+                <button type="button" onclick="toggleFig(5, 'diagram')" id="fig5-btn-diagram" class="fig-toggle-btn px-2.5 py-1 rounded transition-all flex items-center gap-1.5"><i class="fas fa-project-diagram text-[10px]"></i> Diagram</button>
+            </div>
+            <!-- Desktop Subtitle -->
+            <span class="hidden md:inline text-xs text-slate-400">Non-Destructive Private Sandbox Testing Before Live Cutover</span>
+        </div>
+
+        <!-- Mobile Cards View -->
+        <div id="fig5-cards" class="fig-cards block md:hidden space-y-3">
+            <!-- Production Instance -->
+            <div class="bg-red-950/20 border border-red-500/40 rounded-xl p-3.5">
+                <div class="flex items-center justify-between mb-2 pb-2 border-b border-red-500/30">
+                    <span class="text-xs font-bold text-red-300">Live Production Instance</span>
+                    <span class="px-1.5 py-0.5 rounded bg-red-900/60 text-red-200 text-[10px] font-mono">Port 25565 (PUBLIC)</span>
+                </div>
+                <div class="space-y-1 text-xs text-slate-300">
+                    <div>&bull; Locked during recovery drill</div>
+                    <div>&bull; Players blocked (whitelist on)</div>
+                    <div>&bull; State frozen for rollback</div>
+                </div>
+                <div class="mt-2.5 p-2 bg-red-950/60 border border-red-800/70 rounded-lg text-[11px] text-red-200">
+                    <span class="font-bold text-red-300">ROLLBACK SAFETY POINT:</span> Never overwrite production in-place! Keep existing world files &amp; DB intact in case restore fails or contains newer player records.
+                </div>
+            </div>
+
+            <!-- Isolated Sandbox -->
+            <div class="bg-slate-800/80 border border-cyan-500/40 rounded-xl p-3.5">
+                <div class="flex items-center justify-between mb-2.5 pb-2 border-b border-cyan-500/30">
+                    <span class="text-xs font-bold text-cyan-300">Isolated Sandbox Instance</span>
+                    <span class="text-[10px] text-cyan-400 font-mono">/srv/test-restore : 25568</span>
+                </div>
+                <div class="space-y-2.5 text-xs">
+                    <div class="p-2 bg-slate-900/80 rounded-lg border border-slate-700/60">
+                        <div class="font-semibold text-cyan-300 text-[11px] mb-1">Stage A: Retrieval</div>
+                        <div class="text-slate-300 space-y-0.5 text-[11px]">
+                            <div>&bull; cp from /mnt/backup</div>
+                            <div>&bull; sha256sum -c</div>
+                            <div>&bull; tar --no-same-owner</div>
+                            <div class="text-emerald-400 font-semibold">&#10003; Verified bytes</div>
+                        </div>
+                    </div>
+                    <div class="p-2 bg-slate-900/80 rounded-lg border border-slate-700/60">
+                        <div class="font-semibold text-cyan-300 text-[11px] mb-1">Stage B: Env Matching</div>
+                        <div class="text-slate-300 space-y-0.5 text-[11px]">
+                            <div>&bull; Match Java runtime (25)</div>
+                            <div>&bull; Match Paper/Forge build</div>
+                            <div>&bull; Import isolated test DB</div>
+                            <div class="text-emerald-400 font-semibold">&#10003; Zero live DB pollution</div>
+                        </div>
+                    </div>
+                    <div class="p-2 bg-slate-900/80 rounded-lg border border-slate-700/60">
+                        <div class="font-semibold text-cyan-300 text-[11px] mb-1">Stage C: In-Game Audit</div>
+                        <div class="text-slate-300 space-y-0.5 text-[11px]">
+                            <div>&bull; Check Spawn &amp; Build coords</div>
+                            <div>&bull; Test Nether &amp; End portals</div>
+                            <div>&bull; Inspect inventory &amp; chests</div>
+                            <div>&bull; Verify claim balances</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cutover Gateway -->
+            <div class="p-3 bg-blue-950/40 border border-blue-500/40 rounded-xl space-y-2 text-xs">
+                <div class="font-bold text-slate-200 uppercase tracking-wide text-[10px]">Final Cutover Gateway</div>
+                <div class="p-2 bg-emerald-950/40 border border-emerald-500/40 rounded-lg text-emerald-200">
+                    <span class="font-bold text-emerald-300">IF ALL AUDITS PASS:</span> Proceed to maintenance cutover &amp; unban players.
+                </div>
+                <div class="p-2 bg-red-950/40 border border-red-500/40 rounded-lg text-red-200">
+                    <span class="font-bold text-red-300">IF ANY CHECK FAILS:</span> Discard sandbox; revert to preserved rollback set.
+                </div>
+            </div>
+        </div>
+
+        <!-- Diagram View -->
+        <div id="fig5-diagram" class="fig-diagram hidden md:block">
+            <div class="md:hidden flex items-center justify-between text-[11px] text-cyan-300 bg-blue-950/60 px-3 py-1.5 rounded-lg border border-cyan-800/40 mb-2">
+                <span><i class="fas fa-arrows-left-right text-cyan-400 mr-1.5"></i> Swipe horizontally to explore full diagram</span>
+                <span class="text-slate-400 text-[10px]">Scroll &rarr;</span>
+            </div>
+            <div class="infographic-scroll overflow-x-auto">
+                <svg style="width: 100%; max-width: 100%; height: auto;" viewBox="0 0 880 340" class="w-full h-auto " aria-label="Step-by-step restoration workflow on a private instance before live cutover">
+                <!-- Live Host Box -->
+                <rect x="20" y="20" width="240" height="300" rx="12" fill="#0f172a" stroke="#ef4444" stroke-dasharray="4 3" />
+                <rect x="20" y="20" width="240" height="36" rx="12" fill="#450a0a" />
+                <text x="140" y="43" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#fca5a5" text-anchor="middle">Live Production Instance</text>
+                <text x="35" y="80" font-family="Courier New, monospace" font-size="11" fill="#cbd5e1">Port: 25565 (PUBLIC)</text>
+                <text x="35" y="100" font-family="Inter, sans-serif" font-size="11" fill="#f87171">&bull; Locked during recovery drill</text>
+                <text x="35" y="120" font-family="Inter, sans-serif" font-size="11" fill="#f87171">&bull; Players blocked (whitelist on)</text>
+                <text x="35" y="140" font-family="Inter, sans-serif" font-size="11" fill="#cbd5e1">&bull; State frozen for rollback</text>
+                <rect x="35" y="170" width="210" height="130" rx="8" fill="#1e293b" />
+                <text x="140" y="195" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#e2e8f0" text-anchor="middle">ROLLBACK SAFETY POINT</text>
+                <text x="140" y="218" font-family="Inter, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">Never overwrite production in-place!</text>
+                <text x="140" y="235" font-family="Inter, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">Keep existing world files &amp; DB</text>
+                <text x="140" y="252" font-family="Inter, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">intact in case restore fails or</text>
+                <text x="140" y="269" font-family="Inter, sans-serif" font-size="10" fill="#38bdf8" text-anchor="middle">contains newer player records.</text>
+
+                <!-- Sandbox Box -->
+                <rect x="280" y="20" width="580" height="300" rx="12" fill="#0f172a" stroke="#3b82f6" stroke-width="1.5" />
+                <rect x="280" y="20" width="580" height="36" rx="12" fill="#064e3b" />
+                <text x="570" y="43" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#6ee7b7" text-anchor="middle">Isolated Sandbox Instance (/srv/test-restore on Port 25566)</text>
+
+                <!-- Step A -->
+                <rect x="300" y="70" width="165" height="105" rx="8" fill="#1e293b" stroke="#334155" />
+                <text x="382" y="92" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#38bdf8" text-anchor="middle">Stage A: Retrieval</text>
+                <text x="312" y="112" font-family="Courier New, monospace" font-size="9" fill="#cbd5e1">&bull; cp from /mnt/backup</text>
+                <text x="312" y="128" font-family="Courier New, monospace" font-size="9" fill="#cbd5e1">&bull; sha256sum -c</text>
+                <text x="312" y="144" font-family="Courier New, monospace" font-size="9" fill="#cbd5e1">&bull; tar --no-same-owner</text>
+                <text x="312" y="160" font-family="Inter, sans-serif" font-size="9" fill="#10b981">&#10003; Verified bytes</text>
+
+                <!-- Step B -->
+                <rect x="480" y="70" width="175" height="105" rx="8" fill="#1e293b" stroke="#334155" />
+                <text x="567" y="92" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#fbbf24" text-anchor="middle">Stage B: Env Matching</text>
+                <text x="492" y="112" font-family="Inter, sans-serif" font-size="9" fill="#cbd5e1">&bull; Match Java runtime (25)</text>
+                <text x="492" y="128" font-family="Inter, sans-serif" font-size="9" fill="#cbd5e1">&bull; Match Paper/Forge build</text>
+                <text x="492" y="144" font-family="Inter, sans-serif" font-size="9" fill="#cbd5e1">&bull; Import isolated test DB</text>
+                <text x="492" y="160" font-family="Inter, sans-serif" font-size="9" fill="#10b981">&#10003; Zero live DB pollution</text>
+
+                <!-- Step C -->
+                <rect x="670" y="70" width="175" height="105" rx="8" fill="#1e293b" stroke="#334155" />
+                <text x="757" y="92" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#a855f7" text-anchor="middle">Stage C: In-Game Audit</text>
+                <text x="682" y="112" font-family="Inter, sans-serif" font-size="9" fill="#cbd5e1">&bull; Check Spawn &amp; Build coords</text>
+                <text x="682" y="128" font-family="Inter, sans-serif" font-size="9" fill="#cbd5e1">&bull; Test Nether &amp; End portals</text>
+                <text x="682" y="144" font-family="Inter, sans-serif" font-size="9" fill="#cbd5e1">&bull; Inspect inventory &amp; chests</text>
+                <text x="682" y="160" font-family="Inter, sans-serif" font-size="9" fill="#cbd5e1">&bull; Verify claim balances</text>
+
+                <!-- Decision Branch -->
+                <rect x="300" y="195" width="545" height="105" rx="8" fill="#111827" stroke="#334155" />
+                <text x="572" y="218" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#f8fafc" text-anchor="middle">FINAL CUTOVER GATEWAY</text>
+
+                <rect x="320" y="235" width="235" height="50" rx="6" fill="#064e3b" stroke="#3b82f6" />
+                <text x="437" y="255" font-family="Inter, sans-serif" font-size="10.5" font-weight="700" fill="#6ee7b7" text-anchor="middle">IF ALL AUDITS PASS:</text>
+                <text x="437" y="272" font-family="Inter, sans-serif" font-size="9.5" fill="#a7f3d0" text-anchor="middle">Proceed to maintenance cutover &amp; unban players</text>
+
+                <rect x="585" y="235" width="240" height="50" rx="6" fill="#450a0a" stroke="#ef4444" />
+                <text x="705" y="255" font-family="Inter, sans-serif" font-size="10.5" font-weight="700" fill="#fca5a5" text-anchor="middle">IF ANY CHECK FAILS:</text>
+                <text x="705" y="272" font-family="Inter, sans-serif" font-size="9.5" fill="#fecaca" text-anchor="middle">Discard sandbox; revert to preserved rollback set</text>
+            </svg>
+            </div>
+        </div>
+
+        <figcaption class="text-xs text-slate-400 text-center mt-3">
+            Figure 5: Sandbox staging workflow guaranteeing zero user-facing impact before comprehensive in-game validation.
+        </figcaption>
+    </div>
+</figure>
+
+                        <div id="check-players-join-data">
+                            <h3>Check that players can join and their data loads</h3>
+                            <p>
+                                Join with a compatible client and a known player account. Compare the restored world with your record. Check spawn, a known build, and the Nether and End if enabled. Check that the player has the expected items, Ender Chest contents, and location. If the server uses claims or an economy plugin, check a known claim or balance too.
+                            </p>
+                            <p>
+                                Stop timing when those checks pass. Record the server build, world size, archive size, download time, extraction time, startup time, and total time to a successful join and data check. Also record the test date, host CPU, RAM, and storage setup. If you run the test again after an update, record what changed. Use the measured time to plan your maintenance window.
+                            </p>
+                        </div>
+
+                        <div id="rollback-maintenance">
+                            <h3>Rollback and maintenance</h3>
+                            <p>
+                                If any required check fails, keep the restore private. For a failed cutover, stop the replacement instance. Put the preserved files and matching database state back as a set. Start the original build. Repeat the join and data checks before reopening access.
+                            </p>
+                            <p>
+                                If players already joined the replacement server, record any new progress before you roll back. The preserved state will not include those changes. Assign a backup owner and repeat the drill after major changes to Minecraft, plugins, mods, or storage.
+                            </p>
+                        </div>
+
+                        <!-- Table: Restore Symptom and First Check -->
+                        <div class="mc-table-container not-prose">
+                            <table class="mc-table">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 38%;">Restore symptom</th>
+                                        <th>First check</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="font-bold text-slate-900">
+                                            The server starts a fresh world
+                                        </td>
+                                        <td>
+                                            Compare level-name with the actual folder, its location, and the server user's permissions.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-bold text-slate-900">
+                                            The Nether or End is missing
+                                        </td>
+                                        <td>
+                                            Check the file list against the layout for that server build.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-bold text-slate-900">
+                                            A player has an empty inventory
+                                        </td>
+                                        <td>
+                                            Check the player files and whether the server or proxy identifies the player with the same UUID as before.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-bold text-slate-900">
+                                            The server exits at startup
+                                        </td>
+                                        <td>
+                                            Read the first relevant error. Check the Java version, mod loader, dependencies, and file permissions.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-bold text-slate-900">
+                                            The checksum fails
+                                        </td>
+                                        <td>
+                                            Stop. Retrieve another verified copy and check it before extraction.
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Infographic 6: Triage Flowchart -->
+                        <figure class="my-8 not-prose">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-5 md:p-6 shadow-xl overflow-hidden">
+        <div class="flex items-center justify-between mb-4 border-b border-slate-800 pb-3">
+            <span class="text-xs font-bold uppercase tracking-wider text-cyan-400 flex items-center gap-2">
+                <i class="fas fa-stethoscope"></i> Troubleshooting Triage Matrix
+            </span>
+            <!-- Mobile View Switcher -->
+            <div class="flex items-center bg-slate-950 rounded-lg p-0.5 border border-slate-800 text-[11px] font-semibold">
+                <button type="button" onclick="toggleFig(6, 'cards')" id="fig6-btn-cards" class="fig-toggle-btn active px-2.5 py-1 rounded transition-all flex items-center gap-1.5"><i class="fas fa-list-ul text-[10px]"></i> Cards</button>
+                <button type="button" onclick="toggleFig(6, 'diagram')" id="fig6-btn-diagram" class="fig-toggle-btn px-2.5 py-1 rounded transition-all flex items-center gap-1.5"><i class="fas fa-project-diagram text-[10px]"></i> Diagram</button>
+            </div>
+            <!-- Desktop Subtitle -->
+            <span class="hidden md:inline text-xs text-slate-400">Rapid Diagnosis for Common Restoration Anomalies</span>
+        </div>
+
+        <!-- Mobile Cards View -->
+        <div id="fig6-cards" class="fig-cards block md:hidden space-y-3">
+            <!-- Symptom 1 -->
+            <div class="bg-slate-800/80 border border-amber-500/40 rounded-xl p-3.5">
+                <div class="font-bold text-amber-400 text-xs flex items-center gap-1.5 mb-2 pb-1.5 border-b border-slate-700">
+                    <span>&#9888;</span> Server starts fresh world
+                </div>
+                <div class="space-y-1 text-xs text-slate-300">
+                    <div>&bull; Check <code class="text-cyan-300 font-mono">level-name</code> in server.properties</div>
+                    <div>&bull; Verify folder path &amp; <code class="text-cyan-300 font-mono">chown -R minecraft</code></div>
+                </div>
+                <div class="mt-2.5 pt-2 border-t border-slate-700/60 text-[11px] text-sky-400 font-medium">
+                    &rarr; Fix: Align level-name with extracted dir
+                </div>
+            </div>
+
+            <!-- Symptom 2 -->
+            <div class="bg-slate-800/80 border border-sky-500/40 rounded-xl p-3.5">
+                <div class="font-bold text-sky-400 text-xs flex items-center gap-1.5 mb-2 pb-1.5 border-b border-slate-700">
+                    <span>&#9888;</span> Nether or End is missing
+                </div>
+                <div class="space-y-1 text-xs text-slate-300">
+                    <div>&bull; Pre-26.1: DIM-1 / DIM1 inside world folder</div>
+                    <div>&bull; 26.1+: world/dimensions/minecraft/</div>
+                </div>
+                <div class="mt-2.5 pt-2 border-t border-slate-700/60 text-[11px] text-emerald-400 font-medium">
+                    &rarr; Fix: Restore layout matching build version
+                </div>
+            </div>
+
+            <!-- Symptom 3 -->
+            <div class="bg-slate-800/80 border border-purple-500/40 rounded-xl p-3.5">
+                <div class="font-bold text-purple-300 text-xs flex items-center gap-1.5 mb-2 pb-1.5 border-b border-slate-700">
+                    <span>&#9888;</span> Player has empty inventory
+                </div>
+                <div class="space-y-1 text-xs text-slate-300">
+                    <div>&bull; UUID mismatch in <code class="text-cyan-300 font-mono">playerdata/*.dat</code></div>
+                    <div>&bull; Online-mode vs BungeeCord offline UUID</div>
+                </div>
+                <div class="mt-2.5 pt-2 border-t border-slate-700/60 text-[11px] text-purple-300 font-medium">
+                    &rarr; Fix: Re-align proxy UUID forwarding rules
+                </div>
+            </div>
+
+            <!-- Symptom 4 -->
+            <div class="bg-slate-800/80 border border-red-500/40 rounded-xl p-3.5">
+                <div class="font-bold text-red-400 text-xs flex items-center gap-1.5 mb-2 pb-1.5 border-b border-slate-700">
+                    <span>&#10006;</span> Server exits immediately at startup
+                </div>
+                <div class="space-y-1 text-xs text-slate-300">
+                    <div>&bull; Read logs/latest.log for UnsupportedClassVersionError</div>
+                    <div>&bull; Paper 26.1+ strictly requires Java 25 runtime environment</div>
+                </div>
+                <div class="mt-2.5 pt-2 border-t border-slate-700/60 text-[11px] text-rose-300 font-medium">
+                    &rarr; Fix: Install matching JDK version &amp; verify modloader build
+                </div>
+            </div>
+
+            <!-- Symptom 5 -->
+            <div class="bg-slate-800/80 border border-rose-600/50 rounded-xl p-3.5">
+                <div class="font-bold text-rose-400 text-xs flex items-center gap-1.5 mb-2 pb-1.5 border-b border-slate-700">
+                    <span>&#10006;</span> SHA256 checksum fails
+                </div>
+                <div class="space-y-1 text-xs text-slate-300">
+                    <div>&bull; <code class="text-cyan-300 font-mono">sha256sum -c</code> reports FAILED on server.tar</div>
+                    <div>&bull; Corrupted network transfer or partial bit rot</div>
+                </div>
+                <div class="mt-2.5 pt-2 border-t border-slate-700/60 text-[11px] text-rose-300 font-medium">
+                    &rarr; Fix: STOP IMMEDIATELY. Fetch alternate verified copy
+                </div>
+            </div>
+
+            <!-- Cardinal Rule -->
+            <div class="p-3.5 bg-blue-950/40 border border-blue-500/40 rounded-xl text-xs space-y-1.5">
+                <div class="font-bold text-cyan-300 flex items-center gap-1.5">
+                    <span class="text-emerald-400">&#10003;</span> Cardinal Rule of Minecraft Restoration
+                </div>
+                <div class="text-slate-300 text-[11px] leading-relaxed">
+                    Never reopen access to players until: 1) Checksum passed, 2) Expected world loaded, 3) Test player joined, 4) In-game inventories/chests confirmed, and 5) The rollback copy of the previous state is safely retained.
+                </div>
+            </div>
+        </div>
+
+        <!-- Diagram View -->
+        <div id="fig6-diagram" class="fig-diagram hidden md:block">
+            <div class="md:hidden flex items-center justify-between text-[11px] text-cyan-300 bg-blue-950/60 px-3 py-1.5 rounded-lg border border-cyan-800/40 mb-2">
+                <span><i class="fas fa-arrows-left-right text-cyan-400 mr-1.5"></i> Swipe horizontally to explore full diagram</span>
+                <span class="text-slate-400 text-[10px]">Scroll &rarr;</span>
+            </div>
+            <div class="infographic-scroll overflow-x-auto">
+                <svg style="width: 100%; max-width: 100%; height: auto;" viewBox="0 0 880 340" class="w-full h-auto " aria-label="Diagnostic flowchart for resolving restoration errors such as fresh worlds, missing nether, empty inventory, startup crashes, and checksum failures">
+                <!-- Symptom 1 -->
+                <rect x="20" y="20" width="260" height="90" rx="8" fill="#1e293b" stroke="#f59e0b" />
+                <text x="35" y="44" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#fbbf24">&#9888; Server starts fresh world</text>
+                <text x="35" y="65" font-family="Inter, sans-serif" font-size="10" fill="#cbd5e1">&bull; Check level-name in server.properties</text>
+                <text x="35" y="82" font-family="Inter, sans-serif" font-size="10" fill="#94a3b8">&bull; Verify folder path &amp; chown -R minecraft</text>
+                <text x="35" y="99" font-family="Inter, sans-serif" font-size="10" fill="#38bdf8">&rarr; Fix: Align level-name with extracted dir</text>
+
+                <!-- Symptom 2 -->
+                <rect x="310" y="20" width="260" height="90" rx="8" fill="#1e293b" stroke="#38bdf8" />
+                <text x="325" y="44" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#38bdf8">&#9888; Nether or End is missing</text>
+                <text x="325" y="65" font-family="Inter, sans-serif" font-size="10" fill="#cbd5e1">&bull; Pre-26.1: DIM-1 / DIM1 inside world folder</text>
+                <text x="325" y="82" font-family="Inter, sans-serif" font-size="10" fill="#94a3b8">&bull; 26.1+: world/dimensions/minecraft/</text>
+                <text x="325" y="99" font-family="Inter, sans-serif" font-size="10" fill="#10b981">&rarr; Fix: Restore layout matching build version</text>
+
+                <!-- Symptom 3 -->
+                <rect x="600" y="20" width="260" height="90" rx="8" fill="#1e293b" stroke="#a855f7" />
+                <text x="615" y="44" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#c084fc">&#9888; Player has empty inventory</text>
+                <text x="615" y="65" font-family="Inter, sans-serif" font-size="10" fill="#cbd5e1">&bull; UUID mismatch in playerdata/*.dat</text>
+                <text x="615" y="82" font-family="Inter, sans-serif" font-size="10" fill="#94a3b8">&bull; Online-mode vs BungeeCord offline UUID</text>
+                <text x="615" y="99" font-family="Inter, sans-serif" font-size="10" fill="#e9d5ff">&rarr; Fix: Re-align proxy UUID forwarding rules</text>
+
+                <!-- Symptom 4 -->
+                <rect x="20" y="130" width="410" height="95" rx="8" fill="#1e293b" stroke="#ef4444" />
+                <text x="35" y="155" font-family="Inter, sans-serif" font-size="11.5" font-weight="700" fill="#f87171">&#10006; Server exits immediately at startup</text>
+                <text x="35" y="177" font-family="Inter, sans-serif" font-size="10" fill="#cbd5e1">&bull; Read logs/latest.log for UnsupportedClassVersionError</text>
+                <text x="35" y="194" font-family="Inter, sans-serif" font-size="10" fill="#94a3b8">&bull; Paper 26.1+ strictly requires Java 25 runtime environment</text>
+                <text x="35" y="211" font-family="Inter, sans-serif" font-size="10" fill="#fca5a5">&rarr; Fix: Install matching JDK version &amp; verify modloader build</text>
+
+                <!-- Symptom 5 -->
+                <rect x="450" y="130" width="410" height="95" rx="8" fill="#1e293b" stroke="#dc2626" />
+                <text x="465" y="155" font-family="Inter, sans-serif" font-size="11.5" font-weight="700" fill="#f87171">&#10006; SHA256 checksum fails</text>
+                <text x="465" y="177" font-family="Inter, sans-serif" font-size="10" fill="#cbd5e1">&bull; sha256sum -c reports FAILED on server.tar</text>
+                <text x="465" y="194" font-family="Inter, sans-serif" font-size="10" fill="#94a3b8">&bull; Corrupted network transfer or partial bit rot</text>
+                <text x="465" y="211" font-family="Inter, sans-serif" font-size="10" fill="#fca5a5">&rarr; Fix: STOP IMMEDIATELY. Fetch alternate verified copy</text>
+
+                <!-- Triage Rule Bottom Note -->
+                <rect x="20" y="245" width="840" height="70" rx="8" fill="#0f172a" stroke="#3b82f6" />
+                <text x="440" y="272" font-family="Inter, sans-serif" font-size="11.5" font-weight="700" fill="#38bdf8" text-anchor="middle">
+                    &#10003; Cardinal Rule of Minecraft Restoration
+                </text>
+                <text x="440" y="292" font-family="Inter, sans-serif" font-size="10.5" fill="#cbd5e1" text-anchor="middle">
+                    Never reopen access to players until: 1) Checksum passed, 2) Expected world loaded, 3) Test player joined,
+                </text>
+                <text x="440" y="307" font-family="Inter, sans-serif" font-size="10.5" fill="#cbd5e1" text-anchor="middle">
+                    4) In-game inventories/chests confirmed, and 5) The rollback copy of the previous state is safely retained.
+                </text>
+            </svg>
+            </div>
+        </div>
+
+        <figcaption class="text-xs text-slate-400 text-center mt-3">
+            Figure 6: Diagnostic flow addressing common restoration symptoms and preventing catastrophic production regressions.
+        </figcaption>
+    </div>
+</figure>
+
+                        <!-- Callout Note -->
+                        <div class="callout-box not-prose">
+                            <p>
+                                <strong>Before you reopen:</strong> Confirm the archive check passed, the expected world loaded, a player joined, the required in-game checks passed, and the rollback copy is still available.
+                            </p>
+                        </div>
+
+                        <!-- Atal Networks Callout -->
+                        <div class="p-6 bg-slate-900 text-slate-200 rounded-2xl border border-emerald-500/30 my-8 not-prose">
+                            <p class="text-base text-slate-200 leading-relaxed mb-4">
+                                If you need a separate recovery host or more room for backup copies, we can size a setup around your region, player count, world size, and recovery window. <a href="https://atalnetworks.com/dedicated-game-servers/" target="_blank" rel="noopener noreferrer" class="text-cyan-400 font-bold underline hover:text-cyan-300">Explore Atal Networks dedicated game servers</a>
+                            </p>
+                        </div>
+                    </section>
+
+                    <!-- Section 8: FAQ -->
+                    <section id="faq" class="mb-12">
+                        <h2>
+                            <i class="fas fa-circle-question text-blue-600"></i> Frequently asked questions
+                        </h2>
+
+                        <div class="faq-accordion not-prose mt-6">
+                            <div class="faq-item">
+                                <button class="faq-question" type="button" aria-expanded="false">
+                                    <span>Does a Minecraft server backup include player inventories?</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="faq-answer">
+                                    <p class="mb-0">
+                                        Yes, if it includes the active world's player data and any plugin data that stores or changes inventories. Restore the matching files and keep the same player identity setup. Check an actual player's inventory before reopening.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <button class="faq-question" type="button" aria-expanded="false">
+                                    <span>Can I restore a Minecraft server backup to a different host?</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="faq-answer">
+                                    <p class="mb-0">
+                                        Yes. Use the same edition, server build, runtime, and plugins or mods for the first boot. Update paths and permissions on the new host and test a player join before moving traffic.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <button class="faq-question" type="button" aria-expanded="false">
+                                    <span>Can I recover progress made after my last backup?</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="faq-answer">
+                                    <p class="mb-0">
+                                        Only if you have another usable copy or a record of those changes. Check for a newer snapshot or a separate plugin history before you overwrite the current files. A backup only returns the data it captured.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <button class="faq-question" type="button" aria-expanded="false">
+                                    <span>How often should I back up a Minecraft server?</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="faq-answer">
+                                    <p class="mb-0">
+                                        Schedule backups based on how much play you can afford to lose. Also take a separate backup before you update the game, change the modpack, or move hosts. Check the timestamp of the last successful copy regularly.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Section 9: High Contrast Bottom CTA -->
+                    <section id="recovery-host-cta" class="mt-14 article-cta-card not-prose" style="background: linear-gradient(135deg, #090d16 0%, #0f172a 45%, #172554 100%) !important; color: #ffffff !important; border-radius: 1.5rem !important; padding: 2.5rem !important; border: 1px solid rgba(59, 130, 246, 0.35) !important; box-shadow: 0 15px 35px -5px rgba(15, 23, 42, 0.45) !important;">
+                        <div class="relative z-10">
+                            <h3 class="flex items-center gap-3 text-white font-extrabold text-2xl mb-4 !mt-0 !text-white" style="color: #ffffff !important; border-bottom: none !important; padding-bottom: 0 !important; margin-top: 0 !important; margin-bottom: 1.25rem !important;">
+                                <i class="fas fa-server text-cyan-400"></i> Ready to Upgrade or Isolate Your Minecraft Architecture?
+                            </h3>
+                            <p class="cta-copy text-slate-100 text-lg leading-relaxed mb-4" style="color: #f8fafc !important; font-size: 1.125rem !important; line-height: 1.75 !important; margin-bottom: 1.25rem !important;">
+                                If you need a separate recovery host or more room for backup copies, we can size a setup around your region, player count, world size, and recovery window.
+                            </p>
+                            <div class="pt-2 flex flex-wrap gap-4">
+                                <a href="https://atalnetworks.com/dedicated-game-servers/" target="_blank" rel="noopener noreferrer" class="article-cta-button">
+                                    <span>Explore Atal Networks dedicated game servers</span>
+                                    <i class="fas fa-arrow-right ms-2 text-sm"></i>
+                                </a>
+                                <a href="https://a1technovation.com/pages/contact" class="inline-flex items-center justify-center font-bold text-white rounded-xl shadow-lg transition-all border border-slate-700 bg-slate-800/80 hover:bg-slate-700 px-6 py-3.5 text-base no-underline">
+                                    <span>Discuss Custom Setup</span>
+                                    <i class="fas fa-headset ms-2 text-sm"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Related Guides -->
+                    <div class="mt-16 pt-10 border-t border-slate-200 not-prose">
+                        <h4 class="text-xl font-bold text-slate-900 mb-6">Explore Related Infrastructure &amp; Hosting Guides</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <a href="/pages/best-vps-hosting-for-minecraft" class="block p-5 bg-white border border-slate-200 rounded-xl hover:border-blue-500 hover:shadow-md transition">
+                                <span class="text-xs font-bold uppercase text-blue-600 block mb-1">Gaming VPS</span>
+                                <h5 class="text-base font-bold text-slate-900 mb-2">8 Best VPS Hosting for Minecraft in 2026</h5>
+                                <p class="text-slate-600 text-xs">Hardware, RAM, CPU consistency, and DDoS protection for Paper, Forge, and Fabric.</p>
+                            </a>
+                            <a href="/pages/how-much-does-a-10gbps-dedicated-server-cost" class="block p-5 bg-white border border-slate-200 rounded-xl hover:border-blue-500 hover:shadow-md transition">
+                                <span class="text-xs font-bold uppercase text-blue-600 block mb-1">Cost Analysis</span>
+                                <h5 class="text-base font-bold text-slate-900 mb-2">How Much Does a 10Gbps Dedicated Server Cost?</h5>
+                                <p class="text-slate-600 text-xs">Hardware, bandwidth, unmetered port commitments, and total cost of ownership breakdown.</p>
+                            </a>
+                        </div>
+                    </div>
+
+                </article>
+            </div>
+
+            <!-- Sticky Sidebar Column -->
+            <aside class="lg:col-span-4 sticky top-24 self-start">
+
+                <!-- Table of Contents Card -->
+                <div class="bg-slate-900 rounded-2xl p-6 text-white border border-slate-800 shadow-xl mb-6">
+                    <h3 class="text-base font-bold text-white mb-4 flex items-center gap-2 border-b border-slate-800 pb-3">
+                        <i class="fas fa-list-ul text-cyan-400"></i> Table of Contents
+                    </h3>
+                    <ul class="toc-list space-y-2">
+                        <li><a href="#consistency-requirements"><i class="fas fa-angle-right text-cyan-400 me-2 text-xs"></i>World Consistency Requirements</a></li>
+                        <li><a href="#prerequisites-versions"><i class="fas fa-angle-right text-cyan-400 me-2 text-xs"></i>Prerequisites &amp; Versions</a></li>
+                        <li><a href="#what-files-to-copy"><i class="fas fa-angle-right text-cyan-400 me-2 text-xs"></i>What Files to Copy (Table)</a></li>
+                        <li><a href="#scheduled-off-host-backups"><i class="fas fa-angle-right text-cyan-400 me-2 text-xs"></i>Scheduled Off-Host Backups</a></li>
+                        <li class="ps-3"><a href="#configuration-expected-output"><i class="fas fa-minus text-slate-600 me-2 text-xs"></i>Configuration &amp; Bash Script</a></li>
+                        <li><a href="#backup-while-running"><i class="fas fa-angle-right text-cyan-400 me-2 text-xs"></i>Backing Up While Running</a></li>
+                        <li><a href="#retain-versions-credentials"><i class="fas fa-angle-right text-cyan-400 me-2 text-xs"></i>Retention &amp; Credentials</a></li>
+                        <li class="ps-3"><a href="#keep-copies-different-needs"><i class="fas fa-minus text-slate-600 me-2 text-xs"></i>Retention Policies</a></li>
+                        <li class="ps-3"><a href="#check-archive-file-world"><i class="fas fa-minus text-slate-600 me-2 text-xs"></i>Check Bytes &amp; Worlds</a></li>
+                        <li><a href="#run-a-recovery-drill"><i class="fas fa-angle-right text-cyan-400 me-2 text-xs"></i>Run a Recovery Drill</a></li>
+                        <li class="ps-3"><a href="#restore-separate-instance"><i class="fas fa-minus text-slate-600 me-2 text-xs"></i>Restore to Separate Instance</a></li>
+                        <li class="ps-3"><a href="#check-players-join-data"><i class="fas fa-minus text-slate-600 me-2 text-xs"></i>Check Players &amp; In-Game Data</a></li>
+                        <li class="ps-3"><a href="#rollback-maintenance"><i class="fas fa-minus text-slate-600 me-2 text-xs"></i>Rollback &amp; Symptoms Table</a></li>
+                        <li><a href="#faq"><i class="fas fa-angle-right text-cyan-400 me-2 text-xs"></i>Frequently Asked Questions</a></li>
+                        <li><a href="#recovery-host-cta"><i class="fas fa-angle-right text-cyan-400 me-2 text-xs"></i>Recovery Host Sizing</a></li>
+                    </ul>
+                </div>
+
+                <!-- Minecraft Admin Quick Reference Cheat Sheet Card -->
+                <div class="mc-sidebar-card mb-6">
+                    <span class="inline-block bg-blue-500/20 text-cyan-300 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3 border border-cyan-400/30">
+                        <i class="fas fa-terminal me-1 text-cyan-400"></i> CLI Quick Reference
+                    </span>
+                    <h3 class="text-white font-bold text-lg mb-2">Live Flush Commands</h3>
+                    <p class="text-slate-300 text-xs mb-3 leading-relaxed">
+                        If executing automated memory sync before taking a filesystem snapshot:
+                    </p>
+                    <div class="space-y-2 mb-4 text-xs font-mono bg-slate-950 p-3 rounded-lg border border-slate-800 text-cyan-400">
+                        <div>save-off</div>
+                        <div>save-all flush</div>
+                        <div class="text-slate-400"># take snapshot / copy</div>
+                        <div>save-on</div>
+                    </div>
+                    <p class="text-slate-400 text-xs leading-relaxed">
+                        Bedrock BDS: Use <code class="text-amber-300">save hold</code>, <code class="text-amber-300">save query</code>, and <code class="text-amber-300">save resume</code>.
+                    </p>
+                </div>
+
+                <!-- Atal Networks Dedicated Server Feature Card -->
+                <div class="mc-sidebar-card mb-6">
+                    <span class="inline-block bg-blue-500/20 text-cyan-300 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3 border border-cyan-400/30">
+                        <i class="fas fa-shield-halved me-1 text-cyan-400"></i> Game Infrastructure
+                    </span>
+                    <h3 class="text-white font-bold text-lg mb-2">Atal Networks Dedicated</h3>
+                    <p class="text-slate-300 text-xs mb-4 leading-relaxed">
+                        High-frequency AMD Ryzen &amp; Intel Xeon bare metal with dedicated NVMe storage arrays for high-tick, zero-lag Minecraft communities.
+                    </p>
+                    <div class="space-y-2 mb-4 text-xs text-slate-300 border-t border-slate-700/60 pt-3">
+                        <div class="flex justify-between py-1 border-b border-slate-800">
+                            <span class="text-slate-400">CPU Compute:</span>
+                            <span class="font-bold text-slate-200">Ryzen 5600X / 7950X</span>
+                        </div>
+                        <div class="flex justify-between py-1 border-b border-slate-800">
+                            <span class="text-slate-400">Storage:</span>
+                            <span class="font-bold text-cyan-400">Enterprise NVMe M.2</span>
+                        </div>
+                        <div class="flex justify-between py-1 border-b border-slate-800">
+                            <span class="text-slate-400">DDoS Mitigation:</span>
+                            <span class="font-bold text-slate-200">Carrier-Grade Layer 7</span>
+                        </div>
+                        <div class="flex justify-between py-1">
+                            <span class="text-slate-400">Network:</span>
+                            <span class="font-bold text-cyan-300">1Gbps - 10Gbps Unmetered</span>
+                        </div>
+                    </div>
+                    <a href="https://atalnetworks.com/dedicated-game-servers/" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs py-3 px-4 rounded-xl transition shadow-md no-underline">
+                        <span>Explore Game Servers</span>
+                        <i class="fas fa-arrow-right ms-2 text-xs"></i>
+                    </a>
+                </div>
+
+            </aside>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="/" class="footer-logo" aria-label="A1 Technovation home">
+                        <img src="/assets/images/A1Technovation-Dark-Background.png" alt="A1 Technovation" class="footer-logo-image" />
+                    </a>
+                    <p>A1 Technovation is a results-driven technology and digital growth agency providing enterprise SEO, performance infrastructure, and systems engineering for clients worldwide.</p>
+                    <div class="footer-socials">
+                        <a href="https://www.facebook.com/a1technovation/" class="f-social" aria-label="Facebook" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/a1technovation/?hl=en" class="f-social" aria-label="Instagram" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/92598277/" class="f-social" aria-label="LinkedIn" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://wa.me/8801799976295" class="f-social" aria-label="WhatsApp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://t.me/likhonahmedseo" class="f-social" aria-label="Telegram" target="_blank" rel="noopener"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h6>Infrastructure Guides</h6>
+                    <div class="footer-links">
+                        <a href="/pages/best-vps-hosting-for-minecraft" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Minecraft VPS Hosting</a>
+                        <a href="/pages/how-much-does-a-10gbps-dedicated-server-cost" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> 10Gbps Server Cost</a>
+                        <a href="/pages/anycast-vs-unicast-infrastructure" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Anycast vs Unicast</a>
+                        <a href="/pages/best-10gbps-dedicated-servers-usa" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Best 10Gbps Servers USA</a>
+                        <a href="/pages/best-10gbps-dedicated-servers-netherlands" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Netherlands 10Gbps Servers</a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h6>Core Services</h6>
+                    <div class="footer-links">
+                        <a href="/pages/services-seo" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> SEO Services</a>
+                        <a href="/aeo-optimization-services/" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> AEO Optimization</a>
+                        <a href="/geo-optimization-services/" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> GEO Optimization</a>
+                        <a href="/pages/services-local-seo" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Local SEO</a>
+                        <a href="/pages/services-web-dev" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Web Engineering</a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h6>Company</h6>
+                    <div class="footer-links">
+                        <a href="/pages/about" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> About Us</a>
+                        <a href="/pages/contact" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Contact</a>
+                        <a href="/pages/privacy" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Privacy Policy</a>
+                        <a href="/pages/terms" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Terms of Service</a>
+                        <a href="/sitemap" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> HTML Sitemap</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="f-copy">&copy; 2026 A1 Technovation. All rights reserved.</p>
+                <div class="f-bottom-links">
+                    <a href="/pages/privacy" class="f-bl">Privacy Policy</a>
+                    <a href="/pages/terms" class="f-bl">Terms and Conditions</a>
+                    <a href="/sitemap" class="f-bl">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></button>
+
+    <!-- Scripts -->
+    <script src="/js/main.min.js"></script>
+    <script src="/js/whatsapp-chat.js" defer></script>
+    <script>
+        // Reading Progress
+        window.addEventListener('scroll', function() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            var prog = document.getElementById("readingProgress");
+            if (prog) prog.style.width = scrolled + "%";
+        }, { passive: true });
+
+        // Scroll to Top
+        var scrollButton = document.getElementById('scrollTop');
+        if (scrollButton) {
+            window.addEventListener('scroll', function() {
+                scrollButton.classList.toggle('is-visible', window.scrollY > 400);
+            }, { passive: true });
+            scrollButton.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        // FAQ Accordion Toggle
+        document.querySelectorAll('.faq-question').forEach(function(button) {
+            button.addEventListener('click', function() {
+                var answer = this.nextElementSibling;
+                var isOpen = answer.classList.contains('show');
+                
+                // Close all
+                document.querySelectorAll('.faq-answer').forEach(function(el) { el.classList.remove('show'); });
+                document.querySelectorAll('.faq-question').forEach(function(el) { el.classList.remove('active'); el.setAttribute('aria-expanded', 'false'); });
+
+                // Toggle current
+                if (!isOpen) {
+                    answer.classList.add('show');
+                    this.classList.add('active');
+                    this.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+         // Universal Infographic View Switcher
+        function toggleFig(n, view) {
+            var cards = document.getElementById('fig' + n + '-cards');
+            var diag = document.getElementById('fig' + n + '-diagram');
+            var btnCards = document.getElementById('fig' + n + '-btn-cards');
+            var btnDiag = document.getElementById('fig' + n + '-btn-diagram');
+            if (!cards || !diag) return;
+            if (view === 'cards') {
+                cards.classList.remove('hidden');
+                cards.style.display = 'block';
+                diag.classList.add('hidden');
+                diag.style.display = 'none';
+                if (btnCards) {
+                    btnCards.classList.add('active');
+                    btnCards.classList.remove('text-slate-400');
+                }
+                if (btnDiag) {
+                    btnDiag.classList.remove('active');
+                    btnDiag.classList.add('text-slate-400');
+                }
+            } else {
+                cards.classList.add('hidden');
+                cards.style.display = 'none';
+                diag.classList.remove('hidden');
+                diag.style.display = 'block';
+                if (btnCards) {
+                    btnCards.classList.remove('active');
+                    btnCards.classList.add('text-slate-400');
+                }
+                if (btnDiag) {
+                    btnDiag.classList.add('active');
+                    btnDiag.classList.remove('text-slate-400');
+                }
+            }
+        }
+
+        // Initialize Infographic Views based on screen width
+        (function() {
+            var isMobile = window.innerWidth < 768;
+            for (var i = 1; i <= 6; i++) {
+                toggleFig(i, isMobile ? 'cards' : 'diagram');
+            }
+        })();
+    </script>
+
+</body>
+</html>

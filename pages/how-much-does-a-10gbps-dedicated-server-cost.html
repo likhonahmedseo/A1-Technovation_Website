@@ -192,6 +192,95 @@
             line-height: 1.75;
         }
 
+        /* Reading Progress Bar */
+        #read-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #2563eb, #06b6d4);
+            z-index: 1000;
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+
+        /* Navbar & Nav shell overrides */
+        .article-navbar,
+        .article-navbar.scrolled {
+            background: rgba(255, 255, 255, .96) !important;
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid rgba(15, 23, 42, .08) !important;
+            box-shadow: 0 4px 24px rgba(15, 23, 42, .06) !important;
+        }
+
+        .article-navbar .logo-brand-dark {
+            opacity: 0 !important;
+            display: none !important;
+        }
+
+        .article-navbar .logo-brand-light {
+            opacity: 1 !important;
+            display: block !important;
+        }
+
+        .article-navbar .nav-link,
+        .article-navbar .nav-item.current>.nav-link {
+            color: #475569 !important;
+        }
+
+        .article-navbar .nav-link:hover,
+        .article-navbar .nav-link.active,
+        .article-navbar .nav-item.current>.nav-link {
+            color: #2563eb !important;
+            background: rgba(37, 99, 235, .08) !important;
+        }
+
+        .article-navbar .mobile-toggle span {
+            background: #0f172a !important;
+        }
+
+        /* Infrastructure-themed hero */
+        .net-hero {
+            background: radial-gradient(circle at 50% 0%, #1e293b 0%, #0f172a 70%, #020617 100%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .net-hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.4), transparent);
+        }
+
+        .net-hero-glow {
+            position: absolute;
+            top: -20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.2) 0%, rgba(6, 182, 212, 0.05) 50%, transparent 70%);
+            filter: blur(60px);
+            pointer-events: none;
+        }
+
+        .net-hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 80%);
+            pointer-events: none;
+        }
+
         /* Typography */
         h1, h2, h3, h4, h5, h6 {
             color: #0f172a;
@@ -294,12 +383,12 @@
 
         /* Sidebar card */
         .net-sidebar-card {
-            background: #0f172a;
+            background: linear-gradient(160deg, #0b1120 0%, #172554 100%);
             border-radius: 1.25rem;
             padding: 1.75rem;
             color: #ffffff;
-            border: 1px solid #1e293b;
-            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.3);
+            border: 1px solid rgba(37, 99, 235, 0.25);
+            box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.25);
             margin-bottom: 2rem;
             position: relative;
             overflow: hidden;
@@ -315,6 +404,10 @@
             background: radial-gradient(circle, rgba(37, 99, 235, 0.25) 0%, rgba(37, 99, 235, 0) 70%);
             border-radius: 50%;
             pointer-events: none;
+        }
+
+        .net-sidebar-card p {
+            color: #cbd5e1;
         }
 
         .net-cta-btn {
@@ -398,239 +491,307 @@
             color: #38bdf8;
         }
 
-        /* Accordion FAQ */
-        .faq-accordion .accordion-item {
-            background: #ffffff;
+        /* Article CTA Card - HIGH CONTRAST DARK STYLING */
+        .article-cta-card,
+        .prose .article-cta-card {
+            background: linear-gradient(135deg, #090d16 0%, #0f172a 45%, #172554 100%) !important;
+            color: #ffffff !important;
+            border: 1px solid rgba(59, 130, 246, 0.3) !important;
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.5rem !important;
+            padding: 2.25rem 2.5rem !important;
+            box-shadow: 0 15px 35px -5px rgba(15, 23, 42, 0.4) !important;
+        }
+
+        .article-cta-card h2,
+        .article-cta-card h3,
+        .prose .article-cta-card h2,
+        .prose .article-cta-card h3 {
+            color: #ffffff !important;
+            font-size: 1.75rem !important;
+            font-weight: 800 !important;
+            margin-top: 0 !important;
+            margin-bottom: 1.25rem !important;
+            letter-spacing: -0.025em !important;
+            border-bottom: none !important;
+            padding-bottom: 0 !important;
+        }
+
+        .article-cta-card p,
+        .article-cta-card .cta-copy,
+        .prose .article-cta-card p,
+        .prose .article-cta-card .cta-copy,
+        #article-body .article-cta-card p,
+        #article-body .article-cta-card .cta-copy,
+        .not-prose.article-cta-card p {
+            color: #f8fafc !important;
+            font-size: 1.125rem !important;
+            line-height: 1.75 !important;
+            margin-bottom: 1.25rem !important;
+        }
+
+        .article-cta-card .article-cta-button,
+        .prose .article-cta-card .article-cta-button {
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            background: linear-gradient(135deg, #2563eb, #0ea5e9) !important;
+            color: #ffffff !important;
+            font-weight: 700 !important;
+            font-size: 1.0625rem !important;
+            padding: 0.95rem 1.75rem !important;
+            border-radius: 0.75rem !important;
+            text-decoration: none !important;
+            transition: all 0.25s ease !important;
+            box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        }
+
+        .article-cta-card .article-cta-button:hover,
+        .prose .article-cta-card .article-cta-button:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 15px 30px -5px rgba(37, 99, 235, 0.6) !important;
+            background: linear-gradient(135deg, #1d4ed8, #0284c7) !important;
+        }
+
+        /* Accordion FAQ styling matching USA guide */
+        .faq-item {
             border: 1px solid #e2e8f0;
-            border-radius: 0.875rem;
+            border-radius: 1rem;
             margin-bottom: 1rem;
             overflow: hidden;
             transition: all 0.2s ease;
+            background: #ffffff;
         }
 
-        .faq-accordion .accordion-item.active {
-            border-color: #93c5fd;
-            box-shadow: 0 4px 12px -2px rgba(37, 99, 235, 0.08);
+        .faq-item:hover {
+            border-color: #cbd5e1;
         }
 
-        .faq-accordion .accordion-header {
+        .faq-question {
             width: 100%;
             text-align: left;
             padding: 1.25rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            font-weight: 700;
+            font-size: 1.125rem;
+            color: #0f172a;
             background: transparent;
             border: none;
             cursor: pointer;
-            font-weight: 700;
-            font-size: 1.0625rem;
-            color: #0f172a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .faq-accordion .accordion-header i {
+        .faq-question i {
             transition: transform 0.2s ease;
-            color: var(--net-blue);
-            font-size: 0.875rem;
+            color: #2563eb;
         }
 
-        .faq-accordion .accordion-item.active .accordion-header i {
+        .faq-question.active i {
             transform: rotate(180deg);
         }
 
-        .faq-accordion .accordion-content {
-            display: none;
-            padding: 0 1.5rem 1.5rem 1.5rem;
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding: 0 1.5rem;
             color: #475569;
-            font-size: 1rem;
-            line-height: 1.7;
-            border-top: 1px solid #f1f5f9;
-            margin-top: -0.25rem;
-            padding-top: 1.25rem;
+            line-height: 1.75;
+            background-color: #f8fafc;
         }
 
-        .faq-accordion .accordion-item.active .accordion-content {
-            display: block;
+        .faq-answer.open {
+            padding: 1rem 1.5rem 1.5rem;
+            border-top: 1px solid #f1f5f9;
         }
     </style>
 </head>
 
-<body>
+<body class="bg-white font-sans text-slate-800 antialiased selection:bg-blue-200 selection:text-slate-900">
+    <div id="read-progress"></div>
 
-    <!-- Header / Nav -->
-    <header>
-        <nav class="navbar article-navbar" id="navbar">
-            <div class="container">
-                <div class="navbar-inner">
-                    <a href="/" class="navbar-logo" aria-label="A1 Technovation home">
-                        <span class="logo-mark">
-                            <img src="/assets/images/A1Technovation-Dark-Background.png" alt="A1 Technovation"
-                                class="logo-brand logo-brand-dark" />
-                            <img src="/assets/images/A1Technovation-Light-Background.png" alt="A1 Technovation"
-                                class="logo-brand logo-brand-light" />
-                        </span>
-                    </a>
-                    <nav class="navbar-nav">
-                        <a href="/" class="nav-link">Home</a>
-                        <a href="/pages/about" class="nav-link">About</a>
-                        <div class="nav-item megamenu-item">
-                            <a href="/pages/services" class="nav-link">Services <i class="fas fa-chevron-down"
-                                    style="font-size:.7em;opacity:.7"></i></a>
-                            <div class="megamenu">
-                                <div class="megamenu-inner">
-                                    <div class="mm-col mm-col-main">
-                                        <p class="mm-col-head">Core Services</p>
-                                        <a href="/pages/services-seo" class="mm-service">
-                                            <div class="mm-icon"><i class="fas fa-search"></i></div>
-                                            <div class="mm-body"><span class="mm-title">SEO Services</span><span
-                                                    class="mm-desc">Technical, content, and authority growth</span>
-                                            </div>
-                                        </a>
-                                        <a href="/aeo-optimization-services/" class="mm-service">
-                                            <div class="mm-icon"><i class="fas fa-comment-dots"></i></div>
-                                            <div class="mm-body"><span class="mm-title">AEO Optimization</span><span
-                                                    class="mm-desc">Win snippets and answer boxes</span></div>
-                                        </a>
-                                        <a href="/geo-optimization-services/" class="mm-service">
-                                            <div class="mm-icon"><i class="fas fa-diagram-project"></i></div>
-                                            <div class="mm-body"><span class="mm-title">GEO Optimization</span><span
-                                                    class="mm-desc">Get cited by AI engines</span></div>
-                                        </a>
-                                        <a href="/pages/services-local-seo" class="mm-service">
-                                            <div class="mm-icon"><i class="fas fa-location-dot"></i></div>
-                                            <div class="mm-body"><span class="mm-title">Local SEO</span><span
-                                                    class="mm-desc">Maps, local pack, and city rankings</span></div>
-                                        </a>
-                                    </div>
-                                    <div class="mm-col mm-col-links">
-                                        <p class="mm-col-head">SEO Specialties</p>
-                                        <a href="/ecommerce-seo-services/" class="mm-link">Ecommerce SEO</a>
-                                        <a href="/pages/services-web-dev" class="mm-link">Web Design</a>
-                                        <a href="/pages/services-ppc-ads" class="mm-link">PPC Advertising</a>
-                                        <a href="/pages/services-social-media" class="mm-link">Social Media</a>
-                                        <a href="/seo-services-for-hvac-companies/" class="mm-link">HVAC SEO</a>
-                                        <a href="/seo-services-usa/" class="mm-link">SEO Services USA</a>
-                                    </div>
-                                    <div class="mm-col mm-col-feature">
-                                        <div class="mm-feature-card">
-                                            <div class="mm-feature-badge">Free Audit</div>
-                                            <h4 class="mm-feature-title">Grow Your Business Online</h4>
-                                            <p class="mm-feature-body">Get a free 30-minute strategy session with our
-                                                experts — no strings attached.</p>
-                                            <a href="https://wa.me/8801799976295" class="btn btn-primary btn-sm"
-                                                target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Free
-                                                Consultation</a>
-                                            <a href="/pages/services" class="mm-feature-link">View all services →</a>
-                                        </div>
+    <!-- Navbar -->
+    <nav class="navbar article-navbar" id="navbar">
+        <div class="container">
+            <div class="navbar-inner">
+                <a href="/" class="navbar-logo" aria-label="A1 Technovation home"><span class="logo-mark"><img
+                            src="/assets/images/A1Technovation-Dark-Background.png" alt="A1 Technovation"
+                            class="logo-brand logo-brand-dark" /><img
+                            src="/assets/images/A1Technovation-Light-Background.png" alt="A1 Technovation"
+                            class="logo-brand logo-brand-light" /></span></a>
+                <nav class="navbar-nav">
+                    <a href="/" class="nav-link">Home</a>
+                    <a href="/pages/about" class="nav-link">About</a>
+                    <div class="nav-item megamenu-item"><a href="/pages/services" class="nav-link">Services <i
+                                class="fas fa-chevron-down" style="font-size:.7em;opacity:.7"></i></a>
+                        <div class="megamenu">
+                            <div class="megamenu-inner">
+                                <div class="mm-col mm-col-main">
+                                    <p class="mm-col-head">Core Services</p>
+                                    <a href="/pages/services-seo" class="mm-service">
+                                        <div class="mm-icon"><i class="fas fa-search"></i></div>
+                                        <div class="mm-body"><span class="mm-title">SEO Services</span><span
+                                                class="mm-desc">Technical, content, and authority growth</span></div>
+                                    </a>
+                                    <a href="/aeo-optimization-services/" class="mm-service">
+                                        <div class="mm-icon"><i class="fas fa-comment-dots"></i></div>
+                                        <div class="mm-body"><span class="mm-title">AEO Optimization</span><span
+                                                class="mm-desc">Win snippets and answer boxes</span></div>
+                                    </a>
+                                    <a href="/geo-optimization-services/" class="mm-service">
+                                        <div class="mm-icon"><i class="fas fa-diagram-project"></i></div>
+                                        <div class="mm-body"><span class="mm-title">GEO Optimization</span><span
+                                                class="mm-desc">Get cited by AI engines</span></div>
+                                    </a>
+                                    <a href="/pages/services-local-seo" class="mm-service">
+                                        <div class="mm-icon"><i class="fas fa-location-dot"></i></div>
+                                        <div class="mm-body"><span class="mm-title">Local SEO</span><span
+                                                class="mm-desc">Maps, local pack, and city rankings</span></div>
+                                    </a>
+                                </div>
+                                <div class="mm-col mm-col-links">
+                                    <p class="mm-col-head">SEO Specialties</p>
+                                    <a href="/ecommerce-seo-services/" class="mm-link">Ecommerce SEO</a>
+                                    <a href="/pages/services-web-dev" class="mm-link">Web Design</a>
+                                    <a href="/pages/services-ppc-ads" class="mm-link">PPC Advertising</a>
+                                    <a href="/pages/services-social-media" class="mm-link">Social Media</a>
+                                    <a href="/seo-services-for-hvac-companies/" class="mm-link">HVAC SEO</a>
+                                    <a href="/seo-services-usa/" class="mm-link">SEO Services USA</a>
+                                    <a href="/pages/services-car-rental-seo" class="mm-link">Car Rental SEO</a>
+                                    <a href="/pages/services-limousine-business-seo" class="mm-link">Limousine Business SEO</a>
+                                    <a href="/pages/services-car-repair-seo" class="mm-link">Car Repair SEO</a>
+                                    <a href="/pages/services-car-dealership-seo" class="mm-link">Car Dealership SEO</a>
+                                    <a href="/pages/services-tree-service-seo" class="mm-link">Tree Service SEO</a>
+                                    <a href="/pages/services-lawyer-seo" class="mm-link">Lawyer SEO</a>
+                                    <a href="/pages/services-small-business-seo" class="mm-link">Small Business SEO</a>
+                                </div>
+                                <div class="mm-col mm-col-feature">
+                                    <div class="mm-feature-card">
+                                        <div class="mm-feature-badge">Free Audit</div>
+                                        <h4 class="mm-feature-title">Grow Your Business Online</h4>
+                                        <p class="mm-feature-body">Get a free 30-minute strategy session with our
+                                            experts - no strings attached.</p>
+                                        <a href="https://wa.me/8801799976295" class="btn btn-primary btn-sm"
+                                            target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Free
+                                            Consultation</a>
+                                        <a href="/pages/services" class="mm-feature-link">View all services -&gt;</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <a href="/pages/portfolio" class="nav-link">Work</a>
-                        <a href="/blog" class="nav-link">Blog</a>
-                        <a href="/pages/tools" class="nav-link">Tools</a>
-                        <a href="/pages/contact" class="nav-link">Contact</a>
-                    </nav>
-                    <div class="navbar-right">
-                        <a href="https://wa.me/8801799976295" class="btn btn-primary btn-sm nav-cta" target="_blank"
-                            rel="noopener"><i class="fab fa-whatsapp"></i> Contact Us</a>
-                        <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu"
-                            aria-controls="mobileMenu" aria-expanded="false">
-                            <span></span><span></span><span></span>
-                        </button>
                     </div>
+                    <a href="/pages/portfolio" class="nav-link">Work</a>
+                    <a href="/blog" class="nav-link active">Blog</a>
+                    <a href="/pages/tools" class="nav-link">Tools</a>
+                    <a href="/pages/contact" class="nav-link">Contact</a>
+                </nav>
+                <div class="navbar-right">
+                    <a href="https://wa.me/8801799976295" class="btn btn-primary btn-sm nav-cta" target="_blank"
+                        rel="noopener"><i class="fab fa-whatsapp"></i> Free Consultation</a>
+                    <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu" aria-controls="mobileMenu"
+                        aria-expanded="false"><span></span><span></span><span></span></button>
                 </div>
-            </div>
-        </nav>
-        <div class="mobile-menu" id="mobileMenu">
-            <a href="/" class="mobile-menu-link">Home <i class="fas fa-arrow-right"
-                    style="font-size:.75rem;opacity:.4"></i></a>
-            <a href="/pages/about" class="mobile-menu-link">About <i class="fas fa-arrow-right"
-                    style="font-size:.75rem;opacity:.4"></i></a>
-            <div class="mobile-menu-group">
-                <a href="/pages/services" class="mobile-menu-link">Services <i class="fas fa-arrow-right"
-                        style="font-size:.75rem;opacity:.4"></i></a>
-                <div class="mobile-submenu">
-                    <a href="/pages/services-seo" class="mobile-submenu-link">SEO Services</a>
-                    <a href="/aeo-optimization-services/" class="mobile-submenu-link">AEO Optimization</a>
-                    <a href="/geo-optimization-services/" class="mobile-submenu-link">GEO Optimization</a>
-                    <a href="/pages/services-local-seo" class="mobile-submenu-link">Local SEO Services</a>
-                    <a href="/ecommerce-seo-services/" class="mobile-submenu-link">Ecommerce SEO Services</a>
-                    <a href="/pages/services-web-dev" class="mobile-submenu-link">Web Design &amp; Development</a>
-                    <a href="/pages/services-ppc-ads" class="mobile-submenu-link">PPC Advertising</a>
-                    <a href="/pages/services-social-media" class="mobile-submenu-link">Social Media Marketing</a>
-                </div>
-            </div>
-            <a href="/pages/portfolio" class="mobile-menu-link">Work <i class="fas fa-arrow-right"
-                    style="font-size:.75rem;opacity:.4"></i></a>
-            <a href="/blog" class="mobile-menu-link">Blog <i class="fas fa-arrow-right"
-                    style="font-size:.75rem;opacity:.4"></i></a>
-            <a href="/pages/tools" class="mobile-menu-link">Tools <i class="fas fa-arrow-right"
-                    style="font-size:.75rem;opacity:.4"></i></a>
-            <a href="/pages/contact" class="mobile-menu-link">Contact <i class="fas fa-arrow-right"
-                    style="font-size:.75rem;opacity:.4"></i></a>
-            <div class="mobile-menu-footer">
-                <a href="https://wa.me/8801799976295" class="btn btn-primary btn-lg" target="_blank" rel="noopener"
-                    style="justify-content:center">
-                    <i class="fab fa-whatsapp"></i> Start a Free Consultation
-                </a>
-                <p class="mobile-menu-note">info.a1technovation@gmail.com</p>
             </div>
         </div>
-    </header>
+    </nav>
 
-    <!-- Main Container -->
+    <!-- Mobile Menu Drawer -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="/" class="mobile-menu-link">Home <i class="fas fa-arrow-right"
+                style="font-size:.75rem;opacity:.4"></i></a>
+        <a href="/pages/about" class="mobile-menu-link">About <i class="fas fa-arrow-right"
+                style="font-size:.75rem;opacity:.4"></i></a>
+        <div class="mobile-menu-group">
+            <a href="/pages/services" class="mobile-menu-link">Services <i class="fas fa-arrow-right"
+                    style="font-size:.75rem;opacity:.4"></i></a>
+            <div class="mobile-submenu">
+                <a href="/pages/services-seo" class="mobile-submenu-link">SEO Services</a>
+                <a href="/aeo-optimization-services/" class="mobile-submenu-link">AEO Optimization</a>
+                <a href="/geo-optimization-services/" class="mobile-submenu-link">GEO Optimization</a>
+                <a href="/pages/services-local-seo" class="mobile-submenu-link">Local SEO Services</a>
+                <a href="/ecommerce-seo-services/" class="mobile-submenu-link">Ecommerce SEO Services</a>
+                <a href="/seo-services-for-hvac-companies/" class="mobile-submenu-link">HVAC SEO Services</a>
+                <a href="/seo-services-usa/" class="mobile-submenu-link">SEO Services USA</a>
+                <div class="mobile-submenu-nested">
+                    <a href="/pages/services-car-rental-seo" class="mobile-submenu-link mobile-submenu-sublink">Car Rental SEO Service</a>
+                    <a href="/pages/services-limousine-business-seo" class="mobile-submenu-link mobile-submenu-sublink">Limousine Business SEO Service</a>
+                    <a href="/pages/services-car-repair-seo" class="mobile-submenu-link mobile-submenu-sublink">Car Repair SEO Service</a>
+                    <a href="/pages/services-car-dealership-seo" class="mobile-submenu-link mobile-submenu-sublink">Car Dealership SEO Service</a>
+                    <a href="/pages/services-tree-service-seo" class="mobile-submenu-link mobile-submenu-sublink">Tree Service SEO</a>
+                    <a href="/pages/services-lawyer-seo" class="mobile-submenu-link mobile-submenu-sublink">Lawyer SEO Service</a>
+                    <a href="/pages/services-small-business-seo" class="mobile-submenu-link mobile-submenu-sublink">Small Business SEO Service</a>
+                </div>
+                <a href="/pages/services-web-dev" class="mobile-submenu-link">Web Design &amp; Development</a>
+                <a href="/pages/services-ppc-ads" class="mobile-submenu-link">PPC Advertising</a>
+                <a href="/pages/services-social-media" class="mobile-submenu-link">Social Media Marketing</a>
+            </div>
+        </div>
+        <a href="/pages/portfolio" class="mobile-menu-link">Work <i class="fas fa-arrow-right"
+                style="font-size:.75rem;opacity:.4"></i></a>
+        <a href="/blog" class="mobile-menu-link">Blog <i class="fas fa-arrow-right"
+                style="font-size:.75rem;opacity:.4"></i></a>
+        <a href="/pages/tools" class="mobile-menu-link">Tools <i class="fas fa-arrow-right"
+                style="font-size:.75rem;opacity:.4"></i></a>
+        <a href="/pages/contact" class="mobile-menu-link">Contact <i class="fas fa-arrow-right"
+                style="font-size:.75rem;opacity:.4"></i></a>
+        <div class="mobile-menu-footer">
+            <a href="https://wa.me/8801799976295" class="btn btn-primary btn-lg" target="_blank" rel="noopener"
+                style="justify-content:center">
+                <i class="fab fa-whatsapp"></i> Start a Free Consultation
+            </a>
+            <p class="mobile-menu-note">info.a1technovation@gmail.com</p>
+        </div>
+    </div>
+
+    <!-- Infrastructure Hero Section -->
+    <section class="net-hero py-16 lg:py-24 relative">
+        <div class="net-hero-grid"></div>
+        <div class="net-hero-glow"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <nav class="flex text-sm text-slate-400 mb-10" aria-label="Breadcrumb">
+                <ol class="flex items-center space-x-2">
+                    <li><a href="https://a1technovation.com/" class="hover:text-cyan-400 transition-colors">Home</a></li>
+                    <li><i class="ph ph-caret-right text-xs"></i></li>
+                    <li><a href="https://a1technovation.com/blog/" class="hover:text-cyan-400 transition-colors">Blog</a></li>
+                    <li><i class="ph ph-caret-right text-xs"></i></li>
+                    <li class="text-white font-semibold" aria-current="page">How Much Does a 10Gbps Dedicated Server Cost?</li>
+                </ol>
+            </nav>
+            <div class="flex items-center gap-3 mb-6">
+                <span
+                    class="bg-blue-900/60 text-cyan-300 text-xs font-bold px-3.5 py-1.5 uppercase tracking-wider rounded-full border border-cyan-500/30 shadow-sm">
+                    <i class="fas fa-calculator me-1.5"></i> 10Gbps Server Pricing &amp; Hardware Economics
+                </span>
+                <span class="text-slate-400 text-sm flex items-center gap-1.5"><i class="ph ph-clock"></i> 12 min read</span>
+            </div>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6 tracking-tight">
+                How Much Does a 10Gbps Dedicated Server Cost? Hardware, Bandwidth, and Extra Fees
+            </h1>
+            <p class="text-xl sm:text-2xl text-slate-300 leading-relaxed max-w-4xl font-normal">
+                A 10Gbps dedicated server can cost a few hundred dollars per month, but the price depends on the hardware and network service included. Published unmetered examples reviewed for this guide include packages at $499, $596, and $690 per month. These are individual offers, not a market-wide price range.
+            </p>
+            <div class="flex items-center gap-4 mt-8 pt-6 border-t border-white/10">
+                <a href="/pages/about"
+                    class="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 border-2 border-cyan-400/30 no-underline">
+                    <img src="/assets/images/CEO%20of%20A1%20Technovation.webp" alt="Likhon Ahmed"
+                        class="w-full h-full object-cover">
+                </a>
+                <div>
+                    <div class="font-bold text-white"><a href="/pages/about"
+                            class="text-white hover:text-cyan-400 transition-colors no-underline">Likhon Ahmed</a></div>
+                    <div class="text-sm text-slate-400">Published November 4, 2026 &bull; High-Bandwidth Dedicated Infrastructure &amp; Network Economics</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Container with Left Article and Right Sidebar -->
     <main class="py-12 bg-slate-50 min-h-screen">
         <div class="container mx-auto px-4 max-w-7xl">
 
-            <!-- Breadcrumbs -->
-            <nav class="flex items-center text-sm font-medium text-slate-500 mb-6 gap-2" aria-label="Breadcrumb">
-                <a href="/" class="hover:text-blue-600 transition-colors">Home</a>
-                <i class="fas fa-chevron-right text-xs text-slate-400"></i>
-                <a href="/blog" class="hover:text-blue-600 transition-colors">Blog</a>
-                <i class="fas fa-chevron-right text-xs text-slate-400"></i>
-                <span class="text-slate-800 truncate">How Much Does a 10Gbps Dedicated Server Cost?</span>
-            </nav>
-
-            <!-- Article Header -->
-            <header class="mb-10 max-w-4xl">
-                <div class="flex flex-wrap items-center gap-3 mb-4">
-                    <span class="bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-                        Hosting Economics
-                    </span>
-                    <span class="bg-slate-200 text-slate-700 text-xs font-semibold px-3 py-1 rounded-full">
-                        Enterprise Infrastructure
-                    </span>
-                    <span class="text-slate-400 text-xs flex items-center gap-1">
-                        <i class="far fa-clock"></i> 12 Min Read
-                    </span>
-                    <span class="text-slate-400 text-xs flex items-center gap-1">
-                        <i class="far fa-calendar-alt"></i> November 4, 2026
-                    </span>
-                </div>
-                <h1 class="text-3xl md:text-5xl font-black text-slate-900 leading-tight mb-6">
-                    How Much Does a 10Gbps Dedicated Server Cost? Hardware, Bandwidth, and Extra Fees
-                </h1>
-
-                <!-- Author Profile -->
-                <div class="flex items-center gap-4 py-4 border-y border-slate-200">
-                    <img src="/assets/images/CEO%20of%20A1%20Technovation.webp" alt="Likhon Ahmed"
-                        class="w-12 h-12 rounded-full object-cover border border-blue-500/30">
-                    <div>
-                        <div class="flex items-center gap-2">
-                            <span class="font-bold text-slate-900">Likhon Ahmed</span>
-                            <span class="bg-blue-50 text-blue-700 text-[10px] font-bold px-1.5 py-0.5 rounded border border-blue-200">
-                                Verified Author
-                            </span>
-                        </div>
-                        <p class="text-xs text-slate-500">
-                            Founder &amp; CEO, A1 Technovation &bull; Infrastructure &amp; Technical SEO Architect
-                        </p>
-                    </div>
-                </div>
-            </header>
-
-            <!-- Grid Layout -->
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 
                 <!-- Main Content Column -->
@@ -667,10 +828,7 @@
                                 The useful question is the complete cost of a server that meets your requirements. We can calculate that by separating the base package, network charges, and optional services.
                             </p>
 
-                            <div class="bg-slate-100 rounded-xl p-4 text-sm text-slate-600 border border-slate-200 mb-8">
-                                <i class="fas fa-info-circle text-blue-600 me-2"></i>
-                                <strong>Research Metadata:</strong> Pricing research checked November 4, 2026. Examples use USD and draw mainly from US-market offers. Prices depend on the selected deployment and configuration; they do not apply to every region. This guide uses published provider information without independent performance testing.
-                            </div>
+                            
                         </section>
 
                         <!-- Section: Published 10Gbps Dedicated Server Prices -->
@@ -784,11 +942,11 @@
                             </p>
                             <p>Hardware choices affect the price:</p>
                             <ul class="space-y-2">
-                                <li><strong>Processor model, generation, and socket count:</strong> High single-core performance vs high multi-thread density.</li>
-                                <li><strong>Memory capacity and type:</strong> DDR4 ECC vs DDR5 ECC memory channels.</li>
-                                <li><strong>Drive type, number, and capacity:</strong> SATA HDD vs Enterprise SATA SSD vs PCIe Gen4/Gen5 NVMe flash.</li>
-                                <li><strong>RAID configuration and usable storage:</strong> Hardware RAID controllers vs software mirrors.</li>
-                                <li><strong>Specialized components:</strong> Hardware accelerators such as enterprise GPUs.</li>
+                                <li>Processor model, generation, and socket count.</li>
+                                <li>Memory capacity and type.</li>
+                                <li>Drive type, number, and capacity.</li>
+                                <li>RAID configuration and usable storage.</li>
+                                <li>Specialized components such as GPUs.</li>
                             </ul>
                             <p>
                                 Compare the workload requirements before comparing core counts. A newer processor with fewer cores may suit an application better than an older dual-socket server.
@@ -1465,74 +1623,74 @@
                                 <i class="fas fa-question-circle text-blue-600"></i> Frequently Asked Questions
                             </h2>
 
-                            <div class="faq-accordion mt-6">
+                            <div class="mt-6">
 
-                                <div class="accordion-item active">
-                                    <button class="accordion-header" type="button" aria-expanded="true">
+                                <div class="faq-item">
+                                    <button class="faq-question active" type="button" aria-expanded="true">
                                         <span>Does a 10Gbps server price include bandwidth?</span>
                                         <i class="fas fa-chevron-down"></i>
                                     </button>
-                                    <div class="accordion-content">
+                                    <div class="faq-answer open" style="max-height: 200px;">
                                         <p class="mb-0">
                                             Sometimes. Providers may bundle the server and network package or charge for them separately. Check the public port, guaranteed rate, included transfer, and excess charges. A network add-on price should never be treated as the complete server rental.
                                         </p>
                                     </div>
                                 </div>
 
-                                <div class="accordion-item">
-                                    <button class="accordion-header" type="button" aria-expanded="false">
+                                <div class="faq-item">
+                                    <button class="faq-question" type="button" aria-expanded="false">
                                         <span>Is an unmetered dedicated server always cheaper?</span>
                                         <i class="fas fa-chevron-down"></i>
                                     </button>
-                                    <div class="accordion-content">
+                                    <div class="faq-answer">
                                         <p class="mb-0">
                                             No. Metered hosting can cost less when usage stays within the allowance or exceeds it only occasionally. Compare normal and busy months across a full year. Unmetered becomes more attractive when sustained transfer or overage costs justify the higher fixed charge.
                                         </p>
                                     </div>
                                 </div>
 
-                                <div class="accordion-item">
-                                    <button class="accordion-header" type="button" aria-expanded="false">
+                                <div class="faq-item">
+                                    <button class="faq-question" type="button" aria-expanded="false">
                                         <span>Can a 10Gbps port have a lower guaranteed rate?</span>
                                         <i class="fas fa-chevron-down"></i>
                                     </button>
-                                    <div class="accordion-content">
+                                    <div class="faq-answer">
                                         <p class="mb-0">
                                             Yes. A plan may provide a 10Gbps port with a lower committed rate and permission to burst above it. Ask for the written bandwidth commitment. A port specification alone does not establish sustained 10Gbps service.
                                         </p>
                                     </div>
                                 </div>
 
-                                <div class="accordion-item">
-                                    <button class="accordion-header" type="button" aria-expanded="false">
+                                <div class="faq-item">
+                                    <button class="faq-question" type="button" aria-expanded="false">
                                         <span>Does 24×7 support include server management?</span>
                                         <i class="fas fa-chevron-down"></i>
                                     </button>
-                                    <div class="accordion-content">
+                                    <div class="faq-answer">
                                         <p class="mb-0">
                                             Not necessarily. Support availability may cover hardware and network incidents while leaving software updates, security configuration, backups, and applications to the customer. Request a written list of included management tasks and charges for additional work.
                                         </p>
                                     </div>
                                 </div>
 
-                                <div class="accordion-item">
-                                    <button class="accordion-header" type="button" aria-expanded="false">
+                                <div class="faq-item">
+                                    <button class="faq-question" type="button" aria-expanded="false">
                                         <span>Are setup fees and taxes included in the advertised price?</span>
                                         <i class="fas fa-chevron-down"></i>
                                     </button>
-                                    <div class="accordion-content">
+                                    <div class="faq-answer">
                                         <p class="mb-0">
                                             That depends on the offer. Some prices exclude setup, taxes, or optional configuration charges. Check the order summary and itemized quote. Keep one-time fees separate from recurring charges when calculating first-year cost.
                                         </p>
                                     </div>
                                 </div>
 
-                                <div class="accordion-item">
-                                    <button class="accordion-header" type="button" aria-expanded="false">
+                                <div class="faq-item">
+                                    <button class="faq-question" type="button" aria-expanded="false">
                                         <span>Can a 1Gbps server meet the same requirement for less?</span>
                                         <i class="fas fa-chevron-down"></i>
                                     </button>
-                                    <div class="accordion-content">
+                                    <div class="faq-answer">
                                         <p class="mb-0">
                                             It may, if peak demand and transfer windows fit within the lower rate. Measure the workload before buying a faster connection. A service with modest peaks may gain little from 10Gbps, while a short backup window may justify the extra capacity.
                                         </p>
@@ -1542,23 +1700,25 @@
                             </div>
                         </section>
 
-                        <!-- Section: Recommended Next Steps -->
-                        <section id="next-steps" class="mt-12 bg-gradient-to-r from-blue-900 to-slate-900 rounded-2xl p-8 text-white shadow-xl">
-                            <h2 class="text-2xl font-bold text-white mb-4 border-none p-0 flex items-center gap-3">
-                                <i class="fas fa-arrow-circle-right text-cyan-400"></i> Recommended Next Steps
-                            </h2>
-                            <p class="text-slate-200 text-base leading-relaxed mb-4">
-                                Measure normal traffic, peak demand, and busy-month transfer. Then request quotes with matching hardware, public bandwidth commitments, support scope, and contract terms.
-                            </p>
-                            <p class="text-slate-200 text-base leading-relaxed mb-6">
-                                Compare the first month, a busy month, and the full first year. Resolve unknown fees before ordering.
-                            </p>
-                            <div class="pt-2">
-                                <a href="https://atalnetworks.com/10gbps-server/" target="_blank" rel="noopener"
-                                    class="inline-flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white font-bold px-6 py-3.5 rounded-xl transition duration-200 shadow-lg text-sm">
-                                    <span>Request an itemized 10Gbps server quote from Atal Networks</span>
-                                    <i class="fas fa-arrow-right text-xs"></i>
-                                </a>
+                        <!-- Section: Recommended Next Steps (High-Contrast Article CTA Card) -->
+                        <section id="next-steps" class="mt-12 article-cta-card not-prose" style="background: linear-gradient(135deg, #090d16 0%, #0f172a 45%, #172554 100%) !important; color: #ffffff !important; border-radius: 1.5rem !important; padding: 2.25rem 2.5rem !important; border: 1px solid rgba(59, 130, 246, 0.35) !important; box-shadow: 0 15px 35px -5px rgba(15, 23, 42, 0.45) !important;">
+                            <div class="relative z-10">
+                                <h3 class="flex items-center gap-3 text-white font-extrabold text-2xl mb-4 !mt-0 !text-white" style="color: #ffffff !important; border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important; padding-bottom: 0.85rem !important; margin-top: 0 !important; margin-bottom: 1.25rem !important;">
+                                    <i class="fas fa-arrow-circle-right text-cyan-400"></i> Recommended Next Steps
+                                </h3>
+                                <p class="cta-copy text-slate-100 text-lg leading-relaxed mb-4" style="color: #f8fafc !important; font-size: 1.125rem !important; line-height: 1.75 !important; margin-bottom: 1.25rem !important;">
+                                    Measure normal traffic, peak demand, and busy-month transfer. Then request quotes with matching hardware, public bandwidth commitments, support scope, and contract terms.
+                                </p>
+                                <p class="cta-copy text-slate-100 text-lg leading-relaxed mb-6" style="color: #f8fafc !important; font-size: 1.125rem !important; line-height: 1.75 !important; margin-bottom: 1.5rem !important;">
+                                    Compare the first month, a busy month, and the full first year. Resolve unknown fees before ordering.
+                                </p>
+                                <div class="pt-2">
+                                    <a href="https://atalnetworks.com/10gbps-server/" target="_blank" rel="noopener"
+                                        class="article-cta-button inline-flex items-center justify-center font-bold text-white rounded-xl shadow-lg transition-all" style="background: linear-gradient(135deg, #2563eb, #0ea5e9) !important; color: #ffffff !important; padding: 0.95rem 1.75rem !important; text-decoration: none !important;">
+                                        <span>Request an itemized 10Gbps server quote from Atal Networks</span>
+                                        <i class="fas fa-arrow-right ms-2 text-sm"></i>
+                                    </a>
+                                </div>
                             </div>
                         </section>
 
@@ -1574,7 +1734,7 @@
                             <i class="fas fa-list-ul text-cyan-400"></i> Table of Contents
                         </h3>
                         <ul class="toc-list">
-                            <li><a href="#overview"><i class="fas fa-angle-right text-cyan-400 me-2 text-xs"></i>Overview &amp; Pricing Metadata</a></li>
+                            <li><a href="#overview"><i class="fas fa-angle-right text-cyan-400 me-2 text-xs"></i>Overview</a></li>
                             <li><a href="#published-prices"><i class="fas fa-angle-right text-cyan-400 me-2 text-xs"></i>Published 10Gbps Prices ($499–$690)</a></li>
                             <li><a href="#starting-prices-addons"><i class="fas fa-angle-right text-cyan-400 me-2 text-xs"></i>Starting Prices vs Add-Ons</a></li>
                             <li><a href="#separate-server-network"><i class="fas fa-angle-right text-cyan-400 me-2 text-xs"></i>Separate Server from Network</a></li>
@@ -1805,57 +1965,59 @@
 
     <button class="scroll-top" id="scrollTop" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></button>
 
-    <!-- Accordion Script -->
+    <script src="/js/main.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // FAQ Accordion Toggle
-            const accordionHeaders = document.querySelectorAll('.faq-accordion .accordion-header');
-            accordionHeaders.forEach(header => {
-                header.addEventListener('click', function () {
-                    const item = this.parentElement;
-                    const isActive = item.classList.contains('active');
+        (function () {
+            // Reading progress bar
+            window.addEventListener('scroll', function () {
+                var docEl = document.documentElement;
+                var scrollTop = window.scrollY || docEl.scrollTop;
+                var docHeight = docEl.scrollHeight - docEl.clientHeight;
+                var scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+                var progressEl = document.getElementById('read-progress');
+                if (progressEl) progressEl.style.width = scrollPercent + '%';
+            }, { passive: true });
 
-                    // Close all
-                    document.querySelectorAll('.faq-accordion .accordion-item').forEach(i => {
-                        i.classList.remove('active');
-                        const h = i.querySelector('.accordion-header');
-                        if (h) h.setAttribute('aria-expanded', 'false');
+            // Scroll to top
+            var scrollButton = document.getElementById('scrollTop');
+            var toggleScrollButton = function () {
+                if (!scrollButton) return;
+                scrollButton.classList.toggle('is-visible', window.scrollY > 420);
+            };
+            if (scrollButton) {
+                window.addEventListener('scroll', toggleScrollButton, { passive: true });
+                toggleScrollButton();
+                scrollButton.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+            }
+
+            // Accordion FAQ interaction
+            var questions = document.querySelectorAll('.faq-question');
+            questions.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    var answer = this.nextElementSibling;
+                    var isOpen = this.classList.contains('active');
+
+                    // Close others
+                    questions.forEach(function (otherBtn) {
+                        otherBtn.classList.remove('active');
+                        otherBtn.setAttribute('aria-expanded', 'false');
+                        if (otherBtn.nextElementSibling) {
+                            otherBtn.nextElementSibling.classList.remove('open');
+                            otherBtn.nextElementSibling.style.maxHeight = null;
+                        }
                     });
 
-                    // Toggle current
-                    if (!isActive) {
-                        item.classList.add('active');
+                    if (!isOpen) {
+                        this.classList.add('active');
                         this.setAttribute('aria-expanded', 'true');
+                        answer.classList.add('open');
+                        answer.style.maxHeight = answer.scrollHeight + "px";
                     }
                 });
             });
-
-            // Mobile Menu Toggle
-            const mobileToggle = document.getElementById('mobileToggle');
-            const mobileMenu = document.getElementById('mobileMenu');
-            if (mobileToggle && mobileMenu) {
-                mobileToggle.addEventListener('click', function () {
-                    const isOpen = mobileMenu.classList.toggle('is-open');
-                    mobileToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-                });
-            }
-
-            // Scroll to Top Button
-            const scrollTopBtn = document.getElementById('scrollTop');
-            if (scrollTopBtn) {
-                window.addEventListener('scroll', function () {
-                    if (window.scrollY > 300) {
-                        scrollTopBtn.classList.add('is-visible');
-                    } else {
-                        scrollTopBtn.classList.remove('is-visible');
-                    }
-                });
-                scrollTopBtn.addEventListener('click', function () {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                });
-            }
-        });
+        })();
     </script>
+<script src="/js/whatsapp-chat.js" defer></script>
 </body>
 
 </html>
