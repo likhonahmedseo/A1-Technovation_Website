@@ -31,8 +31,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="/css/style.min.css">
-    <link rel="stylesheet" href="/css/responsive.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="stylesheet" href="/css/whatsapp-chat.css">
         <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -175,7 +176,7 @@
 
         /* Custom Infographic Containers */
         .visual-box {
-            background: linear-gradient(145deg, #0f172a, #1e293b);
+            background: #0f172a;
             border-radius: 1.25rem;
             padding: 2rem;
             margin: 3rem 0;
@@ -186,7 +187,7 @@
         }
         .visual-box::before {
             content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            background: rgba(255, 255, 255, 0.1);
         }
         .svg-glow { filter: drop-shadow(0 0 10px rgba(37, 99, 235, 0.4)); }
         .svg-glow-blue { filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.4)); }
@@ -207,12 +208,26 @@
 <body class="bg-brand-50 font-sans text-slate-800 antialiased selection:bg-brand-accent selection:text-white">
 
 <nav class="navbar" id="navbar">
-  <div class="container"><div class="navbar-inner">
-    <a href="/" class="navbar-logo" aria-label="A1 Technovation home"><span class="logo-mark"><img src="/assets/images/A1Technovation-Dark-Background.png" alt="A1 Technovation" class="logo-brand logo-brand-dark" /><img src="/assets/images/A1Technovation-Light-Background.png" alt="A1 Technovation" class="logo-brand logo-brand-light" /></span></a>
-    <nav class="navbar-nav">
-      <a href="/" class="nav-link">Home</a><a href="/pages/about" class="nav-link">About</a>
-      <div class="nav-item megamenu-item"><a href="/pages/services" class="nav-link">Services <i class="fas fa-chevron-down" style="font-size:.7em;opacity:.7"></i></a>
-        <div class="megamenu">
+  <div class="container">
+    <div class="navbar-inner">
+      <!-- Logo -->
+      <a href="/" class="navbar-logo" aria-label="A1 Technovation home">
+        <span class="logo-mark">
+          <img src="/assets/images/A1Technovation-Dark-Background.png" alt="A1 Technovation" class="logo-brand logo-brand-dark" />
+          <img src="/assets/images/A1Technovation-Light-Background.png" alt="A1 Technovation" class="logo-brand logo-brand-light" />
+        </span>
+      </a>
+
+      <!-- Nav Links -->
+      <nav class="navbar-nav">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/pages/about" class="nav-link">About</a>
+
+        <div class="nav-item megamenu-item">
+          <a href="/pages/services" class="nav-link">
+            Services <i class="fas fa-chevron-down" style="font-size:.7em;opacity:.7"></i>
+          </a>
+          <div class="megamenu">
             <div class="megamenu-inner">
               <div class="mm-col mm-col-main">
                 <p class="mm-col-head">Core Services</p>
@@ -250,14 +265,25 @@
           </div>
         </div>
 
-        <a href="/pages/portfolio" class="nav-link">Work</a><a href="/pages/blog" class="nav-link active">Blog</a><a href="/pages/tools" class="nav-link">Tools</a><a href="/pages/contact" class="nav-link">Contact</a>
-    </nav>
-    <div class="navbar-right">
-      <a href="https://wa.me/8801799976295" class="btn btn-primary btn-sm nav-cta" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Free Consultation</a>
-      <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false"><span></span><span></span><span></span></button>
+        <a href="/pages/portfolio" class="nav-link">Work</a>
+        <a href="/pages/blog" class="nav-link">Blog</a>
+        <a href="/pages/tools" class="nav-link">Tools</a>
+        <a href="/pages/contact" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Right actions -->
+      <div class="navbar-right">
+        <a href="https://wa.me/8801799976295" class="btn btn-primary btn-sm nav-cta" target="_blank" rel="noopener">
+          <i class="fab fa-whatsapp"></i> Free Consultation
+        </a>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
-  </div></div>
+  </div>
 </nav>
+
 <div class="mobile-menu" id="mobileMenu">
   <a href="/"                   class="mobile-menu-link">Home <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
   <a href="/pages/about"             class="mobile-menu-link">About <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
@@ -302,7 +328,7 @@
     <div class="absolute inset-0 z-0 opacity-20">
         <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=2000&q=80" alt="Beautiful kitchen renovation" class="w-full h-full object-cover">
     </div>
-    <div class="absolute inset-0 bg-gradient-to-t from-brand-900 via-brand-900/90 to-transparent z-0"></div>
+    <div class="absolute inset-0 bg-slate-900/90 z-0"></div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="max-w-3xl">
@@ -1766,7 +1792,7 @@
         <p>We have worked with renovation companies and home service businesses since 2018, building full-stack SEO strategies that cover technical SEO, local optimization, portfolio content architecture, visual search, link building, and AI citation strategy as one integrated system.</p>
 
         <!-- Final Premium CTA Block -->
-        <div class="bg-gradient-to-br from-brand-900 to-slate-800 text-white p-10 rounded-2xl mt-16 relative overflow-hidden shadow-2xl border-2 border-brand-accent/20">
+        <div class="bg-slate-900 text-white p-10 rounded-2xl mt-16 relative overflow-hidden shadow-2xl border-2 border-brand-accent/20">
             <!-- decorative background elements -->
             <div class="absolute -right-20 -top-20 w-64 h-64 bg-brand-accent rounded-full blur-[80px] opacity-20"></div>
             
@@ -1885,7 +1911,7 @@
     </div>
   <div class="footer-newsletter"><div class="footer-newsletter-copy"><span class="footer-newsletter-kicker"><i class="fas fa-bolt"></i> A1 Growth Notes</span><h6>Get practical search and conversion ideas monthly.</h6><p>SEO, AI search, web performance, and conversion insights from the A1 Technovation team.</p></div><form class="newsletter-form" data-source="global-footer" action="/api/newsletter_subscribe" method="post"><div class="newsletter-field-wrap"><i class="fas fa-envelope"></i><input type="email" name="email" placeholder="Enter your email" autocomplete="email" required /></div><button type="submit" class="btn btn-primary" aria-label="Subscribe to newsletter"><i class="fas fa-paper-plane"></i><span>Subscribe</span></button><p class="newsletter-status" hidden aria-live="polite"></p><p class="newsletter-privacy"><i class="fas fa-lock"></i> No spam. Unsubscribe anytime.</p></form></div>
   <div class="footer-bottom">
-      <p class="f-copy">&copy; 2026 A1 Technovation. All rights reserved.</p>
+      <p class="f-copy">&copy; 2025 A1 Technovation. All rights reserved.</p>
       <div class="f-bottom-links">
         <a href="/pages/privacy" class="f-bl">Privacy Policy</a>
         <a href="/pages/terms" class="f-bl">Terms and Conditions</a>

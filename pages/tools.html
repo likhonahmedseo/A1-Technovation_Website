@@ -122,7 +122,7 @@
       transform: none !important;
     }
     .tools-page-hero .text-grad-hero {
-      background: linear-gradient(135deg,#818cf8 0%,#c084fc 50%,#f472b6 100%);
+      background: none; color: #818cf8;
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -905,12 +905,26 @@
 <body>
 
 <nav class="navbar" id="navbar">
-  <div class="container"><div class="navbar-inner">
-    <a href="/" class="navbar-logo" aria-label="A1 Technovation home"><span class="logo-mark"><img src="/assets/images/A1Technovation-Dark-Background.png" alt="A1 Technovation" class="logo-brand logo-brand-dark" /><img src="/assets/images/A1Technovation-Light-Background.png" alt="A1 Technovation" class="logo-brand logo-brand-light" /></span></a>
-    <nav class="navbar-nav">
-      <a href="/" class="nav-link">Home</a><a href="/pages/about" class="nav-link">About</a>
-      <div class="nav-item megamenu-item"><a href="/pages/services" class="nav-link">Services <i class="fas fa-chevron-down" style="font-size:.7em;opacity:.7"></i></a>
-        <div class="megamenu">
+  <div class="container">
+    <div class="navbar-inner">
+      <!-- Logo -->
+      <a href="/" class="navbar-logo" aria-label="A1 Technovation home">
+        <span class="logo-mark">
+          <img src="/assets/images/A1Technovation-Dark-Background.png" alt="A1 Technovation" class="logo-brand logo-brand-dark" />
+          <img src="/assets/images/A1Technovation-Light-Background.png" alt="A1 Technovation" class="logo-brand logo-brand-light" />
+        </span>
+      </a>
+
+      <!-- Nav Links -->
+      <nav class="navbar-nav">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/pages/about" class="nav-link">About</a>
+
+        <div class="nav-item megamenu-item">
+          <a href="/pages/services" class="nav-link">
+            Services <i class="fas fa-chevron-down" style="font-size:.7em;opacity:.7"></i>
+          </a>
+          <div class="megamenu">
             <div class="megamenu-inner">
               <div class="mm-col mm-col-main">
                 <p class="mm-col-head">Core Services</p>
@@ -948,14 +962,25 @@
           </div>
         </div>
 
-        <a href="/pages/portfolio" class="nav-link">Work</a><a href="/pages/blog" class="nav-link">Blog</a><a href="/pages/tools" class="nav-link active">Tools</a><a href="/pages/contact" class="nav-link">Contact</a>
-    </nav>
-    <div class="navbar-right">
-      <a href="/pages/contact" class="btn btn-primary btn-sm nav-cta">Get a Free Quote <i class="fas fa-arrow-right"></i></a>
-      <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false"><span></span><span></span><span></span></button>
+        <a href="/pages/portfolio" class="nav-link">Work</a>
+        <a href="/pages/blog" class="nav-link">Blog</a>
+        <a href="/pages/tools" class="nav-link">Tools</a>
+        <a href="/pages/contact" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Right actions -->
+      <div class="navbar-right">
+        <a href="https://wa.me/8801799976295" class="btn btn-primary btn-sm nav-cta" target="_blank" rel="noopener">
+          <i class="fab fa-whatsapp"></i> Free Consultation
+        </a>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
-  </div></div>
+  </div>
 </nav>
+
 <div class="mobile-menu" id="mobileMenu">
   <a href="/"                   class="mobile-menu-link">Home <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
   <a href="/pages/about"             class="mobile-menu-link">About <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
@@ -1571,7 +1596,7 @@
   <div class="container">
     <div class="featured-panel reveal">
       <div class="featured-panel-media" style="display:flex;flex-direction:column;gap:16px;">
-        <div style="background:linear-gradient(135deg,#4f46e5 0%,#7c3aed 55%,#a855f7 100%);border-radius:var(--r-2xl);padding:48px 40px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;min-height:240px;text-align:center;">
+        <div style="background:#4f46e5;border-radius:var(--r-2xl);padding:48px 40px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;min-height:240px;text-align:center;">
           <div style="width:72px;height:72px;background:rgba(255,255,255,.15);border-radius:var(--r-xl);display:flex;align-items:center;justify-content:center;font-size:2rem;color:#fff">
             <i class="fas fa-screwdriver-wrench"></i>
           </div>
@@ -1612,7 +1637,7 @@
       <!-- Brand -->
       <div class="footer-brand">
         <a href="/" class="footer-logo" aria-label="A1 Technovation home">
-          <img src="../assets/images/A1Technovation-Dark-Background.png" alt="A1 Technovation" class="footer-logo-image" />
+          <img src="/assets/images/A1Technovation-Dark-Background.png" alt="A1 Technovation" class="footer-logo-image" />
         </a>
         <p>A1 Technovation is a results-driven digital marketing agency delivering SEO, AEO, GEO, web design, PPC, local SEO, ecommerce SEO, and social media marketing for clients across 20+ countries.</p>
         <div class="footer-socials">

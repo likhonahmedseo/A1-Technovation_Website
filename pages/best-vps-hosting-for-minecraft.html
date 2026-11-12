@@ -24,8 +24,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin /><link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'" /><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" /></noscript>
-    <link rel="stylesheet" href="/css/style.min.css">
-    <link rel="stylesheet" href="/css/responsive.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="stylesheet" href="/css/whatsapp-chat.css">
     <script>
         tailwind.config = {
             theme: {
@@ -232,7 +233,7 @@
         .prose li strong { color: #0f172a; }
         .prose blockquote {
             border-left: 4px solid var(--mc-green);
-            background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%);
+            background: #f0fdf4;
             padding: 1.75rem;
             border-radius: 0 0.75rem 0.75rem 0;
             font-style: italic;
@@ -265,7 +266,7 @@
 
         /* Minecraft hero */
         .mc-hero {
-            background: linear-gradient(160deg, #052e16 0%, #0f172a 50%, #1a1f35 100%);
+            background: #0f172a;
             position: relative;
             overflow: hidden;
         }
@@ -286,7 +287,7 @@
             left: 0;
             right: 0;
             height: 6px;
-            background: linear-gradient(90deg, #22c55e 0%, #92400e 50%, #64748b 100%);
+            background: #2563eb;
             opacity: 0.6;
         }
         .mc-hero-glow {
@@ -321,7 +322,7 @@
             width: 40px;
             height: 40px;
             border-radius: 10px;
-            background: linear-gradient(135deg, #22c55e, #16a34a);
+            background: #16a34a;
             color: #fff;
             font-weight: 800;
             font-size: 1.1rem;
@@ -332,7 +333,7 @@
             display: inline-flex;
             align-items: center;
             gap: 0.4rem;
-            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+            background: #f0fdf4;
             color: #15803d;
             font-weight: 700;
             font-size: 0.8rem;
@@ -373,7 +374,7 @@
         .mc-tip p { margin-bottom: 0; color: #1e293b; font-weight: 500; font-size: 1.1rem; }
         .mc-tip i { color: var(--mc-green); }
         .mc-warning {
-            background: linear-gradient(135deg, #fef2f2, #ffffff);
+            background: #fef2f2;
             border-left: 4px solid var(--mc-red);
             border-radius: 0 1rem 1rem 0;
             padding: 2rem;
@@ -385,7 +386,7 @@
         .mc-warning p { margin-bottom: 0; color: #991b1b; font-weight: 500; }
         .mc-warning i { color: var(--mc-red); }
         .mc-gold {
-            background: linear-gradient(135deg, #fefce8, #ffffff);
+            background: #fefce8;
             border-left: 4px solid var(--mc-gold);
             border-radius: 0 1rem 1rem 0;
             padding: 2rem;
@@ -471,7 +472,7 @@
         .mc-sidebar-card p { color: #cbd5e1; }
         .mc-sidebar-card .mc-cta-btn {
             display: inline-block;
-            background: linear-gradient(135deg, #22c55e, #16a34a);
+            background: #16a34a;
             color: #fff !important;
             font-weight: 700;
             padding: 0.85rem 1.5rem;
@@ -482,7 +483,7 @@
             border-bottom: none !important;
         }
         .mc-sidebar-card .mc-cta-btn:hover {
-            background: linear-gradient(135deg, #16a34a, #15803d);
+            background: #15803d;
             transform: translateY(-1px);
             box-shadow: 0 8px 24px rgba(34,197,94,0.3);
         }
@@ -498,7 +499,7 @@
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
         }
         .direct-answer {
-            background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%);
+            background: #f0fdf4;
             border-left: 5px solid var(--mc-green);
             border-radius: 0 1rem 1rem 0;
             padding: 2rem;
@@ -510,19 +511,19 @@
         .direct-answer p { margin-bottom: 0; font-size: 1.15rem; color: #1e293b; font-weight: 500; }
         .direct-answer .icon-wrap {
             position: absolute; left: -1rem; top: -1rem;
-            background: linear-gradient(135deg, #22c55e, #16a34a);
+            background: #16a34a;
             color: white; padding: 0.6rem; border-radius: 999px; box-shadow: 0 8px 24px rgba(34,197,94,0.3);
         }
 
-        .article-navbar,.article-navbar.scrolled{background:rgba(255,255,255,.96);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(15,23,42,.08);box-shadow:0 4px 24px rgba(15,23,42,.06)}
-        .article-navbar .logo-brand-dark{opacity:0}.article-navbar .logo-brand-light{opacity:1}
-        .article-navbar .nav-link,.article-navbar .nav-item.current>.nav-link{color:#475569}
-        .article-navbar .nav-link:hover,.article-navbar .nav-link.active,.article-navbar .nav-item.current>.nav-link{color:#22c55e;background:rgba(34,197,94,.08)}
-        .article-navbar .mobile-toggle span{background:#0f172a}
+        
+        
+        
+        
+        
 
         .article-cta-card{background:linear-gradient(160deg,#052e16 0%,#0f172a 100%);color:#fff}
         .article-cta-card p,.article-cta-card .cta-copy{color:#cbd5e1}
-        .article-cta-button{display:inline-block;background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff!important;font-weight:700;padding:.95rem 2rem;border-radius:.75rem;box-shadow:0 18px 32px rgba(34,197,94,.28)}
+        .article-cta-button{display:inline-block;background:#16a34a;color:#fff!important;font-weight:700;padding:.95rem 2rem;border-radius:.75rem;box-shadow:0 18px 32px rgba(34,197,94,.28)}
         .article-cta-button:hover{background:linear-gradient(135deg,#16a34a,#15803d)!important;transform:translateY(-1px)}
         .article-cta-card .glow-orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.4;pointer-events:none}
 
@@ -553,15 +554,15 @@
         .article-sidebar-newsletter .newsletter-form button[type="submit"] {
             width: 100%; min-height: 52px; border: 0;
             border-radius: 0.75rem;
-            background: linear-gradient(135deg, #22c55e, #16a34a);
+            background: #16a34a;
             color: #ffffff; font-weight: 700;
         }
         .article-sidebar-newsletter .newsletter-form button[type="submit"]:hover {
-            background: linear-gradient(135deg, #16a34a, #15803d);
+            background: #15803d;
         }
         .article-sidebar-newsletter .newsletter-note { color: #94a3b8; }
 
-        .scroll-top{position:fixed;right:24px;bottom:24px;width:52px;height:52px;border:0;border-radius:999px;background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 18px 36px rgba(34,197,94,.24);cursor:pointer;opacity:0;visibility:hidden;transform:translateY(16px);transition:opacity .22s ease,transform .22s ease,visibility .22s ease;z-index:50}
+        .scroll-top{position:fixed;right:24px;bottom:24px;width:52px;height:52px;border:0;border-radius:999px;background:#16a34a;color:#fff;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 18px 36px rgba(34,197,94,.24);cursor:pointer;opacity:0;visibility:hidden;transform:translateY(16px);transition:opacity .22s ease,transform .22s ease,visibility .22s ease;z-index:50}
         .scroll-top.is-visible{opacity:1;visibility:visible;transform:translateY(0)}
         .newsletter-status{display:block;margin-top:.75rem;font-size:.875rem;line-height:1.5}.newsletter-status.success{color:#86efac}.newsletter-status.error{color:#fca5a5}
         html { scroll-behavior: smooth; }
@@ -619,14 +620,27 @@
     </style>
 </head>
 <body class="bg-white font-sans text-slate-800 antialiased selection:bg-green-200 selection:text-slate-900">
-    <nav class="navbar article-navbar" id="navbar">
-        <div class="container"><div class="navbar-inner">
-            <a href="/" class="navbar-logo" aria-label="A1 Technovation home"><span class="logo-mark"><img src="/assets/images/A1Technovation-Dark-Background.png" alt="A1 Technovation" class="logo-brand logo-brand-dark" /><img src="/assets/images/A1Technovation-Light-Background.png" alt="A1 Technovation" class="logo-brand logo-brand-light" /></span></a>
-            <nav class="navbar-nav">
-                <a href="/" class="nav-link">Home</a>
-                <a href="/pages/about" class="nav-link">About</a>
-                <div class="nav-item megamenu-item"><a href="/pages/services" class="nav-link">Services <i class="fas fa-chevron-down" style="font-size:.7em;opacity:.7"></i></a>
-                    <div class="megamenu">
+    <nav class="navbar" id="navbar">
+  <div class="container">
+    <div class="navbar-inner">
+      <!-- Logo -->
+      <a href="/" class="navbar-logo" aria-label="A1 Technovation home">
+        <span class="logo-mark">
+          <img src="/assets/images/A1Technovation-Dark-Background.png" alt="A1 Technovation" class="logo-brand logo-brand-dark" />
+          <img src="/assets/images/A1Technovation-Light-Background.png" alt="A1 Technovation" class="logo-brand logo-brand-light" />
+        </span>
+      </a>
+
+      <!-- Nav Links -->
+      <nav class="navbar-nav">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/pages/about" class="nav-link">About</a>
+
+        <div class="nav-item megamenu-item">
+          <a href="/pages/services" class="nav-link">
+            Services <i class="fas fa-chevron-down" style="font-size:.7em;opacity:.7"></i>
+          </a>
+          <div class="megamenu">
             <div class="megamenu-inner">
               <div class="mm-col mm-col-main">
                 <p class="mm-col-head">Core Services</p>
@@ -663,18 +677,27 @@
             </div>
           </div>
         </div>
+
         <a href="/pages/portfolio" class="nav-link">Work</a>
-                <a href="/pages/blog" class="nav-link active">Blog</a>
-                <a href="/pages/tools" class="nav-link">Tools</a>
-                <a href="/pages/contact" class="nav-link">Contact</a>
-            </nav>
-            <div class="navbar-right">
-                <a href="https://wa.me/8801799976295" class="btn btn-primary btn-sm nav-cta" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Free Consultation</a>
-                <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false"><span></span><span></span><span></span></button>
-            </div>
-        </div></div>
-    </nav>
-    <div class="mobile-menu" id="mobileMenu">
+        <a href="/pages/blog" class="nav-link">Blog</a>
+        <a href="/pages/tools" class="nav-link">Tools</a>
+        <a href="/pages/contact" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Right actions -->
+      <div class="navbar-right">
+        <a href="https://wa.me/8801799976295" class="btn btn-primary btn-sm nav-cta" target="_blank" rel="noopener">
+          <i class="fab fa-whatsapp"></i> Free Consultation
+        </a>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
   <a href="/"                   class="mobile-menu-link">Home <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
   <a href="/pages/about"             class="mobile-menu-link">About <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
   <div class="mobile-menu-group">
@@ -714,7 +737,7 @@
 </div>
 
     <!-- Minecraft-themed hero section -->
-    <section class="mc-hero py-16 lg:py-24 relative">
+    <section class="pt-32 pb-16 lg:pt-36 lg:pb-24 mc-hero  lg: relative">
         <div class="mc-hero-glow"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <nav class="flex text-sm text-slate-400 mb-10" aria-label="Breadcrumb">
@@ -1212,8 +1235,8 @@
                         </div>
 
                         <div class="article-cta-card p-10 rounded-2xl mt-16 relative overflow-hidden shadow-2xl border border-green-900/20">
-                            <div class="glow-orb" style="width:16rem;height:16rem;background:radial-gradient(circle,rgba(34,197,94,0.15) 0%,transparent 70%);top:-5rem;right:-5rem;"></div>
-                            <div class="glow-orb" style="width:16rem;height:16rem;background:radial-gradient(circle,rgba(6,182,212,0.1) 0%,transparent 70%);bottom:-5rem;left:-5rem;"></div>
+                            <div class="glow-orb" style="width:16rem;height:16rem;background: rgba(37, 99, 235, 0.1);top:-5rem;right:-5rem;"></div>
+                            <div class="glow-orb" style="width:16rem;height:16rem;background: rgba(6, 182, 212, 0.08);bottom:-5rem;left:-5rem;"></div>
                             <div class="relative z-10 text-center">
                                 <h3 class="text-3xl font-bold mb-4 !mt-0 !text-white tracking-tight">Ready to Build Your Server Infrastructure?</h3>
                                 <p class="cta-copy mb-8 max-w-2xl mx-auto text-lg">Choosing the right VPS provider is the foundation. Let our team help you plan, deploy, and optimize your hosting environment for any workload.</p>
@@ -1265,7 +1288,7 @@
                             </div>
                         </div>
 
-                        <div class="bg-gradient-to-br from-green-50 to-emerald-50 border border-green-100 rounded-2xl p-7 text-center shadow-sm">
+                        <div class="bg-emerald-50 border border-green-100 rounded-2xl p-7 text-center shadow-sm">
                             <h3 class="font-bold text-slate-900 text-lg mb-2">Need Server Infrastructure?</h3>
                             <p class="text-sm text-slate-600 mb-6">We help businesses plan, deploy, and manage VPS and dedicated server environments. Talk to our team about your hosting needs.</p>
                             <a href="/pages/contact" class="inline-block bg-slate-900 hover:bg-green-600 text-white font-bold px-6 py-3.5 rounded-lg w-full transition-all shadow-lg hover:shadow-green-500/30">
@@ -1288,20 +1311,22 @@
     <footer class="footer">
   <div class="container">
     <div class="footer-top">
+      <!-- Brand -->
       <div class="footer-brand">
         <a href="/" class="footer-logo" aria-label="A1 Technovation home">
-          <img src="../assets/images/A1Technovation-Dark-Background.png" alt="A1 Technovation" class="footer-logo-image" />
+          <img src="/assets/images/A1Technovation-Dark-Background.png" alt="A1 Technovation" class="footer-logo-image" />
         </a>
         <p>A1 Technovation is a results-driven digital marketing agency delivering SEO, AEO, GEO, web design, PPC, local SEO, ecommerce SEO, and social media marketing for clients across 20+ countries.</p>
         <div class="footer-socials">
-          <a href="https://www.facebook.com/a1technovation/" class="f-social" aria-label="Facebook" target="_blank" rel="nofollow noopener"><i class="fab fa-facebook-f"></i></a>
-          <a href="https://www.instagram.com/a1technovation/?hl=en" class="f-social" aria-label="Instagram" target="_blank" rel="nofollow noopener"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/a1technovation/" class="f-social" aria-label="Facebook" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/a1technovation/?hl=en" class="f-social" aria-label="Instagram" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
           <a href="https://www.linkedin.com/company/92598277/" class="f-social" aria-label="LinkedIn" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
           <a href="https://wa.me/8801799976295" class="f-social" aria-label="WhatsApp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
-          <a href="https://t.me/likhonahmedseo" class="f-social" aria-label="Telegram" target="_blank" rel="nofollow noopener"><i class="fab fa-telegram"></i></a>
+          <a href="https://t.me/likhonahmedseo" class="f-social" aria-label="Telegram" target="_blank" rel="noopener"><i class="fab fa-telegram"></i></a>
         </div>
       </div>
 
+      <!-- Services -->
       <div class="footer-col">
         <h6>Services</h6>
         <div class="footer-links">
@@ -1309,12 +1334,13 @@
           <a href="/aeo-optimization-services/"  class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> AEO Optimization</a>
           <a href="/geo-optimization-services/"  class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> GEO Optimization</a>
           <a href="/ecommerce-seo-services/"     class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Ecommerce SEO</a>
-          <a href="/pagechevron-right" style="font-size:.625rem"></i> Local SEO</a>
+          <a href="/pages/services-local-seo"    class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Local SEO</a>
           <a href="/pages/services-web-dev"      class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Web Design</a>
           <a href="/pages/services-ppc-ads"      class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> PPC Advertising</a>
         </div>
       </div>
 
+      <!-- Company -->
       <div class="footer-col">
         <h6>Company</h6>
         <div class="footer-links">
@@ -1326,6 +1352,7 @@
         </div>
       </div>
 
+      <!-- Contact -->
       <div class="footer-col">
         <h6>Get in Touch</h6>
         <div class="f-contact-item">
@@ -1348,7 +1375,7 @@
     </div>
   <div class="footer-newsletter"><div class="footer-newsletter-copy"><span class="footer-newsletter-kicker"><i class="fas fa-bolt"></i> A1 Growth Notes</span><h6>Get practical search and conversion ideas monthly.</h6><p>SEO, AI search, web performance, and conversion insights from the A1 Technovation team.</p></div><form class="newsletter-form" data-source="global-footer" action="/api/newsletter_subscribe" method="post"><div class="newsletter-field-wrap"><i class="fas fa-envelope"></i><input type="email" name="email" placeholder="Enter your email" autocomplete="email" required /></div><button type="submit" class="btn btn-primary" aria-label="Subscribe to newsletter"><i class="fas fa-paper-plane"></i><span>Subscribe</span></button><p class="newsletter-status" hidden aria-live="polite"></p><p class="newsletter-privacy"><i class="fas fa-lock"></i> No spam. Unsubscribe anytime.</p></form></div>
   <div class="footer-bottom">
-      <p class="f-copy">&copy; 2026 A1 Technovation. All rights reserved.</p>
+      <p class="f-copy">&copy; 2025 A1 Technovation. All rights reserved.</p>
       <div class="f-bottom-links">
         <a href="/pages/privacy" class="f-bl">Privacy Policy</a>
         <a href="/pages/terms" class="f-bl">Terms and Conditions</a>

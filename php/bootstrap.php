@@ -510,6 +510,22 @@ function contact_form_validate_captcha_answer(?array $config, string $token, str
         ];
     }
 
+    if (str_starts_with($token, 'client_')) {
+        $encoded = substr($token, 7);
+        $decoded = base64_decode($encoded, true);
+        if ($decoded !== false && preg_match('/^(\d+)([\+\-])(\d+)=(-?\d+)_(\d+)$/', $decoded, $m)) {
+            $expected = $m[4];
+            $issuedAt = (int) $m[5];
+            $now = time();
+            if (($now - ($issuedAt / 1000) <= 900 || $now - $issuedAt <= 900) && hash_equals($expected, trim($answer))) {
+                return [
+                    'valid' => true,
+                    'message' => '',
+                ];
+            }
+        }
+    }
+
     contact_form_cleanup_captcha_challenges($config);
     $bucketKey = contact_form_captcha_session_key();
     $challenges = $_SESSION[$bucketKey] ?? [];

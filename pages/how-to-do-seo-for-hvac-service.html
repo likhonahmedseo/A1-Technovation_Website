@@ -36,8 +36,9 @@
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="/css/style.min.css">
-    <link rel="stylesheet" href="/css/responsive.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="stylesheet" href="/css/whatsapp-chat.css">
 
     <!-- Schema Markup -->
     <script type="application/ld+json">
@@ -180,12 +181,12 @@
     </script>
 
     <style>
-        .article-navbar,.article-navbar.scrolled { background: rgba(255,255,255,.96); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border-bottom: 1px solid rgba(15,23,42,.08); box-shadow: 0 4px 24px rgba(15,23,42,.06); }
-        .article-navbar .logo-brand-dark { opacity: 0; }
-        .article-navbar .logo-brand-light { opacity: 1; }
-        .article-navbar .nav-link,.article-navbar .nav-item.current>.nav-link { color: #475569; }
-        .article-navbar .nav-link:hover,.article-navbar .nav-link.active,.article-navbar .nav-item.current>.nav-link { color: #2563eb; background: rgba(37,99,235,.08); }
-        .article-navbar .mobile-toggle span { background: #0f172a; }
+        
+        
+        
+        
+        
+        
         /* Standalone Isolated Typography and Layout Styles */
         .prose h2 {
             font-size: 1.875rem;
@@ -280,7 +281,7 @@
 
         /* Highlight Blocks */
         .direct-answer {
-            background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
+            background: #eff6ff;
             border-left: 5px solid #2563eb;
             border-radius: 0 1rem 1rem 0;
             padding: 2.5rem;
@@ -319,70 +320,121 @@
     </style>
 </head>
 <body class="bg-brand-light font-sans text-slate-800 antialiased selection:bg-brand-primary selection:text-white">
-<nav class="navbar article-navbar" id="navbar">
-        <div class="container"><div class="navbar-inner">
-            <a href="/" class="navbar-logo" aria-label="A1 Technovation home"><span class="logo-mark"><img src="/assets/images/A1Technovation-Dark-Background.png" alt="A1 Technovation" class="logo-brand logo-brand-dark"><img src="/assets/images/A1Technovation-Light-Background.png" alt="A1 Technovation" class="logo-brand logo-brand-light"></span></a>
-            <nav class="navbar-nav">
-                <a href="/" class="nav-link">Home</a>
-                <a href="/pages/about" class="nav-link">About</a>
-                <div class="nav-item megamenu-item"><a href="/pages/services" class="nav-link">Services <i class="fas fa-chevron-down" style="font-size:.7em;opacity:.7"></i></a>
-                    <div class="megamenu">
-                        <div class="megamenu-inner">
-                            <div class="mm-col mm-col-main">
-                                <p class="mm-col-head">Core Services</p>
-                                <a href="/pages/services-seo" class="mm-service"><div class="mm-icon"><i class="fas fa-search"></i></div><div class="mm-body"><span class="mm-title">SEO Services</span><span class="mm-desc">Technical, content, and authority growth</span></div></a>
-                                <a href="/aeo-optimization-services/" class="mm-service"><div class="mm-icon"><i class="fas fa-comment-dots"></i></div><div class="mm-body"><span class="mm-title">AEO Optimization</span><span class="mm-desc">Win snippets and answer boxes</span></div></a>
-                                <a href="/geo-optimization-services/" class="mm-service"><div class="mm-icon"><i class="fas fa-diagram-project"></i></div><div class="mm-body"><span class="mm-title">GEO Optimization</span><span class="mm-desc">Get cited by AI engines</span></div></a>
-                                <a href="/pages/services-local-seo" class="mm-service"><div class="mm-icon"><i class="fas fa-location-dot"></i></div><div class="mm-body"><span class="mm-title">Local SEO</span><span class="mm-desc">Maps, local pack, and city rankings</span></div></a>
-                            </div>
-                            <div class="mm-col mm-col-links">
-                                <p class="mm-col-head">SEO Specialties</p>
-                                <a href="/ecommerce-seo-services/" class="mm-link">Ecommerce SEO</a>
-                                <a href="/pages/services-web-dev" class="mm-link">Web Design</a>
-                                <a href="/pages/services-ppc-ads" class="mm-link">PPC Advertising</a>
-                                <a href="/pages/services-social-media" class="mm-link">Social Media</a>
-                                <a href="/seo-services-for-hvac-companies/" class="mm-link">HVAC SEO</a>
-                                <a href="/seo-services-usa/" class="mm-link">SEO Services USA</a>
-                                <a href="/pages/services-car-rental-seo" class="mm-link">Car Rental SEO</a>
-                                <a href="/pages/services-limousine-business-seo" class="mm-link">Limousine Business SEO</a>
-                                <a href="/pages/services-car-repair-seo" class="mm-link">Car Repair SEO</a>
-                                <a href="/pages/services-car-dealership-seo" class="mm-link">Car Dealership SEO</a>
-                                <a href="/pages/services-tree-service-seo" class="mm-link">Tree Service SEO</a>
-                                <a href="/pages/services-lawyer-seo" class="mm-link">Lawyer SEO</a>
-                                <a href="/pages/services-small-business-seo" class="mm-link">Small Business SEO</a>
-                            </div>
-                            <div class="mm-col mm-col-feature">
-                                <div class="mm-feature-card">
-                                    <div class="mm-feature-badge">Free Audit</div>
-                                    <h4 class="mm-feature-title">Grow Your Business Online</h4>
-                                    <p class="mm-feature-body">Get a free 30-minute strategy session with our experts - no strings attached.</p>
-                                    <a href="https://wa.me/8801799976295" class="btn btn-primary btn-sm" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Free Consultation</a>
-                                    <a href="/pages/services" class="mm-feature-link">View all services -&gt;</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <div class="navbar-inner">
+      <!-- Logo -->
+      <a href="/" class="navbar-logo" aria-label="A1 Technovation home">
+        <span class="logo-mark">
+          <img src="/assets/images/A1Technovation-Dark-Background.png" alt="A1 Technovation" class="logo-brand logo-brand-dark" />
+          <img src="/assets/images/A1Technovation-Light-Background.png" alt="A1 Technovation" class="logo-brand logo-brand-light" />
+        </span>
+      </a>
+
+      <!-- Nav Links -->
+      <nav class="navbar-nav">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/pages/about" class="nav-link">About</a>
+
+        <div class="nav-item megamenu-item">
+          <a href="/pages/services" class="nav-link">
+            Services <i class="fas fa-chevron-down" style="font-size:.7em;opacity:.7"></i>
+          </a>
+          <div class="megamenu">
+            <div class="megamenu-inner">
+              <div class="mm-col mm-col-main">
+                <p class="mm-col-head">Core Services</p>
+                <a href="/pages/services-seo" class="mm-service"><div class="mm-icon"><i class="fas fa-search"></i></div><div class="mm-body"><span class="mm-title">SEO Services</span><span class="mm-desc">Technical, content, and authority growth</span></div></a>
+                <a href="/aeo-optimization-services/" class="mm-service"><div class="mm-icon"><i class="fas fa-comment-dots"></i></div><div class="mm-body"><span class="mm-title">AEO Optimization</span><span class="mm-desc">Win snippets and answer boxes</span></div></a>
+                <a href="/geo-optimization-services/" class="mm-service"><div class="mm-icon"><i class="fas fa-diagram-project"></i></div><div class="mm-body"><span class="mm-title">GEO Optimization</span><span class="mm-desc">Get cited by AI engines</span></div></a>
+                <a href="/pages/services-local-seo" class="mm-service"><div class="mm-icon"><i class="fas fa-location-dot"></i></div><div class="mm-body"><span class="mm-title">Local SEO</span><span class="mm-desc">Maps, local pack, and city rankings</span></div></a>
+              </div>
+              <div class="mm-col mm-col-links">
+                <p class="mm-col-head">SEO Specialties</p>
+                <a href="/ecommerce-seo-services/" class="mm-link">Ecommerce SEO</a>
+                <a href="/pages/services-web-dev" class="mm-link">Web Design</a>
+                <a href="/pages/services-ppc-ads" class="mm-link">PPC Advertising</a>
+                <a href="/pages/services-social-media" class="mm-link">Social Media</a>
+                <a href="/seo-services-for-hvac-companies/" class="mm-link">HVAC SEO</a>
+                <a href="/seo-services-usa/" class="mm-link">SEO Services USA</a>
+                <a href="/pages/services-car-rental-seo" class="mm-link">Car Rental SEO</a>
+                <a href="/pages/services-limousine-business-seo" class="mm-link">Limousine Business SEO</a>
+                <a href="/pages/services-car-repair-seo" class="mm-link">Car Repair SEO</a>
+                <a href="/pages/services-car-dealership-seo" class="mm-link">Car Dealership SEO</a>
+                <a href="/pages/services-tree-service-seo" class="mm-link">Tree Service SEO</a>
+                <a href="/pages/services-lawyer-seo" class="mm-link">Lawyer SEO</a>
+                <a href="/pages/services-small-business-seo" class="mm-link">Small Business SEO</a>
+              </div>
+              <div class="mm-col mm-col-feature">
+                <div class="mm-feature-card">
+                  <div class="mm-feature-badge">Free Audit</div>
+                  <h4 class="mm-feature-title">Grow Your Business Online</h4>
+                  <p class="mm-feature-body">Get a free 30-minute strategy session with our experts - no strings attached.</p>
+                  <a href="https://wa.me/8801799976295" class="btn btn-primary btn-sm" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Free Consultation</a>
+                  <a href="/pages/services" class="mm-feature-link">View all services -></a>
                 </div>
-                <a href="/pages/portfolio" class="nav-link">Work</a>
-                <a href="/pages/blog" class="nav-link active">Blog</a>
-                <a href="/pages/tools" class="nav-link">Tools</a>
-                <a href="/pages/contact" class="nav-link">Contact</a>
-            </nav>
-            <div class="navbar-right">
-                <a href="https://wa.me/8801799976295" class="btn btn-primary btn-sm nav-cta" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Free Consultation</a>
-                <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false"><span></span><span></span><span></span></button>
+              </div>
             </div>
-        </div></div>
-    </nav>
-    <div class="mobile-menu" id="mobileMenu">
-        <a href="/" class="mobile-menu-link">Home <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
-        <a href="/pages/about" class="mobile-menu-link">About <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
-        <a href="/pages/services" class="mobile-menu-link">Services <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
-        <a href="/pages/portfolio" class="mobile-menu-link">Work <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
-        <a href="/pages/blog" class="mobile-menu-link">Blog <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
-        <a href="/pages/tools" class="mobile-menu-link">Tools <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
-        <a href="/pages/contact" class="mobile-menu-link">Contact <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
+          </div>
+        </div>
+
+        <a href="/pages/portfolio" class="nav-link">Work</a>
+        <a href="/pages/blog" class="nav-link">Blog</a>
+        <a href="/pages/tools" class="nav-link">Tools</a>
+        <a href="/pages/contact" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Right actions -->
+      <div class="navbar-right">
+        <a href="https://wa.me/8801799976295" class="btn btn-primary btn-sm nav-cta" target="_blank" rel="noopener">
+          <i class="fab fa-whatsapp"></i> Free Consultation
+        </a>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/"                   class="mobile-menu-link">Home <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
+  <a href="/pages/about"             class="mobile-menu-link">About <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
+  <div class="mobile-menu-group">
+    <a href="/pages/services"        class="mobile-menu-link">Services <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
+    <div class="mobile-submenu">
+      <a href="/pages/services-seo" class="mobile-submenu-link">SEO Services</a>
+      <a href="/aeo-optimization-services/" class="mobile-submenu-link">AEO Optimization</a>
+      <a href="/geo-optimization-services/" class="mobile-submenu-link">GEO Optimization</a>
+      <a href="/pages/services-local-seo" class="mobile-submenu-link">Local SEO Services</a>
+      <a href="/ecommerce-seo-services/" class="mobile-submenu-link">Ecommerce SEO Services</a>
+      <a href="/seo-services-for-hvac-companies/" class="mobile-submenu-link">HVAC SEO Services</a>
+      <a href="/seo-services-usa/" class="mobile-submenu-link">SEO Services USA</a>
+      <div class="mobile-submenu-nested">
+        <a href="/pages/services-car-rental-seo" class="mobile-submenu-link mobile-submenu-sublink">Car Rental SEO Service</a>
+        <a href="/pages/services-limousine-business-seo" class="mobile-submenu-link mobile-submenu-sublink">Limousine Business SEO Service</a>
+        <a href="/pages/services-car-repair-seo" class="mobile-submenu-link mobile-submenu-sublink">Car Repair SEO Service</a>
+        <a href="/pages/services-car-dealership-seo" class="mobile-submenu-link mobile-submenu-sublink">Car Dealership SEO Service</a>
+        <a href="/pages/services-tree-service-seo" class="mobile-submenu-link mobile-submenu-sublink">Tree Service SEO</a>
+        <a href="/pages/services-lawyer-seo" class="mobile-submenu-link mobile-submenu-sublink">Lawyer SEO Service</a>
+        <a href="/pages/services-small-business-seo" class="mobile-submenu-link mobile-submenu-sublink">Small Business SEO Service</a>
+      </div>
+      <a href="/pages/services-web-dev" class="mobile-submenu-link">Web Design &amp; Development</a>
+      <a href="/pages/services-ppc-ads" class="mobile-submenu-link">PPC Advertising</a>
+      <a href="/pages/services-social-media" class="mobile-submenu-link">Social Media Marketing</a>
+    </div>
+  </div>
+  <a href="/pages/portfolio"         class="mobile-menu-link">Work <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
+  <a href="/pages/blog"              class="mobile-menu-link">Blog <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
+  <a href="/pages/tools"             class="mobile-menu-link">Tools <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
+  <a href="/pages/contact"           class="mobile-menu-link">Contact <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
+  <div class="mobile-menu-footer">
+    <a href="https://wa.me/8801799976295" class="btn btn-primary btn-lg" target="_blank" rel="noopener" style="justify-content:center">
+      <i class="fab fa-whatsapp"></i> Start a Free Consultation
+    </a>
+    <p class="mobile-menu-note">info.a1technovation@gmail.com</p>
+  </div>
+</div>
     
     <main class="py-12 lg:py-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1337,7 +1389,7 @@
                         <p>We work with HVAC companies on full-stack SEO strategies covering <a href="/pages/services-technical-seo">technical SEO</a>, <a href="/pages/services-local-seo">local SEO</a>, content production, link building, and <a href="/pages/services-geo-optimization">AI citation</a>. If you want the service-specific version of that offer, see our <a href="/pages/seo-services-for-hvac-companies">HVAC SEO services</a> page.</p>
 
                         <!-- Final Primary CTA Block -->
-                        <div class="bg-gradient-to-br from-sky-50 via-white to-blue-50 text-slate-900 p-10 rounded-2xl mt-16 relative overflow-hidden shadow-xl border border-blue-100">
+                        <div class="bg-blue-50 text-slate-900 p-10 rounded-2xl mt-16 relative overflow-hidden shadow-xl border border-blue-100">
                             <div class="relative z-10 text-center">
                                 <h3 class="text-3xl font-bold mb-4 !mt-0 !text-slate-950 tracking-tight">Ready to build an organic lead channel for your HVAC business?</h3>
                                 <p class="text-slate-600 mb-8 max-w-2xl mx-auto text-lg">Request a free HVAC SEO audit and we will show you exactly where you stand and what it will take to rank.</p>
@@ -1396,7 +1448,7 @@
                         </div>
 
                         <!-- Secondary Sidebar CTA -->
-                        <div class="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-100 rounded-2xl p-7 text-center shadow-sm">
+                        <div class="bg-blue-50 border border-blue-100 rounded-2xl p-7 text-center shadow-sm">
                             <h3 class="font-bold text-brand-dark text-lg mb-2">Further Reading</h3>
                             <div class="space-y-3 mt-4">
                                 <a href="/blog/what-is-seo/" class="block bg-slate-900 hover:bg-blue-600 text-white font-bold px-4 py-2.5 rounded-lg w-full transition-all shadow-lg hover:shadow-blue-500/30 text-sm">

@@ -54,10 +54,10 @@
     .seo-proof-copy h3{margin:0 0 14px;font-size:clamp(2rem,2.5vw,2.8rem);line-height:1.05}
     .seo-proof-copy p{margin:0;font-size:1.08rem;line-height:1.8;max-width:760px}
     .seo-proof-visual{position:relative;min-height:100%;display:flex;align-items:stretch}
-    .seo-proof-image-wrap{position:relative;width:100%;min-height:320px;border-radius:28px;overflow:hidden;border:1px solid rgba(226,232,240,.9);box-shadow:0 18px 38px rgba(15,23,42,.1);background:linear-gradient(180deg,#eef4ff 0%,#f8fbff 100%)}
+    .seo-proof-image-wrap{position:relative;width:100%;min-height:320px;border-radius:28px;overflow:hidden;border:1px solid rgba(226,232,240,.9);box-shadow:0 18px 38px rgba(15,23,42,.1);background: #eef4ff;}
     .seo-proof-image-wrap::before{content:"";position:absolute;inset:18px 18px auto auto;width:92px;height:92px;border-radius:24px;background:linear-gradient(135deg,rgba(99,102,241,.22),rgba(168,85,247,.05));z-index:1}
     .seo-proof-image-wrap img{width:100%;height:100%;object-fit:cover;display:block}
-    .media-card.media-card-contain{display:grid;place-items:center;padding:18px;background:linear-gradient(180deg,#f8fbff 0%,#eef4ff 100%)}
+    .media-card.media-card-contain{display:grid;place-items:center;padding:18px;background: #f8fbff;}
     .media-card.media-card-contain img{height:auto;max-height:460px;object-fit:contain;object-position:center;width:100%}
     .seo-proof-divider{height:1px;background:linear-gradient(90deg,rgba(79,70,229,.18),rgba(79,70,229,.03));margin:28px 0}
     .seo-checklist{display:grid;gap:14px;margin:24px 0 0;padding:22px;border-radius:24px;background:rgba(241,245,249,.6);border:1px solid rgba(226,232,240,.95)}
@@ -84,7 +84,7 @@
     .seo-quick-item span{display:block;margin-top:6px;font-size:.8125rem;color:var(--c-500)}
     .seo-definition{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(260px,.9fr);gap:24px;align-items:start}
     .seo-glass-card,.seo-compare-card,.seo-roadmap-card,.seo-why-card{padding:28px;background:#fff;border:1px solid var(--c-200);box-shadow:var(--sh-md)}
-    .seo-glass-card{border-radius:24px;background:linear-gradient(180deg,#ffffff 0%,#f8fbff 100%)}
+    .seo-glass-card{border-radius:24px;background: #ffffff;}
     .seo-pillars{grid-template-columns:repeat(3,1fr);margin-top:28px}
     .seo-pillar{padding:24px;border:1px solid var(--c-200);border-radius:22px;background:#fff;box-shadow:var(--sh-sm)}
     .seo-pillar i{font-size:1.2rem;color:var(--c-primary);margin-bottom:14px}
@@ -399,12 +399,26 @@
 <body>
 
 <nav class="navbar" id="navbar">
-  <div class="container"><div class="navbar-inner">
-    <a href="/" class="navbar-logo" aria-label="A1 Technovation home"><span class="logo-mark"><img src="../assets/images/A1Technovation-Dark-Background.png" alt="A1 Technovation" class="logo-brand logo-brand-dark" /><img src="../assets/images/A1Technovation-Light-Background.png" alt="A1 Technovation" class="logo-brand logo-brand-light" /></span></a>
-    <nav class="navbar-nav">
-      <a href="/" class="nav-link">Home</a><a href="/pages/about" class="nav-link">About</a>
-      <div class="nav-item megamenu-item"><a href="/pages/services" class="nav-link active">Services <i class="fas fa-chevron-down" style="font-size:.7em;opacity:.7"></i></a>
-        <div class="megamenu">
+  <div class="container">
+    <div class="navbar-inner">
+      <!-- Logo -->
+      <a href="/" class="navbar-logo" aria-label="A1 Technovation home">
+        <span class="logo-mark">
+          <img src="/assets/images/A1Technovation-Dark-Background.png" alt="A1 Technovation" class="logo-brand logo-brand-dark" />
+          <img src="/assets/images/A1Technovation-Light-Background.png" alt="A1 Technovation" class="logo-brand logo-brand-light" />
+        </span>
+      </a>
+
+      <!-- Nav Links -->
+      <nav class="navbar-nav">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/pages/about" class="nav-link">About</a>
+
+        <div class="nav-item megamenu-item">
+          <a href="/pages/services" class="nav-link">
+            Services <i class="fas fa-chevron-down" style="font-size:.7em;opacity:.7"></i>
+          </a>
+          <div class="megamenu">
             <div class="megamenu-inner">
               <div class="mm-col mm-col-main">
                 <p class="mm-col-head">Core Services</p>
@@ -442,11 +456,25 @@
           </div>
         </div>
 
-        <a href="/pages/portfolio" class="nav-link">Work</a><a href="/pages/blog" class="nav-link">Blog</a><a href="/pages/tools" class="nav-link">Tools</a><a href="/pages/contact" class="nav-link">Contact</a>
-    </nav>
-    <div class="navbar-right"><a href="/pages/contact" class="btn btn-primary btn-sm nav-cta">Free Growth Audit</a><button class="mobile-toggle" id="mobileToggle" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false"><span></span><span></span><span></span></button></div>
-  </div></div>
+        <a href="/pages/portfolio" class="nav-link">Work</a>
+        <a href="/pages/blog" class="nav-link">Blog</a>
+        <a href="/pages/tools" class="nav-link">Tools</a>
+        <a href="/pages/contact" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Right actions -->
+      <div class="navbar-right">
+        <a href="https://wa.me/8801799976295" class="btn btn-primary btn-sm nav-cta" target="_blank" rel="noopener">
+          <i class="fab fa-whatsapp"></i> Free Consultation
+        </a>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
 </nav>
+
 <div class="mobile-menu" id="mobileMenu">
   <a href="/"                   class="mobile-menu-link">Home <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
   <a href="/pages/about"             class="mobile-menu-link">About <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
@@ -484,7 +512,7 @@
     </a>
     <p class="mobile-menu-note">info.a1technovation@gmail.com</p>
   </div>
- </div><!-- PAGE HERO -->
+</div><!-- PAGE HERO -->
 <section class="page-hero">
   <div class="hero-bg"><div class="hero-grid"></div><div class="hero-glow-1"></div><div class="hero-glow-2"></div></div>
   <div class="container">
@@ -913,7 +941,7 @@
       <!-- Brand -->
       <div class="footer-brand">
         <a href="/" class="footer-logo" aria-label="A1 Technovation home">
-          <img src="../assets/images/A1Technovation-Dark-Background.png" alt="A1 Technovation" class="footer-logo-image" />
+          <img src="/assets/images/A1Technovation-Dark-Background.png" alt="A1 Technovation" class="footer-logo-image" />
         </a>
         <p>A1 Technovation is a results-driven digital marketing agency delivering SEO, AEO, GEO, web design, PPC, local SEO, ecommerce SEO, and social media marketing for clients across 20+ countries.</p>
         <div class="footer-socials">

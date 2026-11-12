@@ -24,8 +24,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin /><link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'" /><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" /></noscript>
-    <link rel="stylesheet" href="/css/style.min.css">
-    <link rel="stylesheet" href="/css/responsive.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="stylesheet" href="/css/whatsapp-chat.css">
     <script>
         tailwind.config = {
             theme: {
@@ -204,21 +205,12 @@
 
         html { scroll-behavior: smooth; }
 
-        .article-navbar, .article-navbar.scrolled {
-            background: rgba(255, 255, 255, 0.96);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border-bottom: 1px solid rgba(15, 23, 42, 0.08);
-            box-shadow: 0 4px 24px rgba(15, 23, 42, 0.06);
-        }
-        .article-navbar .logo-brand-dark { opacity: 0; }
-        .article-navbar .logo-brand-light { opacity: 1; }
-        .article-navbar .nav-link, .article-navbar .nav-item.current > .nav-link { color: #475569; }
-        .article-navbar .nav-link:hover, .article-navbar .nav-link.active, .article-navbar .nav-item.current > .nav-link {
-            color: #2563eb;
-            background: rgba(37, 99, 235, 0.08);
-        }
-        .article-navbar .mobile-toggle span { background: #0f172a; }
+        
+        
+        
+        
+        
+        
 
         /* Prose & Typography */
         .prose h2 {
@@ -239,7 +231,7 @@
             left: 0;
             width: 48px;
             height: 3px;
-            background: linear-gradient(90deg, #2563eb, #38bdf8);
+            background: #2563eb;
             border-radius: 999px;
         }
         .prose h3 {
@@ -306,7 +298,7 @@
 
         /* Case Study Visual Components */
         .metric-hero-card {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            background: #0f172a;
             border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.3);
             border-radius: 1.25rem;
@@ -353,7 +345,7 @@
         }
 
         .executive-summary-box {
-            background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%);
+            background: #eff6ff;
             border: 1px solid #bae6fd;
             border-left: 5px solid #0284c7;
             border-radius: 0.75rem;
@@ -582,7 +574,7 @@
             height: 52px;
             border: 0;
             border-radius: 999px;
-            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            background: #2563eb;
             color: #fff;
             display: inline-flex;
             align-items: center;
@@ -598,7 +590,7 @@
         .scroll-top.is-visible { opacity: 1; visibility: visible; transform: translateY(0); }
 
         .article-sidebar-newsletter {
-            background: linear-gradient(160deg, #0f172a 0%, #162248 100%);
+            background: #0f172a;
             color: #ffffff;
         }
         .article-sidebar-newsletter input[type="email"] {
@@ -616,13 +608,13 @@
             min-height: 48px;
             border: 0;
             border-radius: 0.75rem;
-            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            background: #2563eb;
             color: #ffffff;
             font-weight: 700;
             cursor: pointer;
         }
         .article-sidebar-newsletter button[type="submit"]:hover {
-            background: linear-gradient(135deg, #1d4ed8, #2563eb);
+            background: #1d4ed8;
         }
         .newsletter-status { display: block; margin-top: 0.75rem; font-size: 0.875rem; }
         .newsletter-status.success { color: #86efac; }
@@ -632,93 +624,121 @@
 <body class="bg-slate-50 font-sans text-slate-800 antialiased selection:bg-blue-200 selection:text-slate-900">
 
     <!-- Top Navigation Header -->
-    <nav class="navbar article-navbar" id="navbar">
-        <div class="container">
-            <div class="navbar-inner">
-                <a href="/" class="navbar-logo" aria-label="A1 Technovation home">
-                    <span class="logo-mark">
-                        <img src="/assets/images/A1Technovation-Dark-Background.png" alt="A1 Technovation" class="logo-brand logo-brand-dark" />
-                        <img src="/assets/images/A1Technovation-Light-Background.png" alt="A1 Technovation" class="logo-brand logo-brand-light" />
-                    </span>
-                </a>
-                <nav class="navbar-nav">
-                    <a href="/" class="nav-link">Home</a>
-                    <a href="/pages/about" class="nav-link">About</a>
-                    <div class="nav-item megamenu-item">
-                        <a href="/pages/services" class="nav-link">Services <i class="fas fa-chevron-down" style="font-size:.7em;opacity:.7"></i></a>
-                        <div class="megamenu">
-                            <div class="megamenu-inner">
-                                <div class="mm-col mm-col-main">
-                                    <p class="mm-col-head">Core Services</p>
-                                    <a href="/pages/services-seo" class="mm-service"><div class="mm-icon"><i class="fas fa-search"></i></div><div class="mm-body"><span class="mm-title">SEO Services</span><span class="mm-desc">Technical, content, and authority growth</span></div></a>
-                                    <a href="/aeo-optimization-services/" class="mm-service"><div class="mm-icon"><i class="fas fa-comment-dots"></i></div><div class="mm-body"><span class="mm-title">AEO Optimization</span><span class="mm-desc">Win snippets and answer boxes</span></div></a>
-                                    <a href="/geo-optimization-services/" class="mm-service"><div class="mm-icon"><i class="fas fa-diagram-project"></i></div><div class="mm-body"><span class="mm-title">GEO Optimization</span><span class="mm-desc">Get cited by AI engines</span></div></a>
-                                    <a href="/pages/services-local-seo" class="mm-service"><div class="mm-icon"><i class="fas fa-location-dot"></i></div><div class="mm-body"><span class="mm-title">Local SEO</span><span class="mm-desc">Maps, local pack, and city rankings</span></div></a>
-                                </div>
-                                <div class="mm-col mm-col-links">
-                                    <p class="mm-col-head">SEO Specialties</p>
-                                    <a href="/ecommerce-seo-services/" class="mm-link">Ecommerce SEO</a>
-                                    <a href="/pages/services-car-dealership-seo" class="mm-link font-semibold text-brand-primary">Car Dealership SEO</a>
-                                    <a href="/pages/services-car-rental-seo" class="mm-link">Car Rental SEO</a>
-                                    <a href="/pages/services-car-repair-seo" class="mm-link">Car Repair SEO</a>
-                                    <a href="/pages/services-limousine-business-seo" class="mm-link">Limousine Business SEO</a>
-                                    <a href="/pages/services-web-dev" class="mm-link">Web Design</a>
-                                    <a href="/pages/services-ppc-ads" class="mm-link">PPC Advertising</a>
-                                    <a href="/pages/services-social-media" class="mm-link">Social Media</a>
-                                </div>
-                                <div class="mm-col mm-col-feature">
-                                    <div class="mm-feature-card">
-                                        <div class="mm-feature-badge">Free Audit</div>
-                                        <h4 class="mm-feature-title">Grow Your Dealership Online</h4>
-                                        <p class="mm-feature-body">Get a comprehensive 30-minute automotive search audit with our senior strategists.</p>
-                                        <a href="https://wa.me/8801799976295" class="btn btn-primary btn-sm" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Free Consultation</a>
-                                        <a href="/pages/portfolio" class="mm-feature-link">View all case studies &rarr;</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="/pages/portfolio" class="nav-link active">Work</a>
-                    <a href="/pages/blog" class="nav-link">Blog</a>
-                    <a href="/pages/tools" class="nav-link">Tools</a>
-                    <a href="/pages/contact" class="nav-link">Contact</a>
-                </nav>
-                <div class="navbar-right">
-                    <a href="https://wa.me/8801799976295" class="btn btn-primary btn-sm nav-cta" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Free Consultation</a>
-                    <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false"><span></span><span></span><span></span></button>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <nav class="navbar" id="navbar">
+  <div class="container">
+    <div class="navbar-inner">
+      <!-- Logo -->
+      <a href="/" class="navbar-logo" aria-label="A1 Technovation home">
+        <span class="logo-mark">
+          <img src="/assets/images/A1Technovation-Dark-Background.png" alt="A1 Technovation" class="logo-brand logo-brand-dark" />
+          <img src="/assets/images/A1Technovation-Light-Background.png" alt="A1 Technovation" class="logo-brand logo-brand-light" />
+        </span>
+      </a>
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <a href="/" class="mobile-menu-link">Home <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
-        <a href="/pages/about" class="mobile-menu-link">About <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
-        <div class="mobile-menu-group">
-            <a href="/pages/services" class="mobile-menu-link">Services <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
-            <div class="mobile-submenu">
-                <a href="/pages/services-seo" class="mobile-submenu-link">SEO Services</a>
-                <a href="/pages/services-car-dealership-seo" class="mobile-submenu-link">Car Dealership SEO</a>
-                <a href="/aeo-optimization-services/" class="mobile-submenu-link">AEO Optimization</a>
-                <a href="/geo-optimization-services/" class="mobile-submenu-link">GEO Optimization</a>
-                <a href="/pages/services-local-seo" class="mobile-submenu-link">Local SEO Services</a>
-                <a href="/ecommerce-seo-services/" class="mobile-submenu-link">Ecommerce SEO Services</a>
-                <a href="/pages/services-web-dev" class="mobile-submenu-link">Web Design &amp; Development</a>
-                <a href="/pages/services-ppc-ads" class="mobile-submenu-link">PPC Advertising</a>
+      <!-- Nav Links -->
+      <nav class="navbar-nav">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/pages/about" class="nav-link">About</a>
+
+        <div class="nav-item megamenu-item">
+          <a href="/pages/services" class="nav-link">
+            Services <i class="fas fa-chevron-down" style="font-size:.7em;opacity:.7"></i>
+          </a>
+          <div class="megamenu">
+            <div class="megamenu-inner">
+              <div class="mm-col mm-col-main">
+                <p class="mm-col-head">Core Services</p>
+                <a href="/pages/services-seo" class="mm-service"><div class="mm-icon"><i class="fas fa-search"></i></div><div class="mm-body"><span class="mm-title">SEO Services</span><span class="mm-desc">Technical, content, and authority growth</span></div></a>
+                <a href="/aeo-optimization-services/" class="mm-service"><div class="mm-icon"><i class="fas fa-comment-dots"></i></div><div class="mm-body"><span class="mm-title">AEO Optimization</span><span class="mm-desc">Win snippets and answer boxes</span></div></a>
+                <a href="/geo-optimization-services/" class="mm-service"><div class="mm-icon"><i class="fas fa-diagram-project"></i></div><div class="mm-body"><span class="mm-title">GEO Optimization</span><span class="mm-desc">Get cited by AI engines</span></div></a>
+                <a href="/pages/services-local-seo" class="mm-service"><div class="mm-icon"><i class="fas fa-location-dot"></i></div><div class="mm-body"><span class="mm-title">Local SEO</span><span class="mm-desc">Maps, local pack, and city rankings</span></div></a>
+              </div>
+              <div class="mm-col mm-col-links">
+                <p class="mm-col-head">SEO Specialties</p>
+                <a href="/ecommerce-seo-services/" class="mm-link">Ecommerce SEO</a>
+                <a href="/pages/services-web-dev" class="mm-link">Web Design</a>
+                <a href="/pages/services-ppc-ads" class="mm-link">PPC Advertising</a>
+                <a href="/pages/services-social-media" class="mm-link">Social Media</a>
+                <a href="/seo-services-for-hvac-companies/" class="mm-link">HVAC SEO</a>
+                <a href="/seo-services-usa/" class="mm-link">SEO Services USA</a>
+                <a href="/pages/services-car-rental-seo" class="mm-link">Car Rental SEO</a>
+                <a href="/pages/services-limousine-business-seo" class="mm-link">Limousine Business SEO</a>
+                <a href="/pages/services-car-repair-seo" class="mm-link">Car Repair SEO</a>
+                <a href="/pages/services-car-dealership-seo" class="mm-link">Car Dealership SEO</a>
+                <a href="/pages/services-tree-service-seo" class="mm-link">Tree Service SEO</a>
+                <a href="/pages/services-lawyer-seo" class="mm-link">Lawyer SEO</a>
+                <a href="/pages/services-small-business-seo" class="mm-link">Small Business SEO</a>
+              </div>
+              <div class="mm-col mm-col-feature">
+                <div class="mm-feature-card">
+                  <div class="mm-feature-badge">Free Audit</div>
+                  <h4 class="mm-feature-title">Grow Your Business Online</h4>
+                  <p class="mm-feature-body">Get a free 30-minute strategy session with our experts - no strings attached.</p>
+                  <a href="https://wa.me/8801799976295" class="btn btn-primary btn-sm" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Free Consultation</a>
+                  <a href="/pages/services" class="mm-feature-link">View all services -></a>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
-        <a href="/pages/portfolio" class="mobile-menu-link">Work <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
-        <a href="/pages/blog" class="mobile-menu-link">Blog <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
-        <a href="/pages/tools" class="mobile-menu-link">Tools <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
-        <a href="/pages/contact" class="mobile-menu-link">Contact <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
-        <div class="mobile-menu-footer">
-            <a href="https://wa.me/8801799976295" class="btn btn-primary btn-lg" target="_blank" rel="noopener" style="justify-content:center">
-                <i class="fab fa-whatsapp"></i> Start a Free Consultation
-            </a>
-            <p class="mobile-menu-note">info.a1technovation@gmail.com</p>
-        </div>
+
+        <a href="/pages/portfolio" class="nav-link">Work</a>
+        <a href="/pages/blog" class="nav-link">Blog</a>
+        <a href="/pages/tools" class="nav-link">Tools</a>
+        <a href="/pages/contact" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Right actions -->
+      <div class="navbar-right">
+        <a href="https://wa.me/8801799976295" class="btn btn-primary btn-sm nav-cta" target="_blank" rel="noopener">
+          <i class="fab fa-whatsapp"></i> Free Consultation
+        </a>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/"                   class="mobile-menu-link">Home <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
+  <a href="/pages/about"             class="mobile-menu-link">About <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
+  <div class="mobile-menu-group">
+    <a href="/pages/services"        class="mobile-menu-link">Services <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
+    <div class="mobile-submenu">
+      <a href="/pages/services-seo" class="mobile-submenu-link">SEO Services</a>
+      <a href="/aeo-optimization-services/" class="mobile-submenu-link">AEO Optimization</a>
+      <a href="/geo-optimization-services/" class="mobile-submenu-link">GEO Optimization</a>
+      <a href="/pages/services-local-seo" class="mobile-submenu-link">Local SEO Services</a>
+      <a href="/ecommerce-seo-services/" class="mobile-submenu-link">Ecommerce SEO Services</a>
+      <a href="/seo-services-for-hvac-companies/" class="mobile-submenu-link">HVAC SEO Services</a>
+      <a href="/seo-services-usa/" class="mobile-submenu-link">SEO Services USA</a>
+      <div class="mobile-submenu-nested">
+        <a href="/pages/services-car-rental-seo" class="mobile-submenu-link mobile-submenu-sublink">Car Rental SEO Service</a>
+        <a href="/pages/services-limousine-business-seo" class="mobile-submenu-link mobile-submenu-sublink">Limousine Business SEO Service</a>
+        <a href="/pages/services-car-repair-seo" class="mobile-submenu-link mobile-submenu-sublink">Car Repair SEO Service</a>
+        <a href="/pages/services-car-dealership-seo" class="mobile-submenu-link mobile-submenu-sublink">Car Dealership SEO Service</a>
+        <a href="/pages/services-tree-service-seo" class="mobile-submenu-link mobile-submenu-sublink">Tree Service SEO</a>
+        <a href="/pages/services-lawyer-seo" class="mobile-submenu-link mobile-submenu-sublink">Lawyer SEO Service</a>
+        <a href="/pages/services-small-business-seo" class="mobile-submenu-link mobile-submenu-sublink">Small Business SEO Service</a>
+      </div>
+      <a href="/pages/services-web-dev" class="mobile-submenu-link">Web Design &amp; Development</a>
+      <a href="/pages/services-ppc-ads" class="mobile-submenu-link">PPC Advertising</a>
+      <a href="/pages/services-social-media" class="mobile-submenu-link">Social Media Marketing</a>
+    </div>
+  </div>
+  <a href="/pages/portfolio"         class="mobile-menu-link">Work <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
+  <a href="/pages/blog"              class="mobile-menu-link">Blog <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
+  <a href="/pages/tools"             class="mobile-menu-link">Tools <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
+  <a href="/pages/contact"           class="mobile-menu-link">Contact <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
+  <div class="mobile-menu-footer">
+    <a href="https://wa.me/8801799976295" class="btn btn-primary btn-lg" target="_blank" rel="noopener" style="justify-content:center">
+      <i class="fab fa-whatsapp"></i> Start a Free Consultation
+    </a>
+    <p class="mobile-menu-note">info.a1technovation@gmail.com</p>
+  </div>
+</div>
 
     <!-- Main Content Area -->
     <main class="py-10 lg:py-20">
@@ -812,25 +832,25 @@
 
                     <!-- Key Growth Highlight Cards -->
                     <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-10">
-                        <div class="stat-card-glow border-blue-200 bg-gradient-to-b from-blue-50/50 to-white">
+                        <div class="stat-card-glow border-blue-200 bg-blue-50/50">
                             <span class="text-xs font-bold text-slate-500 block uppercase tracking-wider">Organic Clicks</span>
                             <div class="text-3xl sm:text-4xl font-black text-brand-primary mt-1">40K</div>
                             <span class="badge-positive mt-2"><i class="ph ph-arrow-up-right font-bold"></i> +247.8%</span>
                             <span class="text-xs text-slate-400 block mt-1">from 11.5K baseline</span>
                         </div>
-                        <div class="stat-card-glow border-indigo-200 bg-gradient-to-b from-indigo-50/50 to-white">
+                        <div class="stat-card-glow border-indigo-200 bg-indigo-50/50">
                             <span class="text-xs font-bold text-slate-500 block uppercase tracking-wider">Impressions</span>
                             <div class="text-3xl sm:text-4xl font-black text-indigo-600 mt-1">987K</div>
                             <span class="badge-positive mt-2"><i class="ph ph-arrow-up-right font-bold"></i> +104.3%</span>
                             <span class="text-xs text-slate-400 block mt-1">from 483K baseline</span>
                         </div>
-                        <div class="stat-card-glow border-emerald-200 bg-gradient-to-b from-emerald-50/50 to-white">
+                        <div class="stat-card-glow border-emerald-200 bg-emerald-50/50">
                             <span class="text-xs font-bold text-slate-500 block uppercase tracking-wider">Average CTR</span>
                             <div class="text-3xl sm:text-4xl font-black text-emerald-600 mt-1">4.0%</div>
                             <span class="badge-positive mt-2"><i class="ph ph-arrow-up-right font-bold"></i> +66.7%</span>
                             <span class="text-xs text-slate-400 block mt-1">up from 2.4% CTR</span>
                         </div>
-                        <div class="stat-card-glow border-amber-200 bg-gradient-to-b from-amber-50/50 to-white">
+                        <div class="stat-card-glow border-amber-200 bg-amber-50/50">
                             <span class="text-xs font-bold text-slate-500 block uppercase tracking-wider">Avg. Position</span>
                             <div class="text-3xl sm:text-4xl font-black text-amber-600 mt-1">7.2</div>
                             <span class="badge-neutral mt-2"><i class="ph ph-check font-bold"></i> Stable (7.0 &rarr; 7.2)</span>
@@ -2205,7 +2225,7 @@
                         <p><strong>Not traffic for the sake of traffic. Search visibility connected to the actual business.</strong></p>
 
                         <!-- Callout CTA Section -->
-                        <div class="p-8 rounded-2xl bg-gradient-to-br from-slate-900 via-slate-800 to-blue-950 text-white my-12 shadow-xl border border-slate-700 not-prose">
+                        <div class="p-8 rounded-2xl bg-slate-900 text-white my-12 shadow-xl border border-slate-700 not-prose">
                             <div class="max-w-2xl">
                                 <span class="bg-blue-500/20 text-blue-400 border border-blue-500/30 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider inline-block mb-3">
                                     Automotive Growth Partner
@@ -2344,7 +2364,7 @@
                         </div>
 
                         <!-- Free Audit Card -->
-                        <div class="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-2xl p-6 text-center shadow-xs">
+                        <div class="bg-blue-50 border border-blue-200 rounded-2xl p-6 text-center shadow-xs">
                             <div class="w-12 h-12 rounded-full bg-brand-primary text-white flex items-center justify-center mx-auto mb-3 text-xl shadow-md">
                                 <i class="ph ph-chart-polar"></i>
                             </div>
@@ -2395,96 +2415,80 @@
 
     <!-- Global Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-top">
-                <div class="footer-brand">
-                    <a href="/" class="footer-logo" aria-label="A1 Technovation home">
-                        <img src="/assets/images/A1Technovation-Dark-Background.png" alt="A1 Technovation" class="footer-logo-image" />
-                    </a>
-                    <p>A1 Technovation is a results-driven digital marketing agency delivering SEO, AEO, GEO, web design, PPC, local SEO, ecommerce SEO, and social media marketing for clients across 20+ countries.</p>
-                    <div class="footer-socials">
-                        <a href="https://www.facebook.com/a1technovation/" class="f-social" aria-label="Facebook" target="_blank" rel="nofollow noopener"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/a1technovation/?hl=en" class="f-social" aria-label="Instagram" target="_blank" rel="nofollow noopener"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.linkedin.com/company/92598277/" class="f-social" aria-label="LinkedIn" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://wa.me/8801799976295" class="f-social" aria-label="WhatsApp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
-                        <a href="https://t.me/likhonahmedseo" class="f-social" aria-label="Telegram" target="_blank" rel="nofollow noopener"><i class="fab fa-telegram"></i></a>
-                    </div>
-                </div>
-
-                <div class="footer-col">
-                    <h6>Services</h6>
-                    <div class="footer-links">
-                        <a href="/pages/services-seo" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> SEO Services</a>
-                        <a href="/pages/services-car-dealership-seo" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Car Dealership SEO</a>
-                        <a href="/aeo-optimization-services/" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> AEO Optimization</a>
-                        <a href="/geo-optimization-services/" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> GEO Optimization</a>
-                        <a href="/ecommerce-seo-services/" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Ecommerce SEO</a>
-                        <a href="/pages/services-local-seo" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Local SEO</a>
-                        <a href="/pages/services-web-dev" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Web Design</a>
-                        <a href="/pages/services-ppc-ads" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> PPC Advertising</a>
-                    </div>
-                </div>
-
-                <div class="footer-col">
-                    <h6>Company</h6>
-                    <div class="footer-links">
-                        <a href="/pages/about" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> About Us</a>
-                        <a href="/pages/portfolio" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Our Work</a>
-                        <a href="/pages/blog" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Blog &amp; Insights</a>
-                        <a href="/pages/contact" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Contact Us</a>
-                        <a href="/pages/contact" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Free Consultation</a>
-                    </div>
-                </div>
-
-                <div class="footer-col">
-                    <h6>Get in Touch</h6>
-                    <div class="f-contact-item">
-                        <i class="fas fa-location-dot"></i>
-                        <span>35/A Srijoni Road, Ibrahimpur<br>Dhaka Cantonment, Dhaka 1206, Bangladesh</span>
-                    </div>
-                    <div class="f-contact-item">
-                        <i class="fas fa-phone"></i>
-                        <a href="tel:+8801799976295">+880 1799-976295</a>
-                    </div>
-                    <div class="f-contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <a href="mailto:info.a1technovation@gmail.com">info.a1technovation@gmail.com</a>
-                    </div>
-                    <div class="f-contact-item">
-                        <i class="fas fa-clock"></i>
-                        <span>Mon-Fri: 9 AM - 7 PM BST<br>Sat: 10 AM - 4 PM BST</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="footer-newsletter">
-                <div class="footer-newsletter-copy">
-                    <span class="footer-newsletter-kicker"><i class="fas fa-bolt"></i> A1 Growth Notes</span>
-                    <h6>Get practical search and conversion ideas monthly.</h6>
-                    <p>SEO, AI search, web performance, and conversion insights from the A1 Technovation team.</p>
-                </div>
-                <form class="newsletter-form" data-source="global-footer" action="/api/newsletter_subscribe" method="post">
-                    <div class="newsletter-field-wrap">
-                        <i class="fas fa-envelope"></i>
-                        <input type="email" name="email" placeholder="Enter your email" autocomplete="email" required />
-                    </div>
-                    <button type="submit" class="btn btn-primary" aria-label="Subscribe to newsletter">
-                        <i class="fas fa-paper-plane"></i><span>Subscribe</span>
-                    </button>
-                    <p class="newsletter-status" hidden aria-live="polite"></p>
-                    <p class="newsletter-privacy"><i class="fas fa-lock"></i> No spam. Unsubscribe anytime.</p>
-                </form>
-            </div>
-
-            <div class="footer-bottom">
-                <p class="f-copy">&copy; 2026 A1 Technovation. All rights reserved.</p>
-                <div class="f-bottom-links">
-                    <a href="/pages/privacy" class="f-bl">Privacy Policy</a>
-                    <a href="/pages/terms" class="f-bl">Terms and Conditions</a>
-                </div>
-            </div>
+  <div class="container">
+    <div class="footer-top">
+      <!-- Brand -->
+      <div class="footer-brand">
+        <a href="/" class="footer-logo" aria-label="A1 Technovation home">
+          <img src="/assets/images/A1Technovation-Dark-Background.png" alt="A1 Technovation" class="footer-logo-image" />
+        </a>
+        <p>A1 Technovation is a results-driven digital marketing agency delivering SEO, AEO, GEO, web design, PPC, local SEO, ecommerce SEO, and social media marketing for clients across 20+ countries.</p>
+        <div class="footer-socials">
+          <a href="https://www.facebook.com/a1technovation/" class="f-social" aria-label="Facebook" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/a1technovation/?hl=en" class="f-social" aria-label="Instagram" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/company/92598277/" class="f-social" aria-label="LinkedIn" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://wa.me/8801799976295" class="f-social" aria-label="WhatsApp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://t.me/likhonahmedseo" class="f-social" aria-label="Telegram" target="_blank" rel="noopener"><i class="fab fa-telegram"></i></a>
         </div>
-    </footer>
+      </div>
+
+      <!-- Services -->
+      <div class="footer-col">
+        <h6>Services</h6>
+        <div class="footer-links">
+          <a href="/pages/services-seo"          class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> SEO Services</a>
+          <a href="/aeo-optimization-services/"  class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> AEO Optimization</a>
+          <a href="/geo-optimization-services/"  class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> GEO Optimization</a>
+          <a href="/ecommerce-seo-services/"     class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Ecommerce SEO</a>
+          <a href="/pages/services-local-seo"    class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Local SEO</a>
+          <a href="/pages/services-web-dev"      class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Web Design</a>
+          <a href="/pages/services-ppc-ads"      class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> PPC Advertising</a>
+        </div>
+      </div>
+
+      <!-- Company -->
+      <div class="footer-col">
+        <h6>Company</h6>
+        <div class="footer-links">
+          <a href="/pages/about"     class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> About Us</a>
+          <a href="/pages/portfolio" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Our Work</a>
+          <a href="/pages/blog"      class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Blog & Insights</a>
+          <a href="/pages/contact"   class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Contact Us</a>
+          <a href="/pages/contact"   class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Free Consultation</a>
+        </div>
+      </div>
+
+      <!-- Contact -->
+      <div class="footer-col">
+        <h6>Get in Touch</h6>
+        <div class="f-contact-item">
+          <i class="fas fa-location-dot"></i>
+          <span>35/A Srijoni Road, Ibrahimpur<br>Dhaka Cantonment, Dhaka 1206, Bangladesh</span>
+        </div>
+        <div class="f-contact-item">
+          <i class="fas fa-phone"></i>
+          <a href="tel:+8801799976295">+880 1799-976295</a>
+        </div>
+        <div class="f-contact-item">
+          <i class="fas fa-envelope"></i>
+          <a href="mailto:info.a1technovation@gmail.com">info.a1technovation@gmail.com</a>
+        </div>
+        <div class="f-contact-item">
+          <i class="fas fa-clock"></i>
+          <span>Mon-Fri: 9 AM - 7 PM BST<br>Sat: 10 AM - 4 PM BST</span>
+        </div>
+      </div>
+    </div>
+  <div class="footer-newsletter"><div class="footer-newsletter-copy"><span class="footer-newsletter-kicker"><i class="fas fa-bolt"></i> A1 Growth Notes</span><h6>Get practical search and conversion ideas monthly.</h6><p>SEO, AI search, web performance, and conversion insights from the A1 Technovation team.</p></div><form class="newsletter-form" data-source="global-footer" action="/api/newsletter_subscribe" method="post"><div class="newsletter-field-wrap"><i class="fas fa-envelope"></i><input type="email" name="email" placeholder="Enter your email" autocomplete="email" required /></div><button type="submit" class="btn btn-primary" aria-label="Subscribe to newsletter"><i class="fas fa-paper-plane"></i><span>Subscribe</span></button><p class="newsletter-status" hidden aria-live="polite"></p><p class="newsletter-privacy"><i class="fas fa-lock"></i> No spam. Unsubscribe anytime.</p></form></div>
+  <div class="footer-bottom">
+      <p class="f-copy">&copy; 2025 A1 Technovation. All rights reserved.</p>
+      <div class="f-bottom-links">
+        <a href="/pages/privacy" class="f-bl">Privacy Policy</a>
+        <a href="/pages/terms" class="f-bl">Terms and Conditions</a>
+      </div>
+    </div>
+  </div>
+</footer>
 
     <!-- Back to top button -->
     <button class="scroll-top" id="scrollTop" aria-label="Back to top"><i class="ph ph-arrow-up"></i></button>

@@ -164,6 +164,16 @@
       triggerBtn.setAttribute('aria-expanded', 'true');
       if (notifyBadge) notifyBadge.style.display = 'none';
       if (tooltipPill) tooltipPill.style.display = 'none';
+      var tgWrap = document.getElementById('tgTriggerWrap');
+      if (tgWrap) {
+        tgWrap.style.opacity = '0';
+        tgWrap.style.pointerEvents = 'none';
+      }
+      var scrollBtn = document.querySelector('.scroll-top');
+      if (scrollBtn) {
+        scrollBtn.style.opacity = '0';
+        scrollBtn.style.pointerEvents = 'none';
+      }
       setTimeout(function () {
         if (chatInput) chatInput.focus();
       }, 150);
@@ -174,6 +184,16 @@
       chatWindow.classList.remove('is-open');
       chatWindow.setAttribute('aria-hidden', 'true');
       triggerBtn.setAttribute('aria-expanded', 'false');
+      var tgWrap = document.getElementById('tgTriggerWrap');
+      if (tgWrap) {
+        tgWrap.style.opacity = '';
+        tgWrap.style.pointerEvents = '';
+      }
+      var scrollBtn = document.querySelector('.scroll-top');
+      if (scrollBtn) {
+        scrollBtn.style.opacity = '';
+        scrollBtn.style.pointerEvents = '';
+      }
     }
 
     function toggleChat() {

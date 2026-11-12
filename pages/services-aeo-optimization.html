@@ -242,12 +242,26 @@
 <body>
 
 <nav class="navbar" id="navbar">
-  <div class="container"><div class="navbar-inner">
-    <a href="/" class="navbar-logo" aria-label="A1 Technovation home"><span class="logo-mark"><img src="../assets/images/A1Technovation-Dark-Background.png" alt="A1 Technovation" class="logo-brand logo-brand-dark" /><img src="../assets/images/A1Technovation-Light-Background.png" alt="A1 Technovation" class="logo-brand logo-brand-light" /></span></a>
-    <nav class="navbar-nav">
-      <a href="/" class="nav-link">Home</a><a href="/pages/about" class="nav-link">About</a>
-      <div class="nav-item megamenu-item"><a href="/pages/services" class="nav-link active">Services <i class="fas fa-chevron-down" style="font-size:.7em;opacity:.7"></i></a>
-        <div class="megamenu">
+  <div class="container">
+    <div class="navbar-inner">
+      <!-- Logo -->
+      <a href="/" class="navbar-logo" aria-label="A1 Technovation home">
+        <span class="logo-mark">
+          <img src="/assets/images/A1Technovation-Dark-Background.png" alt="A1 Technovation" class="logo-brand logo-brand-dark" />
+          <img src="/assets/images/A1Technovation-Light-Background.png" alt="A1 Technovation" class="logo-brand logo-brand-light" />
+        </span>
+      </a>
+
+      <!-- Nav Links -->
+      <nav class="navbar-nav">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/pages/about" class="nav-link">About</a>
+
+        <div class="nav-item megamenu-item">
+          <a href="/pages/services" class="nav-link">
+            Services <i class="fas fa-chevron-down" style="font-size:.7em;opacity:.7"></i>
+          </a>
+          <div class="megamenu">
             <div class="megamenu-inner">
               <div class="mm-col mm-col-main">
                 <p class="mm-col-head">Core Services</p>
@@ -285,11 +299,25 @@
           </div>
         </div>
 
-        <a href="/pages/portfolio" class="nav-link">Work</a><a href="/pages/blog" class="nav-link">Blog</a><a href="/pages/tools" class="nav-link">Tools</a><a href="/pages/contact" class="nav-link">Contact</a>
-    </nav>
-    <div class="navbar-right"><a href="/pages/contact" class="btn btn-primary btn-sm nav-cta">Free Growth Audit</a><button class="mobile-toggle" id="mobileToggle" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false"><span></span><span></span><span></span></button></div>
-  </div></div>
+        <a href="/pages/portfolio" class="nav-link">Work</a>
+        <a href="/pages/blog" class="nav-link">Blog</a>
+        <a href="/pages/tools" class="nav-link">Tools</a>
+        <a href="/pages/contact" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Right actions -->
+      <div class="navbar-right">
+        <a href="https://wa.me/8801799976295" class="btn btn-primary btn-sm nav-cta" target="_blank" rel="noopener">
+          <i class="fab fa-whatsapp"></i> Free Consultation
+        </a>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
 </nav>
+
 <div class="mobile-menu" id="mobileMenu">
   <a href="/"                   class="mobile-menu-link">Home <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
   <a href="/pages/about"             class="mobile-menu-link">About <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
@@ -417,12 +445,12 @@
     <div class="container">
       <div class="section-header reveal"><span class="label label-primary label-dot">Platforms</span><h2>Citation Patterns by <span class="text-grad">AI Platform</span></h2></div>
       <div class="feat-grid">
-        <div class="feat-card reveal d1"><div class="feat-icon" style="background:linear-gradient(135deg,#10b981,#059669)"><i class="fas fa-comments"></i></div><h4>ChatGPT</h4><p>ChatGPT draws heavily from authoritative publishers, educational sites, and Wikipedia-style content. Encyclopedic structure, factual density, and authoritative attribution outperform promotional writing.</p></div>
-        <div class="feat-card reveal d2"><div class="feat-icon" style="background:linear-gradient(135deg,#6366f1,#8b5cf6)"><i class="fas fa-bolt"></i></div><h4>Perplexity</h4><p>Perplexity prioritizes fresh content, first-hand experience, and specific data points. Quarterly page refreshes and original examples help preserve citation eligibility.</p></div>
-        <div class="feat-card reveal d3"><div class="feat-icon" style="background:linear-gradient(135deg,#ea4335,#fbbc05)"><i class="fab fa-google"></i></div><h4>Google AI Overviews</h4><p>Google AI Overviews cite pages that already perform well in organic search, making strong <a href="/pages/services-seo">technical SEO</a>, structured data, E-E-A-T, and Core Web Vitals essential.</p></div>
-        <div class="feat-card reveal d1"><div class="feat-icon" style="background:linear-gradient(135deg,#4285f4,#06b6d4)"><i class="fas fa-gem"></i></div><h4>Gemini</h4><p>Gemini rewards technical depth, transparent attribution, Person schema for authors, Article schema, and in-body links to primary sources.</p></div>
-        <div class="feat-card reveal d2"><div class="feat-icon" style="background:linear-gradient(135deg,#0078d4,#00b4f1)"><i class="fab fa-microsoft"></i></div><h4>Bing Copilot</h4><p>Bing Copilot draws from Bing organic results and Microsoft-verified sources. Classical organic SEO and structured data remain core signals.</p></div>
-        <div class="feat-card reveal d3"><div class="feat-icon" style="background:linear-gradient(135deg,#f43f5e,#fb923c)"><i class="fas fa-location-dot"></i></div><h4>Local AI Answers</h4><p>For city-level queries, AEO works with <a href="/pages/services-local-seo">local SEO</a>, city-hub architecture, and market pages like <a href="/seo-services-usa/">SEO services USA</a> and <a href="/seo-services-uae/">SEO services UAE</a>.</p></div>
+        <div class="feat-card reveal d1"><div class="feat-icon" style="background:#10b981"><i class="fas fa-comments"></i></div><h4>ChatGPT</h4><p>ChatGPT draws heavily from authoritative publishers, educational sites, and Wikipedia-style content. Encyclopedic structure, factual density, and authoritative attribution outperform promotional writing.</p></div>
+        <div class="feat-card reveal d2"><div class="feat-icon" style="background:#6366f1"><i class="fas fa-bolt"></i></div><h4>Perplexity</h4><p>Perplexity prioritizes fresh content, first-hand experience, and specific data points. Quarterly page refreshes and original examples help preserve citation eligibility.</p></div>
+        <div class="feat-card reveal d3"><div class="feat-icon" style="background:#ea4335"><i class="fab fa-google"></i></div><h4>Google AI Overviews</h4><p>Google AI Overviews cite pages that already perform well in organic search, making strong <a href="/pages/services-seo">technical SEO</a>, structured data, E-E-A-T, and Core Web Vitals essential.</p></div>
+        <div class="feat-card reveal d1"><div class="feat-icon" style="background:#4285f4"><i class="fas fa-gem"></i></div><h4>Gemini</h4><p>Gemini rewards technical depth, transparent attribution, Person schema for authors, Article schema, and in-body links to primary sources.</p></div>
+        <div class="feat-card reveal d2"><div class="feat-icon" style="background:#0078d4"><i class="fab fa-microsoft"></i></div><h4>Bing Copilot</h4><p>Bing Copilot draws from Bing organic results and Microsoft-verified sources. Classical organic SEO and structured data remain core signals.</p></div>
+        <div class="feat-card reveal d3"><div class="feat-icon" style="background:#f43f5e"><i class="fas fa-location-dot"></i></div><h4>Local AI Answers</h4><p>For city-level queries, AEO works with <a href="/pages/services-local-seo">local SEO</a>, city-hub architecture, and market pages like <a href="/seo-services-usa/">SEO services USA</a> and <a href="/seo-services-uae/">SEO services UAE</a>.</p></div>
       </div>
     </div>
   </section>
@@ -652,7 +680,7 @@
       <!-- Brand -->
       <div class="footer-brand">
         <a href="/" class="footer-logo" aria-label="A1 Technovation home">
-          <img src="../assets/images/A1Technovation-Dark-Background.png" alt="A1 Technovation" class="footer-logo-image" />
+          <img src="/assets/images/A1Technovation-Dark-Background.png" alt="A1 Technovation" class="footer-logo-image" />
         </a>
         <p>A1 Technovation is a results-driven digital marketing agency delivering SEO, AEO, GEO, web design, PPC, local SEO, ecommerce SEO, and social media marketing for clients across 20+ countries.</p>
         <div class="footer-socials">

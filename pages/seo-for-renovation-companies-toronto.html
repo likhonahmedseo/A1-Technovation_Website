@@ -51,9 +51,9 @@
     .reno-showcase-label { position:absolute; left:0; right:0; bottom:0; padding:14px 16px; color:#fff; font-weight:700; background:linear-gradient(to top, rgba(15,23,42,.9), transparent); }
     .reno-showcase-label span { display:block; margin-top:2px; font-weight:400; font-size:.78rem; color:rgba(255,255,255,.74); }
     .reno-process-visual { display:grid; grid-template-columns:repeat(4,1fr); position:relative; margin-top:48px; }
-    .reno-process-visual::before { content:""; position:absolute; top:32px; left:calc(12.5% + 16px); right:calc(12.5% + 16px); height:2px; background:linear-gradient(90deg,#2563eb,#7c3aed); z-index:0; }
+    .reno-process-visual::before { content:""; position:absolute; top:32px; left:calc(12.5% + 16px); right:calc(12.5% + 16px); height:2px; background: #2563eb; z-index:0; }
     .reno-pstep { position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; text-align:center; padding:0 16px; }
-    .reno-pstep-icon { width:64px; height:64px; border-radius:50%; display:flex; align-items:center; justify-content:center; margin-bottom:18px; background:linear-gradient(135deg,#2563eb,#7c3aed); color:#fff; font-size:1.3rem; box-shadow:0 16px 36px rgba(37,99,235,.32); }
+    .reno-pstep-icon { width:64px; height:64px; border-radius:50%; display:flex; align-items:center; justify-content:center; margin-bottom:18px; background:#2563eb; color:#fff; font-size:1.3rem; box-shadow:0 16px 36px rgba(37,99,235,.32); }
     .reno-pstep h5 { margin-bottom:8px; color:#0f172a; font-size:1rem; font-weight:700; }
     .reno-pstep p { color:#5f6f88; font-size:.9rem; line-height:1.65; }
     .reno-page .featured-panel-media img { width:100%; height:100%; min-height:380px; object-fit:cover; }
@@ -80,7 +80,7 @@
     .reno-page .why-matters-chips { justify-content:center; }
     .reno-page .number-list { list-style:none; padding:0; margin:0; display:grid; gap:18px; }
     .reno-page .number-list li { display:grid; grid-template-columns:52px 1fr; gap:16px; align-items:start; }
-    .reno-page .number-badge { width:52px; height:52px; border-radius:18px; background:linear-gradient(135deg,#2563eb,#7c3aed); color:#fff; display:inline-flex; align-items:center; justify-content:center; font-weight:800; font-size:1rem; box-shadow:0 16px 30px rgba(37,99,235,.24); }
+    .reno-page .number-badge { width:52px; height:52px; border-radius:18px; background:#2563eb; color:#fff; display:inline-flex; align-items:center; justify-content:center; font-weight:800; font-size:1rem; box-shadow:0 16px 30px rgba(37,99,235,.24); }
     .reno-page .icon-list { display:grid; gap:12px; padding:0; margin:20px 0 0; list-style:none; }
     .reno-page .icon-list li { display:flex; gap:12px; align-items:flex-start; color:#42526b; line-height:1.7; }
     .reno-page .icon-list i { color:#2563eb; margin-top:4px; }
@@ -339,12 +339,26 @@
 <body>
 
 <nav class="navbar" id="navbar">
-  <div class="container"><div class="navbar-inner">
-    <a href="/" class="navbar-logo" aria-label="A1 Technovation home"><span class="logo-mark"><img src="../assets/images/A1Technovation-Dark-Background.png" alt="A1 Technovation" class="logo-brand logo-brand-dark" /><img src="../assets/images/A1Technovation-Light-Background.png" alt="A1 Technovation" class="logo-brand logo-brand-light" /></span></a>
-    <nav class="navbar-nav">
-      <a href="/" class="nav-link">Home</a><a href="/pages/about" class="nav-link">About</a>
-      <div class="nav-item megamenu-item"><a href="/pages/services" class="nav-link active">Services <i class="fas fa-chevron-down" style="font-size:.7em;opacity:.7"></i></a>
-        <div class="megamenu">
+  <div class="container">
+    <div class="navbar-inner">
+      <!-- Logo -->
+      <a href="/" class="navbar-logo" aria-label="A1 Technovation home">
+        <span class="logo-mark">
+          <img src="/assets/images/A1Technovation-Dark-Background.png" alt="A1 Technovation" class="logo-brand logo-brand-dark" />
+          <img src="/assets/images/A1Technovation-Light-Background.png" alt="A1 Technovation" class="logo-brand logo-brand-light" />
+        </span>
+      </a>
+
+      <!-- Nav Links -->
+      <nav class="navbar-nav">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/pages/about" class="nav-link">About</a>
+
+        <div class="nav-item megamenu-item">
+          <a href="/pages/services" class="nav-link">
+            Services <i class="fas fa-chevron-down" style="font-size:.7em;opacity:.7"></i>
+          </a>
+          <div class="megamenu">
             <div class="megamenu-inner">
               <div class="mm-col mm-col-main">
                 <p class="mm-col-head">Core Services</p>
@@ -382,10 +396,23 @@
           </div>
         </div>
 
-        <a href="/pages/portfolio" class="nav-link">Work</a><a href="/pages/blog" class="nav-link">Blog</a><a href="/pages/tools" class="nav-link">Tools</a><a href="/pages/contact" class="nav-link">Contact</a>
-    </nav>
-    <div class="navbar-right"><a href="/pages/contact" class="btn btn-primary btn-sm nav-cta">Free Growth Audit</a><button class="mobile-toggle" id="mobileToggle" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false"><span></span><span></span><span></span></button></div>
-  </div></div>
+        <a href="/pages/portfolio" class="nav-link">Work</a>
+        <a href="/pages/blog" class="nav-link">Blog</a>
+        <a href="/pages/tools" class="nav-link">Tools</a>
+        <a href="/pages/contact" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Right actions -->
+      <div class="navbar-right">
+        <a href="https://wa.me/8801799976295" class="btn btn-primary btn-sm nav-cta" target="_blank" rel="noopener">
+          <i class="fab fa-whatsapp"></i> Free Consultation
+        </a>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
@@ -765,7 +792,7 @@
       <!-- Brand -->
       <div class="footer-brand">
         <a href="/" class="footer-logo" aria-label="A1 Technovation home">
-          <img src="../assets/images/A1Technovation-Dark-Background.png" alt="A1 Technovation" class="footer-logo-image" />
+          <img src="/assets/images/A1Technovation-Dark-Background.png" alt="A1 Technovation" class="footer-logo-image" />
         </a>
         <p>A1 Technovation is a results-driven digital marketing agency delivering SEO, AEO, GEO, web design, PPC, local SEO, ecommerce SEO, and social media marketing for clients across 20+ countries.</p>
         <div class="footer-socials">

@@ -9,8 +9,8 @@
 
 /* Stacking adjustment for .scroll-top */
 .scroll-top {
-  bottom: 96px !important;
-  right: 26px !important;
+  bottom: 160px !important;
+  right: 30px !important;
   z-index: 9990 !important;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
@@ -31,7 +31,7 @@
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  background: #25D366;
   color: #ffffff;
   display: flex;
   align-items: center;
@@ -41,10 +41,11 @@
   border: 2px solid rgba(255, 255, 255, 0.3);
   cursor: pointer;
   outline: none;
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, background 0.2s ease;
 }
 
 .wa-trigger-btn:hover {
+  background: #20ba5a;
   transform: scale(1.08) translateY(-2px);
   box-shadow: 0 14px 30px -4px rgba(37, 211, 102, 0.65), 0 6px 16px rgba(15, 23, 42, 0.2);
 }
@@ -180,7 +181,7 @@
 
 /* Window Header */
 .wa-chat-header {
-  background: linear-gradient(135deg, #060b18 0%, #0d1526 55%, #172554 100%);
+  background: #0f172a;
   color: #ffffff;
   padding: 16px 18px;
   display: flex;
@@ -448,7 +449,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  background: #25D366;
   color: #ffffff;
   border: none;
   cursor: pointer;
@@ -458,10 +459,11 @@
   font-size: 14px;
   flex-shrink: 0;
   box-shadow: 0 4px 10px rgba(37, 211, 102, 0.35);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
 }
 
 .wa-send-btn:hover {
+  background: #20ba5a;
   transform: scale(1.06);
   box-shadow: 0 6px 14px rgba(37, 211, 102, 0.5);
 }
@@ -486,11 +488,12 @@
 .tg-trigger-wrap {
   position: fixed;
   bottom: 96px;
-  right: 24px;
+  right: 28px;
   z-index: 9994;
   display: flex;
   align-items: center;
   gap: 12px;
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
 }
 
 .tg-trigger-btn {
@@ -498,7 +501,7 @@
   width: 52px;
   height: 52px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #2AABEE 0%, #0088cc 100%);
+  background: #0088cc;
   color: #ffffff;
   display: flex;
   align-items: center;
@@ -508,11 +511,12 @@
   border: 2px solid rgba(255, 255, 255, 0.3);
   cursor: pointer;
   outline: none;
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, background 0.2s ease;
   text-decoration: none;
 }
 
 .tg-trigger-btn:hover {
+  background: #0077b5;
   transform: scale(1.08) translateY(-2px);
   box-shadow: 0 12px 26px -4px rgba(0, 136, 204, 0.65), 0 6px 14px rgba(15, 23, 42, 0.18);
   color: #ffffff;
@@ -556,13 +560,20 @@
     font-size: 28px;
   }
   .tg-trigger-wrap {
-    bottom: 84px;
-    right: 20px;
+    bottom: 82px;
+    right: 22px;
   }
   .tg-trigger-btn {
     width: 46px;
     height: 46px;
     font-size: 22px;
+  }
+  .scroll-top {
+    bottom: 138px !important;
+    right: 23px !important;
+    width: 44px !important;
+    height: 44px !important;
+    font-size: 0.9rem !important;
   }
   .wa-chat-window {
     bottom: 84px;

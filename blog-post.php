@@ -134,7 +134,7 @@ $customImportHasOwnShell = $isCustomImportedLayout
       height: 52px;
       border: 0;
       border-radius: 999px;
-      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      background: #2563eb;
       color: #fff;
       display: inline-flex;
       align-items: center;

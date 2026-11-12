@@ -24,8 +24,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin /><link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'" /><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" /></noscript>
-    <link rel="stylesheet" href="/css/style.min.css">
-    <link rel="stylesheet" href="/css/responsive.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="stylesheet" href="/css/whatsapp-chat.css">
     <script>
         tailwind.config = {
             theme: {
@@ -373,7 +374,7 @@
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
         }
         .direct-answer {
-            background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
+            background: #eff6ff;
             border-left: 5px solid #2563eb;
             border-radius: 0 1rem 1rem 0;
             padding: 2rem;
@@ -383,16 +384,16 @@
             border-left: 5px solid #2563eb;
         }
         .direct-answer p { margin-bottom: 0; font-size: 1.15rem; color: #1e293b; font-weight: 500; }
-        .article-navbar,.article-navbar.scrolled{background:rgba(255,255,255,.96);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(15,23,42,.08);box-shadow:0 4px 24px rgba(15,23,42,.06)}
-        .article-navbar .logo-brand-dark{opacity:0}.article-navbar .logo-brand-light{opacity:1}
-        .article-navbar .nav-link,.article-navbar .nav-item.current>.nav-link{color:#475569}
-        .article-navbar .nav-link:hover,.article-navbar .nav-link.active,.article-navbar .nav-item.current>.nav-link{color:#2563eb;background:rgba(37,99,235,.08)}
-        .article-navbar .mobile-toggle span{background:#0f172a}
-        .article-cta-card{background:linear-gradient(135deg,#0f172a 0%,#162248 100%);color:#fff}
+        
+        
+        
+        
+        
+        .article-cta-card{background: #0f172a;color:#fff}
         .article-cta-card p,.article-cta-card .cta-copy{color:#cbd5e1}
-        .article-cta-button{display:inline-block;background:linear-gradient(135deg,#2563eb,#3b82f6);color:#fff!important;font-weight:700;padding:.95rem 2rem;border-radius:.75rem;box-shadow:0 18px 32px rgba(37,99,235,.28)}
+        .article-cta-button{display:inline-block;background:#2563eb;color:#fff!important;font-weight:700;padding:.95rem 2rem;border-radius:.75rem;box-shadow:0 18px 32px rgba(37,99,235,.28)}
         .article-sidebar-newsletter {
-            background: linear-gradient(160deg, #0f172a 0%, #162248 100%);
+            background: #0f172a;
             color: #ffffff;
         }
         .article-sidebar-newsletter p,
@@ -431,18 +432,18 @@
             min-height: 52px;
             border: 0;
             border-radius: 0.75rem;
-            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            background: #2563eb;
             color: #ffffff;
             font-weight: 700;
             box-shadow: none;
         }
         .article-sidebar-newsletter .newsletter-form button[type="submit"]:hover {
-            background: linear-gradient(135deg, #1d4ed8, #2563eb);
+            background: #1d4ed8;
         }
         .article-sidebar-newsletter .newsletter-note {
             color: #94a3b8;
         }
-        .scroll-top{position:fixed;right:24px;bottom:24px;width:52px;height:52px;border:0;border-radius:999px;background:linear-gradient(135deg,#2563eb,#7c3aed);color:#fff;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 18px 36px rgba(37,99,235,.24);cursor:pointer;opacity:0;visibility:hidden;transform:translateY(16px);transition:opacity .22s ease,transform .22s ease,visibility .22s ease;z-index:50}
+        .scroll-top{position:fixed;right:24px;bottom:24px;width:52px;height:52px;border:0;border-radius:999px;background:#2563eb;color:#fff;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 18px 36px rgba(37,99,235,.24);cursor:pointer;opacity:0;visibility:hidden;transform:translateY(16px);transition:opacity .22s ease,transform .22s ease,visibility .22s ease;z-index:50}
         .scroll-top.is-visible{opacity:1;visibility:visible;transform:translateY(0)}
         .newsletter-status{display:block;margin-top:.75rem;font-size:.875rem;line-height:1.5}.newsletter-status.success{color:#86efac}.newsletter-status.error{color:#fca5a5}
         html { scroll-behavior: smooth; }
@@ -478,14 +479,27 @@
     </style>
 </head>
 <body class="bg-brand-light font-sans text-slate-800 antialiased selection:bg-blue-200 selection:text-slate-900">
-    <nav class="navbar article-navbar" id="navbar">
-        <div class="container"><div class="navbar-inner">
-            <a href="/" class="navbar-logo" aria-label="A1 Technovation home"><span class="logo-mark"><img src="/assets/images/A1Technovation-Dark-Background.png" alt="A1 Technovation" class="logo-brand logo-brand-dark" /><img src="/assets/images/A1Technovation-Light-Background.png" alt="A1 Technovation" class="logo-brand logo-brand-light" /></span></a>
-            <nav class="navbar-nav">
-                <a href="/" class="nav-link">Home</a>
-                <a href="/pages/about" class="nav-link">About</a>
-                <div class="nav-item megamenu-item"><a href="/pages/services" class="nav-link">Services <i class="fas fa-chevron-down" style="font-size:.7em;opacity:.7"></i></a>
-                    <div class="megamenu">
+    <nav class="navbar" id="navbar">
+  <div class="container">
+    <div class="navbar-inner">
+      <!-- Logo -->
+      <a href="/" class="navbar-logo" aria-label="A1 Technovation home">
+        <span class="logo-mark">
+          <img src="/assets/images/A1Technovation-Dark-Background.png" alt="A1 Technovation" class="logo-brand logo-brand-dark" />
+          <img src="/assets/images/A1Technovation-Light-Background.png" alt="A1 Technovation" class="logo-brand logo-brand-light" />
+        </span>
+      </a>
+
+      <!-- Nav Links -->
+      <nav class="navbar-nav">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/pages/about" class="nav-link">About</a>
+
+        <div class="nav-item megamenu-item">
+          <a href="/pages/services" class="nav-link">
+            Services <i class="fas fa-chevron-down" style="font-size:.7em;opacity:.7"></i>
+          </a>
+          <div class="megamenu">
             <div class="megamenu-inner">
               <div class="mm-col mm-col-main">
                 <p class="mm-col-head">Core Services</p>
@@ -524,17 +538,25 @@
         </div>
 
         <a href="/pages/portfolio" class="nav-link">Work</a>
-                <a href="/pages/blog" class="nav-link active">Blog</a>
-                <a href="/pages/tools" class="nav-link">Tools</a>
-                <a href="/pages/contact" class="nav-link">Contact</a>
-            </nav>
-            <div class="navbar-right">
-                <a href="https://wa.me/8801799976295" class="btn btn-primary btn-sm nav-cta" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Free Consultation</a>
-                <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false"><span></span><span></span><span></span></button>
-            </div>
-        </div></div>
-    </nav>
-    <div class="mobile-menu" id="mobileMenu">
+        <a href="/pages/blog" class="nav-link">Blog</a>
+        <a href="/pages/tools" class="nav-link">Tools</a>
+        <a href="/pages/contact" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Right actions -->
+      <div class="navbar-right">
+        <a href="https://wa.me/8801799976295" class="btn btn-primary btn-sm nav-cta" target="_blank" rel="noopener">
+          <i class="fab fa-whatsapp"></i> Free Consultation
+        </a>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
   <a href="/"                   class="mobile-menu-link">Home <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
   <a href="/pages/about"             class="mobile-menu-link">About <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
   <div class="mobile-menu-group">
@@ -1556,7 +1578,7 @@
                             </div>
                         </div>
 
-                        <div class="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-100 rounded-2xl p-7 text-center shadow-sm">
+                        <div class="bg-blue-50 border border-blue-100 rounded-2xl p-7 text-center shadow-sm">
                             <h3 class="font-bold text-brand-dark text-lg mb-2">Get a Free SEO Audit</h3>
                             <p class="text-sm text-slate-600 mb-6">Find out if your domain and site structure are ready to rank. We'll review your setup and share what needs to change.</p>
                             <a href="/pages/contact" class="inline-block bg-slate-900 hover:bg-blue-600 text-white font-bold px-6 py-3.5 rounded-lg w-full transition-all shadow-lg hover:shadow-blue-500/30">
@@ -1578,20 +1600,22 @@
     <footer class="footer">
   <div class="container">
     <div class="footer-top">
+      <!-- Brand -->
       <div class="footer-brand">
         <a href="/" class="footer-logo" aria-label="A1 Technovation home">
-          <img src="../assets/images/A1Technovation-Dark-Background.png" alt="A1 Technovation" class="footer-logo-image" />
+          <img src="/assets/images/A1Technovation-Dark-Background.png" alt="A1 Technovation" class="footer-logo-image" />
         </a>
         <p>A1 Technovation is a results-driven digital marketing agency delivering SEO, AEO, GEO, web design, PPC, local SEO, ecommerce SEO, and social media marketing for clients across 20+ countries.</p>
         <div class="footer-socials">
-          <a href="https://www.facebook.com/a1technovation/" class="f-social" aria-label="Facebook" target="_blank" rel="nofollow noopener"><i class="fab fa-facebook-f"></i></a>
-          <a href="https://www.instagram.com/a1technovation/?hl=en" class="f-social" aria-label="Instagram" target="_blank" rel="nofollow noopener"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/a1technovation/" class="f-social" aria-label="Facebook" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/a1technovation/?hl=en" class="f-social" aria-label="Instagram" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
           <a href="https://www.linkedin.com/company/92598277/" class="f-social" aria-label="LinkedIn" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
           <a href="https://wa.me/8801799976295" class="f-social" aria-label="WhatsApp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
-          <a href="https://t.me/likhonahmedseo" class="f-social" aria-label="Telegram" target="_blank" rel="nofollow noopener"><i class="fab fa-telegram"></i></a>
+          <a href="https://t.me/likhonahmedseo" class="f-social" aria-label="Telegram" target="_blank" rel="noopener"><i class="fab fa-telegram"></i></a>
         </div>
       </div>
 
+      <!-- Services -->
       <div class="footer-col">
         <h6>Services</h6>
         <div class="footer-links">
@@ -1605,6 +1629,7 @@
         </div>
       </div>
 
+      <!-- Company -->
       <div class="footer-col">
         <h6>Company</h6>
         <div class="footer-links">
@@ -1616,6 +1641,7 @@
         </div>
       </div>
 
+      <!-- Contact -->
       <div class="footer-col">
         <h6>Get in Touch</h6>
         <div class="f-contact-item">

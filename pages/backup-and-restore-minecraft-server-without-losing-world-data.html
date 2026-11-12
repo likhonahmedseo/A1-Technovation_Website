@@ -45,8 +45,8 @@
     <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
 
     <!-- Core Stylesheets -->
-    <link rel="stylesheet" href="/css/style.min.css">
-    <link rel="stylesheet" href="/css/responsive.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/responsive.css">
     <link rel="stylesheet" href="/css/whatsapp-chat.css">
 
     <style>
@@ -77,51 +77,28 @@
             top: 0;
             left: 0;
             height: 3px;
-            background: linear-gradient(90deg, #2563eb, #06b6d4);
+            background: #2563eb;
             z-index: 1000;
             width: 0%;
             transition: width 0.1s ease;
         }
 
         /* Navbar & Global Header Overrides */
-        .article-navbar,
-        .article-navbar.scrolled {
-            background: rgba(255, 255, 255, .96) !important;
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border-bottom: 1px solid rgba(15, 23, 42, .08) !important;
-            box-shadow: 0 4px 24px rgba(15, 23, 42, .06) !important;
-        }
+        
 
-        .article-navbar .logo-brand-dark {
-            opacity: 0 !important;
-            display: none !important;
-        }
+        
 
-        .article-navbar .logo-brand-light {
-            opacity: 1 !important;
-            display: block !important;
-        }
+        
 
-        .article-navbar .nav-link,
-        .article-navbar .nav-item.current > .nav-link {
-            color: #475569 !important;
-        }
+        
 
-        .article-navbar .nav-link:hover,
-        .article-navbar .nav-link.active,
-        .article-navbar .nav-item.current > .nav-link {
-            color: #2563eb !important;
-            background: rgba(37, 99, 235, .08) !important;
-        }
+        
 
-        .article-navbar .mobile-toggle span {
-            background: #0f172a !important;
-        }
+        
 
         /* Hero Header (A1 Global Brand Dark Theme) */
         .mc-hero {
-            background: linear-gradient(145deg, #060b18 0%, #0d1526 55%, #160826 100%) !important;
+            background: #0f172a; !important;
             color: #ffffff !important;
             position: relative;
             overflow: hidden;
@@ -249,7 +226,7 @@
 
         /* Direct Answer / Callout Boxes */
         .direct-answer {
-            background: linear-gradient(135deg, #eff6ff 0%, #f0fdf4 100%);
+            background: #eff6ff;
             border-left: 4px solid var(--net-blue);
             padding: 1.5rem 1.75rem;
             border-radius: 0 1rem 1rem 0;
@@ -303,7 +280,7 @@
         /* High-Contrast CTA Card (Global Brand Theme) */
         .article-cta-card,
         .prose .article-cta-card {
-            background: linear-gradient(135deg, #090d16 0%, #0f172a 45%, #172554 100%) !important;
+            background: #0f172a; !important;
             color: #ffffff !important;
             border: 1px solid rgba(59, 130, 246, 0.35) !important;
             position: relative;
@@ -342,7 +319,7 @@
             display: inline-flex !important;
             align-items: center !important;
             justify-content: center !important;
-            background: linear-gradient(135deg, #2563eb, #0ea5e9) !important;
+            background: #2563eb !important;
             color: #ffffff !important;
             font-weight: 700 !important;
             font-size: 1.0625rem !important;
@@ -357,7 +334,7 @@
         .prose .article-cta-button:hover {
             transform: translateY(-2px) !important;
             box-shadow: 0 15px 30px -5px rgba(37, 99, 235, 0.6) !important;
-            background: linear-gradient(135deg, #1d4ed8, #0284c7) !important;
+            background: #1d4ed8 !important;
         }
 
         /* Accordion FAQ */
@@ -432,7 +409,7 @@
         }
 
         .mc-sidebar-card {
-            background: linear-gradient(160deg, #0b1120 0%, #172554 100%);
+            background: #0f172a;
             border: 1px solid rgba(37, 99, 235, 0.25);
             border-radius: 1rem;
             padding: 1.5rem;
@@ -602,14 +579,27 @@
     <div class="reading-progress" id="readingProgress"></div>
 
         <!-- Official Header / Global Navigation Bar -->
-    <nav class="navbar article-navbar" id="navbar">
-        <div class="container"><div class="navbar-inner">
-            <a href="/" class="navbar-logo" aria-label="A1 Technovation home"><span class="logo-mark"><img src="/assets/images/A1Technovation-Dark-Background.png" alt="A1 Technovation" class="logo-brand logo-brand-dark" /><img src="/assets/images/A1Technovation-Light-Background.png" alt="A1 Technovation" class="logo-brand logo-brand-light" /></span></a>
-            <nav class="navbar-nav">
-                <a href="/" class="nav-link">Home</a>
-                <a href="/pages/about" class="nav-link">About</a>
-                <div class="nav-item megamenu-item"><a href="/pages/services" class="nav-link">Services <i class="fas fa-chevron-down" style="font-size:.7em;opacity:.7"></i></a>
-                    <div class="megamenu">
+    <nav class="navbar" id="navbar">
+  <div class="container">
+    <div class="navbar-inner">
+      <!-- Logo -->
+      <a href="/" class="navbar-logo" aria-label="A1 Technovation home">
+        <span class="logo-mark">
+          <img src="/assets/images/A1Technovation-Dark-Background.png" alt="A1 Technovation" class="logo-brand logo-brand-dark" />
+          <img src="/assets/images/A1Technovation-Light-Background.png" alt="A1 Technovation" class="logo-brand logo-brand-light" />
+        </span>
+      </a>
+
+      <!-- Nav Links -->
+      <nav class="navbar-nav">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/pages/about" class="nav-link">About</a>
+
+        <div class="nav-item megamenu-item">
+          <a href="/pages/services" class="nav-link">
+            Services <i class="fas fa-chevron-down" style="font-size:.7em;opacity:.7"></i>
+          </a>
+          <div class="megamenu">
             <div class="megamenu-inner">
               <div class="mm-col mm-col-main">
                 <p class="mm-col-head">Core Services</p>
@@ -640,26 +630,33 @@
                   <h4 class="mm-feature-title">Grow Your Business Online</h4>
                   <p class="mm-feature-body">Get a free 30-minute strategy session with our experts - no strings attached.</p>
                   <a href="https://wa.me/8801799976295" class="btn btn-primary btn-sm" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Free Consultation</a>
-                  <a href="/pages/services" class="mm-feature-link">View all services -&gt;</a>
+                  <a href="/pages/services" class="mm-feature-link">View all services -></a>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <a href="/pages/portfolio" class="nav-link">Work</a>
-                <a href="/pages/blog" class="nav-link active">Blog</a>
-                <a href="/pages/tools" class="nav-link">Tools</a>
-                <a href="/pages/contact" class="nav-link">Contact</a>
-            </nav>
-            <div class="navbar-right">
-                <a href="https://wa.me/8801799976295" class="btn btn-primary btn-sm nav-cta" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Free Consultation</a>
-                <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false"><span></span><span></span><span></span></button>
-            </div>
-        </div></div>
-    </nav>
 
-    <!-- Global Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
+        <a href="/pages/portfolio" class="nav-link">Work</a>
+        <a href="/pages/blog" class="nav-link">Blog</a>
+        <a href="/pages/tools" class="nav-link">Tools</a>
+        <a href="/pages/contact" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Right actions -->
+      <div class="navbar-right">
+        <a href="https://wa.me/8801799976295" class="btn btn-primary btn-sm nav-cta" target="_blank" rel="noopener">
+          <i class="fab fa-whatsapp"></i> Free Consultation
+        </a>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
   <a href="/"                   class="mobile-menu-link">Home <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
   <a href="/pages/about"             class="mobile-menu-link">About <i class="fas fa-arrow-right" style="font-size:.75rem;opacity:.4"></i></a>
   <div class="mobile-menu-group">
@@ -699,7 +696,7 @@
 </div>
 
     <!-- Hero Header -->
-    <header class="mc-hero py-16 lg:py-20 relative">
+    <header class="pt-32 pb-16 lg:pt-36 lg:pb-24 mc-hero  lg: relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <!-- Breadcrumb Navigation -->
             <nav class="flex items-center gap-2 text-sm text-slate-400 mb-6" aria-label="Breadcrumb">
@@ -882,7 +879,7 @@
                 <span><i class="fas fa-arrows-left-right text-cyan-400 mr-1.5"></i> Swipe horizontally to explore full diagram</span>
                 <span class="text-slate-400 text-[10px]">Scroll &rarr;</span>
             </div>
-            <div class="infographic-scroll overflow-x-auto">
+            <div class="infographic-scroll">
                 <svg style="width: 100%; max-width: 100%; height: auto;" viewBox="0 0 880 340" class="w-full h-auto " aria-label="Visual comparison of live unpaused copy corruption risk versus clean shutdown point-in-time consistency">
                 <defs>
                     <linearGradient id="hazardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -1142,7 +1139,7 @@
                 <span><i class="fas fa-arrows-left-right text-cyan-400 mr-1.5"></i> Swipe horizontally to explore full diagram</span>
                 <span class="text-slate-400 text-[10px]">Scroll &rarr;</span>
             </div>
-            <div class="infographic-scroll overflow-x-auto">
+            <div class="infographic-scroll">
                 <svg style="width: 100%; max-width: 100%; height: auto;" viewBox="0 0 880 360" class="w-full h-auto " aria-label="Minecraft directory structure comparison across Java Vanilla, Paper pre-26.1, Java 26.1+, and Bedrock Dedicated Server">
                 <!-- Column 1: Java Vanilla & Paper <26.1 -->
                 <rect x="15" y="15" width="200" height="330" rx="10" fill="#0f172a" stroke="#334155" />
@@ -1354,7 +1351,7 @@
                 <span><i class="fas fa-arrows-left-right text-cyan-400 mr-1.5"></i> Swipe horizontally to explore full diagram</span>
                 <span class="text-slate-400 text-[10px]">Scroll &rarr;</span>
             </div>
-            <div class="infographic-scroll overflow-x-auto">
+            <div class="infographic-scroll">
                 <svg style="width: 100%; max-width: 100%; height: auto;" viewBox="0 0 880 280" class="w-full h-auto " aria-label="Step-by-step pipeline of the automated bash backup script from systemd stop to checksum verification and remote replication">
                 <defs>
                     <linearGradient id="pipeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -1668,7 +1665,7 @@ printf 'Backup complete: %s\n' "$run_id"</code></pre>
                 <span><i class="fas fa-arrows-left-right text-cyan-400 mr-1.5"></i> Swipe horizontally to explore full diagram</span>
                 <span class="text-slate-400 text-[10px]">Scroll &rarr;</span>
             </div>
-            <div class="infographic-scroll overflow-x-auto">
+            <div class="infographic-scroll">
                 <svg style="width: 100%; max-width: 100%; height: auto;" viewBox="0 0 880 300" class="w-full h-auto " aria-label="3-2-1 Minecraft backup retention strategy showing 7 daily, 4 weekly, pre-update snapshots, and off-host deletion protection">
                 <!-- Tier 1: Daily -->
                 <rect x="25" y="25" width="255" height="180" rx="10" fill="#0f172a" stroke="#3b82f6" stroke-width="1.5" />
@@ -1850,7 +1847,7 @@ printf 'Backup complete: %s\n' "$run_id"</code></pre>
                 <span><i class="fas fa-arrows-left-right text-cyan-400 mr-1.5"></i> Swipe horizontally to explore full diagram</span>
                 <span class="text-slate-400 text-[10px]">Scroll &rarr;</span>
             </div>
-            <div class="infographic-scroll overflow-x-auto">
+            <div class="infographic-scroll">
                 <svg style="width: 100%; max-width: 100%; height: auto;" viewBox="0 0 880 340" class="w-full h-auto " aria-label="Step-by-step restoration workflow on a private instance before live cutover">
                 <!-- Live Host Box -->
                 <rect x="20" y="20" width="240" height="300" rx="12" fill="#0f172a" stroke="#ef4444" stroke-dasharray="4 3" />
@@ -2096,7 +2093,7 @@ printf 'Backup complete: %s\n' "$run_id"</code></pre>
                 <span><i class="fas fa-arrows-left-right text-cyan-400 mr-1.5"></i> Swipe horizontally to explore full diagram</span>
                 <span class="text-slate-400 text-[10px]">Scroll &rarr;</span>
             </div>
-            <div class="infographic-scroll overflow-x-auto">
+            <div class="infographic-scroll">
                 <svg style="width: 100%; max-width: 100%; height: auto;" viewBox="0 0 880 340" class="w-full h-auto " aria-label="Diagnostic flowchart for resolving restoration errors such as fresh worlds, missing nether, empty inventory, startup crashes, and checksum failures">
                 <!-- Symptom 1 -->
                 <rect x="20" y="20" width="260" height="90" rx="8" fill="#1e293b" stroke="#f59e0b" />
@@ -2227,7 +2224,7 @@ printf 'Backup complete: %s\n' "$run_id"</code></pre>
                     </section>
 
                     <!-- Section 9: High Contrast Bottom CTA -->
-                    <section id="recovery-host-cta" class="mt-14 article-cta-card not-prose" style="background: linear-gradient(135deg, #090d16 0%, #0f172a 45%, #172554 100%) !important; color: #ffffff !important; border-radius: 1.5rem !important; padding: 2.5rem !important; border: 1px solid rgba(59, 130, 246, 0.35) !important; box-shadow: 0 15px 35px -5px rgba(15, 23, 42, 0.45) !important;">
+                    <section id="recovery-host-cta" class="mt-14 article-cta-card not-prose" style="background: #2563eb !important; color: #ffffff !important; border-radius: 1.5rem !important; padding: 2.5rem !important; border: 1px solid rgba(59, 130, 246, 0.35) !important; box-shadow: 0 15px 35px -5px rgba(15, 23, 42, 0.45) !important;">
                         <div class="relative z-10">
                             <h3 class="flex items-center gap-3 text-white font-extrabold text-2xl mb-4 !mt-0 !text-white" style="color: #ffffff !important; border-bottom: none !important; padding-bottom: 0 !important; margin-top: 0 !important; margin-bottom: 1.25rem !important;">
                                 <i class="fas fa-server text-cyan-400"></i> Ready to Upgrade or Isolate Your Minecraft Architecture?
@@ -2355,66 +2352,80 @@ printf 'Backup complete: %s\n' "$run_id"</code></pre>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-top">
-                <div class="footer-brand">
-                    <a href="/" class="footer-logo" aria-label="A1 Technovation home">
-                        <img src="/assets/images/A1Technovation-Dark-Background.png" alt="A1 Technovation" class="footer-logo-image" />
-                    </a>
-                    <p>A1 Technovation is a results-driven technology and digital growth agency providing enterprise SEO, performance infrastructure, and systems engineering for clients worldwide.</p>
-                    <div class="footer-socials">
-                        <a href="https://www.facebook.com/a1technovation/" class="f-social" aria-label="Facebook" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/a1technovation/?hl=en" class="f-social" aria-label="Instagram" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.linkedin.com/company/92598277/" class="f-social" aria-label="LinkedIn" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://wa.me/8801799976295" class="f-social" aria-label="WhatsApp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
-                        <a href="https://t.me/likhonahmedseo" class="f-social" aria-label="Telegram" target="_blank" rel="noopener"><i class="fab fa-telegram"></i></a>
-                    </div>
-                </div>
-
-                <div class="footer-col">
-                    <h6>Infrastructure Guides</h6>
-                    <div class="footer-links">
-                        <a href="/pages/best-vps-hosting-for-minecraft" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Minecraft VPS Hosting</a>
-                        <a href="/pages/how-much-does-a-10gbps-dedicated-server-cost" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> 10Gbps Server Cost</a>
-                        <a href="/pages/anycast-vs-unicast-infrastructure" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Anycast vs Unicast</a>
-                        <a href="/pages/best-10gbps-dedicated-servers-usa" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Best 10Gbps Servers USA</a>
-                        <a href="/pages/best-10gbps-dedicated-servers-netherlands" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Netherlands 10Gbps Servers</a>
-                    </div>
-                </div>
-
-                <div class="footer-col">
-                    <h6>Core Services</h6>
-                    <div class="footer-links">
-                        <a href="/pages/services-seo" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> SEO Services</a>
-                        <a href="/aeo-optimization-services/" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> AEO Optimization</a>
-                        <a href="/geo-optimization-services/" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> GEO Optimization</a>
-                        <a href="/pages/services-local-seo" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Local SEO</a>
-                        <a href="/pages/services-web-dev" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Web Engineering</a>
-                    </div>
-                </div>
-
-                <div class="footer-col">
-                    <h6>Company</h6>
-                    <div class="footer-links">
-                        <a href="/pages/about" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> About Us</a>
-                        <a href="/pages/contact" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Contact</a>
-                        <a href="/pages/privacy" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Privacy Policy</a>
-                        <a href="/pages/terms" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Terms of Service</a>
-                        <a href="/sitemap" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> HTML Sitemap</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p class="f-copy">&copy; 2026 A1 Technovation. All rights reserved.</p>
-                <div class="f-bottom-links">
-                    <a href="/pages/privacy" class="f-bl">Privacy Policy</a>
-                    <a href="/pages/terms" class="f-bl">Terms and Conditions</a>
-                    <a href="/sitemap" class="f-bl">Sitemap</a>
-                </div>
-            </div>
+  <div class="container">
+    <div class="footer-top">
+      <!-- Brand -->
+      <div class="footer-brand">
+        <a href="/" class="footer-logo" aria-label="A1 Technovation home">
+          <img src="/assets/images/A1Technovation-Dark-Background.png" alt="A1 Technovation" class="footer-logo-image" />
+        </a>
+        <p>A1 Technovation is a results-driven digital marketing agency delivering SEO, AEO, GEO, web design, PPC, local SEO, ecommerce SEO, and social media marketing for clients across 20+ countries.</p>
+        <div class="footer-socials">
+          <a href="https://www.facebook.com/a1technovation/" class="f-social" aria-label="Facebook" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/a1technovation/?hl=en" class="f-social" aria-label="Instagram" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/company/92598277/" class="f-social" aria-label="LinkedIn" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://wa.me/8801799976295" class="f-social" aria-label="WhatsApp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://t.me/likhonahmedseo" class="f-social" aria-label="Telegram" target="_blank" rel="noopener"><i class="fab fa-telegram"></i></a>
         </div>
-    </footer>
+      </div>
+
+      <!-- Services -->
+      <div class="footer-col">
+        <h6>Services</h6>
+        <div class="footer-links">
+          <a href="/pages/services-seo"          class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> SEO Services</a>
+          <a href="/aeo-optimization-services/"  class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> AEO Optimization</a>
+          <a href="/geo-optimization-services/"  class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> GEO Optimization</a>
+          <a href="/ecommerce-seo-services/"     class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Ecommerce SEO</a>
+          <a href="/pages/services-local-seo"    class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Local SEO</a>
+          <a href="/pages/services-web-dev"      class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Web Design</a>
+          <a href="/pages/services-ppc-ads"      class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> PPC Advertising</a>
+        </div>
+      </div>
+
+      <!-- Company -->
+      <div class="footer-col">
+        <h6>Company</h6>
+        <div class="footer-links">
+          <a href="/pages/about"     class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> About Us</a>
+          <a href="/pages/portfolio" class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Our Work</a>
+          <a href="/pages/blog"      class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Blog & Insights</a>
+          <a href="/pages/contact"   class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Contact Us</a>
+          <a href="/pages/contact"   class="f-link"><i class="fas fa-chevron-right" style="font-size:.625rem"></i> Free Consultation</a>
+        </div>
+      </div>
+
+      <!-- Contact -->
+      <div class="footer-col">
+        <h6>Get in Touch</h6>
+        <div class="f-contact-item">
+          <i class="fas fa-location-dot"></i>
+          <span>35/A Srijoni Road, Ibrahimpur<br>Dhaka Cantonment, Dhaka 1206, Bangladesh</span>
+        </div>
+        <div class="f-contact-item">
+          <i class="fas fa-phone"></i>
+          <a href="tel:+8801799976295">+880 1799-976295</a>
+        </div>
+        <div class="f-contact-item">
+          <i class="fas fa-envelope"></i>
+          <a href="mailto:info.a1technovation@gmail.com">info.a1technovation@gmail.com</a>
+        </div>
+        <div class="f-contact-item">
+          <i class="fas fa-clock"></i>
+          <span>Mon-Fri: 9 AM - 7 PM BST<br>Sat: 10 AM - 4 PM BST</span>
+        </div>
+      </div>
+    </div>
+  <div class="footer-newsletter"><div class="footer-newsletter-copy"><span class="footer-newsletter-kicker"><i class="fas fa-bolt"></i> A1 Growth Notes</span><h6>Get practical search and conversion ideas monthly.</h6><p>SEO, AI search, web performance, and conversion insights from the A1 Technovation team.</p></div><form class="newsletter-form" data-source="global-footer" action="/api/newsletter_subscribe" method="post"><div class="newsletter-field-wrap"><i class="fas fa-envelope"></i><input type="email" name="email" placeholder="Enter your email" autocomplete="email" required /></div><button type="submit" class="btn btn-primary" aria-label="Subscribe to newsletter"><i class="fas fa-paper-plane"></i><span>Subscribe</span></button><p class="newsletter-status" hidden aria-live="polite"></p><p class="newsletter-privacy"><i class="fas fa-lock"></i> No spam. Unsubscribe anytime.</p></form></div>
+  <div class="footer-bottom">
+      <p class="f-copy">&copy; 2025 A1 Technovation. All rights reserved.</p>
+      <div class="f-bottom-links">
+        <a href="/pages/privacy" class="f-bl">Privacy Policy</a>
+        <a href="/pages/terms" class="f-bl">Terms and Conditions</a>
+      </div>
+    </div>
+  </div>
+</footer>
 
     <button class="scroll-top" id="scrollTop" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></button>
 

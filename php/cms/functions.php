@@ -6004,15 +6004,22 @@ if (!function_exists('cms_static_blog_file_to_source')) {
         }
 
         $slug = '';
-        if (preg_match('#<link[^>]+rel=["\']canonical["\'][^>]+href=["\']https?://[^"\']+/blog/([^/"\']+)/?["\']#i', $html, $matches) === 1) {
+        if (preg_match('#<link\b(?=[^>]*\bhref=["\']https?://[^"\']+/blog/([^/"\']+)/?["\'])[^>]*>#i', $html, $matches) === 1) {
             $slug = trim((string) $matches[1]);
-        } elseif (preg_match('#<meta[^>]+property=["\']og:url["\'][^>]+content=["\']https?://[^"\']+/blog/([^/"\']+)/?["\']#i', $html, $matches) === 1) {
+        } elseif (preg_match('#<meta\b(?=[^>]*\bcontent=["\']https?://[^"\']+/blog/([^/"\']+)/?["\'])[^>]*>#i', $html, $matches) === 1) {
             $slug = trim((string) $matches[1]);
         } elseif (
-            preg_match('#<link[^>]+rel=["\']canonical["\'][^>]+href=["\']https?://[^"\']+/([^/"\']+)/?["\']#i', $html, $matches) === 1
+            preg_match('#<link\b(?=[^>]*\bhref=["\']https?://[^"\']+/([^/"\']+)/?["\'])[^>]*>#i', $html, $matches) === 1
             && preg_match('#"name"\s*:\s*"Blog"#i', $html) === 1
         ) {
             $slug = trim((string) $matches[1]);
+        }
+
+        if ($slug === '' && str_starts_with($relativePath, 'pages/')) {
+            $fileBase = pathinfo($relativePath, PATHINFO_FILENAME);
+            if (str_starts_with($fileBase, 'best-') || str_contains($html, '/blog/')) {
+                $slug = $fileBase;
+            }
         }
 
         if ($slug === '' || $slug === 'blog') {
@@ -6027,7 +6034,9 @@ if (!function_exists('cms_static_blog_file_to_source')) {
         }
 
         $description = '';
-        if (preg_match('#<meta[^>]+name=["\']description["\'][^>]+content=["\']([^"\']+)["\']#i', $html, $descriptionMatch) === 1) {
+        if (preg_match('#<meta\b(?=[^>]*\bname=["\']description["\'])(?=[^>]*\bcontent=["\']([^"\']+)["\'])[^>]*>#i', $html, $descriptionMatch) === 1) {
+            $description = trim(html_entity_decode((string) $descriptionMatch[1], ENT_QUOTES, 'UTF-8'));
+        } elseif (preg_match('#<meta\b(?=[^>]*\bproperty=["\']og:description["\'])(?=[^>]*\bcontent=["\']([^"\']+)["\'])[^>]*>#i', $html, $descriptionMatch) === 1) {
             $description = trim(html_entity_decode((string) $descriptionMatch[1], ENT_QUOTES, 'UTF-8'));
         }
 
